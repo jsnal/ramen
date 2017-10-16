@@ -44,8 +44,9 @@ bindsym $mod+c exec "i3-nagbar -t warning -m 'Config files' \
 
 bindsym $mod+Return exec gnome-terminal
 bindsym $mod+d exec rofi -show combi
-bindsym $mod+Shift+s exec rofi -show ssh
+#bindsym $mod+Shift+s exec rofi -show ssh
 bindsym $mod+Shift+w exec firefox
+bindsym $mod+Shift+s exec bash ~/.config/i3/Scripts/power.sh
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down

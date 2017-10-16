@@ -200,10 +200,14 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/menu
 
 menu-0-0 = %{F#689d6a}Todo%{F-}
-menu-0-0-exec = ~/.config/polybar/todo
+menu-0-0-exec = ~/.config/i3/Scripts/power.sh
 
 label-open = %{F#458588}%{F-}
 label-close = %{F#fb4934}<<%{F-}
+
+[module/power]
+type = custom/script
+;exec = bash ~/.config/i3/Scripts/power.sh
 
 
 [module/net-wlan]
