@@ -21,9 +21,9 @@ function disu() {
 	elif [ -h = "$1" ]
 	then
      		df -h | grep sda2
-	elif [ -d = "$1" ]
+	elif [ -f = "$1" ]
 	then
-		df
+		df -h | grep "$2" 
 	elif [ -u = "$1" ]
 	then
 		df -h | awk '{ print $1,"-- " $3 }'
@@ -49,7 +49,11 @@ function reloadzsh() {
      . ~/.zshrc
 }
 
-# Uncomment the following line to use case-sensitive completion.
+function os() {
+  screenfetch | grep -o 'OS:.*'
+}
+
+
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
@@ -103,11 +107,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='mvim'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

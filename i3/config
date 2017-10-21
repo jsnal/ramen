@@ -37,10 +37,10 @@ bindsym F11 exec gyazo
 bindsym F12 exec ~/.config/i3/Scripts/./screenshot.sh
 
 bindsym $mod+c exec "i3-nagbar -t warning -m 'Config files' \
--b 'config' 'vim ~/.config/i3/config' \
--b 'i3blocks' 'vim ~/.config/i3/blocks' \
--b '.Xresources' 'vim ~/.Xresources' \
--b '.Xdefaults' 'vim ~/.config/.Xdefaults'"
+-b 'config' 'gnome-terminal -- vim ~/.config/i3/config' \
+-b '.Xresources' 'gnome-terminal -- vim ~/.Xresources' \
+-b '.zshrc' 'gnome-terminal -- vim ~/.zshrc' \
+-b 'polybar' 'gnome-terminal -- vim ~/.config/polybar/config' \
 
 bindsym $mod+Return exec gnome-terminal
 bindsym $mod+d exec rofi -show combi
