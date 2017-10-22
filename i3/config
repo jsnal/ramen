@@ -3,11 +3,11 @@ set $mod Mod4
 font xft:DejaVu Sans Mono 9
 #font FontAwesome 9, Droid Sans Mono 9
 
-gaps inner 16
-gaps outer 0
+gaps inner 0
+gaps outer 5
 
-#hide_edge_borders both
-#new_window none
+hide_edge_borders both
+new_window none
 new_window pixel 2
 
 set $background             #1b1b1b
@@ -17,14 +17,14 @@ set $text-inactive          #888888
 set $background-urgent      #900000
 set $indicator              #00ff00
 set $seperator              #666666
-#set $border		    #e10a0a
+set $border-inactive	    #000000
 set $border		    #458588
 
 # classe                borda               fundo           texto                   indicador               borda_filha
 client.focused          $border				$background-inactive  $text                      $border				$border
-client.unfocused        $border				$background-inactive  $text-inactive		 $background-inactive			$border
-client.focused_inactive $border				$background-inactive  $text-inactive		 $background-inactive			$border
-client.urgent           $border				$background-inactive  $background-urgent         $background-inactive			$border
+client.unfocused        $border				$background-inactive  $text-inactive		 $background-inactive			$border-inactive
+client.focused_inactive $border				$background-inactive  $text-inactive		 $background-inactive			$border-inactive
+client.urgent           $border				$background-inactive  $background-urgent         $background-inactive			$border-inactive
 
 floating_modifier $mod
 

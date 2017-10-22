@@ -16,7 +16,7 @@ margin-bottom = 0
 [bar/top]
 bottom = true
 width = 100%
-height = 30
+height = 25
 offset-x = 0
 offset-y = 0
 
@@ -45,7 +45,7 @@ font-3 = KnackNerdFont:pixelsize=14;0
 
 modules-left = menu i3
 modules-center = date
-modules-right = cpu wlan eth battery
+modules-right = interface cpu wlan eth battery
 
 tray-position = right
 tray-padding = 2
@@ -88,7 +88,7 @@ label-visible-padding = 1
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "|  "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #f90000
 label = CPU.%{F#008000}%percentage% %{F#665c54}|
@@ -209,6 +209,9 @@ label-close = %{F#fb4934}<<%{F-}
 type = custom/script
 ;exec = bash ~/.config/i3/Scripts/power.sh
 
+[module/interface]
+type = custom/script
+exec = bash ~/.config/i3/Scripts/interface.sh
 
 [module/net-wlan]
 type = internal/network

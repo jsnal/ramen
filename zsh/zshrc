@@ -7,12 +7,41 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="flazz"
+ZSH_THEME="jasonzsh"
 
 function cs() {
     cd "$@"
     ls --color=force  
 }
+
+function vif() {
+    i3 fullscreen toggle & vim "$@"
+    clear
+}
+
+function pacup() { sudo pacman -Sy && sudo abs && sudo aur }
+function pacls() { pacman -Qi }
+function yaup() { yaourt -Sy && sudo abs && sudo aur }
+function yals() { yaourt -Qi }
+function yamir() { yaourt -Syy }
+
+function pac() {
+    echo "Aliases for common pacman and yaourt commands
+
+      pacup
+        Update and refresh local package, ABS and AUR databases
+      pacls
+        Display information about a package in the local database
+      yaup
+        Update and refresh local package, ABS and AUR databases
+      yals
+        Display information about a package in the local database
+      yamir
+        Force refresh of all package lists after updating mirrorlist
+    "
+}
+
+function ya() { pac }
 
 function disu() {
 	if [ "" = "$1" ]
