@@ -2,9 +2,9 @@
 ; Based on gruvbox colors
 background = #1d2021
 background-alt = #282828
-foreground = #458588
+foreground = #cc0000
 foreground-alt = #665c54
-primary = #458588
+primary = #cc0000
 secondary = #cc241d
 alert = #689d6a
 white = #ebdbb2

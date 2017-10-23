@@ -14,6 +14,10 @@ function cs() {
     ls --color=force  
 }
 
+function vimjava() {
+    bash /home/jason/.eclipse/org.eclipse.platform_4.7.0_155965261_linux_gtk_x86_64/eclimd
+}
+
 function vif() {
     i3 fullscreen toggle & vim "$@"
     clear
@@ -124,7 +128,7 @@ function os() {
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

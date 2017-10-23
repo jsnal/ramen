@@ -18,7 +18,8 @@ set $background-urgent      #900000
 set $indicator              #00ff00
 set $seperator              #666666
 set $border-inactive	    #000000
-set $border		    #458588
+#set $border		    #458588
+set $border                 #cc0000
 
 # classe                borda               fundo           texto                   indicador               borda_filha
 client.focused          $border				$background-inactive  $text                      $border				$border
@@ -41,6 +42,7 @@ bindsym $mod+c exec "i3-nagbar -t warning -m 'Config files' \
 -b '.Xresources' 'gnome-terminal -- vim ~/.Xresources' \
 -b '.zshrc' 'gnome-terminal -- vim ~/.zshrc' \
 -b 'polybar' 'gnome-terminal -- vim ~/.config/polybar/config' \
+-b 'vimrc' 'gnome-terminal -- vim ~/.vimrc' \
 
 bindsym $mod+Return exec gnome-terminal
 bindsym $mod+d exec rofi -show combi
