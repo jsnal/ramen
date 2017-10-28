@@ -15,6 +15,8 @@
     - [Install Package](https://aur.archlinux.org/packages/i3-gaps-git/)
 - Rofi
     - Replacement for dmenu
+    - Used for different types of menus
+    - See all the menus in ~/.config/i3/Rofi/
     - [Install Package](https://www.archlinux.org/packages/community/x86_64/rofi/)
 - Zsh
     - [Install package](https://www.archlinux.org/packages/extra/x86_64/zsh/)

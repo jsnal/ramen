@@ -2,8 +2,9 @@
 ; Based on gruvbox colors
 background = #1d2021
 background-alt = #282828
-foreground = #cc0000
+foreground = #458588
 foreground-alt = #665c54
+underbar = #458588
 primary = #cc0000
 secondary = #cc241d
 alert = #689d6a
@@ -26,11 +27,11 @@ foreground = ${colors.foreground}
 
 overline-size = 0
 overline-color = #f00
-underline-size = 0
+underline-size = 2
 underline-color = ${colors.primary}
 
-border-bottom-size = 0
-border-bottom-color = ${colors.primary}
+border-bottom-size = 3
+border-bottom-color = ${colors.underbar}
 
 spacing = 1
 padding-left = 1
@@ -107,7 +108,7 @@ interface = net1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+;format-connected-underline = #9f78e1
 label-connected = %{F#008000}%essid%
 
 format-disconnected =
@@ -128,7 +129,7 @@ type = internal/network
 interface = enp0s3
 interval = 3.0
 
-format-connected-underline = #55aa55
+;format-connected-underline = #55aa55
 format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %{F#008000}%local_ip% %{F#665c54}|
@@ -157,14 +158,14 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+;format-charging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 

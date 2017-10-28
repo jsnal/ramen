@@ -86,6 +86,17 @@ function os() {
   screenfetch | grep -o 'OS:.*'
 }
 
+function i3() {
+	cd ~/.config/i3/"$@"
+}
+
+function poly() {
+	cd ~/.config/polybar
+}
+
+function govim() {
+	cd ~/.vim/"$@"
+}
 
 # CASE_SENSITIVE="true"
 
