@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo "vim|vimrc|polybar|.zshrc|.Xresources|i3config|theme" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "" -color-window "#333" -color-border "#fff"  -hide-scrollbar -padding 5 -opacity 100 -font "Awesome     20, Hack 15")
+res=$(echo "vim|vimrc|polybar|.zshrc|.Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
 
 if [ $res = "vimrc" ]; then
 	exec gnome-terminal -- vim ~/.vim/vimrc
@@ -22,5 +22,8 @@ elif [ $res = "theme" ]; then
 
 elif [ $res = "vim" ]; then
 	exec gnome-terminal -- vim
+
+elif [ $res = "rofi" ]; then
+	exec gnome-terminal -- vim +NERDTree .config/i3/Rofi +q
 
 fi

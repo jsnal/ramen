@@ -1,6 +1,7 @@
 #!/bin/bash
  
-res=$(echo "inner|outer|growh|groww|shrinkh|shrinkw|back" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "" -color-window "#333" -color-border "#fff"  -hide-scrollbar -padding 5 -opacity 100 -font "Awesome 20, Hack 15")
+res=$(echo "inner|outer|growh|groww|shrinkh|shrinkw|back" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
+
 echo "$res"
 
 if [[ "$res" == *"inner"* ]]; then

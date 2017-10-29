@@ -35,7 +35,7 @@ bindsym $mod+Shift+x exec i3lock
 
 bindsym F7 exec gnome-terminal
 bindsym F8 exec firefox
-bindsym F9 exec atom
+bindsym F9 exec ~/Downloads/Telegram/Telegram
 bindsym F11 exec gyazo
 bindsym F12 exec ~/.config/i3/Scripts/./screenshot.sh
 
@@ -48,11 +48,12 @@ bindsym $mod+c exec "i3-nagbar -t warning -m 'Config files' \
 
 bindsym $mod+Return exec gnome-terminal
 bindsym $mod+d exec rofi -show combi
+
 #bindsym $mod+Shift+s exec rofi -show ssh
 bindsym $mod+Shift+w exec firefox
 
 #Rofi commands for easy navigation
-bindsym $mod+Shift+s exec bash ~/.config/i3/Rofi/power.sh
+bindsym $mod+s exec bash ~/.config/i3/Rofi/power.sh
 bindsym $mod+r exec bash ~/.config/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/.config/i3/Rofi/config.sh
 
@@ -83,7 +84,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 #Different window modes
-bindsym $mod+s layout stacking
+bindsym $mod+Shift+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
@@ -92,7 +93,7 @@ bindsym $mod+space focus mode_toggle
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 
 #Workspaces
@@ -194,6 +195,9 @@ mode "resize" {
 
 exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
+exec_always guake
+for_window [instance="__scratchpad"] move scratchpad 
+exec --no-startup-id urxvt --title __scratchpad
 
 bar {
         mode hide
