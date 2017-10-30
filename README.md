@@ -2,6 +2,10 @@
  My i3wm config, scripts and setup.
  
 ### Setup
+- Clone this repo into your home directory
+- Run the installer.sh
+- If you don't have oh-my-zsh you will need to run the installer twice
+#### Or build from source
 - Install dependencies
 - Install fonts for polybar in ~/usr/share/fonts
 - Clone this github into ~/.config/
