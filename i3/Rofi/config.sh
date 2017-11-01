@@ -3,7 +3,7 @@
 res=$(echo "vim|vimrc|polybar|.zshrc|.Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
 
 if [ $res = "vimrc" ]; then
-	exec gnome-terminal -- vim ~/.vim/vimrc
+	exec gnome-terminal -- vim ~/.vimrc
 
 elif [ $res = "polybar" ]; then
 	exec gnome-terminal -- vim ~/.config/polybar/config

@@ -98,6 +98,10 @@ function govim() {
 	cd ~/.vim/"$@"
 }
 
+function focas() {
+        curl wttr.in/"$@"
+}
+
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
@@ -172,3 +176,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
