@@ -102,6 +102,26 @@ function focas() {
         curl wttr.in/"$@"
 }
 
+function mdpdf() {
+  if [ "" = "$1" ]
+  then
+        markdown-pdf "$1" --out ~/Notes/2017-2018/"$2"
+  elif [ -h = "$1" ]
+  then
+        echo "
+      Usage: mdpdf [OPTION] <Markdown File> <Path>"
+  elif [ -b = "$1" ] 
+  then
+        markdown-pdf "$2" --out ~/Notes/2017-2018/Biology/pdf/"$3"
+  elif [ -g = "$1" ] 
+  then
+        markdown-pdf "$2" --out ~/Notes/2017-2018/Gov/pdf/"$3"
+  fi
+}
+
+function compile() {
+  gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=finished.pdf ~/Notes/2017-2018/"$1"/pdf/*.pdf
+}
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
