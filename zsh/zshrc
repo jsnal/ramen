@@ -98,6 +98,10 @@ function govim() {
 	cd ~/.vim/"$@"
 }
 
+function notes() {
+        cd ~/Notes/2017-2018/"$@"
+}
+
 function focas() {
         curl wttr.in/"$@"
 }
@@ -120,7 +124,36 @@ function mdpdf() {
 }
 
 function compile() {
-  gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=finished.pdf ~/Notes/2017-2018/"$1"/pdf/*.pdf
+  if [ "" = "$1" ]
+  then
+
+  elif [ gov = "$1" ] 
+  then
+    notes Gov
+    files=$(find ~/Notes/2017-2018/Gov/md -type f | wc -l )
+    real=$(expr $files - 1)
+    echo "Compiling Table of Contents"
+    echo "========================================"
+
+    markdown-pdf ~/Notes/2017-2018/Gov/md/TOC.md --out ~/Notes/2017-2018/Gov/pdf/TOC.pdf
+
+
+    count=1
+    while [ $real -ge $count ]
+    do
+      echo "Compiling Unit" $count
+      echo "========================================"
+      markdown-pdf ~/Notes/2017-2018/Gov/md/Unit${count}.md --out ~/Notes/2017-2018/Gov/pdf/Unit${count}.pdf
+      count=$(($count+1))
+    done
+    rm ~/Notes/2017-2018/Gov/Gov.pdf
+    
+    echo "Merging PDF's"
+    echo "========================================"
+
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=Gov.pdf ~/Notes/2017-2018/Gov/pdf/TOC.pdf ~/Notes/2017-2018/Gov/pdf/U*.pdf
+    evince -f Gov.pdf
+fi
 }
 # CASE_SENSITIVE="true"
 
