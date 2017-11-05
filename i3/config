@@ -4,7 +4,7 @@ font xft:DejaVu Sans Mono 9
 #font FontAwesome 9, Droid Sans Mono 9
 
 gaps inner 0
-gaps outer 5
+gaps outer 3
 
 hide_edge_borders both
 new_window none
@@ -56,6 +56,7 @@ bindsym $mod+Shift+w exec firefox
 bindsym $mod+s exec bash ~/.config/i3/Rofi/power.sh
 bindsym $mod+r exec bash ~/.config/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/.config/i3/Rofi/config.sh
+bindsym $mod+n exec bash ~/.config/i3/Rofi/notes.sh
 
 #Keys used for window navigation and moving
 bindsym $mod+j focus down
