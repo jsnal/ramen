@@ -15,16 +15,24 @@ au BufEnter,BufNew *.php :set syntax=php
 set path+=**
 set wildmenu
 
-""set theme to darkbackground
+" set theme to darkbackground
 set background=dark
+set hlsearch
 
-"line numbering
+" line numbering and indentation
 set number
+set relativenumber
+filetype plugin indent on
+set nowrap
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+set autoindent
 
 execute pathogen#infect()
 syntax on
-colorscheme one-dark 
-filetype plugin indent on
+colorscheme Tomorrow-Night 
 "autocmd VimEnter * NERDTree
 set nocompatible   " Disable vi-compatibility
 set laststatus=2   " Always show the statusline
@@ -55,3 +63,4 @@ let g:airline#extensions#whitespace#enabled=0
 let g:airline#extensions#whitespace#show_message=0
 let g:airline_symbols.maxlinenr = ''
 
+let g:vim_markdown_folding_disabled = 1
