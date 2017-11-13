@@ -197,8 +197,6 @@ mode "resize" {
 exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 exec_always guake
-for_window [instance="__scratchpad"] move scratchpad 
-exec --no-startup-id urxvt --title __scratchpad
 
 bar {
         mode hide

@@ -37,7 +37,6 @@ colorscheme Tomorrow-Night
 set nocompatible   " Disable vi-compatibility
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
-map <F2> :NERDTreeToggle<CR>
 
 " Command rempas
 command! Wq :wq
@@ -49,7 +48,8 @@ cabbrev fzf FZF
 noremap <TAB>q <C-W>w
 noremap <TAB>s <C-W>s
 noremap <TAB>v <C-W>v
-
+map <F2> :NERDTreeToggle<CR>
+map <F3> :setlocal spell! spelllang=en_us<CR> 
 " Airline
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -63,4 +63,7 @@ let g:airline#extensions#whitespace#enabled=0
 let g:airline#extensions#whitespace#show_message=0
 let g:airline_symbols.maxlinenr = ''
 
+" Settings things
 let g:vim_markdown_folding_disabled = 1
+" let g:indentLine_color_term = 254
+let g:indentLine_char = '▏'

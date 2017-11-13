@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo "view|edit" | rofi -sep "|" -dmenu -i -p 'Power Menu: ' "") 
+res=$(echo "view|edit" | rofi -sep "|" -dmenu -i -p 'Notes Menu: ' "") 
 real=$(echo $res | awk '{print $1}')
 doc=$(echo $res | awk '{print $2}')
 
