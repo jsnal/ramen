@@ -188,6 +188,10 @@ function sync() {
   fi
   
 }
+
+function s() {
+  firefox "$@" 
+}
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case

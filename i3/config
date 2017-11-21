@@ -57,6 +57,7 @@ bindsym $mod+s exec bash ~/.config/i3/Rofi/power.sh
 bindsym $mod+r exec bash ~/.config/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/.config/i3/Rofi/config.sh
 bindsym $mod+n exec bash ~/.config/i3/Rofi/notes.sh
+bindsym $mod+q exec bash ~/.config/i3/Rofi/search.sh
 
 #Keys used for window navigation and moving
 bindsym $mod+j focus down
