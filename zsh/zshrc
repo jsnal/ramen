@@ -14,14 +14,14 @@ function cs() {
     ls --color=force  
 }
 
-function vimjava() {
-    bash /home/jason/.eclipse/org.eclipse.platform_4.7.0_155965261_linux_gtk_x86_64/eclimd
-}
-
 function vif() {
     i3 fullscreen toggle & vim "$@"
     clear
 }
+
+function tmuxnew(){ tmux new -s "$@" }
+function tmuxkill() { tmux kill-session -t "$@" }
+function tmuxan() { tmux a -t "$@" }
 
 function pacup() { sudo pacman -Sy && sudo abs && sudo aur }
 function pacls() { pacman -Qi }
@@ -155,6 +155,38 @@ function compile() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=Gov.pdf ~/Notes/2017-2018/Gov/pdf/TOC.pdf ~/Notes/2017-2018/Gov/pdf/U*.pdf
     evince -f Gov.pdf
 fi
+}
+
+function sync() {
+  read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+  echo "";
+  if [[ $REPLY =~ ^[Yy]$ ]]; then 
+    echo "Syncing files..."
+    echo "================="
+
+    git pull origin master
+
+    echo "Syncing i3 Config... "
+		rm -r $HOME/.config/i3/config
+		ln $HOME/i3wm/i3 $HOME/.config/i3/config
+
+    echo "Syncing Polybar Config... "
+    rm -r $HOME/.config/polybar/config
+    ln $HOME/i3wm/polybar/config $HOME/.config/polybar/config
+
+    echo "Syncing .zshrc Config"
+    rm -r $HOME/.zshrc
+    ln $HOME/i3wm/zsh/zshrc $HOME/.zshrc
+
+    echo "Syncing zsh Theme Config"
+    rm -r $HOME/.oh-my-zsh/themes/jasonzsh.zsh-theme
+    ln $HOME/i3wm/zsh/jasonzsh.zsh-theme $HOME/.oh-my-zsh/themes/jasonzsh.zsh-theme
+
+    echo "Sync Finished... No errors found"
+  else
+    echo "Sync Stopped"
+  fi
+  
 }
 # CASE_SENSITIVE="true"
 
