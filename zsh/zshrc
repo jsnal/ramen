@@ -98,6 +98,11 @@ function govim() {
 	cd ~/.vim/"$@"
 }
 
+function tsa() {
+  cd ~/Github/TSA/"$@"
+  ls
+}
+
 function notes() {
         cd ~/Notes/2017-2018/"$@"
 }
