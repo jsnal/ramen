@@ -33,20 +33,20 @@ floating_modifier $mod
 
 bindsym $mod+Shift+x exec i3lock 
 
-bindsym F7 exec urxvt
+bindsym F7 exec gnome-terminal
 bindsym F8 exec firefox
 bindsym F9 exec ~/Downloads/Telegram/Telegram
 bindsym F11 exec gyazo
 bindsym F12 exec ~/.config/i3/Scripts/./screenshot.sh
 
 bindsym $mod+c exec "i3-nagbar -t warning -m 'Config files' \
--b 'config' 'urxvt -- vim ~/.config/i3/config' \
--b '.Xresources' 'urxvt -- vim ~/.Xresources' \
--b '.zshrc' 'urxvt -- vim ~/.zshrc' \
--b 'polybar' 'urxvt -- vim ~/.config/polybar/config' \
--b 'vimrc' 'urxvt -- vim ~/.vimrc' \
+-b 'config' 'gnome-terminal -- vim ~/.config/i3/config' \
+-b '.Xresources' 'gnome-terminal -- vim ~/.Xresources' \
+-b '.zshrc' 'gnome-terminal -- vim ~/.zshrc' \
+-b 'polybar' 'gnome-terminal -- vim ~/.config/polybar/config' \
+-b 'vimrc' 'gnome-terminal -- vim ~/.vimrc' \
 
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec gnome-terminal
 bindsym $mod+d exec rofi -show combi
 
 #bindsym $mod+Shift+s exec rofi -show ssh

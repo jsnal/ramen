@@ -1,0 +1,22 @@
+URxvt.foreground:   #ffffff
+URxvt.background:   #000000
+URxvt.cursorColor:  #ffffff
+URxvt.color0:       #121212
+URxvt.color8:       #606060
+URxvt.color1:       #ff0000
+URxvt.color9:       #ff5f00
+URxvt.color2:       #00ff00
+URxvt.color10:      #00ff00
+URxvt.color3:       #ffff00
+URxvt.color11:      #ffff00
+URxvt.color4:       #0087ff
+URxvt.color12:      #0087ff
+URxvt.color5:       #ff0087
+URxvt.color13:      #ff0087
+URxvt.color6:       #00d7ff
+URxvt.color14:      #00d7ff
+URxvt.color7:       #ffffff
+URxvt.color15:      #ffffff
+URxvt*font:     *-fixed-*-*-*-18-*
+
+URxvt.scrollBar: false

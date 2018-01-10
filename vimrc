@@ -65,6 +65,7 @@ noremap <TAB>s <C-W>s
 noremap <TAB>v <C-W>v
 map <F2> :NERDTreeToggle<CR>
 map <F3> :setlocal spell! spelllang=en_us<CR> 
+:nnoremap <F5> :buffers<CR>:buffer<Space>
 
 "---------------------------------------------------------------------------
 " Airline
