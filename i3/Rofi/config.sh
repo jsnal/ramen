@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo "vim|vimrc|polybar|zshrc|Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
+res=$(echo "add-on|vim|vimrc|polybar|zshrc|Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
 
 if [ $res = "vimrc" ]; then
 	exec gnome-terminal -- vim ~/.vimrc
@@ -25,5 +25,8 @@ elif [ $res = "vim" ]; then
 
 elif [ $res = "rofi" ]; then
 	exec gnome-terminal -- vim +NERDTree .config/i3/Rofi +q
+
+elif [ $res = "add-on" ]; then
+  exec gnome-terminal -- vim +NERDTree ~/Github/vim-nav-firefox +q
 
 fi

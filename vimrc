@@ -1,8 +1,29 @@
 "---------------------------------------------------------------------------
+" Vim Plug
+
+call plug#begin('~/.vim/plugged')
+
+" Utils
+Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/mhinz/vim-signify'
+Plug 'https://github.com/junegunn/fzf'
+Plug 'https://github.com/scrooloose/nerdtree', { 'off': 'NERDTreeToggle' }
+Plug 'https://github.com/easymotion/vim-easymotion'
+
+" Theming
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/vim-airline/vim-airline-themes'
+Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
+
+" Javascript
+Plug 'https://github.com/pangloss/vim-javascript'
+
+call plug#end()
+
+"---------------------------------------------------------------------------
 " Initializing
 
 syntax on
-execute pathogen#infect()
 set path+=**
 set wildmenu
 set nocompatible
