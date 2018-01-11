@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo "vim|vimrc|polybar|.zshrc|.Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
+res=$(echo "vim|vimrc|polybar|zshrc|Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
 
 if [ $res = "vimrc" ]; then
 	exec gnome-terminal -- vim ~/.vimrc
