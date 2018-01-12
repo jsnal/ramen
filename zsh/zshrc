@@ -90,8 +90,8 @@ function i3() {
 	cd ~/.config/i3/"$@"
 }
 
-function poly() {
-	cd ~/.config/polybar
+function conf() {
+	cd ~/.config
 }
 
 function govim() {

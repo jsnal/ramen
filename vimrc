@@ -1,5 +1,5 @@
 "---------------------------------------------------------------------------
-" Vim Plug
+" Vim Plug{{{
 
 call plug#begin('~/.vim/plugged')
 
@@ -19,27 +19,28 @@ Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
 Plug 'https://github.com/pangloss/vim-javascript'
 
 call plug#end()
-
+"}}}
 "---------------------------------------------------------------------------
-" Initializing
+" Initializing{{{
 
 syntax on
 set path+=**
 set wildmenu
 set nocompatible
 scriptencoding utf-8
+let mapleader = ","
 let g:EasyMotion_leader_key = '<Leader>' 
-
+"}}}
 "---------------------------------------------------------------------------
-" set theme to darkbackground
+" set theme to darkbackground{{{
 
 set background=dark
 set hlsearch
 colorscheme hybrid_reverse
 let g:hybrid_custom_term_colors = 1
-
+"}}}
 "---------------------------------------------------------------------------
-" line numbering and indentation
+" line numbering and indentation{{{
 
 set number
 set relativenumber
@@ -56,9 +57,9 @@ set shiftwidth=2 softtabstop=2 expandtab
 set nocompatible   " Disable vi-compatibility
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
-
+"}}}
 "---------------------------------------------------------------------------
-" File Settings
+" File Settings{{{
 
 set fileformat=unix
 set fileformats=unix
@@ -69,17 +70,17 @@ set ambiwidth=double
 
 set backup
 set showcmd
-
+"}}}
 "---------------------------------------------------------------------------
-" Command rempas
+" Command rempas{{{
 
 command! Wq :wq
 command! W :w
 command! Q :q
 cabbrev fzf FZF 
-
+"}}}
 "---------------------------------------------------------------------------
-" Binding remaps
+" Binding remaps{{{
 
 noremap <TAB>q <C-W>w
 noremap <TAB>s <C-W>s
@@ -87,9 +88,23 @@ noremap <TAB>v <C-W>v
 map <F2> :NERDTreeToggle<CR>
 map <F3> :setlocal spell! spelllang=en_us<CR> 
 :nnoremap <F5> :buffers<CR>:buffer<Space>
-
+"}}}
 "---------------------------------------------------------------------------
-" Airline
+" Buffers{{{
+
+map <Leader>a :bprev<Return>
+map <Leader>s :bnext<Return>
+map <Leader>d :bd<Return>
+map <Leader>f :b
+
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
+"" Show the buffer number in the status line.
+set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+"}}}
+"---------------------------------------------------------------------------
+" Airline{{{
 
 let g:airline_theme = "hybrid"
 
@@ -104,10 +119,11 @@ let g:ycm_show_diagnostics_ui=0
 let g:airline#extensions#whitespace#enabled=0
 let g:airline#extensions#whitespace#show_message=0
 let g:airline_symbols.maxlinenr = ''
-
+"}}}
 "---------------------------------------------------------------------------
-" Settings things
+" Settings things{{{
 
 let g:vim_markdown_folding_disabled = 1
 " let g:indentLine_color_term = 254
 let g:indentLine_char = '▏'
+"}}}
