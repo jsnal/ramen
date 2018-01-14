@@ -15,9 +15,9 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
 
-" Javascript
+" Language Specific 
 Plug 'https://github.com/pangloss/vim-javascript'
-
+Plug 'https://github.com/Shutnik/jshint2.vim'
 call plug#end()
 "}}}
 "---------------------------------------------------------------------------
@@ -28,6 +28,8 @@ set path+=**
 set wildmenu
 set nocompatible
 set noswapfile
+set shortmess=a
+set cmdheight=2
 scriptencoding utf-8
 let mapleader = ","
 let g:EasyMotion_leader_key = '<Leader>' 
@@ -90,6 +92,7 @@ noremap <TAB>s <C-W>s
 noremap <TAB>v <C-W>v
 map <F2> :NERDTreeToggle<CR>
 map <F3> :setlocal spell! spelllang=en_us<CR> 
+map <F4> :JSHint<CR><CR>
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 "}}}
 "---------------------------------------------------------------------------

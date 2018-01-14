@@ -4,7 +4,7 @@ background = #1d2021
 background-alt = #282828
 foreground = #458588
 foreground-alt = #665c54
-underbar = #458588
+underbar = #666666
 primary = #cc0000
 secondary = #cc241d
 alert = #689d6a
@@ -17,7 +17,7 @@ margin-bottom = 0
 [bar/top]
 bottom = true
 width = 100%
-height = 25
+height = 21
 offset-x = 0
 offset-y = 0
 
@@ -30,7 +30,7 @@ overline-color = #f00
 underline-size = 2
 underline-color = ${colors.primary}
 
-border-bottom-size = 3
+border-bottom-size = 3 
 border-bottom-color = ${colors.underbar}
 
 spacing = 1
@@ -39,12 +39,12 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Fixed:pixelsize=14;0
-font-1 = unifont:size=24:Tewi:fontformat=truetype;-2
-font-2 = WunconSiji:pixelsize=14;0
-font-3 = KnackNerdFont:pixelsize=14;0
+font-0 = Fixed:pixelsize=10;0
+font-1 = unifont:size=20:Tewi:fontformat=truetype;-2
+font-2 = WunconSiji:pixelsize=10;0
+font-3 = KnackNerdFont:pixelsize=10;0
 
-modules-left = menu i3
+modules-left = i3
 modules-center = date
 modules-right = interface cpu wlan eth battery
 
@@ -203,7 +203,7 @@ type = custom/menu
 menu-0-0 = %{F#689d6a}Todo%{F-}
 menu-0-0-exec = ~/.config/i3/Scripts/power.sh
 
-label-open = %{F#458588}%{F-}
+label-open = %{F#458588}%{F-}
 label-close = %{F#fb4934}<<%{F-}
 
 [module/power]
