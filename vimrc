@@ -9,6 +9,7 @@ Plug 'https://github.com/mhinz/vim-signify'
 Plug 'https://github.com/junegunn/fzf'
 Plug 'https://github.com/scrooloose/nerdtree', { 'off': 'NERDTreeToggle' }
 Plug 'https://github.com/easymotion/vim-easymotion'
+Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 
 " Theming
 Plug 'https://github.com/vim-airline/vim-airline'
@@ -18,20 +19,14 @@ Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
 " Language Specific 
 Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/Shutnik/jshint2.vim'
+
 call plug#end()
 "}}}
 "---------------------------------------------------------------------------
 " Initializing{{{
 
 syntax on
-set path+=**
-set wildmenu
-set nocompatible
-set noswapfile
-set shortmess=a
-set cmdheight=2
 scriptencoding utf-8
-let mapleader = ","
 let g:EasyMotion_leader_key = '<Leader>' 
 "}}}
 "---------------------------------------------------------------------------
@@ -130,6 +125,18 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "---------------------------------------------------------------------------
 " Settings things{{{
 
+set path+=**
+set wildmenu
+set nocompatible
+set noswapfile
+set shortmess=a
+set cmdheight=2
+let mapleader = ","
+
+" HiCursorWords
+let g:HiCursorWords_linkStyle='Underlined'
+let g:HiCursorWords_debugEchoHiName = 1
+let g:HiCursorWords_delay = 100
 let g:vim_markdown_folding_disabled = 1
 " let g:indentLine_color_term = 254
 let g:indentLine_char = '▏'
