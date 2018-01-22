@@ -9,7 +9,7 @@ if [ $res = "nextcloud" ]; then
   exec gnome-terminal -- ssh jason@10.52.2.2
 fi
 if [ $res = "zelon" ]; then
-  exec gnome-terminal -- ssh int0x19152@matrix.zelon.net
+  exec gnome-terminal -- ssh int0x191f2@matrix.zelon.net
 
 fi
 exit 0

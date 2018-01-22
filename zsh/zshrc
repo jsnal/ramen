@@ -9,6 +9,13 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="jasonzsh"
 
+bindkey -s '^e' 'vim $(fzf)\n' 
+bindkey -s '^w' '. ~/.zshrc\nclear\n'
+
+function viz {
+  vim $(fzf)
+}
+
 function cs() {
     cd "$@"
     ls --color=force  
@@ -194,9 +201,6 @@ function sync() {
   
 }
 
-function s() {
-  firefox "$@" 
-}
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
