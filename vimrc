@@ -26,6 +26,7 @@ call plug#end()
 " Initializing{{{
 
 syntax on
+set t_Co=256
 scriptencoding utf-8
 let g:EasyMotion_leader_key = '<Leader>' 
 "}}}
@@ -33,9 +34,9 @@ let g:EasyMotion_leader_key = '<Leader>'
 " set theme to darkbackground{{{
 
 set background=dark
-set hlsearch
-colorscheme hybrid_reverse
-let g:hybrid_custom_term_colors = 1
+"set hlsearch
+colorscheme hybrid_reverse 
+"let g:hybrid_custom_term_colors = 1
 "}}}
 "---------------------------------------------------------------------------
 " line numbering and indentation{{{
@@ -88,7 +89,7 @@ noremap <TAB>v <C-W>v
 map <F2> :NERDTreeToggle<CR>
 map <F3> :setlocal spell! spelllang=en_us<CR> 
 map <F4> :JSHint<CR><CR>
-:nnoremap <F5> :buffers<CR>:buffer<Space>
+map <F5> :setlocal foldmethod=marker<CR> 
 "}}}
 "---------------------------------------------------------------------------
 " Buffers{{{
@@ -107,7 +108,7 @@ set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 "---------------------------------------------------------------------------
 " Airline{{{
 
-let g:airline_theme = "hybrid"
+"let g:airline_theme = "hybrid"
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}

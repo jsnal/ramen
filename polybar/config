@@ -212,8 +212,7 @@ type = custom/script
 
 [module/interface]
 type = custom/script
-exec = bash ~/.config/i3/Scripts/interface.sh
-
+exec = bash ~/i3wm/i3/Scripts/interface.sh
 [module/net-wlan]
 type = internal/network
 

@@ -53,11 +53,11 @@ bindsym $mod+d exec rofi -show combi
 bindsym $mod+Shift+w exec firefox
 
 #Rofi commands for easy navigation
-bindsym $mod+s exec bash ~/.config/i3/Rofi/power.sh
-bindsym $mod+r exec bash ~/.config/i3/Rofi/resize.sh
-bindsym $mod+a exec bash ~/.config/i3/Rofi/config.sh
-bindsym $mod+n exec bash ~/.config/i3/Rofi/notes.sh
-bindsym $mod+q exec bash ~/.config/i3/Rofi/ssh.sh
+bindsym $mod+s exec bash ~/i3wm/i3/Rofi/power.sh
+bindsym $mod+r exec bash ~/i3wm/i3/Rofi/resize.sh
+bindsym $mod+a exec bash ~/i3wm/i3/Rofi/config.sh
+bindsym $mod+n exec bash ~/i3wm/i3/Rofi/notes.sh
+bindsym $mod+q exec bash ~/i3wm/i3/Rofi/ssh.sh
 
 #Keys used for window navigation and moving
 bindsym $mod+j focus down
@@ -143,6 +143,7 @@ bindsym $mod+u resize shrink width 10 px or 10 ppt
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
+bindsym $mod+Shift+t exec --no-startup-id ./i3wm/polybar/launch.sh
 
 mode "apps" {
 	bindsym c exec --no-startup-id firefox
@@ -197,14 +198,14 @@ mode "resize" {
 
 exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
-exec_always guake
-exec_always xrdb ~/.xresources
+#exec_always guake
+exec_always xrdb ~/.Xresources
 
 bar {
         mode hide
         hidden_state hide
 	modifier Mod1
-	status_command polybar top
+#	status_command polybar top
 	#i3bar_command polybar bottom
 
 }
