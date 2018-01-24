@@ -242,16 +242,25 @@ function sync() {
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting zsh-autopair)
 function preexec() {
   timer=${timer:-$SECONDS}
 }
 
+#function precmd() {
+#  if [ $timer ]; then
+#    timer_show=$(($SECONDS - $timer))
+#    export RPROMPT="%F{160}${timer_show}s %{$reset_color%}"
+#    unset timer
+#  fi
+#}
+  
+
 function precmd() {
-  if [ $timer ]; then
-    timer_show=$(($SECONDS - $timer))
-    export RPROMPT="%F{160}${timer_show}s %{$reset_color%}"
-    unset timer
+  if [ $? -eq 0  ]; then
+    export RPROMPT="%F{46}:)"
+  else
+    export RPROMPT="%F{196}:("
   fi
 }
 

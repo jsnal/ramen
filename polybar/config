@@ -46,7 +46,7 @@ font-3 = KnackNerdFont:pixelsize=10;0
 
 modules-left = i3
 modules-center = date
-modules-right = interface cpu wlan eth battery
+modules-right = volume song interface cpu wlan eth battery 
 
 tray-position = right
 tray-padding = 2
@@ -213,6 +213,21 @@ type = custom/script
 [module/interface]
 type = custom/script
 exec = bash ~/i3wm/i3/Scripts/interface.sh
+
+[module/brightness]
+type = custom/script
+exec = xrandr --verbose | grep "Brightness" | awk '{print $2}' | sed 's/^0*//'
+
+[module/song]
+type = custom/script
+exec = spotify-cli --status
+label = %output%%{F#665c54} |
+
+[module/volume]
+type = custom/script
+exec = amixer -M | grep Mono | awk 'NR==2 {print $4}' | sed 's/[^0-9]*//g'
+label = %output%%%{F#665c54} |
+
 [module/net-wlan]
 type = internal/network
 

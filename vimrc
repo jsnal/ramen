@@ -28,13 +28,14 @@ call plug#end()
 syntax on
 set t_Co=256
 scriptencoding utf-8
+let mapleader = ","
 let g:EasyMotion_leader_key = '<Leader>' 
 "}}}
 "---------------------------------------------------------------------------
 " set theme to darkbackground{{{
 
 set background=dark
-"set hlsearch
+set hlsearch
 colorscheme hybrid_reverse 
 "let g:hybrid_custom_term_colors = 1
 "}}}
@@ -84,12 +85,32 @@ cabbrev fzf FZF
 " Binding remaps{{{
 
 noremap <TAB>q <C-W>w
-noremap <TAB>s <C-W>s
-noremap <TAB>v <C-W>v
+" noremap <TAB>s <C-W>s
+" noremap <TAB>v <C-W>v
+
+" End and beginnging line
+noremap H ^
+noremap L g_
+
+" Very magic search
+nnoremap / /\v
+vnoremap / /\v
+
 map <F2> :NERDTreeToggle<CR>
 map <F3> :setlocal spell! spelllang=en_us<CR> 
 map <F4> :JSHint<CR><CR>
 map <F5> :setlocal foldmethod=marker<CR> 
+map <C-F> :fzf<CR>
+
+nnoremap <silent> <TAB>v :call fzf#run({
+      \   'right': winwidth('.') / 2,
+      \   'sink':  'vertical botright split' })<CR>
+
+nnoremap <silent> <TAB>x :call fzf#run({
+      \   'down': '40%',
+      \   'sink': 'botright split' })<CR>
+
+noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 "}}}
 "---------------------------------------------------------------------------
 " Buffers{{{
@@ -132,7 +153,6 @@ set nocompatible
 set noswapfile
 set shortmess=a
 set cmdheight=2
-let mapleader = ","
 
 " HiCursorWords
 let g:HiCursorWords_linkStyle='Underlined'

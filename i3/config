@@ -32,6 +32,8 @@ client.urgent           $border				$background-inactive  $background-urgent     
 floating_modifier $mod
 
 bindsym $mod+Shift+x exec i3lock 
+bindsym F6 exec bright 20
+bindsym F5 exec bright -20
 
 bindsym F7 exec urxvt
 bindsym F8 exec firefox
@@ -200,6 +202,7 @@ exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 #exec_always guake
 exec_always xrdb ~/.Xresources
+exec_always feh --bg-scale ~/i3wm/background.png
 
 bar {
         mode hide
