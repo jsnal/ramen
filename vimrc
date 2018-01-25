@@ -101,7 +101,7 @@ map <F3> :setlocal spell! spelllang=en_us<CR>
 map <F4> :JSHint<CR><CR>
 map <F5> :setlocal foldmethod=marker<CR> 
 map <C-F> :fzf<CR>
-
+map <C-R> :%s/
 nnoremap <silent> <TAB>v :call fzf#run({
       \   'right': winwidth('.') / 2,
       \   'sink':  'vertical botright split' })<CR>

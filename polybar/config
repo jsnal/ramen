@@ -46,7 +46,7 @@ font-3 = KnackNerdFont:pixelsize=10;0
 
 modules-left = i3
 modules-center = date
-modules-right = volume song interface cpu wlan eth battery 
+modules-right = volume song interface cpu battery 
 
 tray-position = right
 tray-padding = 2

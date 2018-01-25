@@ -8,7 +8,7 @@ gaps outer 3
 
 hide_edge_borders both
 new_window none
-new_window pixel 2
+new_window pixel 4 
 
 #Colors set for the whole config
 set $background             #1b1b1b
@@ -32,13 +32,13 @@ client.urgent           $border				$background-inactive  $background-urgent     
 floating_modifier $mod
 
 bindsym $mod+Shift+x exec i3lock 
-bindsym F6 exec bright 20
-bindsym F5 exec bright -20
+bindsym F6 exec xrandr --output eDP-1 --brightness .7 
+bindsym F5 exec xrandr --output eDP-1 --brightness .5
 
 bindsym F7 exec urxvt
 bindsym F8 exec firefox
 bindsym F9 exec ~/Downloads/Telegram/Telegram
-bindsym F11 exec gyazo
+bindsym F11 exec ~/eclipse/eclipse 
 bindsym F12 exec ~/.config/i3/Scripts/./screenshot.sh
 
 bindsym $mod+c exec "i3-nagbar -t warning -m 'Config files' \
