@@ -46,7 +46,7 @@ font-3 = KnackNerdFont:pixelsize=10;0
 
 modules-left = i3
 modules-center = date
-modules-right = volume song interface cpu battery 
+modules-right = brightness volume song interface cpu battery 
 
 tray-position = right
 tray-padding = 2
@@ -217,6 +217,7 @@ exec = bash ~/i3wm/i3/Scripts/interface.sh
 [module/brightness]
 type = custom/script
 exec = xrandr --verbose | grep "Brightness" | awk '{print $2}' | sed 's/^0*//'
+label = %output%%%{F#665c54} |
 
 [module/song]
 type = custom/script

@@ -1,15 +1,17 @@
 #!/bin/bash
 
-res=$(echo "sony|nextcloud|zelon" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
+res=$(echo "sony|nextcloud|zelon|rig" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
 
 if [ $res = "sony" ]; then
-	exec gnome-terminal -- ssh ip4gjb@10.52.2.28
+	exec urxvt -e ssh ip4gjb@10.52.2.28
 fi
 if [ $res = "nextcloud" ]; then
-  exec gnome-terminal -- ssh jason@10.52.2.2
+  exec urxvt -e ssh jason@10.52.2.2
 fi
 if [ $res = "zelon" ]; then
-  exec gnome-terminal -- ssh int0x191f2@matrix.zelon.net
-
+  exec urxvt -e ssh int0x191f2@matrix.zelon.net
+fi
+if [ $res = "rig" ]; then
+  exec urxvt -e ssh ip4gjb@matrix.zelon.net -p 6666  
 fi
 exit 0

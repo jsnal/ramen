@@ -85,6 +85,7 @@ cabbrev fzf FZF
 " Binding remaps{{{
 
 noremap <TAB>q <C-W>w
+noremap <C-c> "+y \| :!sh -xc '~/i3wm/i3/Scripts/paste.sh'<CR>
 " noremap <TAB>s <C-W>s
 " noremap <TAB>v <C-W>v
 
