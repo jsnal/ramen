@@ -183,13 +183,12 @@ exec --no-startup-id numlockx
 #exec_always guake
 exec_always xrdb ~/.Xresources
 exec_always feh --bg-scale ~/i3wm/background.png
+exec_always killall polybar 
 # }}}
 # Status Bar# {{{
 bar {
-        mode hide
-        hidden_state hide
-	modifier Mod1
-#	status_command polybar top
-	#i3bar_command polybar bottom
-
+    mode hide
+    hidden_state hide
+    modifier Mod1
+    status_command polybar bottom 
 }# }}}
