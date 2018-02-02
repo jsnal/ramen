@@ -3,38 +3,46 @@ background = #000000
 foreground = #ffffff
 red = #cc0000
 cyan = #00E5E5
+green = #00CD00
+yellow = #ffff00
 
 [global/wm]
-margin-top = 0
+margin-top = 10
 margin-bottom = 0
 
 [bar/bottom]
 bottom = true
 width = 100%
-height = 20
+height = 15
 offset-x = 0
 offset-y = 0
 
-spacing = 1
+fixed-center = true
+
+spacing = 0
+line-size = 2
+border-size = 0
+border-bottom-size = 1 
+border-color = ${colors.foreground}
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = DejaVu Sans Mono:pixelsize=9;0
+font-0 = DejaVu Sans Mono:pixelsize=8.5;0
 
-module-margin = N
+module-margin = 0
 
 modules-left = i3
+modules-center = song
 modules-right = brightness volume time ip battery
 
 [module/i3]
 type = internal/i3
 
-strip-wsnumbers = true
-
-label-focused = %{F#e10a0a}%{F-}%{F#458588}%name%%{F-}
-#label-focused-foreground = ${colors.white}
-label-focused-padding = 0 
+label-focused = %name% 
+label-focused-foreground = ${colors.cyan}
+label-focused-padding = 1 
+label-focused-border-color = #FFFFFF
 
 label-unfocused = %name%
 label-unfocused-padding = 1 
@@ -49,14 +57,9 @@ label-visible-padding = 0
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = AC
-full-at = 99
 
 label-charging = |%percentage%%
 label-discharging = |%percentage%%
-
-format-charging-underline = #ffb52a
-format-discharging-underline = ${colors.red} 
 
 [module/time]
 type = internal/date
@@ -95,3 +98,9 @@ interval = 5
 exec = xrandr --verbose | grep "Brightness" | awk '{print $2}' | sed 's/^0.//' 
 label = |B:%{F#00E5E5}%output%%
 
+[module/song]
+type = custom/script
+interval = 5 
+exec = spotify-cli --status
+label = [%output%]
+label-maxlen = 45 
