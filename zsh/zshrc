@@ -131,38 +131,15 @@ function mdpdf() {
   fi
 }
 
-function compile() {
-  if [ "" = "$1" ]
+function mdc() {
+  if [ -d = "$1" ]
   then
-  echo "Usage: compile [OPTION] <Subject>"
-
-  elif [ gov = "$1" ] 
-  then
-    notes Gov
-    files=$(find ~/Notes/2017-2018/Gov/md -type f | wc -l )
-    real=$(expr $files - 1)
-    echo "Compiling Table of Contents"
-    echo "========================================"
-
-    markdown-pdf ~/Notes/2017-2018/Gov/md/TOC.md --out ~/Notes/2017-2018/Gov/pdf/TOC.pdf
-
-
-    count=1
-    while [ $real -ge $count ]
-    do
-      echo "Compiling Unit" $count
-      echo "========================================"
-      markdown-pdf ~/Notes/2017-2018/Gov/md/Unit${count}.md --out ~/Notes/2017-2018/Gov/pdf/Unit${count}.pdf
-      count=$(($count+1))
-    done
-    rm ~/Notes/2017-2018/Gov/Gov.pdf
-    
-    echo "Merging PDF's"
-    echo "========================================"
-
-    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=Gov.pdf ~/Notes/2017-2018/Gov/pdf/TOC.pdf ~/Notes/2017-2018/Gov/pdf/U*.pdf
-    evince -f Gov.pdf
-fi
+    rm "$2"
+    pandoc --mathjax --toc -o "$2" "$3"/*.md
+    evince "$2"
+  else
+    echo "Usage: mdc [OPTION] <Output Path> <Directory>"
+  fi
 }
 # }}}
 # Sync# {{{
