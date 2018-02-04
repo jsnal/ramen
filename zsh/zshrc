@@ -11,9 +11,11 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="jasonzsh"
 
+# Key Binds# {{{
 bindkey -s '^e' 'vim $(fzf)\n' 
 bindkey -s '^w' '. ~/.zshrc\nclear\n'
-
+# }}}
+# Vim Aliases# {{{
 function viz {
   vim $(fzf)
 }
@@ -27,11 +29,13 @@ function vif() {
     i3 fullscreen toggle & vim "$@"
     clear
 }
-
+# }}}
+# Tmux Aliases# {{{
 function tmuxnew(){ tmux new -s "$@" }
 function tmuxkill() { tmux kill-session -t "$@" }
 function tmuxan() { tmux a -t "$@" }
-
+# }}}
+# Pacman Aliases# {{{
 function pacup() { sudo pacman -Sy && sudo abs && sudo aur }
 function pacls() { pacman -Qi }
 function yaup() { yaourt -Sy && sudo abs && sudo aur }
@@ -55,7 +59,8 @@ function pac() {
 }
 
 function ya() { pac }
-
+# }}}
+# Disk Usage# {{{
 function disu() {
 	if [ "" = "$1" ]
 	then
@@ -86,7 +91,8 @@ function disu() {
 		echo "Try 'disu -help' for help"
 	fi
 }
-
+# }}}
+# General Aliases# {{{
 function reloadzsh() {
      . ~/.zshrc
 }
@@ -95,31 +101,19 @@ function os() {
   screenfetch | grep -o 'OS:.*'
 }
 
-function i3() {
-	cd ~/.config/i3/"$@"
-}
-
 function conf() {
-	cd ~/.config
+	cd ~/i3wm
 }
 
 function govim() {
 	cd ~/.vim/"$@"
 }
 
-function tsa() {
-  cd ~/Github/TSA/"$@"
-  ls
-}
-
-function notes() {
-        cd ~/Notes/2017-2018/"$@"
-}
-
-function focas() {
+function forcast() {
         curl wttr.in/"$@"
 }
-
+# }}}
+# Markdown# {{{
 function mdpdf() {
   if [ "" = "$1" ]
   then
@@ -170,7 +164,8 @@ function compile() {
     evince -f Gov.pdf
 fi
 }
-
+# }}}
+# Sync# {{{
 function sync() {
   read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
   echo "";
@@ -202,6 +197,7 @@ function sync() {
   fi
   
 }
+# }}}
 
 # CASE_SENSITIVE="true"
 

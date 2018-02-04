@@ -55,7 +55,6 @@ bindsym $mod+Shift+w exec firefox
 bindsym $mod+s exec bash ~/i3wm/i3/Rofi/power.sh
 bindsym $mod+r exec bash ~/i3wm/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/i3wm/i3/Rofi/config.sh
-bindsym $mod+n exec bash ~/i3wm/i3/Rofi/notes.sh
 bindsym $mod+q exec bash ~/i3wm/i3/Rofi/ssh.sh
 # }}}
 # Window Navigation# {{{
@@ -98,11 +97,13 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
+
+for_window [instance="tmux"] move window to scratchpad, scratchpad hide 
 # }}}
 # Workspaces# {{{
-set $workspace1 "1.WEB"
-set $workspace2 "2.CODE"
-set $workspace3 "3.TERM"
+set $workspace1 "1.Web"
+set $workspace2 "2.Code"
+set $workspace3 "3.Term"
 set $workspace4 "4"
 set $workspace5 "5"
 set $workspace6 "6"
@@ -184,6 +185,7 @@ exec --no-startup-id numlockx
 exec_always xrdb ~/.Xresources
 exec_always feh --bg-scale ~/i3wm/background.png
 exec_always killall polybar 
+exec_always urxvt -name tmux -e bash ~/i3wm/i3/Scripts/tmux.sh 
 # }}}
 # Status Bar# {{{
 bar {
