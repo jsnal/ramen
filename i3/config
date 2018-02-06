@@ -7,7 +7,7 @@ gaps outer 3
 
 hide_edge_borders both
 new_window none
-new_window pixel 4 
+new_window pixel 2 
 # }}}
 # Colors and Font# {{{
 #Colors set for the whole config

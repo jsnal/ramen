@@ -9,7 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="jasonzsh"
+ZSH_THEME="crunch"
 
 # Key Binds# {{{
 bindkey -s '^e' 'vim $(fzf)\n' 
@@ -31,9 +31,15 @@ function vif() {
 }
 # }}}
 # Tmux Aliases# {{{
-function tmuxnew(){ tmux new -s "$@" }
-function tmuxkill() { tmux kill-session -t "$@" }
-function tmuxan() { tmux a -t "$@" }
+function tmuxn(){ tmux new -s "$@" }
+function tmuxk() { tmux kill-session -t "$@" }
+function tmuxa() { tmux a -t "$@" }
+
+function java() {
+  tmux split-window -h -p 30 '/opt/SceneBuilder/SceneBuilder' 
+  tmux split-window -v '~/eclipse/eclipse'
+  vim ~/Github/workspace
+}
 # }}}
 # Pacman Aliases# {{{
 function pacup() { sudo pacman -Sy && sudo abs && sudo aur }

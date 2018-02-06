@@ -1,6 +1,5 @@
 "---------------------------------------------------------------------------
-" Vim Plug{{{
-
+" Vim Plug{{{ 
 call plug#begin('~/.vim/plugged')
 
 " Utils
@@ -78,6 +77,7 @@ command! Wq :wq
 command! W :w
 command! Q :q
 command! Wa :wa
+command! Qa :qa
 command! Wqa :wqa
 cabbrev fzf FZF 
 "}}}
@@ -130,7 +130,7 @@ set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 "---------------------------------------------------------------------------
 " Airline{{{
 
-"let g:airline_theme = "hybrid"
+let g:airline_theme = "hybrid"
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
