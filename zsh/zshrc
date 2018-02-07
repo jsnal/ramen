@@ -35,9 +35,14 @@ function tmuxn(){ tmux new -s "$@" }
 function tmuxk() { tmux kill-session -t "$@" }
 function tmuxa() { tmux a -t "$@" }
 
-function java() {
+function tmuxj-hard() {
   tmux split-window -h -p 30 '/opt/SceneBuilder/SceneBuilder' 
   tmux split-window -v '~/eclipse/eclipse'
+  vim ~/Github/workspace
+}
+
+function tmuxj-soft() {
+  tmux split-window -h -p 30 ''
   vim ~/Github/workspace
 }
 # }}}
@@ -65,6 +70,16 @@ function pac() {
 }
 
 function ya() { pac }
+# }}}
+# Apt Aliases# {{{
+function aptup() { sudo apt-get update }
+function aptupgr() { sudo apt-get upgrade }
+function aptcln() { sudo apt-get clean }
+function aptinst() { sudo apt-get install "$1" }
+function aptprg() { sudo apt-get purge "$1" }
+# Apt Cache
+function aptshow() { sudo apt-cache show "$1" }
+function aptdep() { sudo apt-cache showpkg "$1" }
 # }}}
 # Disk Usage# {{{
 function disu() {
