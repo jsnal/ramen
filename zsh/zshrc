@@ -14,6 +14,12 @@ ZSH_THEME="crunch"
 # Key Binds# {{{
 bindkey -s '^e' 'vim $(fzf)\n' 
 bindkey -s '^w' '. ~/.zshrc\nclear\n'
+function up_widget() {
+      BUFFER="cd .."
+      zle accept-line
+}
+zle -N up_widget
+bindkey "^k" up_widget
 # }}}
 # Vim Aliases# {{{
 function viz {

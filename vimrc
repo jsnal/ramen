@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/mhinz/vim-signify'
 Plug 'https://github.com/junegunn/fzf'
-Plug 'https://github.com/scrooloose/nerdtree', { 'off': 'NERDTreeToggle' }
+Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 
@@ -18,6 +18,7 @@ Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
 " Language Specific 
 Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/Shutnik/jshint2.vim'
+"Plug 'https://github.com/vim-syntastic/syntastic'
 
 call plug#end()
 "}}}
@@ -86,6 +87,7 @@ cabbrev fzf FZF
 
 noremap <TAB>q <C-W>w
 noremap <C-c> "+y \| :!sh -xc '~/i3wm/i3/Scripts/paste.sh'<CR>
+noremap <C-x> :! pandoc --mathjax --toc -o '%:p:h'/out.pdf '%:p:h'/*.md \| evince '%:p:h'/out.pdf<CR><CR> 
 " noremap <TAB>s <C-W>s
 " noremap <TAB>v <C-W>v
 
@@ -146,6 +148,16 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
 "---------------------------------------------------------------------------
+" Syntastic"{{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0"}}}
+"---------------------------------------------------------------------------
 " Settings things{{{
 
 set path+=**
@@ -157,7 +169,7 @@ set cmdheight=2
 
 " HiCursorWords
 let g:HiCursorWords_linkStyle='Underlined'
-let g:HiCursorWords_debugEchoHiName = 1
+" let g:HiCursorWords_debugEchoHiName = 1
 let g:HiCursorWords_delay = 100
 let g:vim_markdown_folding_disabled = 1
 " let g:indentLine_color_term = 254
