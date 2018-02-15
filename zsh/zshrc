@@ -13,13 +13,18 @@ ZSH_THEME="crunch"
 
 # Key Binds# {{{
 bindkey -s '^e' 'vim $(fzf)\n' 
-bindkey -s '^w' '. ~/.zshrc\nclear\n'
+bindkey -s '^y' '. ~/.zshrc\nclear\n'
 function up_widget() {
       BUFFER="cd .."
       zle accept-line
 }
 zle -N up_widget
 bindkey "^k" up_widget
+
+# Nav Binds
+bindkey '^w' forward-word
+bindkey '^b' backward-word
+bindkey '^d' kill-whole-line
 # }}}
 # Vim Aliases# {{{
 function viz {

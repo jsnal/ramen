@@ -39,13 +39,14 @@ modules-right = brightness volume time ip battery
 [module/i3]
 type = internal/i3
 
-label-focused = %name% 
-label-focused-foreground = ${colors.cyan}
-label-focused-padding = 1 
+label-focused = <%name%>
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.red}
+label-focused-padding = 0 
 label-focused-border-color = #FFFFFF
 
 label-unfocused = %name%
-label-unfocused-padding = 1 
+label-unfocused-padding = 0 
 
 label-urgent = %name%
 label-urgent-foreground = ${colors.red}

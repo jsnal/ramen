@@ -2,7 +2,7 @@
 set $mod Mod4
 floating_modifier $mod
 
-gaps inner 0
+gaps inner 0 
 gaps outer 3
 
 hide_edge_borders both
@@ -101,9 +101,9 @@ bindsym $mod+plus scratchpad show
 for_window [instance="tmux"] move window to scratchpad, scratchpad hide 
 # }}}
 # Workspaces# {{{
-set $workspace1 "1.Web"
-set $workspace2 "2.Code"
-set $workspace3 "3.Term"
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
 set $workspace4 "4"
 set $workspace5 "5"
 set $workspace6 "6"
