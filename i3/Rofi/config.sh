@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo "add-on|vim|vimrc|polybar|zshrc|Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
+res=$(echo "urls|add-on|vim|vimrc|polybar|zshrc|Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
 
 if [ $res = "vimrc" ]; then
 	exec urxvt -e vim ~/.vimrc
@@ -28,4 +28,6 @@ elif [ $res = "rofi" ]; then
 elif [ $res = "add-on" ]; then
   exec urxvt -e vim +NERDTree ~/Github/vim-nav-firefox +q
 
+elif [ $res = "urls" ]; then
+  exec urxvt -e vim ~/i3wm/newsbeuter/urls
 fi

@@ -14,6 +14,7 @@ Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
+Plug 'https://github.com/tomasr/molokai'
 
 " Language Specific 
 Plug 'https://github.com/pangloss/vim-javascript'
@@ -36,7 +37,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 set background=dark
 set hlsearch
-colorscheme hybrid_reverse 
+colorscheme molokai 
 "let g:hybrid_custom_term_colors = 1
 "}}}
 "---------------------------------------------------------------------------
@@ -88,6 +89,7 @@ cabbrev fzf FZF
 noremap <TAB>q <C-W>w
 noremap <C-c> "+y \| :!sh -xc '~/i3wm/i3/Scripts/paste.sh'<CR>
 noremap <C-x> :! pandoc --mathjax --toc -o '%:p:h'/out.pdf '%:p:h'/*.md \| evince '%:p:h'/out.pdf<CR><CR> 
+noremap <C-z> :! ant -f ~/Github/workspace/2018-bot/build.xml<CR> 
 " noremap <TAB>s <C-W>s
 " noremap <TAB>v <C-W>v
 

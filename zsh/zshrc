@@ -25,6 +25,7 @@ bindkey "^k" up_widget
 bindkey '^w' forward-word
 bindkey '^b' backward-word
 bindkey '^d' kill-whole-line
+bindkey '^h' backward-kill-word
 # }}}
 # Vim Aliases# {{{
 function viz {
@@ -176,34 +177,13 @@ function mdc() {
 # }}}
 # Sync# {{{
 function sync() {
-  read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-  echo "";
-  if [[ $REPLY =~ ^[Yy]$ ]]; then 
     echo "Syncing files..."
     echo "================="
 
+    cd ~/i3wm
     git pull origin master
 
-    echo "Syncing i3 Config... "
-		rm -r $HOME/.config/i3/config
-		ln $HOME/i3wm/i3 $HOME/.config/i3/config
-
-    echo "Syncing Polybar Config... "
-    rm -r $HOME/.config/polybar/config
-    ln $HOME/i3wm/polybar/config $HOME/.config/polybar/config
-
-    echo "Syncing .zshrc Config"
-    rm -r $HOME/.zshrc
-    ln $HOME/i3wm/zsh/zshrc $HOME/.zshrc
-
-    echo "Syncing zsh Theme Config"
-    rm -r $HOME/.oh-my-zsh/themes/jasonzsh.zsh-theme
-    ln $HOME/i3wm/zsh/jasonzsh.zsh-theme $HOME/.oh-my-zsh/themes/jasonzsh.zsh-theme
-
-    echo "Sync Finished... No errors found"
-  else
-    echo "Sync Stopped"
-  fi
+     echo "Sync Finished... No errors found"
   
 }
 # }}}

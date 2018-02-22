@@ -3,7 +3,7 @@ set $mod Mod4
 floating_modifier $mod
 
 gaps inner 0 
-gaps outer 3
+gaps outer 5 
 
 hide_edge_borders both
 new_window none
@@ -183,7 +183,7 @@ exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 #exec_always guake
 exec_always xrdb ~/.Xresources
-exec_always feh --bg-scale ~/i3wm/background.png
+exec_always feh --bg-scale ~/i3wm/background.jpg
 exec_always killall polybar 
 exec_always urxvt -name tmux -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
