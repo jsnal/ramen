@@ -12,7 +12,7 @@ elif [ $res = "zshrc" ]; then
 	exec urxvt -e vim ~/i3wm/zsh/zshrc
 
 elif [ $res = ".Xresources" ]; then
-	exec urxvt -e vim ~/.Xresources
+	exec urxvt -e vim ~/.xresources
 
 elif [ $res = "i3config" ]; then
 	exec urxvt -e vim ~/i3wm/i3/config

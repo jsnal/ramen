@@ -146,7 +146,7 @@ bindsym $mod+u resize shrink width 10 px or 10 ppt
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+t exec --no-startup-id ./i3wm/polybar/launch.sh
+bindsym $mod+Shift+t exec --no-startup-id ~/i3wm/polybar/launch.sh
 
 # Power Menu
 #You can also use $mod+s
