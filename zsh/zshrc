@@ -5,7 +5,6 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -43,7 +42,7 @@ function vif() {
 }
 # }}}
 # Tmux Aliases# {{{
-function tmuxn(){ tmux new -s "$@" }
+function tmuxn() { tmux new -s "$@" }
 function tmuxk() { tmux kill-session -t "$@" }
 function tmuxa() { tmux a -t "$@" }
 
@@ -184,6 +183,28 @@ function sync() {
     git pull origin master
 
      echo "Sync Finished... No errors found"
+  
+}
+
+function kernel-update() {
+	latest=$(w3m -dump kernel.ubuntu.com/~kernel-ppa/mainline/ | tail -5 | awk 'FNR == 1 {print $2}')
+	echo -n "Version "$latest" (y/n)? "
+	read answer
+	if echo "$answer" | grep -iq "^y" ;then
+  	  echo Yes
+
+	rm -r ~/.kernel-deb/*.deb
+  headersall=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/headers/ && /generic/ && /amd64/')
+  headersamd64=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/headers/ && /all/')
+  image=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/image/ && /generic/ && /amd64/')
+
+	wget -P ~/.kernel-deb http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersall" http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersamd64"
+	#wget -P ~/.kernel-deb http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersamd64"
+	#wget -P ~/.kernel-deb http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$image"
+	echo "$image"
+	else
+    	echo No
+	fi
   
 }
 # }}}
