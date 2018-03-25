@@ -195,13 +195,16 @@ function kernel-update() {
 
 	rm -r ~/.kernel-deb/*.deb
   headersall=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/headers/ && /generic/ && /amd64/')
+	echo "\n--> Headers amd64 found "$headersall""
   headersamd64=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/headers/ && /all/')
+	echo "\n--> Headers all found "$headersamd64""
   image=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/image/ && /generic/ && /amd64/')
+	echo "\n--> Image found "$image""
+	echo "\n"
+	wget -P ~/.kernel-deb http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersall" http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersamd64" http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$image"
 
-	wget -P ~/.kernel-deb http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersall" http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersamd64"
-	#wget -P ~/.kernel-deb http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersamd64"
-	#wget -P ~/.kernel-deb http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$image"
-	echo "$image"
+	echo "\n--> Installing kernel version "$latest""
+	sudo dpkg -i ~/.kernel-deb/*.deb
 	else
     	echo No
 	fi
