@@ -17,6 +17,13 @@ URxvt.color6:       #00d7ff
 URxvt.color14:      #00d7ff
 URxvt.color7:       #ffffff
 URxvt.color15:      #ffffff
-URxvt*font:     *-fixed-*-*-*-18-*
+;URxvt*font:     *-fixed-*-*-*-18-*
+URxvt.font: xft:Inconsolata:pixelsize=12
 
+URxvt.perl-ext-common: resize-font
 URxvt.scrollBar: false
+
+URxvt.keysym.C-minus:     resize-font:smaller
+URxvt.keysym.C-equal:      resize-font:bigger
+URxvt.keysym.C-plus:     resize-font:reset
+URxvt.keysym.C-question:  resize-font:show
