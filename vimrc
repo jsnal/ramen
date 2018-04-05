@@ -82,6 +82,7 @@ command! Wa :wa
 command! Qa :qa
 command! Wqa :wqa
 cabbrev fzf FZF 
+command WW :w !sudo dd of=%
 "}}}
 "---------------------------------------------------------------------------
 " Binding remaps{{{
