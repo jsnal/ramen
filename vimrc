@@ -127,7 +127,7 @@ map <Leader>d :bd<Return>
 map <Leader>f :b
 
 au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+"au BufWinEnter * silent loadview
 
 "" Show the buffer number in the status line.
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P

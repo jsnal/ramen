@@ -15,7 +15,7 @@ spin(){
 }
 
 spin2() {
-     i=1
+    i=1
     sp="/-\|"
     echo -n ' '
     for number in 1 2 3 4 5
