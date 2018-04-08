@@ -4,60 +4,26 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	
-git pull origin master
-echo ""
-os=$(screenfetch | grep -o 'OS:.*' )
-echo "$os"
-if [ 
-#Dependencies
+git pull --recurse-submodules origin master
+sudo apt-get install zsh vim curl i3
+chsh -s $(which zsh)
+mkdir -p $HOME/.zsh/plugins
+mkdir $HOME/.config
+zsh/plugins/fzf/install
 
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-#yaourt -S zsh i3-gaps i3blocks rofi scrot gyazo polybar siji-git nerd-fonts-complete gnome-terminal
+echo "Installing Configs... \n"
+ln zsh/zshrc $HOME/.zshrc
+ln i3/config $HOME/.config/i3/config
+ln vimrc $HOME/.vimrc
+ln xresources $HOME/.Xresources
+ln tmux.conf $HOME/.tmux.conf
+ln polybar/config $HOME/.config/polybar/config
 
-#Check if Directory exists
-	
-	echo "Copying and syncing your files"
-	
-	#i3
-	if [ -d "$HOME/.config/i3" ];then
-		echo "i3 Directory found"
-		#rm -r $HOME/.config/i3
-		ln ~/i3wm/i3 $HOME/.config/
-		echo "$HOME/i3wm/i3 $HOME/.config"
-	else
-		echo "i3 Directory not found... Please install i3"
-	fi
-	
-	#polybar
-	if [ -d "$HOME/.config/polybar" ];then
-		echo "Polybar Directory found"
-		#rm -r $HOME/.config/polybar/polybar
-		ln ~/i3wm/polybar/config $HOME/.config/polybar/config
-		echo "$HOME/i3wm/polybar --> $HOME/.config"
-	else
-		echo "Polybar Directory not found... Making directory... Please run this script again"
-		mkdir $HOME/.config/polybar
-	fi	
+echo "Installing Vim.. \n"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+urxvt -e vim -c ":PlugInstall"
 
-	#zsh
-	if [ -f "$HOME/.zshrc" ];then
-		echo ".zshrc found"
-		#rm -r $HOME/.zshrc
-		ln $HOME/i3wm/zsh/zshrc $HOME/.zshrc
-		echo "$HOME/i3wm/zsh/zshrc --> $HOME/.zshrc"
-	else
-		ln $HOME/i3wm/zsh/zshrc $HOME/.zshrc
-                echo "$HOME/i3wm/zsh/zshrc --> $HOME/.zshrc"
-
-	fi
-
-	#zsh theme
-	if [ -d "$HOME/.oh-my-zsh/themes" ];then
-		echo ".oh-my-zsh found"
-		rm -r $HOME/.oh-my-zsh/themes/jasonzsh.zsh-theme
-		ln $HOME/i3wm/zsh/jasonzsh.zsh-theme $HOME/.oh-my-zsh/themes
-		echo "$HOME/i3wm/zsh/jasonzsh.zsh-theme --> $HOME/.oh-my-zsh/themes"
-	fi
 else
 	echo "Install Stopped"
 fi	
