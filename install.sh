@@ -5,9 +5,14 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	
 git pull --recurse-submodules origin master
-sudo apt-get install zsh vim curl i3
+os=$(lsb_release -i | awk '{print $3}')
+if [ $os != "Ubuntu" ]; then
+  echo "Please install (zsh, vim, curl, i3), before resuming"
+  exit
+else
+  sudo apt-get install zsh vim curl i3
+fi
 chsh -s $(which zsh)
-mkdir -p $HOME/.zsh/plugins
 mkdir $HOME/.config
 zsh/plugins/fzf/install
 
@@ -22,8 +27,9 @@ ln polybar/config $HOME/.config/polybar/config
 echo "Installing Vim.. \n"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-urxvt -e vim -c ":PlugInstall"
+vim +":PlugInstall" +qa
 
+echo "Install Finished! Logout for changes to take affect."
 else
 	echo "Install Stopped"
 fi	
