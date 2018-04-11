@@ -7,6 +7,7 @@ function precmd {
 	source $HOME/i3wm/zsh/plugins/zsh-autopair/autopair.zsh
 # }}}
 # Theme# {{{
+
 	BRACKET="%F{white}"
 	SUDO="%F{red}"
 	DIR="%F{cyan}"
@@ -14,6 +15,8 @@ function precmd {
 	USER="%F{yellow}"
 	GIT_BRANCH="%F{green}"
 
+  ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{X%G%}"
+  ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}%{+%G%}"
 	ZSH_THEME_GIT_PROMPT_PREFIX=""
 	ZSH_THEME_GIT_PROMPT_SUFFIX=""
 	function get_sudo() {
@@ -219,6 +222,7 @@ alias vi='vim'
 alias ls='ls -Fh --color=always --group-directories'
 alias ll='ls -hl --color=always --group-directories'
 alias aa='sudo $(fc -ln -1)'
+alias gotop='gotop --color=monokai'
 # }}}
 # Markdown# {{{
 function mdpdf() {

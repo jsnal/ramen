@@ -33,7 +33,7 @@ font-0 = DejaVu Sans Mono:pixelsize=8.5;0
 module-margin = 0
 
 modules-left = i3
-modules-center = song
+modules-center = 
 modules-right = brightness volume time ip battery
 
 [module/i3]
@@ -96,7 +96,7 @@ label = |V:%{F#00E5E5}%output%%
 [module/brightness]
 type = custom/script
 interval = 5
-exec = xrandr --verbose | grep "Brightness" | awk '{print $2}' | sed 's/^0.//' 
+exec = xbacklight | grep -o '^[0-9]*\.[0-9]' 
 label = |B:%{F#00E5E5}%output%%
 
 [module/song]

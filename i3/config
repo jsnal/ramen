@@ -34,8 +34,8 @@ font xft:DejaVu Sans Mono 9
 # }}}
 # Function Key Binds# {{{
 bindsym $mod+Shift+x exec i3lock 
-bindsym $mod+F6 exec ~/i3wm/i3/Scripts/brightness.sh + eDP-1  
-bindsym $mod+F5 exec ~/i3wm/i3/Scripts/brightness.sh - eDP-1
+bindsym $mod+F6 exec xbacklight -inc 10   
+bindsym $mod+F5 exec xbacklight -dec 10
 bindsym $mod+F7 exec xrandr --output eDP-1 --brightness 0
 
 bindsym F8 exec ~/eclipse/eclipse 
@@ -44,7 +44,7 @@ bindsym $mod+F11 exec amixer -D pulse sset Master 5%-
 bindsym $mod+F12 exec amixer -D pulse sset Master 5%+
 # }}}
 # DMenu and Term# {{{
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec xterm 
 bindsym $mod+d exec rofi -show combi
 
 #bindsym $mod+Shift+s exec rofi -show ssh
@@ -183,9 +183,9 @@ exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 #exec_always guake
 exec_always xrdb ~/.Xresources
-exec_always feh --bg-scale ~/i3wm/background.jpg
+exec_always feh --bg-scale ~/i3wm/background.png
 exec_always killall polybar 
-exec_always urxvt -name tmux -e bash ~/i3wm/i3/Scripts/tmux.sh 
+# exec_always xterm -name tmux -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
 exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
 exec xrandr --output eDP-1 --brightness .8
