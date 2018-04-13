@@ -4,7 +4,14 @@
 ### Setup
 - Clone this repo into your home directory
 - Run the installer.sh
-- If you don't have oh-my-zsh you will need to run the installer twice
+```
+./install.sh [function]
+deps Installs dependencies
+install Installs entire config including i3 and polybar
+shell Installs just zsh(plugins) and tmux
+vi Installs just vim config
+clean Removes all symlinks to configs
+```
 #### Or build from source
 - Install dependencies
 - Install fonts for polybar in ~/usr/share/fonts
