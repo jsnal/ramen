@@ -6,11 +6,11 @@
 - Run the installer.sh
 ```
 ./install.sh [function]
-deps Installs dependencies
+deps    Installs dependencies
 install Installs entire config including i3 and polybar
-shell Installs just zsh(plugins) and tmux
-vi Installs just vim config
-clean Removes all symlinks to configs
+shell   Installs just zsh(plugins) and tmux
+vi      Installs just vim config
+clean   Removes all symlinks to configs
 ```
 #### Or build from source
 - Install dependencies

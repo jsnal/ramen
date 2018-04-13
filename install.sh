@@ -33,7 +33,9 @@ function install() {
   ln zsh/zshrc $HOME/.zshrc
   ln i3/config $HOME/.config/i3/config
   ln vimrc $HOME/.vimrc
-  ln xresources $HOME/.Xresources
+  ln X/xresources $HOME/.Xresources
+  ln X/xmodmap $HOME/.Xmodmap
+  ln X/xbindkeysrc $HOME/.xbindkeysrc
   ln tmux.conf $HOME/.tmux.conf
   ln polybar/config $HOME/.config/polybar/config
 
@@ -58,7 +60,9 @@ function shell() {
 
     echo "Installing Shell... \n"
     ln zsh/zshrc $HOME/.zshrc
-    ln xresources $HOME/.Xresources
+    ln X/xresources $HOME/.Xresources
+    ln X/xmodmap $HOME/.Xmodmap
+    ln X/xbindkeysrc $HOME/.xbindkeysrc
     ln tmux.conf $HOME/.tmux.conf
   fi
 }
