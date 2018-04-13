@@ -29,3 +29,19 @@ xterm*keysym.C-minus:     resize-font:smaller
 xterm*keysym.C-equal:      resize-font:bigger
 xterm*keysym.C-plus:     resize-font:reset
 xterm*keysym.C-question:  resize-font:show
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-normal:                   argb:00272822, #f8f8f2, argb:00272822, #141411, #f8f8f2
+rofi.color-urgent:                   argb:00272822, #f92672, argb:00272822, #f92672, #f8f8f2
+rofi.color-active:                   argb:00272822, #a6e22a, argb:00272822, #141411, #a6e22a
+rofi.color-window:                   argb:ee272822, #002b36, #e6db74
+rofi.separator-style:                solid
+rofi.kb-mode-previous:               Control+h
+rofi.kb-mode-next:                   Control+l
+rofi.kb-remove-char-back:            BackSpace            
+
+rofi.modi: ssh,window,drun,run
+rofi.sidebar-mode: true
+rofi.terminal: xterm
