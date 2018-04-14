@@ -1,5 +1,6 @@
 # Borders and Init# {{{
 set $mod Mod4
+set $TERMINAL xterm
 floating_modifier $mod
 
 gaps inner 0 
@@ -55,7 +56,7 @@ bindsym $mod+Shift+w exec firefox
 bindsym $mod+s exec bash ~/i3wm/i3/Rofi/power.sh
 bindsym $mod+r exec bash ~/i3wm/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/i3wm/i3/Rofi/config.sh
-bindsym $mod+q exec bash ~/i3wm/i3/Rofi/ssh.sh
+bindsym $mod+q exec rofi -show ssh 
 # }}}
 # Window Navigation# {{{
 #Keys used for window navigation and moving
@@ -92,13 +93,13 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+space focus mode_toggle
-
 bindsym $mod+Shift+q kill
 
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 
 for_window [instance="tmux"] move window to scratchpad, scratchpad hide 
+for_window [instance="tele"] move window to scratchpad, scratchpad hide
 # }}}
 # Workspaces# {{{
 set $workspace1 "1"
@@ -183,9 +184,9 @@ exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 #exec_always guake
 exec_always xrdb ~/.Xresources
-exec_always feh --bg-scale ~/i3wm/background.png
+exec_always feh --bg-scale ~/i3wm/background.jpg
 exec_always killall polybar 
-# exec_always xterm -name tmux -e bash ~/i3wm/i3/Scripts/tmux.sh 
+exec_always xterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xbindkeys -p
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec

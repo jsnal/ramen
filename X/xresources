@@ -40,7 +40,12 @@ rofi.color-window:                   argb:ee272822, #002b36, #e6db74
 rofi.separator-style:                solid
 rofi.kb-mode-previous:               Control+h
 rofi.kb-mode-next:                   Control+l
+rofi.kb-row-up:                      Control+k,Up
+rofi.kb-row-down:                    Control+j,Down
 rofi.kb-remove-char-back:            BackSpace            
+
+rofi.kb-remove-to-eol:
+rofi.kb-accept-entry:                Return,KP_Enter,Control+m
 
 rofi.modi: ssh,window,drun,run
 rofi.sidebar-mode: true

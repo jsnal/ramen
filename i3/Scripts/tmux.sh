@@ -3,7 +3,6 @@ tmux kill-server
 tmux att -t get ||
 tmux \
 	new \; \
-  neww ranger\; \
-	neww alsamixer\; \
-	neww nmon\; \
+  neww ./tg/bin/telegram-cli \; \
+  neww alsamixer\; \
 	selectw -t 0\; \
