@@ -35,9 +35,9 @@ font xft:DejaVu Sans Mono 9
 # }}}
 # Function Key Binds# {{{
 bindsym $mod+Shift+x exec i3lock 
-bindsym $mod+F6 exec xbacklight -inc 10   
-bindsym $mod+F5 exec xbacklight -dec 10
-bindsym $mod+F7 exec xrandr --output eDP-1 --brightness 0
+#bindsym $mod+F6 exec xbacklight -inc 10   
+#bindsym $mod+F5 exec xbacklight -dec 10
+bindsym $mod+F7 exec xbacklight -set 0 
 
 bindsym F8 exec ~/eclipse/eclipse 
 bindsym F9 exec ~/Downloads/Telegram/Telegram

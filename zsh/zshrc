@@ -1,5 +1,6 @@
 # Set up the prompt
 
+AltPrompt=tmux
 # Plugins# {{{
 source $HOME/i3wm/zsh/plugins/zsh-git-prompt/zshrc.sh
 source $HOME/i3wm/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -32,6 +33,19 @@ function precmd {
 	END="$PROMPT$ "
 
 	PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
+
+  case $AltPrompt in
+    tmux)
+      session="("$(tmux ls | wc -l)")"
+      ;;
+    cpu)
+      session="("$(top -bn 1 | grep "Cpu" | awk '{print $2}')")"
+      ;;
+    *)
+      session=""
+      ;;
+  esac
+  RPROMPT="%B${session}%b"
 }
 # }}}
 # Basics# {{{
@@ -58,18 +72,20 @@ setopt auto_menu
 # Key Binds# {{{
 bindkey -s '^e' 'vim $(fzf)\n' 
 bindkey -s '^y' '. ~/.zshrc\nclear\n'
+bindkey -s '^n' './tg/bin/telegram-cli -W -N\n'
 function up_widget() {
       BUFFER="cd .."
       zle accept-line
 }
 zle -N up_widget
-bindkey "^k" up_widget
+bindkey "^u" up_widget
 
 # Nav Binds
 bindkey '^w' forward-word
 bindkey '^b' backward-word
 bindkey '^d' kill-whole-line
-bindkey '^h' backward-kill-word
+bindkey -r "^k"
+bindkey '^k' backward-kill-word
 # }}}
 # Vim Aliases# {{{
 function viz {
