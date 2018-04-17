@@ -1,6 +1,6 @@
 # Set up the prompt
 
-AltPrompt=tmux
+AltPrompt=hist
 # Plugins# {{{
 source $HOME/i3wm/zsh/plugins/zsh-git-prompt/zshrc.sh
 source $HOME/i3wm/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -15,6 +15,7 @@ function precmd {
 	PROMPT="%F{white}"
 	USER="%F{yellow}"
 	GIT_BRANCH="%F{green}"
+  ALTPROMPT="%F{red}"
 
   ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{X%G%}"
   ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}%{+%G%}"
@@ -41,11 +42,19 @@ function precmd {
     cpu)
       session="("$(top -bn 1 | grep "Cpu" | awk '{print $2}')")"
       ;;
+    mem)
+      session="("$(free -m | awk 'NR==2{print $3}')")"
+      ;;
+    hist)
+      session="("$(history | cut -d " " -f4-15 | tail -1)")"
+      ;;
+    hist-num)
+      session"("$(history | cut -d " " -f2)")"
     *)
       session=""
       ;;
   esac
-  RPROMPT="%B${session}%b"
+  RPROMPT="$ALTPROMPT%B${session}%b"
 }
 # }}}
 # Basics# {{{
@@ -234,6 +243,17 @@ function govim() {
 
 function forcast() {
         curl wttr.in/"$@"
+}
+
+function latency() {
+  printf "Pinging Google.com... \n"
+  ping -c 5 google.com | awk 'NR==2,NR==6{print $8}' | cut -c 6-
+  printf "Pinging 8.8.8.8... \n"
+  ping -c 5 8.8.8.8 | awk 'NR==2,NR==6{print $7}' | cut -c 6-
+}
+
+function speedtest() {
+  curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
 }
 
 alias vi='vim'
