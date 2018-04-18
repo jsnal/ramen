@@ -21,6 +21,7 @@ xterm*color15:      #ffffff
 !xterm*font: xft:Inconsolata:pixelsize=12
 XTerm*font: -*-terminus-medium-r-normal--12-*-*-*-*-*-iso10646-1
 xterm*letterSpacing: 1
+XTerm*ptyInitialErase: true
 
 xterm*perl-ext-common: resize-font
 xterm*scrollBar: false

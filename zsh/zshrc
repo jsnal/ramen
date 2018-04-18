@@ -1,6 +1,6 @@
 # Set up the prompt
 
-AltPrompt=hist
+AltPrompt=tmux
 # Plugins# {{{
 source $HOME/i3wm/zsh/plugins/zsh-git-prompt/zshrc.sh
 source $HOME/i3wm/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -50,6 +50,7 @@ function precmd {
       ;;
     hist-num)
       session"("$(history | cut -d " " -f2)")"
+      ;;
     *)
       session=""
       ;;
@@ -261,6 +262,8 @@ alias ls='ls -Fh --color=always --group-directories'
 alias ll='ls -hl --color=always --group-directories'
 alias aa='sudo $(fc -ln -1)'
 alias gotop='gotop --color=monokai'
+alias tl='todolist'
+alias tll='todolist l by project && printf "\n\n" && cal'
 # }}}
 # Markdown# {{{
 function mdpdf() {
