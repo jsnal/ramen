@@ -235,7 +235,7 @@ function os() {
 }
 
 function conf() {
-	cd ~/i3wm
+	cd ~/i3wm/"$@"
 }
 
 function govim() {
@@ -246,15 +246,19 @@ function forcast() {
         curl wttr.in/"$@"
 }
 
-function latency() {
-  printf "Pinging Google.com... \n"
-  ping -c 5 google.com | awk 'NR==2,NR==6{print $8}' | cut -c 6-
-  printf "Pinging 8.8.8.8... \n"
-  ping -c 5 8.8.8.8 | awk 'NR==2,NR==6{print $7}' | cut -c 6-
-}
-
-function speedtest() {
-  curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+function net() {
+  if [ -l = $1 ]
+  then
+    printf "Pinging Google.com... \n"
+    ping -c 5 google.com | awk 'NR==2,NR==6{print $8}' | cut -c 6-
+    printf "Pinging 8.8.8.8... \n"
+    ping -c 5 8.8.8.8 | awk 'NR==2,NR==6{print $7}' | cut -c 6-
+  elif [ -s = $1 ]
+  then
+    curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+  else
+    printf "Error... "
+  fi
 }
 
 alias vi='vim'
@@ -264,6 +268,7 @@ alias aa='sudo $(fc -ln -1)'
 alias gotop='gotop --color=monokai'
 alias tl='todolist'
 alias tll='todolist l by project && printf "\n\n" && cal'
+alias tlc='todolist ac && todolist gc'
 # }}}
 # Markdown# {{{
 function mdpdf() {
