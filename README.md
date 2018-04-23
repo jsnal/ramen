@@ -6,13 +6,18 @@
 - Run the installer.sh
 ```
 ./install.sh [function]
-deps    Installs dependencies
-install Installs entire config including i3 and polybar
-shell   Installs just zsh(plugins) and tmux
-vi      Installs just vim config
-clean   Removes all symlinks to configs
+deps            Installs dependencies
+install         Installs entire config including i3 and polybar
+shell           Installs just zsh(plugins) and tmux
+vi              Installs just vim config
+afterInstall    Runs the .afterinst config
+clean           Removes all symlinks to configs
 ```
-#### Or build from source
+##### After Install Config
+The after install config is located in the root directory. To use it just write a command you want to run after the install is complete.
+__*NOTE: Please delete all lines execpt for #!bin/bash so it doesn't run when it shouldn't*__
+
+#### Or install by hand
 - Install dependencies
 - Install fonts for polybar in ~/usr/share/fonts
 - Clone this github into ~/.config/

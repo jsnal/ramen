@@ -2,6 +2,8 @@
 # Install Script
 # ./install.sh [function]
 
+afterinstallline=$(wc -l .afterinst.sh | awk '{print $1}')
+
 function deps() {
   git pull --recurse-submodules origin master
   os=$(cat /etc/issue | head -n +1 | awk '{print $1}')
@@ -43,8 +45,7 @@ function install() {
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   vim +":PlugInstall" +qa
-
-  echo "Install Finished! Logout for changes to take affect."
+  afterInstall
   else
     echo "Install Stopped"
   fi	
@@ -64,6 +65,7 @@ function shell() {
     ln X/xmodmap $HOME/.Xmodmap
     ln X/xbindkeysrc $HOME/.xbindkeysrc
     ln tmux.conf $HOME/.tmux.conf
+    afterInstall
   fi
 }
 
@@ -77,6 +79,7 @@ function vi() {
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     vim +":PlugInstall" +qa
+    afterInstall
     exit
   fi
 }
@@ -93,6 +96,17 @@ function clean() {
     rm $HOME/.tmux.conf
     rm $HOME/.config/polybar/config
     echo "Repository Cleaned..."
+    afterInstall
   fi
+}
+
+function afterInstall() {
+  echo "Running After Installation Config... "
+  if [ $afterinstallline -gt 1 ]; then
+    ./.afterinst.sh
+  else
+    echo ">Nothing to run in .afterinst... "
+  fi
+  echo "Install Finished! Logout for changes to take affect."
 }
 "$@"

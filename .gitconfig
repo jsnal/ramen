@@ -1,0 +1,14 @@
+[user]
+	email = jasonlongball@gmail.com
+	name = JasonLong24
+[alias]
+  co = checkout
+  cob = checkout -b
+  br = branch
+  st = status
+  aa = add -A .
+  cm = commit -m
+  po = push origin
+  pod = push origin master
+  plo = pull origin
+  plom = pull origin master
