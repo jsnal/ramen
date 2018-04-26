@@ -8,19 +8,15 @@ function precmd {
 	source $HOME/i3wm/zsh/plugins/zsh-autopair/autopair.zsh
 # }}}
 # Theme# {{{
-
 	BRACKET="%F{white}"
 	SUDO="%F{red}"
 	DIR="%F{cyan}"
 	PROMPT="%F{white}"
 	USER="%F{yellow}"
-	GIT_BRANCH="%F{green}"
+	GIT_BRANCH="%F{magenta}"
   ALTPROMPT="%F{red}"
 
-  ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{X%G%}"
-  ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}%{+%G%}"
-	ZSH_THEME_GIT_PROMPT_PREFIX=""
-	ZSH_THEME_GIT_PROMPT_SUFFIX=""
+	# Functions# {{{
 	function get_sudo() {
 			if sudo -n true 2>/dev/null; then 
 				 echo "sudo" 
@@ -29,13 +25,16 @@ function precmd {
 			fi
 	}
 
-	DIR="[$DIR%B%~%b:$(git_super_status)$BRACKET]% "
-	USER="$BRACKET@$USER%m"
-	END="$PROMPT$ "
+	DOTGIT=".git/"
+	function git_prompt_info() {
+			if [ -d "$DOTGIT" ]; then
+				BRANCH="$(git symbolic-ref --short HEAD)"
+				echo ":$GIT_BRANCH$BRANCH"
+			elif [ ! -d "$DOTGIT" ]; then
+			fi
+	}
 
-	PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
-
-  case $AltPrompt in
+ case $AltPrompt in
     tmux)
       session="("$(tmux ls | wc -l)")"
       ;;
@@ -55,7 +54,14 @@ function precmd {
       session=""
       ;;
   esac
+	# }}}
+	
   RPROMPT="$ALTPROMPT%B${session}%b"
+	DIR="[$DIR%B%~%b$(git_prompt_info)$BRACKET]% "
+	USER="$BRACKET@$USER%m"
+	END="$PROMPT$ "
+
+	PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
 }
 # }}}
 # Basics# {{{
