@@ -1,6 +1,6 @@
 xterm*foreground:   #ffffff
 xterm*background:   #000000
-xterm*cursorColor:  #ffffff
+xterm*cursorColor:  #ff00ff
 xterm*color0:       #121212
 xterm*color8:       #606060
 xterm*color1:       #ff0000
