@@ -43,6 +43,7 @@ bindsym F8 exec ~/eclipse/eclipse
 bindsym F9 exec ~/Downloads/Telegram/Telegram
 #bindsym $mod+F11 exec amixer -q sset "Master" 5%-
 #bindsym $mod+F12 exec amixer -q sset "Master" 5%+ 
+bindsym $mod+y exec bash ~/i3wm/i3/Scripts/yt-fscreen.sh
 # }}}
 # DMenu and Term# {{{
 bindsym $mod+Return exec xterm 
@@ -100,6 +101,7 @@ bindsym $mod+plus scratchpad show
 
 for_window [instance="tmux"] move window to scratchpad, scratchpad hide 
 for_window [instance="tele"] move window to scratchpad, scratchpad hide
+for_window [class="mpv"] floating enable, resize set 1200 800, move position center 
 # }}}
 # Workspaces# {{{
 set $workspace1 "1"
@@ -138,6 +140,8 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class="Firefox"] $workspace1
+assign [class="Spotify"] $workspace10
+assign [class="mpv"] $workspace9
 # }}}
 # Resize and Reset# {{{
 bindsym $mod+i resize grow height 10 px or 10 ppt
@@ -186,7 +190,7 @@ exec --no-startup-id numlockx
 exec_always xrdb ~/.Xresources
 exec_always feh --bg-scale ~/i3wm/background.jpg
 exec_always killall polybar 
-exec_always xterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
+exec --no-startup-id xterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xbindkeys -p
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
