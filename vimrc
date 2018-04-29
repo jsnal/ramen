@@ -50,9 +50,8 @@ set nowrap
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set smartindent
+"set smartindent
 set autoindent
-set shiftwidth=2 softtabstop=2 expandtab
 
 "autocmd VimEnter * NERDTree
 set nocompatible   " Disable vi-compatibility
@@ -106,6 +105,8 @@ map <F2> :NERDTreeToggle<CR>
 map <F3> :setlocal spell! spelllang=en_us<CR> 
 map <F4> :JSHint<CR><CR>
 map <F5> :setlocal foldmethod=marker<CR> 
+map <F6> mzgg=G`z`<CR>
+
 map <C-F> :fzf<CR>
 map <C-R> :%s/
 nnoremap <silent> <TAB>v :call fzf#run({

@@ -190,6 +190,8 @@ exec --no-startup-id numlockx
 exec_always xrdb ~/.Xresources
 exec_always feh --bg-scale ~/i3wm/background.jpg
 exec_always killall polybar 
+exec_always exec ~/i3wm/polybar/launch.sh
+exec_always exec mopidy
 exec --no-startup-id xterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xbindkeys -p
@@ -198,10 +200,3 @@ exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/activ
 exec --no-startup-id amixer sset "Master" 0% 
 exec --no-startup-id python ~/i3wm/i3/Scripts/altlayout.py
 # }}}
-# Status Bar# {{{
-bar {
-    mode hide
-    hidden_state hide
-    modifier Mod1
-    status_command polybar bottom 
-}# }}}
