@@ -267,6 +267,16 @@ function net() {
   fi
 }
 
+function comp-type() {
+	type=$(ls /sys/class/power_supply | grep BAT)
+
+	if [ "$type" != "BAT0" ]; then
+		echo "desktop"
+	else
+		echo "laptop"
+	fi
+}
+
 alias vi='vim'
 alias ls='ls -Fh --color=always --group-directories'
 alias ll='ls -hl --color=always --group-directories'
