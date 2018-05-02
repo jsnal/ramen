@@ -86,7 +86,7 @@ setopt complete_in_word
 setopt auto_menu
 # }}}
 # Key Binds# {{{
-bindkey -s '^e' 'vim $(fzf)\n' 
+bindkey -s '^e' 'cd ~ && vim $(fzf)\n cd $OLDPWD\nclear\n'	
 bindkey -s '^y' '. ~/.zshrc\nclear\n'
 bindkey -s '^n' './tg/bin/telegram-cli -W -N\n'
 function up_widget() {
@@ -282,9 +282,9 @@ alias ls='ls -Fh --color=always --group-directories'
 alias ll='ls -hl --color=always --group-directories'
 alias aa='sudo $(fc -ln -1)'
 alias gotop='gotop --color=monokai'
-alias tl='todolist'
-alias tll='todolist l by project && printf "\n\n" && cal'
-alias tlc='todolist ac && todolist gc'
+alias tll='~/i3wm/i3/Scripts/tll.sh l'
+alias tlc='~/i3wm/i3/Scripts/tll.sh c "$@"'
+alias tla='~/i3wm/i3/Scripts/tll.sh a "$@"'
 # }}}
 # Markdown# {{{
 function mdpdf() {
