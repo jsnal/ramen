@@ -6,7 +6,7 @@ source $HOME/i3wm/zsh/plugins/zsh-git-prompt/zshrc.sh
 source $HOME/i3wm/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 function precmd {
 	source $HOME/i3wm/zsh/plugins/zsh-autopair/autopair.zsh
-	source $HOME/i3wm/zsh/plugins/git.sh
+	source $HOME/i3wm/zsh/plugins/zsh-git/git.sh
 # }}}
 # Theme# {{{
 	BRACKET="%F{white}"
@@ -16,6 +16,8 @@ function precmd {
 	USER="%F{yellow}"
 	GIT_BRANCH="%F{magenta}"
   ALTPROMPT="%F{red}"
+	#HASH=false
+	STATUS=false
 
 	# Functions# {{{
 	function get_sudo() {
@@ -58,7 +60,7 @@ function precmd {
 	# }}}
 	
 #  RPROMPT="$ALTPROMPT%B${session}%b"
-	DIR="[$DIR%B%~%b$(git_info)$BRACKET]% "
+	DIR="[$DIR%B%~%b:$(git_info)$BRACKET]% "
 	USER="$BRACKET@$USER%m"
 	END="$PROMPT$ "
 
@@ -120,7 +122,7 @@ function vif() {
 }
 # }}}
 # Tmux Aliases# {{{
-function tmuxn() { tmux new -s "$@" }
+function tmuxn() { tmux -2 new -s "$@" }
 function tmuxk() { tmux kill-session -t "$@" }
 function tmuxa() { tmux a -t "$@" }
 
