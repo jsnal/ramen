@@ -1,6 +1,6 @@
 tmux kill-server
 tmux att -t get ||
-tmux \
+tmux -2 \
 	new \; \
 	neww ~/tg/bin/telegram-cli -W -N\; \
   neww ncmpcpp\; \
