@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 
 " Utils
 Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/mhinz/vim-signify'
 Plug 'https://github.com/junegunn/fzf'
 Plug 'https://github.com/scrooloose/nerdtree'
@@ -15,6 +16,10 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
 Plug 'https://github.com/tomasr/molokai'
+
+" Pandoc
+Plug 'https://github.com/suan/vim-instant-markdown'
+Plug 'https://github.com/plasticboy/vim-markdown'
 
 " Language Specific 
 Plug 'https://github.com/pangloss/vim-javascript'
@@ -180,7 +185,7 @@ set cmdheight=2
 let g:HiCursorWords_linkStyle='Underlined'
 " let g:HiCursorWords_debugEchoHiName = 1
 let g:HiCursorWords_delay = 100
-let g:vim_markdown_folding_disabled = 1
 " let g:indentLine_color_term = 254
 let g:indentLine_char = '▏'
+
 "}}}

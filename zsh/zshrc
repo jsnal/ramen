@@ -16,24 +16,16 @@ function precmd {
 	USER="%F{yellow}"
 	GIT_BRANCH="%F{magenta}"
   ALTPROMPT="%F{red}"
-	#HASH=false
-	STATUS=false
 
+	# Git Prompt
+	STATUS=false
+	STATUS_SIMP=true
 	# Functions# {{{
 	function get_sudo() {
 			if sudo -n true 2>/dev/null; then 
 				 echo "sudo" 
 			else
 				 echo "" 
-			fi
-	}
-
-	DOTGIT=".git/"
-	function git_prompt_info() {
-			if [ -d "$DOTGIT" ]; then
-				BRANCH="$(git symbolic-ref --short HEAD)"
-				echo ":$GIT_BRANCH$BRANCH"
-			elif [ ! -d "$DOTGIT" ]; then
 			fi
 	}
 

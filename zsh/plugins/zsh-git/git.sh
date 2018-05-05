@@ -90,13 +90,17 @@ function status() {
 
 function status_simp() {
   if [ $STATUS_SIMP = true ]; then
-    MOD=$(git status --porcelain | grep -oE "M" | wc -l)
-    DEL=$(git status --porcelain | grep -oE "D" | wc -l)
+    MOD=$(git status --porcelain | grep -oE "M" | wc -l && echo "+")
+    DEL=$(git status --porcelain | grep -oE "D" | wc -l && echo "-")
+    
+    if [ $DEL = 0 ]; then DEL='' 
+    elif [ $MOD = 0 ]; then MOD=''
+    fi
 
     if [ $HASH = false ]; then
-      echo $SEPERATOR${COLOR_ADD}$MOD+ ${reset}${COLOR_DEL}$DEL-${reset}
+      echo $SEPERATOR${COLOR_ADD}$MOD ${reset}${COLOR_DEL}$DEL${reset} | tr -d '\n' | tr -d ' '
     else
-      echo ${COLOR_ADD}$MOD+ ${reset}${COLOR_DEL}$DEL-${reset}
+      echo ${COLOR_ADD}$MOD ${reset}${COLOR_DEL}$DEL${reset} | tr -d '\n' | tr -d ' '
     fi
   else echo ''
   fi
@@ -120,7 +124,7 @@ COLOR_COP=${cyan}
 COLOR_UNT=${bldblue}
 HASH=true
 STATUS=true
-STATUS_SIMP=true
+STATUS_SIMP=false
 BRANCH=true
 colors
 
