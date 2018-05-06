@@ -34,14 +34,10 @@ xterm*keysym.C-question:  resize-font:show
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
-!rofi.color-normal:                   argb:00272822, #f8f8f2, argb:00272822, #141411, #f8f8f2
-!rofi.color-urgent:                   argb:00272822, #f92672, argb:00272822, #f92672, #f8f8f2
-!rofi.color-active:                   argb:00272822, #a6e22a, argb:00272822, #141411, #a6e22a
-!rofi.color-window:                   argb:ee272822, #002b36, #e6db74
-rofi.color-window: #000000, #ffffff, #000000
-rofi.color-normal: #000000, #ffffff, #000000, #2e2e2e, #ffffff
-rofi.color-active: #000000, #ffffff, #000000, #2e2e2e, #ffffff
-rofi.color-urgent: #ffffff, #ff0400, #ffffff, #ff0000, #ffffff
+rofi.color-normal:                   argb:00272822, #f8f8f2, argb:00272822, #141411, #f8f8f2
+rofi.color-urgent:                   argb:00272822, #f92672, argb:00272822, #f92672, #f8f8f2
+rofi.color-active:                   argb:00272822, #a6e22a, argb:00272822, #141411, #a6e22a
+rofi.color-window:                   argb:ee272822, #002b36, #e6db74
 rofi.separator-style:                solid
 rofi.kb-mode-previous:               Control+h
 rofi.kb-mode-next:                   Control+l

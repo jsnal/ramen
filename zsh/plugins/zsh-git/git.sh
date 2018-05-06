@@ -90,31 +90,51 @@ function status() {
 
 function status_simp() {
   if [ $STATUS_SIMP = true ]; then
-    MOD=$(git status --porcelain | grep -oE "M" | wc -l && echo "+")
-    DEL=$(git status --porcelain | grep -oE "D" | wc -l && echo "-")
-    
-    if [ $DEL = 0 ]; then DEL='' 
-    elif [ $MOD = 0 ]; then MOD=''
-    fi
+    MOD=$(git status --porcelain | grep -oE "M" | wc -l)
+    DEL=$(git status --porcelain | grep -oE "D" | wc -l)
 
-    if [ $HASH = false ]; then
-      echo $SEPERATOR${COLOR_ADD}$MOD ${reset}${COLOR_DEL}$DEL${reset} | tr -d '\n' | tr -d ' '
+    if [[ $DEL = "0" ]]; then 
+      echo ${COLOR_ADD}$MOD+ ${reset}${COLOR_DEL}${reset} | tr -d '\n' | tr -d ' '
+    elif [[ $MOD = "0" ]]; then
+      echo ${COLOR_ADD} ${reset}${COLOR_DEL}$DEL-${reset} | tr -d '\n' | tr -d ' '
     else
-      echo ${COLOR_ADD}$MOD ${reset}${COLOR_DEL}$DEL${reset} | tr -d '\n' | tr -d ' '
+      echo $SEPERATOR${COLOR_ADD}$MOD+ ${reset}${COLOR_DEL}$DEL-${reset} | tr -d '\n' | tr -d ' '
     fi
   else echo ''
   fi
 }
 
+function behind_master() {
+  if [ $MASTER = true ]; then
+    BEHIND=$(git rev-list --left-only --count master...HEAD 2>/dev/null)
+    if [ $BEHIND = 0 ]; then echo ''
+    else
+      echo ${COLOR_BEHIND}$BEHIND↓
+    fi
+  fi
+}
+
+function ahead_master() {
+  if [ $MASTER = true ]; then
+    AHEAD=$(git rev-list --right-only --count master...HEAD 2>/dev/null)
+    if [ $AHEAD = 0 ]; then echo ''
+    else
+      echo ${COLOR_AHEAD}$AHEAD↑
+    fi
+  fi
+}
+
 function git_info() {
 	if is_repo; then
-    echo $(branch)$(hash)$(status)$(status_simp)
+    echo $(branch)$(hash)$(status)$(status_simp) $(behind_master)$(ahead_master)
 	fi
 }
 
 SEPERATOR=":"
 COLOR_BRANCH_CLEAN=${green}
 COLOR_BRANCH_DIRTY=${purple}
+COLOR_BEHIND=${red}
+COLOR_AHEAD=${green}
 COLOR_HASH=${blue}
 COLOR_ADD=${green}
 COLOR_MOD=${green}
@@ -126,6 +146,7 @@ HASH=true
 STATUS=true
 STATUS_SIMP=false
 BRANCH=true
+MASTER=true
 colors
 
 "$@"

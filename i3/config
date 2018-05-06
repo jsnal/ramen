@@ -4,7 +4,7 @@ set $TERMINAL xterm
 floating_modifier $mod
 
 gaps inner 0 
-gaps outer 5 
+gaps outer 1 
 
 hide_edge_borders both
 new_window none
@@ -188,11 +188,11 @@ exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 #exec_always guake
 exec_always xrdb ~/.Xresources
-exec_always feh --bg-scale ~/i3wm/background.jpg
+exec_always feh --bg-scale ~/i3wm/background.png
 exec_always killall polybar 
 exec_always exec ~/i3wm/polybar/launch.sh
 exec_always exec mopidy
-exec --no-startup-id xterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
+exec xterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xbindkeys -p
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec

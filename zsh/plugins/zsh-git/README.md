@@ -21,6 +21,8 @@ If you want to change any options add these to your `.bashrc` or `.zshrc`
 SEPERATOR=":"
 COLOR_BRANCH_CLEAN=${green}
 COLOR_BRANCH_DIRTY=${purple}
+COLOR_BEHIND=${red}
+COLOR_AHEAD=${green}
 COLOR_HASH=${blue}
 COLOR_ADD=${green}
 COLOR_MOD=${green}
@@ -50,3 +52,7 @@ Status uses `git status --porcelain` to tell you information about changes
 
 ### Status Simp
 Status Simp tells you just removed and modified files but does not include untracked files
+
+### Master
+Tells you how far you are behind or ahead of master
+
