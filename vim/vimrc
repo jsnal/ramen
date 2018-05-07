@@ -10,11 +10,13 @@ Plug 'https://github.com/junegunn/fzf'
 Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
+Plug 'https://github.com/vimplugin/project.vim'
+Plug 'https://github.com/mhinz/vim-startify'
 
 " Theming
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
-Plug 'https://github.com/kristijanhusak/vim-hybrid-material'
+Plug 'https://github.com/pR0Ps/molokai-dark'
 Plug 'https://github.com/tomasr/molokai'
 
 " Pandoc
@@ -42,7 +44,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 set background=dark
 set hlsearch
-colorscheme molokai 
+colorscheme molokai-dark 
 "let g:hybrid_custom_term_colors = 1
 "}}}
 "---------------------------------------------------------------------------
@@ -115,11 +117,9 @@ map <F6> mzgg=G`z`<CR>
 map <C-F> :fzf<CR>
 map <C-R> :%s/
 nnoremap <silent> <TAB>v :call fzf#run({
-      \   'right': winwidth('.') / 2,
       \   'sink':  'vertical botright split' })<CR>
 
 nnoremap <silent> <TAB>x :call fzf#run({
-      \   'down': '40%',
       \   'sink': 'botright split' })<CR>
 
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
@@ -147,6 +147,15 @@ augroup END
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 "}}}
 "---------------------------------------------------------------------------
+" Functions"{{{
+
+if has ('persistent_undo')
+  set undodir=$HOME/.vim_undo
+  set undolevels=5000
+  set undofile
+endif
+"}}}
+"--------------------------------------------------------------------------
 " Airline{{{
 
 let g:airline_theme = "hybrid"
@@ -164,7 +173,14 @@ let g:airline#extensions#whitespace#show_message=0
 let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
-"---------------------------------------------------------------------------
+" --------------------------------------------------------------------------
+"  Project"{{{
+
+let g:proj_window_width = 34
+let g:proj_window_increment = 0
+nmap <silent> <Space>p <Plug>ToggleProject
+"}}}
+"--------------------------------------------------------------------------
 " Syntastic"{{{
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -191,5 +207,4 @@ let g:HiCursorWords_delay = 100
 " let g:indentLine_color_term = 254
 let g:indentLine_char = '▏'
 
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`','_':'_'} 
 "}}}

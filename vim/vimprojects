@@ -1,0 +1,46 @@
+Dotfiles=~/i3wm CD=. {
+ README.md
+ background.jpg
+ background.png
+ install.sh
+ tmux.conf
+ update.sh
+ vimrc
+ i3=~/i3wm/i3 {
+  README.md
+  config
+ }
+ music=~/i3wm/music {
+  bindings
+  config
+  mopidy.conf
+  mpd.conf
+ }
+ polybar=~/i3wm/polybar {
+  config
+  configold
+  error.sh
+  exampleconfig
+  launch.sh
+ }
+ Xorg=~/i3wm/X {
+  xbindkeysrc
+  xmodmap
+  xresources
+ }
+ zsh=~/i3wm/zsh {
+  crunch.zsh-theme
+  jason.zsh-theme
+  zshrc
+  zsh-git=~/i3wm/zsh/plugins/zsh-git {
+   README.md
+   git.sh
+  }
+ }
+}
+GovReview=/home/jason/Documents/GovReview CD=. filter="*.md" {
+ Unit1.md
+ Unit2.md
+ Unit3.md
+ Unit4.md
+}
