@@ -103,8 +103,8 @@ noremap H ^
 noremap L g_
 
 " Very magic search
-nnoremap / /\v
-vnoremap / /\v
+nnoremap +/ /\v
+vnoremap +/ /\v
 
 map <F2> :NERDTreeToggle<CR>
 map <F3> :setlocal spell! spelllang=en_us<CR> 
@@ -123,6 +123,9 @@ nnoremap <silent> <TAB>x :call fzf#run({
       \   'sink': 'botright split' })<CR>
 
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
+noremap <Space><TAB> <Esc>/<++><Enter>cw<Right>
+noremap <Space>q <Esc>i<Right><++><Esc>
+noremap I i<Right>
 "}}}
 "---------------------------------------------------------------------------
 " Buffers{{{
@@ -188,4 +191,5 @@ let g:HiCursorWords_delay = 100
 " let g:indentLine_color_term = 254
 let g:indentLine_char = '▏'
 
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`','_':'_'} 
 "}}}
