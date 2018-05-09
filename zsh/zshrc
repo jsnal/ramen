@@ -272,9 +272,9 @@ function comp-type() {
 	fi
 }
 
-alias vi='vim'
-alias ls='ls -Fh --color=always --group-directories'
-alias ll='ls -hl --color=always --group-directories'
+alias v='vim'
+alias ls='ls -Fh -I "*~" --color=always --group-directories'
+alias ll='ls -hl -I "*~" --color=always --group-directories'
 alias aa='sudo $(fc -ln -1)'
 alias gotop='gotop --color=monokai'
 alias tll='~/i3wm/i3/Scripts/tll.sh l'

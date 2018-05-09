@@ -5,7 +5,6 @@ Dotfiles=~/i3wm CD=. {
  install.sh
  tmux.conf
  update.sh
- vimrc
  i3=~/i3wm/i3 {
   README.md
   config
@@ -37,10 +36,15 @@ Dotfiles=~/i3wm CD=. {
    git.sh
   }
  }
+ vim=/home/jason/i3wm/vim CD=. {
+  vimprojects
+  vimrc
+ }
 }
 GovReview=/home/jason/Documents/GovReview CD=. filter="*.md" {
  Unit1.md
  Unit2.md
  Unit3.md
  Unit4.md
+ Unit5.md
 }

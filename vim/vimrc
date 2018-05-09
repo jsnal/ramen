@@ -7,11 +7,15 @@ Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/mhinz/vim-signify'
 Plug 'https://github.com/junegunn/fzf'
-Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 Plug 'https://github.com/vimplugin/project.vim'
-Plug 'https://github.com/mhinz/vim-startify'
+Plug 'https://github.com/ervandew/supertab'
+
+Plug 'https://github.com/garbas/vim-snipmate'
+Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+Plug 'https://github.com/tomtom/tlib_vim.git'
+Plug 'https://github.com/honza/vim-snippets.git'
 
 " Theming
 Plug 'https://github.com/vim-airline/vim-airline'
@@ -60,7 +64,6 @@ set expandtab
 "set smartindent
 set autoindent
 
-"autocmd VimEnter * NERDTree
 set nocompatible   " Disable vi-compatibility
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
@@ -80,6 +83,8 @@ set showcmd
 "}}}
 "---------------------------------------------------------------------------
 " Command rempas{{{
+
+set backspace=indent,eol,start
 
 command! Wq :wq
 command! W :w
@@ -108,7 +113,6 @@ noremap L g_
 nnoremap +/ /\v
 vnoremap +/ /\v
 
-map <F2> :NERDTreeToggle<CR>
 map <F3> :setlocal spell! spelllang=en_us<CR> 
 map <F4> :JSHint<CR><CR>
 map <F5> :setlocal foldmethod=marker<CR> 
@@ -122,10 +126,16 @@ nnoremap <silent> <TAB>v :call fzf#run({
 nnoremap <silent> <TAB>x :call fzf#run({
       \   'sink': 'botright split' })<CR>
 
+noremap <silent> <TAB>b call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'),
+            \ 'sink': 'e', 'down': '30%'})
+
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 noremap <Space><TAB> <Esc>/<++><Enter>cw<Right>
 noremap <Space>q <Esc>i<Right><++><Esc>
 noremap I i<Right>
+
+xnoremap K :move '<-2 <CR> gv=gv
+xnoremap J :move '>+1 <CR> gv=gv
 "}}}
 "---------------------------------------------------------------------------
 " Buffers{{{
@@ -154,6 +164,26 @@ if has ('persistent_undo')
   set undolevels=5000
   set undofile
 endif
+
+" > FZF Buffer
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <Space><Space> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
+
 "}}}
 "--------------------------------------------------------------------------
 " Airline{{{
@@ -181,15 +211,10 @@ let g:proj_window_increment = 0
 nmap <silent> <Space>p <Plug>ToggleProject
 "}}}
 "--------------------------------------------------------------------------
-" Syntastic"{{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" UltiSnips "{{{
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0"}}}
+
+"}}}
 "---------------------------------------------------------------------------
 " Settings things{{{
 
