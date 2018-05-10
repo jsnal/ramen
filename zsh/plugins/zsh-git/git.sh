@@ -1,27 +1,30 @@
 #!/bin/bash
 
 DOTGIT=".git/"
+PWD=$(pwd)
 
 function colors() {
-  bld=$(tput bold)
-  reset=$(tput sgr0)
-
-  bldred=${bld}$(tput setaf 1) 
-  bldgreen=${bld}$(tput setaf 2)
-  bldyellow=${bld}$(tput setaf 3)
-  bldblue=${bld}$(tput setaf 4)
-  bldpurple=${bld}$(tput setaf 5)
-  bldcyan=${bld}$(tput setaf 6) 
-  bldwhite=${bld}$(tput setaf 7)
-
-  red=$(tput setaf 1) 
-  green=$(tput setaf 2)
-  yellow=$(tput setaf 3)
-  blue=$(tput setaf 4)
-  purple=$(tput setaf 5)
-  cyan=$(tput setaf 6) 
-  white=$(tput setaf 7)
+  printf '\e[48;5;%dm ' {0..255}; printf '\e[0m \n']
 }
+bld=$(tput bold)
+reset=$(tput sgr0)
+
+bldred=${bld}$(tput setaf 1) 
+bldgreen=${bld}$(tput setaf 2)
+bldyellow=${bld}$(tput setaf 3)
+bldblue=${bld}$(tput setaf 4)
+bldpurple=${bld}$(tput setaf 5)
+bldcyan=${bld}$(tput setaf 6) 
+bldwhite=${bld}$(tput setaf 7)
+
+red=$(tput setaf 1) 
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+purple=$(tput setaf 5)
+cyan=$(tput setaf 6) 
+white=$(tput setaf 7)
+
 
 function dot_git() {
   dot_git="$(git rev-parse --git-dir 2>/dev/null)"
@@ -42,6 +45,16 @@ function is_clean() {
   else
     return 1
   fi
+}
+
+function is_blacklist() {
+  for i in "${BLACKLIST[@]}"; do
+    if [[ $i = $PWD  ]]; then
+      return 1 
+    else
+      return 0 
+    fi
+  done
 }
 
 function branch() {
@@ -92,14 +105,13 @@ function status_simp() {
   if [ $STATUS_SIMP = true ]; then
     MOD=$(git status --porcelain | grep -oE "M" | wc -l)
     DEL=$(git status --porcelain | grep -oE "D" | wc -l)
-
-    if [[ $DEL = "0" ]]; then 
-      echo ${COLOR_ADD}$MOD+ ${reset}${COLOR_DEL}${reset} | tr -d '\n' | tr -d ' '
-    elif [[ $MOD = "0" ]]; then
-      echo ${COLOR_ADD} ${reset}${COLOR_DEL}$DEL-${reset} | tr -d '\n' | tr -d ' '
+    
+    if [[ $DEL = "0"  ]] && [[ $MOD = "0" ]]; then
+      echo '' 
     else
-      echo $SEPERATOR${COLOR_ADD}$MOD+ ${reset}${COLOR_DEL}$DEL-${reset} | tr -d '\n' | tr -d ' '
+      echo ${COLOR_ADD}$MOD+ ${reset}${COLOR_DEL}$DEL-${reset} | tr -d '\n' | tr -d ' '
     fi
+
   else echo ''
   fi
 }
@@ -107,7 +119,7 @@ function status_simp() {
 function behind_master() {
   if [ $MASTER = true ]; then
     BEHIND=$(git rev-list --left-only --count master...HEAD 2>/dev/null)
-    if [ $BEHIND = 0 ]; then echo ''
+    if [[ $BEHIND = "0" ]]; then echo ''
     else
       echo ${COLOR_BEHIND}$BEHIND↓
     fi
@@ -117,7 +129,7 @@ function behind_master() {
 function ahead_master() {
   if [ $MASTER = true ]; then
     AHEAD=$(git rev-list --right-only --count master...HEAD 2>/dev/null)
-    if [ $AHEAD = 0 ]; then echo ''
+    if [[ $AHEAD = "0" ]]; then echo ''
     else
       echo ${COLOR_AHEAD}$AHEAD↑
     fi
@@ -125,12 +137,13 @@ function ahead_master() {
 }
 
 function git_info() {
-	if is_repo; then
-    echo $(branch)$(hash)$(status)$(status_simp) $(behind_master)$(ahead_master)
+	if is_repo && is_blacklist; then
+    echo $SEPERATOR$(branch)$(hash)$(status)$(status_simp) $(behind_master)$(ahead_master)
 	fi
 }
 
-SEPERATOR=":"
+SEPERATOR=""
+BLACKLIST=( "" )
 COLOR_BRANCH_CLEAN=${green}
 COLOR_BRANCH_DIRTY=${purple}
 COLOR_BEHIND=${red}
@@ -147,6 +160,5 @@ STATUS=true
 STATUS_SIMP=false
 BRANCH=true
 MASTER=true
-colors
 
 "$@"

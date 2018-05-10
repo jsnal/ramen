@@ -143,11 +143,11 @@ map <Leader>s :bnext<Return>
 map <Leader>d :bd<Return>
 map <Leader>f :b
 
-au BufWinLeave * mkview
+au BufWinLeave * silent mkview
 "au BufWinEnter * silent loadview
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinLeave * mkview
+  autocmd BufWinLeave * silent mkview
   autocmd BufWinEnter * silent loadview
 augroup END
 

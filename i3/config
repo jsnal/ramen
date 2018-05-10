@@ -1,6 +1,6 @@
 # Borders and Init# {{{
 set $mod Mod4
-set $TERMINAL xterm
+set $TERMINAL uxterm
 floating_modifier $mod
 
 gaps inner 0 
@@ -46,7 +46,7 @@ bindsym F9 exec ~/Downloads/Telegram/Telegram
 bindsym $mod+y exec bash ~/i3wm/i3/Scripts/yt-fscreen.sh
 # }}}
 # DMenu and Term# {{{
-bindsym $mod+Return exec xterm 
+bindsym $mod+Return exec uxterm 
 bindsym $mod+d exec rofi -show run 
 
 #bindsym $mod+Shift+s exec rofi -show ssh
@@ -192,7 +192,7 @@ exec_always feh --bg-scale ~/i3wm/background.png
 exec_always killall polybar 
 exec_always exec ~/i3wm/polybar/launch.sh
 exec_always exec mopidy
-exec xterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
+exec uxterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xbindkeys -p
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec

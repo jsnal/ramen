@@ -1,6 +1,7 @@
 # i3wm Config
  My i3wm config, scripts and setup.
- 
+
+ vim [Snippets](https://github.com/JasonLong24/snippets)
 ### Setup
 - Clone this repo into your home directory
 - Run the installer.sh
@@ -20,6 +21,7 @@ __*NOTE: Please delete all lines execpt for #!bin/bash so it doesn't run when it
 #### Or install by hand
 - Install dependencies
 - Install fonts for polybar in ~/usr/share/fonts
+- Clone [snippets](https://github.com/JasonLong24/snippets) into ~/.vim
 - Clone this github into ~/.config/
 
 ### Tools

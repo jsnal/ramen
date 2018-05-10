@@ -16,9 +16,12 @@ Add to your `.zshrc`
 Add to your `.bashrc`
 `PS1=":$(git_info)"`
 
+If the colors don't work you can run `./git.sh colors` to test the color output. 
+
 If you want to change any options add these to your `.bashrc` or `.zshrc`
 ```
 SEPERATOR=":"
+BLACKLIST=( "" )
 COLOR_BRANCH_CLEAN=${green}
 COLOR_BRANCH_DIRTY=${purple}
 COLOR_BEHIND=${red}
@@ -56,3 +59,5 @@ Status Simp tells you just removed and modified files but does not include untra
 ### Master
 Tells you how far you are behind or ahead of master
 
+### Blacklist
+You can blacklist directories from using the prompt. Declare the blacklist like an array with the full path to the directory. i.e `BLACKLIST=( "/home/jason/<Dir1>" "/home/jason/<Dir2>" )`

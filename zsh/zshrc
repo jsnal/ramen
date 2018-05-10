@@ -16,6 +16,7 @@ function precmd {
 	USER="%F{yellow}"
 	GIT_BRANCH="%F{magenta}"
   ALTPROMPT="%F{red}"
+	BLACKLIST=( "/home/jason/2018-bot" )
 
 	# Git Prompt
 	STATUS=false
@@ -52,7 +53,7 @@ function precmd {
 	# }}}
 	
 #  RPROMPT="$ALTPROMPT%B${session}%b"
-	DIR="[$DIR%B%~%b:$(git_info)$BRACKET]% "
+	DIR="[$DIR%B%~%b$(git_info)$BRACKET]% "
 	USER="$BRACKET@$USER%m"
 	END="$PROMPT$ "
 
@@ -310,6 +311,10 @@ function mdc() {
     rm "$2"
     pandoc --mathjax --toc -o "$2" "$3"/*.md
     evince "$2"
+	elif [ -f = "$1" ]; then
+		rm "$2"
+		pandoc --mathjax --toc -o "$2" "$3"
+		zathura "$2"
   else
     echo "Usage: mdc [OPTION] <Output Path> <Directory>"
   fi
