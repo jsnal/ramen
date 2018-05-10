@@ -58,6 +58,7 @@ bindsym $mod+s exec bash ~/i3wm/i3/Rofi/power.sh
 bindsym $mod+r exec bash ~/i3wm/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/i3wm/i3/Rofi/config.sh
 bindsym $mod+q exec rofi -show ssh 
+bindsym $mod+t exec bash ~/i3wm/i3/Rofi/tll-interface.sh
 # }}}
 # Window Navigation# {{{
 #Keys used for window navigation and moving
@@ -101,6 +102,7 @@ bindsym $mod+plus scratchpad show
 
 for_window [instance="tmux"] move window to scratchpad, scratchpad hide 
 for_window [instance="tele"] move window to scratchpad, scratchpad hide
+for_window [class="tll"] floating enable, resize set 800 600, move position center
 for_window [class="mpv"] floating enable, resize set 1200 800, move position center 
 # }}}
 # Workspaces# {{{

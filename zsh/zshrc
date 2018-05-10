@@ -117,7 +117,7 @@ function vif() {
 # Tmux Aliases# {{{
 function tmuxn() { tmux -2 new -s "$@" }
 function tmuxk() { tmux kill-session -t "$@" }
-function tmuxa() { tmux a -t "$@" }
+function tmuxa() { tmux -2 a -t "$@" }
 
 function tmuxj-hard() {
   tmux split-window -h -p 30 '/opt/SceneBuilder/SceneBuilder' 

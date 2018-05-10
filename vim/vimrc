@@ -15,7 +15,6 @@ Plug 'https://github.com/ervandew/supertab'
 Plug 'https://github.com/garbas/vim-snipmate'
 Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 Plug 'https://github.com/tomtom/tlib_vim.git'
-Plug 'https://github.com/honza/vim-snippets.git'
 
 " Theming
 Plug 'https://github.com/vim-scripts/rstatusline'
@@ -116,7 +115,7 @@ map <F4> :JSHint<CR><CR>
 map <F5> :setlocal foldmethod=marker<CR> 
 map <F6> mzgg=G`z`<CR>
 
-map <C-F> :fzf<CR>
+map <C-F> :w<CR>:fzf<CR>
 map <C-R> :%s/
 nnoremap <silent> <TAB>v :call fzf#run({
       \   'sink':  'vertical botright split' })<CR>
@@ -130,7 +129,6 @@ noremap <silent> <TAB>b call fzf#run({'source': map(range(1, bufnr('$')), 'bufna
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 noremap <Space><TAB> <Esc>/<++><Enter>cw<Right>
 noremap <Space>q <Esc>i<Right><++><Esc>
-noremap I i<Right>
 
 xnoremap K :move '<-2 <CR> gv=gv
 xnoremap J :move '>+1 <CR> gv=gv
