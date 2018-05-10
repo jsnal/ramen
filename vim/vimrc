@@ -18,8 +18,7 @@ Plug 'https://github.com/tomtom/tlib_vim.git'
 Plug 'https://github.com/honza/vim-snippets.git'
 
 " Theming
-Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/vim-airline/vim-airline-themes'
+Plug 'https://github.com/vim-scripts/rstatusline'
 Plug 'https://github.com/pR0Ps/molokai-dark'
 Plug 'https://github.com/tomasr/molokai'
 
@@ -30,7 +29,6 @@ Plug 'https://github.com/plasticboy/vim-markdown'
 " Language Specific 
 Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/Shutnik/jshint2.vim'
-"Plug 'https://github.com/vim-syntastic/syntastic'
 
 call plug#end()
 "}}}
@@ -153,8 +151,6 @@ augroup AutoSaveFolds
   autocmd BufWinEnter * silent loadview
 augroup END
 
-"" Show the buffer number in the status line.
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 "}}}
 "---------------------------------------------------------------------------
 " Functions"{{{
@@ -184,24 +180,6 @@ nnoremap <silent> <Space><Space> :call fzf#run({
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
 
-"}}}
-"--------------------------------------------------------------------------
-" Airline{{{
-
-let g:airline_theme = "hybrid"
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline_left_sep=''
-"let g:airline_right_sep=''
-let g:airline#extensions#syntastic#enabled=0
-let g:ycm_show_diagnostics_ui=0
-let g:airline#extensions#whitespace#enabled=0
-let g:airline#extensions#whitespace#show_message=0
-let g:airline_symbols.maxlinenr = ''
-let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
 " --------------------------------------------------------------------------
 "  Project"{{{

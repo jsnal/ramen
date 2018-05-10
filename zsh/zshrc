@@ -254,9 +254,13 @@ function net() {
     ping -c 5 google.com | awk 'NR==2,NR==6{print $8}' | cut -c 6-
     printf "Pinging 8.8.8.8... \n"
     ping -c 5 8.8.8.8 | awk 'NR==2,NR==6{print $7}' | cut -c 6-
+		printf '\n'
+		ip addr
   elif [ -s = $1 ]
   then
     curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+		printf '\n'
+		ip addr
   else
     printf "Error... "
   fi
@@ -273,6 +277,7 @@ function comp-type() {
 }
 
 alias v='vim'
+alias z='zathura'
 alias ls='ls -Fh -I "*~" --color=always --group-directories'
 alias ll='ls -hl -I "*~" --color=always --group-directories'
 alias aa='sudo $(fc -ln -1)'
