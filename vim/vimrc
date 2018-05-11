@@ -115,7 +115,7 @@ map <F4> :JSHint<CR><CR>
 map <F5> :setlocal foldmethod=marker<CR> 
 map <F6> mzgg=G`z`<CR>
 
-map <C-F> :w<CR>:fzf<CR>
+map <C-F> :fzf<CR>
 map <C-R> :%s/
 nnoremap <silent> <TAB>v :call fzf#run({
       \   'sink':  'vertical botright split' })<CR>
@@ -184,12 +184,47 @@ nnoremap <silent> <Space><Space> :call fzf#run({
 
 let g:proj_window_width = 34
 let g:proj_window_increment = 0
-nmap <silent> <Space>p <Plug>ToggleProject
+nmap <silent> <Space>p :call ToggleSExplorer()<CR><Plug>ToggleProject
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+function! ToggleSExplorer()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          close
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+     	Sexplore 
+      let t:expl_buf_num = bufnr("%")
+  endif
+endfunction
 "}}}
 "--------------------------------------------------------------------------
-" UltiSnips "{{{
+" Statusbar "{{{
 
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi statusline guibg=blue ctermfg=blue guifg=white ctermbg=white
+  elseif a:mode == 'r'
+    hi statusline guibg=Purple ctermfg=5 guifg=Black ctermbg=0
+  endif
+endfunction
 
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
+hi statusline guibg=DarkGrey ctermfg=darkgrey guifg=White ctermbg=white
 "}}}
 "---------------------------------------------------------------------------
 " Settings things{{{
