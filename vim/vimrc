@@ -3,11 +3,10 @@
 call plug#begin('~/.vim/plugged')
 
 " Utils
-Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/godlygeek/tabular'
+"Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/mhinz/vim-signify'
 Plug 'https://github.com/junegunn/fzf'
-Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 Plug 'https://github.com/vimplugin/project.vim'
 Plug 'https://github.com/ervandew/supertab'
@@ -24,10 +23,6 @@ Plug 'https://github.com/tomasr/molokai'
 " Pandoc
 Plug 'https://github.com/suan/vim-instant-markdown'
 Plug 'https://github.com/plasticboy/vim-markdown'
-
-" Language Specific 
-Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/Shutnik/jshint2.vim'
 
 call plug#end()
 "}}}
@@ -90,7 +85,7 @@ command! Wa :wa
 command! Qa :qa
 command! Wqa :wqa
 cabbrev fzf FZF 
-command WW :w !sudo dd of=%
+command! WW :w !sudo dd of=%
 "}}}
 "---------------------------------------------------------------------------
 " Binding remaps{{{
@@ -111,7 +106,6 @@ nnoremap +/ /\v
 vnoremap +/ /\v
 
 map <F3> :setlocal spell! spelllang=en_us<CR> 
-map <F4> :JSHint<CR><CR>
 map <F5> :setlocal foldmethod=marker<CR> 
 map <F6> mzgg=G`z`<CR>
 
@@ -216,7 +210,7 @@ function! ToggleSExplorer()
   endif
 endfunction
 "}}}
-"--------------------------------------------------------------------------
+"---------------------------------------------------------------------------
 " Statusbar "{{{
 
 function! InsertStatuslineColor(mode)
@@ -230,6 +224,27 @@ endfunction
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
 hi statusline guibg=DarkGrey ctermfg=darkgrey guifg=White ctermbg=white
+"}}}
+"---------------------------------------------------------------------------
+" Pairs{{{
+inoremap ( ()<Left>
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap < <><Left>
+inoremap ` ``<Left>
+
+function! PairsBackSpace() abort
+    let cur_line = getline('.')
+    let before_char = cur_line[col('.')-2]
+    let after_char = cur_line[col('.')-1]
+    if (before_char == '(' && after_char == ')') || (before_char == '{' && after_char == '}') || (before_char == '[' && after_char == ']') || (before_char == '"' && after_char == '"') || (before_char == '`' && after_char == '`') || (before_char == '<' && after_char == '>') || (before_char == "'" && after_char == "'")
+        return "\<Del>\<BS>"
+    else
+        return "\<BS>"
+endfunction
+inoremap <silent> <BS> <C-r>=PairsBackSpace()<CR>
 "}}}
 "---------------------------------------------------------------------------
 " Settings things{{{
@@ -250,5 +265,4 @@ let g:HiCursorWords_linkStyle='Underlined'
 let g:HiCursorWords_delay = 100
 " let g:indentLine_color_term = 254
 let g:indentLine_char = '▏'
-
 "}}}

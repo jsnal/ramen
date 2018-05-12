@@ -65,6 +65,8 @@ function shell() {
     ln X/xmodmap $HOME/.Xmodmap
     ln X/xbindkeysrc $HOME/.xbindkeysrc
     ln tmux.conf $HOME/.tmux.conf
+    ln .gitignore $HOME/.gitignore
+    ln .gitconfig $HOME/.gitconfig
     afterInstall
   fi
 }
@@ -95,6 +97,8 @@ function clean() {
     rm $HOME/.Xresources
     rm $HOME/.tmux.conf
     rm $HOME/.config/polybar/config
+    rm $HOME/.gitignore
+    rm $HOME/.gitconfig
     echo "Repository Cleaned..."
     afterInstall
   fi

@@ -70,8 +70,8 @@ interval = 10
 date = "%Y-%m-%d"
 date-alt = %a %d %b %Y
 
-time = %H:%M
-time-full = %H:%M:%S
+time = %I:%M
+time-full = %I:%M:%S
 
 label = |%time%
 
