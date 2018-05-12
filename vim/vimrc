@@ -132,6 +132,10 @@ noremap <Space>q <Esc>i<Right><++><Esc>
 
 xnoremap K :move '<-2 <CR> gv=gv
 xnoremap J :move '>+1 <CR> gv=gv
+
+noremap <C-y> <C-y><C-y><C-y>
+noremap <C-e> <C-e><C-e><C-e>
+
 "}}}
 "---------------------------------------------------------------------------
 " Buffers{{{
@@ -185,6 +189,7 @@ nnoremap <silent> <Space><Space> :call fzf#run({
 let g:proj_window_width = 34
 let g:proj_window_increment = 0
 nmap <silent> <Space>p :call ToggleSExplorer()<CR><Plug>ToggleProject
+nmap <silent> <F2> :call ToggleSExplorer()<CR><Plug>ToggleProject
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -235,6 +240,9 @@ set nocompatible
 set noswapfile
 set shortmess=a
 set cmdheight=2
+set showcmd
+set showmode
+set foldcolumn=1
 
 " HiCursorWords
 let g:HiCursorWords_linkStyle='Underlined'
