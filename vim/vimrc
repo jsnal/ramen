@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 
 " Utils
 Plug 'https://github.com/godlygeek/tabular'
-"Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/mhinz/vim-signify'
 Plug 'https://github.com/junegunn/fzf'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
@@ -16,7 +15,6 @@ Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 Plug 'https://github.com/tomtom/tlib_vim.git'
 
 " Theming
-Plug 'https://github.com/vim-scripts/rstatusline'
 Plug 'https://github.com/pR0Ps/molokai-dark'
 Plug 'https://github.com/tomasr/molokai'
 
@@ -90,7 +88,19 @@ command! WW :w !sudo dd of=%
 "---------------------------------------------------------------------------
 " Binding remaps{{{
 
+"---[ Window Manipulaton ]---"
+noremap <TAB><TAB> :source %<CR>
 noremap <TAB>q <C-W>w
+noremap <TAB>r <C-W>r
+noremap <TAB>h <C-W>h
+noremap <TAB>j <C-W>j
+noremap <TAB>k <C-W>k
+noremap <TAB>l <C-W>l
+noremap <TAB>hh <C-W>H
+noremap <TAB>jj <C-W>J
+noremap <TAB>kk <C-W>K
+noremap <TAB>ll <C-W>L
+
 noremap <C-c> "+y \| :!sh -xc '~/i3wm/i3/Scripts/paste.sh'<CR>
 noremap <C-x> :! pandoc --mathjax --toc -o '%:p:h'/out.pdf '%:p:h'/*.md \| zathura '%:p:h'/out.pdf &<CR><CR> 
 noremap <C-z> :! ant -f ~/Github/workspace/2018-bot/build.xml<CR> 
@@ -111,6 +121,7 @@ map <F6> mzgg=G`z`<CR>
 
 map <C-F> :fzf<CR>
 map <C-R> :%s/
+"---[ Fuzzy Finder ]---"
 nnoremap <silent> <TAB>v :call fzf#run({
       \   'sink':  'vertical botright split' })<CR>
 
@@ -121,6 +132,8 @@ noremap <silent> <TAB>b call fzf#run({'source': map(range(1, bufnr('$')), 'bufna
             \ 'sink': 'e', 'down': '30%'})
 
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
+
+"---[ Quick Movement ]---"
 noremap <Space><TAB> <Esc>/<++><Enter>cw<Right>
 noremap <Space>q <Esc>i<Right><++><Esc>
 
@@ -213,6 +226,24 @@ endfunction
 "---------------------------------------------------------------------------
 " Statusbar "{{{
 
+let g:currentmode={ 'n' : 'Normal ', 'no' : 'N·Operator Pending ', 'v' : 'Visual ', 'V' : 'V·Line ', '^V' : 'V·Block ', 's' : 'Select ', 'S': 'S·Line ', '^S' : 'S·Block ', 'i' : 'Insert ', 'R' : 'Replace ', 'Rv' : 'V·Replace ', 'c' : 'Command ', 'cv' : 'Vim Ex ', 'ce' : 'Ex ', 'r' : 'Prompt ', 'rm' : 'More ', 'r?' : 'Confirm ', '!' : 'Shell ', 't' : 'Terminal '}
+
+function! ModeCurrent() abort
+    let l:modecurrent = mode()
+    let l:modelist = toupper(get(g:currentmode, l:modecurrent, 'V·Block '))
+    let l:current_status_mode = l:modelist
+    return l:current_status_mode
+endfunction
+
+set statusline=\ %{ModeCurrent()}>>\ 
+set statusline+=%#PmenuSel#
+set statusline+=\ %r%m[%n][%f]\ 
+set statusline+=%#LineNr#
+set statusline+=%=%#PmenuSel#
+set statusline+=%=\ %P\ %p%%
+set statusline+=%=\ (%l/%L)
+set statusline+=\ <<
+
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
     hi statusline guibg=blue ctermfg=blue guifg=white ctermbg=white
@@ -245,6 +276,7 @@ function! PairsBackSpace() abort
         return "\<BS>"
 endfunction
 inoremap <silent> <BS> <C-r>=PairsBackSpace()<CR>
+
 "}}}
 "---------------------------------------------------------------------------
 " Settings things{{{
