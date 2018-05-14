@@ -11,7 +11,7 @@ function deps() {
   if [ $os = "Ubuntu" ] 
   then
     echo "$(tput setaf 1)Operating System... Ubuntu$(tput sgr0)"
-    sudo apt-get install zsh vim curl i3
+    sudo apt-get install zsh vim curl
   elif [ $os = "Arch" ]
   then
     echo "$(tput setaf 1)Operating System... Arch$(tput sgr0)"
@@ -34,7 +34,7 @@ function install() {
   echo "Installing Configs... \n"
   ln zsh/zshrc $HOME/.zshrc
   ln i3/config $HOME/.config/i3/config
-  ln vimrc $HOME/.vimrc
+  ln vim/vimrc $HOME/.vimrc
   ln X/xresources $HOME/.Xresources
   ln X/xmodmap $HOME/.Xmodmap
   ln X/xbindkeysrc $HOME/.xbindkeysrc
@@ -77,7 +77,7 @@ function vi() {
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     deps
     echo "Installing Vim... \n"
-    ln vimrc $HOME/.vimrc
+    ln vim/vimrc $HOME/.vimrc
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     vim +":PlugInstall" +qa
