@@ -17,6 +17,8 @@ Plug 'https://github.com/tomtom/tlib_vim.git'
 " Theming
 Plug 'https://github.com/pR0Ps/molokai-dark'
 Plug 'https://github.com/tomasr/molokai'
+Plug 'https://github.com/mitsuhiko/fruity-vim-colorscheme'
+Plug 'https://github.com/sjl/badwolf'
 
 " Pandoc
 Plug 'https://github.com/suan/vim-instant-markdown'
@@ -28,7 +30,7 @@ call plug#end()
 " Initializing{{{
 
 syntax on
-set t_Co=256
+"set t_Co=256
 scriptencoding utf-8
 let mapleader = ","
 let g:EasyMotion_leader_key = '<Leader>' 
@@ -38,7 +40,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 set background=dark
 set hlsearch
-colorscheme molokai-dark 
+colorscheme badwolf 
 "let g:hybrid_custom_term_colors = 1
 "}}}
 "---------------------------------------------------------------------------
@@ -129,7 +131,7 @@ nnoremap <silent> <TAB>x :call fzf#run({
       \   'sink': 'botright split' })<CR>
 
 noremap <silent> <TAB>b call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'),
-            \ 'sink': 'e', 'down': '30%'})
+      \ 'sink': 'e', 'down': '30%'})
 
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
@@ -183,11 +185,11 @@ function! s:bufopen(e)
 endfunction
 
 nnoremap <silent> <Space><Space> :call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })<CR>
+      \   'source':  reverse(<sid>buflist()),
+      \   'sink':    function('<sid>bufopen'),
+      \   'options': '+m',
+      \   'down':    len(<sid>buflist()) + 2
+      \ })<CR>
 
 "}}}
 " --------------------------------------------------------------------------
@@ -205,21 +207,21 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 function! ToggleSExplorer()
   if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          close
-          unlet t:expl_buf_num
-      endif
+    let expl_win_num = bufwinnr(t:expl_buf_num)
+    if expl_win_num != -1
+      let cur_win_nr = winnr()
+      exec expl_win_num . 'wincmd w'
+      close
+      exec cur_win_nr . 'wincmd w'
+      unlet t:expl_buf_num
+    else
+      close
+      unlet t:expl_buf_num
+    endif
   else
-      exec '1wincmd w'
-     	Sexplore 
-      let t:expl_buf_num = bufnr("%")
+    exec '1wincmd w'
+    Sexplore 
+    let t:expl_buf_num = bufnr("%")
   endif
 endfunction
 "}}}
@@ -229,10 +231,10 @@ endfunction
 let g:currentmode={ 'n' : 'Normal ', 'no' : 'N·Operator Pending ', 'v' : 'Visual ', 'V' : 'V·Line ', '^V' : 'V·Block ', 's' : 'Select ', 'S': 'S·Line ', '^S' : 'S·Block ', 'i' : 'Insert ', 'R' : 'Replace ', 'Rv' : 'V·Replace ', 'c' : 'Command ', 'cv' : 'Vim Ex ', 'ce' : 'Ex ', 'r' : 'Prompt ', 'rm' : 'More ', 'r?' : 'Confirm ', '!' : 'Shell ', 't' : 'Terminal '}
 
 function! ModeCurrent() abort
-    let l:modecurrent = mode()
-    let l:modelist = toupper(get(g:currentmode, l:modecurrent, 'V·Block '))
-    let l:current_status_mode = l:modelist
-    return l:current_status_mode
+  let l:modecurrent = mode()
+  let l:modelist = toupper(get(g:currentmode, l:modecurrent, 'V·Block '))
+  let l:current_status_mode = l:modelist
+  return l:current_status_mode
 endfunction
 
 set statusline=\ %{ModeCurrent()}>>\ 
@@ -267,34 +269,35 @@ inoremap < <><Left>
 inoremap ` ``<Left>
 
 function! PairsBackSpace() abort
-    let cur_line = getline('.')
-    let before_char = cur_line[col('.')-2]
-    let after_char = cur_line[col('.')-1]
-    if (before_char == '(' && after_char == ')') || (before_char == '{' && after_char == '}') || (before_char == '[' && after_char == ']') || (before_char == '"' && after_char == '"') || (before_char == '`' && after_char == '`') || (before_char == '<' && after_char == '>') || (before_char == "'" && after_char == "'")
-        return "\<Del>\<BS>"
-    else
-        return "\<BS>"
-endfunction
-inoremap <silent> <BS> <C-r>=PairsBackSpace()<CR>
+  let cur_line = getline('.')
+  let before_char = cur_line[col('.')-2]
+  let after_char = cur_line[col('.')-1]
+  if (before_char == '(' && after_char == ')') || (before_char == '{' && after_char == '}') || (before_char == '[' && after_char == ']') || (before_char == '"' && after_char == '"') || (before_char == '`' && after_char == '`') || (before_char == '<' && after_char == '>') || (before_char == "'" && after_char == "'")
+    return "\<Del>\<BS>"
+  else
+    return "\<BS>"
+  endfunction
+  inoremap <silent> <BS> <C-r>=PairsBackSpace()<CR>
 
-"}}}
-"---------------------------------------------------------------------------
-" Settings things{{{
+  "}}}
+  "---------------------------------------------------------------------------
+  " Settings things{{{
 
-set path+=**
-set wildmenu
-set nocompatible
-set noswapfile
-set shortmess=a
-set cmdheight=2
-set showcmd
-set showmode
-set foldcolumn=1
+  set path+=**
+  set wildmenu
+  set nocompatible
+  set noswapfile
+  set shortmess=a
+  set cmdheight=2
+  set showcmd
+  set showmode
+  set foldcolumn=2
+  set foldmethod=indent
 
-" HiCursorWords
-let g:HiCursorWords_linkStyle='Underlined'
-" let g:HiCursorWords_debugEchoHiName = 1
-let g:HiCursorWords_delay = 100
-" let g:indentLine_color_term = 254
-let g:indentLine_char = '▏'
-"}}}
+  " HiCursorWords
+  let g:HiCursorWords_linkStyle='Underlined'
+  " let g:HiCursorWords_debugEchoHiName = 1
+  let g:HiCursorWords_delay = 100
+  " let g:indentLine_color_term = 254
+  let g:indentLine_char = '▏'
+  "}}}
