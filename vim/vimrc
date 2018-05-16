@@ -17,7 +17,6 @@ Plug 'https://github.com/tomtom/tlib_vim.git'
 " Theming
 Plug 'https://github.com/pR0Ps/molokai-dark'
 Plug 'https://github.com/tomasr/molokai'
-Plug 'https://github.com/mitsuhiko/fruity-vim-colorscheme'
 Plug 'https://github.com/sjl/badwolf'
 
 " Pandoc

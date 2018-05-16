@@ -13,6 +13,8 @@ shell           Installs just zsh(plugins) and tmux
 vi              Installs just vim config
 afterInstall    Runs the .afterinst config
 clean           Removes all symlinks to configs
+github          Menu for adding git info to gitconfig
+help            Displays the help menu
 ```
 ##### After Install Config
 The after install config is located in the root directory. To use it just write a command you want to run after the install is complete.

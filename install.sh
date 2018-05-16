@@ -32,14 +32,14 @@ function install() {
   zsh/plugins/fzf/install
 
   echo "Installing Configs... \n"
-  ln zsh/zshrc $HOME/.zshrc
-  ln i3/config $HOME/.config/i3/config
-  ln vim/vimrc $HOME/.vimrc
-  ln X/xresources $HOME/.Xresources
-  ln X/xmodmap $HOME/.Xmodmap
-  ln X/xbindkeysrc $HOME/.xbindkeysrc
-  ln tmux.conf $HOME/.tmux.conf
-  ln polybar/config $HOME/.config/polybar/config
+  ln -s zsh/zshrc $HOME/.zshrc
+  ln -s i3/config $HOME/.config/i3/config
+  ln -s vim/vimrc $HOME/.vimrc
+  ln -s X/xresources $HOME/.Xresources
+  ln -s X/xmodmap $HOME/.Xmodmap
+  ln -s X/xbindkeysrc $HOME/.xbindkeysrc
+  ln -s tmux.conf $HOME/.tmux.conf
+  ln -s polybar/config $HOME/.config/polybar/config
 
   echo "Installing Vim.. \n"
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -60,13 +60,13 @@ function shell() {
     zsh/plugins/fzf/install
 
     echo "Installing Shell... \n"
-    ln zsh/zshrc $HOME/.zshrc
-    ln X/xresources $HOME/.Xresources
-    ln X/xmodmap $HOME/.Xmodmap
-    ln X/xbindkeysrc $HOME/.xbindkeysrc
-    ln tmux.conf $HOME/.tmux.conf
-    ln .gitignore $HOME/.gitignore
-    ln .gitconfig $HOME/.gitconfig
+    ln -s zsh/zshrc $HOME/.zshrc
+    ln -s X/xresources $HOME/.Xresources
+    ln -s X/xmodmap $HOME/.Xmodmap
+    ln -s X/xbindkeysrc $HOME/.xbindkeysrc
+    ln -s tmux.conf $HOME/.tmux.conf
+    ln -s .gitignore $HOME/.gitignore
+    ln -s .gitconfig $HOME/.gitconfig
     afterInstall
   fi
 }
@@ -77,7 +77,7 @@ function vi() {
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     deps
     echo "Installing Vim... \n"
-    ln vim/vimrc $HOME/.vimrc
+    ln -s vim/vimrc $HOME/.vimrc
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     vim +":PlugInstall" +qa
@@ -104,6 +104,35 @@ function clean() {
   fi
 }
 
+function pull() {
+  read -p "$(tput setaf 1)This may overwrite existing files in your home directory. Are you sure? (y/n) $(tput sgr0)" -n 1;
+  echo "";
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    cd ~/i3wm && git pull origin master
+    clean
+    install
+  else
+    echo "Pull Stopped."
+  fi
+}
+
+function github() {
+  rm ~/.gitconfig
+  cp ~/i3wm/.gitconfig ~/.gitconfig
+
+  echo Enter github name: && read gitName
+  echo Enter github email: && read gitEmail
+
+  read -p "$(tput sgr0)Username: $(tput setaf 2)$gitName $(tput sgr0)Email: $(tput setaf 2)$gitEmail $(tput setaf 1)Is this right? (y/n) $(tput sgr0)" -n 1;
+  echo "";
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    sed -i "1 i\[user]\nname = $gitName\nemail = $gitEmail\n" ~/.gitconfig 
+    echo "Username and Email pushed"
+  else
+    echo "Stopped Github Setup."
+  fi
+}
+
 function afterInstall() {
   echo "Running After Installation Config... "
   if [ $afterinstallline -gt 1 ]; then
@@ -112,5 +141,17 @@ function afterInstall() {
     echo ">Nothing to run in .afterinst... "
   fi
   echo "Install Finished! Logout for changes to take affect."
+}
+
+function help() {
+  printf "./install.sh [function]
+    deps            Installs dependencies
+    install         Installs entire config including i3 and polybar
+    shell           Installs just zsh(plugins) and tmux
+    vi              Installs just vim config
+    afterInstall    Runs the .afterinst config
+    clean           Removes all symlinks to configs
+    github          Menu for adding git info to gitconfig
+    help            Displays this menu"
 }
 "$@"

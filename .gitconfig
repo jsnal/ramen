@@ -1,6 +1,3 @@
-[user]
-	email = jasonlongball@gmail.com
-	name = JasonLong24
 [alias]
   co = checkout
   cob = checkout -b
