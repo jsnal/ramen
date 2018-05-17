@@ -2,7 +2,6 @@
 
 AltPrompt=tmux
 # Plugins# {{{
-source $HOME/i3wm/zsh/plugins/zsh-git-prompt/zshrc.sh
 source $HOME/i3wm/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 function precmd {
 	source $HOME/i3wm/zsh/plugins/zsh-autopair/autopair.zsh
@@ -17,6 +16,7 @@ function precmd {
 	GIT_BRANCH="%F{magenta}"
   ALTPROMPT="%F{red}"
 	BLACKLIST=( "/home/jason/2018-bot" )
+  SEPERATOR=":"
 
 	# Git Prompt
 	STATUS=false

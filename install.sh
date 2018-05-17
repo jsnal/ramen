@@ -26,20 +26,21 @@ function install() {
   read -p "$(tput setaf 1)This may overwrite existing files in your home directory. Are you sure? (y/n) $(tput sgr0)" -n 1;
   echo "";
   if [[ $REPLY =~ ^[Yy]$ ]]; then
+  clean
   deps 
   chsh -s $(which zsh)
   mkdir $HOME/.config
-  zsh/plugins/fzf/install
 
   echo "Installing Configs... \n"
   ln -s zsh/zshrc $HOME/.zshrc
-  ln -s i3/config $HOME/.config/i3/config
+  zsh/plugins/fzf/install
+  ln i3/config $HOME/.config/i3/config
   ln -s vim/vimrc $HOME/.vimrc
   ln -s X/xresources $HOME/.Xresources
   ln -s X/xmodmap $HOME/.Xmodmap
   ln -s X/xbindkeysrc $HOME/.xbindkeysrc
   ln -s tmux.conf $HOME/.tmux.conf
-  ln -s polybar/config $HOME/.config/polybar/config
+  ln polybar/config $HOME/.config/polybar/config
 
   echo "Installing Vim.. \n"
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -57,10 +58,10 @@ function shell() {
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     deps
     chsh -s $(which zsh)
-    zsh/plugins/fzf/install
 
     echo "Installing Shell... \n"
     ln -s zsh/zshrc $HOME/.zshrc
+    zsh/plugins/fzf/install
     ln -s X/xresources $HOME/.Xresources
     ln -s X/xmodmap $HOME/.Xmodmap
     ln -s X/xbindkeysrc $HOME/.xbindkeysrc

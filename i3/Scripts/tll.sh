@@ -2,6 +2,7 @@
 # In repository set:
 # git remote add origin "10.52.2.2:8080/JasonLong24/tll"
 # git remote add outside "jasonlong24.crabdance.com:8080/JasonLong24/tll"
+# Be sure to symlink .todos.json into home dir
 
 ip=$(ip addr | ag "inet " | tr "/" " " | awk '{if (NR!=1) {print $2}}')
 if [[ $ip = 10.52.2.* ]]; then

@@ -190,6 +190,14 @@ nnoremap <silent> <Space><Space> :call fzf#run({
       \   'down':    len(<sid>buflist()) + 2
       \ })<CR>
 
+function! Betterfdm()
+  if &foldmethod =~ "marker"
+    set foldmethod=marker 
+  else
+    set foldmethod=indent
+  endif
+endfunction
+call Betterfdm()
 "}}}
 " --------------------------------------------------------------------------
 "  Project"{{{
@@ -280,6 +288,16 @@ function! PairsBackSpace() abort
 
   "}}}
   "---------------------------------------------------------------------------
+" Commenting
+command! -range Comment <line1>,<line2>call BetterComments(&filetype) 
+noremap <C-W> :call BetterComments(&filetype)
+
+function! BetterComments(filetype) range
+  echo a:firstline.",".a:lastline
+  if a:filetype == "vim"
+    execute 'normal! 'a:firstline.",".a:lastline.s/^/"
+  endif
+endfunction
   " Settings things{{{
 
   set path+=**
@@ -291,7 +309,6 @@ function! PairsBackSpace() abort
   set showcmd
   set showmode
   set foldcolumn=2
-  set foldmethod=indent
 
   " HiCursorWords
   let g:HiCursorWords_linkStyle='Underlined'
