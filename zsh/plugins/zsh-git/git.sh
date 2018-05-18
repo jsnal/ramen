@@ -142,6 +142,12 @@ function git_info() {
 	fi
 }
 
+function git_infoAlt() {
+  if is_repo && is_blacklist; then
+    echo "A" 
+  fi
+}
+
 SEPERATOR=""
 BLACKLIST=( "" )
 COLOR_BRANCH_CLEAN=${green}

@@ -39,7 +39,7 @@ bindsym $mod+Shift+x exec bash ~/i3wm/i3/Scripts/lock.sh
 #bindsym $mod+F5 exec xbacklight -dec 10
 bindsym $mod+F7 exec xbacklight -set 0 
 
-bindsym F8 exec ~/eclipse/eclipse 
+bindsym F8 exec /opt/eclipse/eclipse 
 bindsym F9 exec ~/Downloads/Telegram/Telegram
 #bindsym $mod+F11 exec amixer -q sset "Master" 5%-
 #bindsym $mod+F12 exec amixer -q sset "Master" 5%+ 

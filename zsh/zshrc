@@ -1,6 +1,6 @@
 # Set up the prompt
 
-AltPrompt=tmux
+AltPrompt=git
 # Plugins# {{{
 source $HOME/i3wm/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 function precmd {
@@ -45,6 +45,9 @@ function precmd {
       ;;
     hist-num)
       session"("$(history | cut -d " " -f2)")"
+      ;;
+    git)
+      session=$(git_infoAlt)
       ;;
     *)
       session=""
