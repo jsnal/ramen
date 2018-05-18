@@ -9,6 +9,7 @@ Plug 'https://github.com/junegunn/fzf'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 Plug 'https://github.com/vimplugin/project.vim'
 Plug 'https://github.com/ervandew/supertab'
+Plug 'https://github.com/vim-syntastic/syntastic'
 Plug 'https://github.com/tpope/vim-commentary'
 
 
@@ -293,6 +294,16 @@ function! PairsBackSpace() abort
 
   "}}}
 "---------------------------------------------------------------------------
+" Syntastic
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_java_javac_classpath = "~/wpilib/java/current/lib/WPILib.jar:~/wpilib/java/current/lib/CTRE_Phoenix.jar:~/2018-bot/src:~/wpilib/java/current/lib/cscore.jar"
   " Settings things{{{
 
   set path+=**
