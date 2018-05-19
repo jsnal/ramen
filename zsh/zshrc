@@ -362,6 +362,30 @@ function kernel-update() {
   
 }
 # }}}
+# Directory Aliases
+
+function o() {
+
+  case $1 in
+    dow)
+      cdpath="$HOME/Downloads/"$2"" ;;
+    *)
+      cdpath="$@" ;;
+  esac
+  opentype="AA"
+  if [[ -d "$cdpath" ]]; then
+    opentype="cd" 
+  elif [[ -f "$cdpath" ]]; then
+    opentype="vim" 
+  else 
+    opentype="Not Identified"
+  fi
+
+
+  echo $opentype
+  $opentype $cdpath 
+}
+
 # Zstyle # {{{
 autoload -Uz compinit
 compinit
