@@ -23,6 +23,9 @@ function precmd {
 	STATUS=false
 	STATUS_SIMP=true
   HASH=false
+  # Simplified Overrides everything!
+  SIMPLIFIED=true
+
 	# Functions# {{{
 	function get_sudo() {
 			if sudo -n true 2>/dev/null; then 
@@ -48,9 +51,6 @@ function precmd {
     hist-num)
       session"("$(history | cut -d " " -f2)")"
       ;;
-    git)
-      session=$(git_infoAlt)
-      ;;
     *)
       session=""
       ;;
@@ -58,7 +58,7 @@ function precmd {
 	# }}}
 
 #  RPROMPT="$ALTPROMPT%B${session}%b"
-	DIR="[$DIR%B%~%b$(git_info)$BRACKET]% "
+	DIR="[$DIR%B%~%b$(git_simplified_info)$BRACKET]% "
 	USER="$BRACKET@$USER%m"
 	END="$PROMPT$ "
 

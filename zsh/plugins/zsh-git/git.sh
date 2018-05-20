@@ -139,9 +139,25 @@ function git_info() {
 	fi
 }
 
-function git_infoAlt() {
-  if is_repo && is_blacklist; then
-    echo "A" 
+# Simple Git Prompt
+
+function branch_simp() {
+    BRANCH="$(git symbolic-ref --short HEAD)"
+    if is_clean; then
+      echo "${COLOR_BRANCH_CLEAN}$BRANCH${reset}"
+    else
+      echo "${COLOR_BRANCH_DIRTY}$BRANCH${reset}*"
+    fi
+}
+
+function git_simplified_info() {
+  if is_repo && is_blacklist && [ $SIMPLIFIED = true ]; then
+    HASH=false
+    STATUS=false
+    STATUS_SIMP=false
+    BRANCH=false
+    MASTER=false
+    echo $SEPERATOR$(branch_simp)
   fi
 }
 
@@ -163,5 +179,6 @@ STATUS=true
 STATUS_SIMP=false
 BRANCH=true
 MASTER=true
+SIMPLIFIED=false
 
 "$@"

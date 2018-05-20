@@ -37,9 +37,12 @@ HASH=true
 STATUS=true
 STATUS_SIMP=true
 BRANCH=true
+SIMPLIFIED=false
 ```
+> Supports default 7 colors and default bold colors.
 
 ## Features
+> Simplified Prompt just includes the current branch. It changes the clean and dirty color. Note: Once you enable the simplified prompt in your bashrc/zshrc it will disable everything else.
 ### Branch
 Branch tells you the current branch you are on
 
@@ -61,3 +64,4 @@ Tells you how far you are behind or ahead of master
 
 ### Blacklist
 You can blacklist directories from using the prompt. Declare the blacklist like an array with the full path to the directory. i.e `BLACKLIST=( "/home/jason/<Dir1>" "/home/jason/<Dir2>" )`
+
