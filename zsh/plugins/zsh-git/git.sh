@@ -91,11 +91,7 @@ function status() {
     COP=$(git status --porcelain | grep -o "C" | head -1 && git status --porcelain | grep -oE "C" | wc -l)
     UNT=$(git status --porcelain | grep -o "?" | head -1 && git status --porcelain | grep -oE "\?\?" | wc -l)
 
-      if [ $HASH = false ]; then 
-        echo $SEPERATOR${COLOR_ADD}$ADD ${COLOR_MOD}$MOD ${COLOR_DEL}$DEL ${COLOR_REN}$REN ${COLOR_COP}$COP ${COLOR_UNT}$UNT${reset}| tr -d '\n' | tr '0' ' ' | tr -d ' '
-      else
-        echo ${COLOR_ADD}$ADD ${COLOR_MOD}$MOD ${COLOR_DEL}$DEL ${COLOR_REN}$REN ${COLOR_COP}$COP ${COLOR_UNT}$UNT${reset}| tr -d '\n' | tr '0' ' ' | tr -d ' ' 
-      fi
+    echo ${COLOR_ADD}$ADD ${COLOR_MOD}$MOD ${COLOR_DEL}$DEL ${COLOR_REN}$REN ${COLOR_COP}$COP ${COLOR_UNT}$UNT${reset}| tr -d '\n' | tr '0' ' ' | tr -d ' ' 
 
   else echo ''
   fi
@@ -138,6 +134,7 @@ function ahead_master() {
 
 function git_info() {
 	if is_repo && is_blacklist; then
+    
     echo $SEPERATOR$(branch)$(hash)$(status)$(status_simp) $(behind_master)$(ahead_master)
 	fi
 }

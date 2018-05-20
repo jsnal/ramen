@@ -301,7 +301,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_java_javac_classpath = "~/wpilib/java/current/lib/WPILib.jar:~/wpilib/java/current/lib/CTRE_Phoenix.jar:~/2018-bot/src:~/wpilib/java/current/lib/cscore.jar"
+let g:syntastic_java_checkstyle_classpath = 
+      \ "~/wpilib/java/current/lib/WPILib.jar:~/wpilib/java/current/lib/CTRE_Phoenix.jar:~/2018-bot/src:~/wpilib/java/current/lib/cscore.jar:~/wpilib/user/java/lib/Pathfinder-Java-1.8.jar"
 "}}}
 "---------------------------------------------------------------------------
   " Settings things{{{

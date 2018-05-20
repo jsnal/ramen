@@ -3,6 +3,7 @@
 AltPrompt=git
 # Plugins# {{{
 source $HOME/i3wm/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh-async/async.zsh
 function precmd {
 	source $HOME/i3wm/zsh/plugins/zsh-autopair/autopair.zsh
 	source $HOME/i3wm/zsh/plugins/zsh-git/git.sh
@@ -21,6 +22,7 @@ function precmd {
 	# Git Prompt
 	STATUS=false
 	STATUS_SIMP=true
+  HASH=false
 	# Functions# {{{
 	function get_sudo() {
 			if sudo -n true 2>/dev/null; then 
@@ -54,7 +56,7 @@ function precmd {
       ;;
   esac
 	# }}}
-	
+
 #  RPROMPT="$ALTPROMPT%B${session}%b"
 	DIR="[$DIR%B%~%b$(git_info)$BRACKET]% "
 	USER="$BRACKET@$USER%m"
@@ -62,6 +64,7 @@ function precmd {
 
 	PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
 }
+
 # }}}
 # Basics# {{{
 bindkey -e
@@ -362,17 +365,25 @@ function kernel-update() {
   
 }
 # }}}
-# Directory Aliases
+# Directory Aliases{{{
 
 function o() {
 
   case $1 in
     dow)
       cdpath="$HOME/Downloads/"$2"" ;;
+    doc)
+      cdpath="$HOME/Documents/"$2"" ;;
+    git)
+      cdpath="$HOME/git/"$2"" ;;
+    vim)
+      cdpath="$HOME/.vim/"$2"" ;;
+    fig)
+      cdpath="$HOME/i3wm/"$2"" ;;
     *)
       cdpath="$@" ;;
   esac
-  opentype="AA"
+
   if [[ -d "$cdpath" ]]; then
     opentype="cd" 
   elif [[ -f "$cdpath" ]]; then
@@ -381,11 +392,9 @@ function o() {
     opentype="Not Identified"
   fi
 
-
-  echo $opentype
   $opentype $cdpath 
 }
-
+# }}}
 # Zstyle # {{{
 autoload -Uz compinit
 compinit
