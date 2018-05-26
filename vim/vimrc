@@ -18,13 +18,14 @@ Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 Plug 'https://github.com/tomtom/tlib_vim.git'
 
 " Theming
-Plug 'https://github.com/pR0Ps/molokai-dark'
-Plug 'https://github.com/tomasr/molokai'
 Plug 'https://github.com/sjl/badwolf'
 
 " Pandoc
 Plug 'https://github.com/suan/vim-instant-markdown'
 Plug 'https://github.com/plasticboy/vim-markdown'
+
+" Java
+Plug 'https://github.com/artur-shaik/vim-javacomplete2'
 
 call plug#end()
 "}}}
@@ -50,7 +51,7 @@ colorscheme badwolf
 
 set number
 set relativenumber
-filetype plugin indent on
+filetype plugin on
 set nowrap
 set tabstop=2
 set shiftwidth=2
@@ -297,12 +298,24 @@ function! PairsBackSpace() abort
 "---------------------------------------------------------------------------
 " Syntastic{{{
 
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_java_checkstyle_classpath = 
-      \ "~/wpilib/java/current/lib/WPILib.jar:~/wpilib/java/current/lib/CTRE_Phoenix.jar:~/2018-bot/src:~/wpilib/java/current/lib/cscore.jar:~/wpilib/user/java/lib/Pathfinder-Java-1.8.jar"
+"let g:syntastic_java_checkstyle_classpath = 
+"      \ "~/wpilib/java/current/lib/WPILib.jar:~/wpilib/java/current/lib/CTRE_Phoenix.jar:~/2018-bot/src:~/wpilib/java/current/lib/cscore.jar:~/wpilib/user/java/lib/Pathfinder-Java-1.8.jar"
+let g:syntastic_java_javac_classpath = "~/wpilib/java/current/lib/WPILib.jar:~/wpilib/java/current/lib/CTRE_Phoenix.jar:~/2018-bot/src:~/wpilib/java/current/lib/cscore.jar"
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "active_filetypes": ["java"],
+    \ "passive_filetypes": ["*"] }
+
+let g:JavaComplete_LibsPath = "/home/jason/wpilib/java/current/lib/WPILib.jar"
+let g:JavaComplete_SourcesPath = "/home/jason/2018-bot/src/org/usfirst/frc/team2059/*"
+set omnifunc=javacomplete#Complete
 "}}}
 "---------------------------------------------------------------------------
   " Settings things{{{
