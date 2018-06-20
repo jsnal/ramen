@@ -15,7 +15,7 @@ function deps() {
   elif [ $os = "Arch" ]
   then
     echo "$(tput setaf 1)Operating System... Arch$(tput sgr0)"
-    #sudo pacman -S zsh vim curl i3-gaps
+    sudo pacman -S zsh vim curl i3-gaps
   else
     echo "Please install (zsh, vim, curl, i3), before resuming"
     exit
@@ -32,14 +32,14 @@ function install() {
   mkdir $HOME/.config
 
   echo "Installing Configs... \n"
-  ln -s zsh/zshrc $HOME/.zshrc
+  ln zsh/zshrc $HOME/.zshrc
   zsh/plugins/fzf/install
   ln i3/config $HOME/.config/i3/config
-  ln -s vim/vimrc $HOME/.vimrc
-  ln -s X/xresources $HOME/.Xresources
-  ln -s X/xmodmap $HOME/.Xmodmap
-  ln -s X/xbindkeysrc $HOME/.xbindkeysrc
-  ln -s tmux.conf $HOME/.tmux.conf
+  ln vim/vimrc $HOME/.vimrc
+  ln X/xresources $HOME/.Xresources
+  ln X/xmodmap $HOME/.Xmodmap
+  ln X/xbindkeysrc $HOME/.xbindkeysrc
+  ln tmux.conf $HOME/.tmux.conf
   ln polybar/config $HOME/.config/polybar/config
 
   echo "Installing Vim.. \n"
@@ -60,14 +60,14 @@ function shell() {
     chsh -s $(which zsh)
 
     echo "Installing Shell... \n"
-    ln -s zsh/zshrc $HOME/.zshrc
+    ln zsh/zshrc $HOME/.zshrc
     zsh/plugins/fzf/install
-    ln -s X/xresources $HOME/.Xresources
-    ln -s X/xmodmap $HOME/.Xmodmap
-    ln -s X/xbindkeysrc $HOME/.xbindkeysrc
-    ln -s tmux.conf $HOME/.tmux.conf
-    ln -s .gitignore $HOME/.gitignore
-    ln -s .gitconfig $HOME/.gitconfig
+    ln X/xresources $HOME/.Xresources
+    ln X/xmodmap $HOME/.Xmodmap
+    ln X/xbindkeysrc $HOME/.xbindkeysrc
+    ln tmux.conf $HOME/.tmux.conf
+    ln .gitignore $HOME/.gitignore
+    ln .gitconfig $HOME/.gitconfig
     afterInstall
   fi
 }
@@ -78,7 +78,7 @@ function vi() {
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     deps
     echo "Installing Vim... \n"
-    ln -s vim/vimrc $HOME/.vimrc
+    ln vim/vimrc $HOME/.vimrc
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     vim +":PlugInstall" +qa
@@ -155,4 +155,15 @@ function help() {
     github          Menu for adding git info to gitconfig
     help            Displays this menu"
 }
-"$@"
+
+if [[ "$@" = ""  ]]; then
+  echo -e "Shell\nVim\nGit\nEverything" | nl -w2
+  read -p "What would you like to install(seperate by spaces)? " type
+  count=$(echo $type | wc | awk '{print $2}')
+  for (( i = 1; i <= $count; ++i )); do 
+    run=$(echo $type | awk '{print $times}' times=$i)
+    $run
+  done
+else
+  "$@"
+fi
