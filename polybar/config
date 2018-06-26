@@ -1,10 +1,12 @@
 [colors]
 background = #000000
+background-alt = #444
 foreground = #ffffff
 red = #cc0000
 cyan = #00E5E5
 green = #00CD00
 yellow = #ffff00
+orange = #ffb52a
 
 [global/wm]
 margin-top = 10
@@ -34,26 +36,27 @@ module-margin = 0
 
 modules-left = i3
 modules-center = error 
-modules-right = brightness volume time ip battery
+modules-right = brightness volume time wlan ip battery
 
 [module/i3]
 type = internal/i3
 
-label-focused = <%name%>
+label-focused = %name%
 label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.red}
-label-focused-padding = 0 
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.orange} 
+label-focused-padding = 1 
 label-focused-border-color = #FFFFFF
 
 label-unfocused = %name%
-label-unfocused-padding = 0 
+label-unfocused-padding = 1 
 
 label-urgent = %name%
-label-urgent-foreground = ${colors.red}
-label-urgent-padding = 0 
+label-urgent-background = ${colors.red}
+label-urgent-padding = 1 
 
 label-visible = %name%
-label-visible-padding = 0 
+label-visible-padding = 1 
 
 [module/battery]
 type = internal/battery
@@ -110,3 +113,10 @@ label-maxlen = 45
 type = custom/script
 interval = 3 
 exec = bash ~/i3wm/polybar/error.sh
+
+[module/wlan]
+type = custom/script 
+interval = 5 
+
+exec = iwgetid -r
+label = |%{F#00CD00}%output%

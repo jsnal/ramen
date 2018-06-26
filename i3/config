@@ -3,10 +3,6 @@ set $mod Mod4
 set $TERMINAL uxterm
 floating_modifier $mod
 
-gaps inner 0 
-gaps outer 1 
-
-hide_edge_borders both
 new_window none
 new_window pixel 2 
 # }}}
@@ -190,7 +186,6 @@ mode "resize" {
 # Execute on Startup{{{
 exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
-#exec_always guake
 exec_always xrdb ~/.Xresources
 exec_always feh --bg-scale ~/i3wm/background.png
 exec_always killall polybar 
