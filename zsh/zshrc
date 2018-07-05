@@ -394,6 +394,16 @@ function o() {
   $opentype $cdpath 
 }
 # }}}
+# Volume and Brightness Control{{{
+
+function vl() {
+  case $1 in
+    up) amixer -q sset "Master" $2%+ && echo $(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master));;
+  down) amixer -q sset "Master" $2%- && echo $(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master));;
+   off) amixer set "Master" 0% && echo "Muted"
+  esac
+}
+# }}}
 # Zstyle # {{{
 autoload -Uz compinit
 compinit

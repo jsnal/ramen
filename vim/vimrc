@@ -95,16 +95,6 @@ command! WW :w !sudo dd of=%
 
 "---[ Window Manipulaton ]---"
 noremap <TAB><TAB> :source %<CR>
-noremap <TAB>q <C-W>w
-noremap <TAB>r <C-W>r
-noremap <TAB>h <C-W>h
-noremap <TAB>j <C-W>j
-noremap <TAB>k <C-W>k
-noremap <TAB>l <C-W>l
-noremap <TAB>hh <C-W>H
-noremap <TAB>jj <C-W>J
-noremap <TAB>kk <C-W>K
-noremap <TAB>ll <C-W>L
 
 noremap <C-c> "+y \| :!sh -xc '~/i3wm/i3/Scripts/paste.sh'<CR>
 noremap <C-x> :! pandoc --mathjax --toc -o '%:p:h'/out.pdf '%:p:h'/*.md \| zathura '%:p:h'/out.pdf &<CR><CR> 
@@ -121,7 +111,7 @@ nnoremap +/ /\v
 vnoremap +/ /\v
 
 noremap <Leader>c :Commentary<CR>
-noremap <C-W> :redo<CR>
+"noremap <C-W> :redo<CR>
 
 map <F4> :setlocal spell! spelllang=en_us<CR> 
 map <F5> :setlocal foldmethod=marker<CR> 

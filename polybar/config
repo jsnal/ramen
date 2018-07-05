@@ -36,7 +36,7 @@ module-margin = 0
 
 modules-left = i3
 modules-center = error 
-modules-right = brightness volume time wlan ip battery
+modules-right = updates brightness volume time wlan ip battery
 
 [module/i3]
 type = internal/i3
@@ -89,18 +89,27 @@ label = |%output%
 type = custom/script
 exec = ip addr | ag "inet " | tr "/" " " | awk '{if (NR!=1) {print $2}}'
 label = |%{F#00CD00}%output%
+click-left = uxterm -hold -e nmtui
 
 [module/volume]
 type = custom/script
 interval = 5 
 exec = amixer -M | grep Mono | awk 'NR==2 {print $4}' | sed 's/[^0-9]*//g'
 label = |V:%{F#00E5E5}%output%%
+click-left = uxterm alsamixer 
 
 [module/brightness]
 type = custom/script
 interval = 5
 exec = xbacklight | grep -o '^[0-9]*\.[0-9]' 
 label = |B:%{F#00E5E5}%output%%
+
+[module/updates]
+type = custom/script
+interval = 180
+exec = apt-get upgrade -s | grep -P '^\d+ upgraded' | cut -d" " -f1
+label = |U:%{F#00E5E5}%output%
+click-left = uxterm -hold -e sudo apt-get upgrade
 
 [module/song]
 type = custom/script
@@ -120,3 +129,4 @@ interval = 5
 
 exec = iwgetid -r
 label = |%{F#00CD00}%output%
+click-left = uxterm -hold -e nmtui
