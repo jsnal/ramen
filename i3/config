@@ -193,7 +193,7 @@ exec_always exec ~/i3wm/polybar/launch.sh
 exec_always exec mopidy
 exec uxterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id xbindkeys -p
+exec --no-startup-id xbindkeys
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
 exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
 exec --no-startup-id amixer sset "Master" 0% 

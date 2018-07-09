@@ -2,6 +2,7 @@
 # xbindkeys configuration #
 ###########################
 
+# Audio Controls only work for Spotify.
 # List of modifier (on my keyboard): 
 #   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
 #   Mod3 (CapsLock), Mod4, Mod5 (Scroll). 
@@ -22,11 +23,31 @@
     XF86AudioMute 
 
 # Brightness Up
-"ybacklight -inc 10"
+"xbacklight -inc 10"
     m:0x0 + c:233
     XF86MonBrightnessUp 
 
 # Brigtness Down
-"ybacklight -dec 10"
+"xbacklight -dec 10"
     m:0x0 + c:232
     XF86MonBrightnessDown 
+
+# Next Track
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+    m:0x0 + c:171
+    XF86AudioNext 
+
+# Previous Track
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+    m:0x0 + c:173
+    XF86AudioPrev 
+
+# Pause/Play
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+    m:0x0 + c:172
+    XF86AudioPlay 
+
+# Stop
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause"
+    m:0x0 + c:174
+    XF86AudioStop 
