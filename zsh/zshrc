@@ -283,6 +283,17 @@ function comp-type() {
 	fi
 }
 
+function playdoom() {
+  poss=$(ls /usr/share/games/doom/ | nl -w2)
+  echo -e "$poss"\n
+  echo Pick the wad you want to play. 
+  read wad
+  play=$(ls /usr/share/games/doom/ | awk NR==$wad)
+  echo $play
+  i3-msg move scratchpad
+  prboom-plus -iwad /usr/share/games/doom/$play
+}
+
 alias v='vim'
 alias z='zathura'
 alias ls='ls -Fh -I "*~" --color=always --group-directories'
