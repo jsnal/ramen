@@ -404,6 +404,14 @@ function o() {
 
   $opentype $cdpath 
 }
+
+function encrypt() {
+  if [[ -d = $1 ]]; then
+    gpg -d $2 | tar xz 
+  else
+    tar -cz $1 | gpg -c -o $1.tgz.gpg
+  fi
+}
 # }}}
 # Volume and Brightness Control{{{
 

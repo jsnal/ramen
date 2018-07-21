@@ -11,8 +11,9 @@ Plug 'https://github.com/vimplugin/project.vim'
 Plug 'https://github.com/ervandew/supertab'
 Plug 'https://github.com/vim-syntastic/syntastic'
 Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/tpope/vim-surround'
 
-
+" Snips
 Plug 'https://github.com/garbas/vim-snipmate'
 Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 Plug 'https://github.com/tomtom/tlib_vim.git'
@@ -26,6 +27,7 @@ Plug 'https://github.com/plasticboy/vim-markdown'
 
 " Java
 Plug 'https://github.com/artur-shaik/vim-javacomplete2'
+Plug 'https://github.com/pangloss/vim-javascript'
 
 call plug#end()
 "}}}
