@@ -304,6 +304,7 @@ alias gotop='gotop --color=monokai'
 alias tll='~/i3wm/i3/Scripts/tll.sh l'
 alias tlc='~/i3wm/i3/Scripts/tll.sh c "$@"'
 alias tla='~/i3wm/i3/Scripts/tll.sh a "$@"'
+alias drivec="~/i3wm/zsh/scripts/drive-compile.sh"
 # }}}
 # Markdown# {{{
 function mdpdf() {
