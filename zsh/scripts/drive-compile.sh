@@ -15,6 +15,11 @@ function onDirPick() {
     done
   elif [[ $dirPick =~ ^[1-9]+$ ]]; then
     mkdir -v -p build/$(echo "$availDirs" | awk NR==$dirPick) 
+  else
+    dirPickList=$(echo $dirPick | sed -e 's/,/ /g')
+    for (( i=1;i<=$(echo $dirPickList | wc -w);i++ )); do
+      mkdir -v -p build/$(echo "$availDirs" | awk NR==$(echo $dirPickList | awk '{print $number}' number=$i))
+    done
   fi
 }
 
@@ -33,6 +38,14 @@ function compile() {
     files=$(ls -1q $(echo "$availDirs" | awk NR==$dirPick)/*.md)
     for (( i=1;i<=$fileCount;i++ )); do
       pandoc --verbose $(echo "$files" | awk NR==$i) --output build/$(echo "$files" | awk NR==$i | cut -f 1 -d '.').pdf
+    done
+  else
+    for (( i=1;i<=$(echo $dirPickList | wc -w);i++ )); do
+      currentDir=$(echo $dirPickList | awk '{print $number}' number=$i)
+      files=$(ls -1q $(echo "$availDirs" | awk NR==$currentDir)/*.md)
+      for (( j=1;j<=$(echo "$files" | wc -l);j++ )); do
+        pandoc --verbose $(echo "$files" | awk NR==$j) --output build/$(echo "$files" | awk NR==$j | cut -f 1 -d '.').pdf
+      done
     done
   fi
 }
