@@ -36,7 +36,7 @@ module-margin = 0
 
 modules-left = i3
 modules-center = error 
-modules-right = updates brightness volume time wlan ip battery
+modules-right = song updates brightness volume time wlan ip battery
 
 [module/i3]
 type = internal/i3
@@ -44,7 +44,7 @@ type = internal/i3
 label-focused = %name%
 label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.orange} 
+label-focused-underline = ${colors.foreground} 
 label-focused-padding = 1 
 label-focused-border-color = #FFFFFF
 
@@ -114,8 +114,9 @@ click-left = uxterm -hold -e sudo apt-get upgrade
 [module/song]
 type = custom/script
 interval = 5 
-exec = spotify-cli --status
-label = [%output%]
+exec = ~/i3wm/zsh/scripts/spotify-info.sh title 
+label = |%{F#ffb52a}%output%
+click-left = i3-msg '[class="Spotify"] focus' 
 label-maxlen = 45 
 
 [module/error]

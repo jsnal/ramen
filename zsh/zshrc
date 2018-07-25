@@ -305,6 +305,7 @@ alias tll='~/i3wm/i3/Scripts/tll.sh l'
 alias tlc='~/i3wm/i3/Scripts/tll.sh c "$@"'
 alias tla='~/i3wm/i3/Scripts/tll.sh a "$@"'
 alias drivec="~/i3wm/zsh/scripts/drive-compile.sh"
+alias ip="ip -color address"
 # }}}
 # Markdown# {{{
 function mdpdf() {
@@ -381,18 +382,13 @@ function kernel-update() {
 function o() {
 
   case $1 in
-    dow)
-      cdpath="$HOME/Downloads/"$2"" ;;
-    doc)
-      cdpath="$HOME/Documents/"$2"" ;;
-    git)
-      cdpath="$HOME/git/"$2"" ;;
-    vim)
-      cdpath="$HOME/.vim/"$2"" ;;
-    fig)
-      cdpath="$HOME/i3wm/"$2"" ;;
-    *)
-      cdpath="$@" ;;
+    dow) cdpath="$HOME/Downloads/"$2"" ;;
+    doc) cdpath="$HOME/Documents/"$2"" ;;
+    git) cdpath="$HOME/git/"$2"" ;;
+    vim) cdpath="$HOME/.vim/"$2"" ;;
+    fig) cdpath="$HOME/i3wm/"$2"" ;;
+    con) cdpath="$HOME/.config/"$2"" ;;
+    *) cdpath="$@" ;;
   esac
 
   if [[ -d "$cdpath" ]]; then
