@@ -71,10 +71,10 @@ interval = 10
 
 ;Add %date% to display date
 date = "%Y-%m-%d"
-date-alt = %a %d %b %Y
 
 time = %I:%M
-time-full = %I:%M:%S
+time-alt = %m-%d-%Y %I:%M:%S
+click-left = uxterm -hold -e cal
 
 label = |%time%
 

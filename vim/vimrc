@@ -1,14 +1,11 @@
-"---------------------------------------------------------------------------
+"--------------------------------------------------------------------------
 " Vim Plug{{{ 
 call plug#begin('~/.vim/plugged')
 
 " Utils
-Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/mhinz/vim-signify'
 Plug 'https://github.com/junegunn/fzf'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
-Plug 'https://github.com/vimplugin/project.vim'
-Plug 'https://github.com/ervandew/supertab'
 Plug 'https://github.com/vim-syntastic/syntastic'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-surround'
@@ -22,11 +19,10 @@ Plug 'https://github.com/tomtom/tlib_vim.git'
 Plug 'https://github.com/sjl/badwolf'
 
 " Pandoc
-Plug 'https://github.com/suan/vim-instant-markdown'
+Plug 'https://github.com/junegunn/goyo.vim'
 Plug 'https://github.com/plasticboy/vim-markdown'
 
 " Java
-Plug 'https://github.com/artur-shaik/vim-javacomplete2'
 Plug 'https://github.com/pangloss/vim-javascript'
 
 call plug#end()
@@ -328,4 +324,7 @@ set omnifunc=javacomplete#Complete
   let g:HiCursorWords_delay = 100
   " let g:indentLine_color_term = 254
   let g:indentLine_char = '▏'
+
+  let g:goyo_width = 150
+  let g:goyo_height = 120
   "}}}

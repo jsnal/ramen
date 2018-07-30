@@ -43,7 +43,7 @@ bindsym $mod+y exec bash ~/i3wm/i3/Scripts/yt-fscreen.sh
 # }}}
 # DMenu and Term# {{{
 bindsym $mod+Return exec uxterm 
-bindsym $mod+d exec rofi -show run 
+bindsym $mod+d exec ~/i3wm/i3/Scripts/dmenu.sh 
 
 #bindsym $mod+Shift+s exec rofi -show ssh
 bindsym $mod+Shift+w exec firefox
@@ -53,8 +53,8 @@ bindsym $mod+Shift+w exec firefox
 bindsym $mod+s exec bash ~/i3wm/i3/Rofi/power.sh
 bindsym $mod+r exec bash ~/i3wm/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/i3wm/i3/Rofi/config.sh
-bindsym $mod+q exec rofi -show ssh 
-bindsym $mod+t exec bash ~/i3wm/i3/Rofi/tll-interface.sh
+# bindsym $mod+q exec rofi -show ssh 
+# bindsym $mod+t exec bash ~/i3wm/i3/Rofi/tll-interface.sh
 # }}}
 # Window Navigation# {{{
 #Keys used for window navigation and moving
