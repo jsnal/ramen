@@ -187,7 +187,7 @@ mode "resize" {
 exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 exec_always xrdb ~/.Xresources
-exec_always feh --bg-scale ~/i3wm/background.png
+exec_always feh --bg-scale ~/i3wm/backgrounds/waterfrontmount.jpg
 exec_always killall polybar 
 exec_always exec ~/i3wm/polybar/launch.sh
 exec_always exec mopidy
