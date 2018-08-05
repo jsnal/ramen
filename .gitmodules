@@ -1,6 +1,6 @@
 [submodule "zsh/plugins/zsh-git-prompt"]
 	path = zsh/plugins/zsh-git-prompt
-	url = https://github.com/olivierverdier/zsh-git-prompt
+  url = https://github.com/olivierverdier/zsh-git-prompt
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
@@ -10,3 +10,6 @@
 [submodule "zsh/plugins/fzf"]
 	path = zsh/plugins/fzf
 	url = https://github.com/junegunn/fzf
+[submodule "zsh/plugins/shell-plugins"]
+	path = zsh/plugins/shell-plugins
+	url = https://github.com/JasonLong24/shell-plugins
