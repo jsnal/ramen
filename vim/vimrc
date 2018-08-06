@@ -241,7 +241,7 @@ endfunction
 
 set statusline=\ %{ModeCurrent()}>>\ 
 set statusline+=%#PmenuSel#
-set statusline+=\ %r%m[%n][%f]\ 
+set statusline+=\ %r%m[%n]\ %f\ 
 set statusline+=%#LineNr#
 set statusline+=%=%#PmenuSel#
 set statusline+=%=\ %P\ %p%%

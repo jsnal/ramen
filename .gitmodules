@@ -13,3 +13,6 @@
 [submodule "zsh/plugins/shell-plugins"]
 	path = zsh/plugins/shell-plugins
 	url = https://github.com/JasonLong24/shell-plugins
+[submodule "st"]
+	path = st
+	url = https://github.com/JasonLong24/st

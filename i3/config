@@ -42,7 +42,7 @@ bindsym F9 exec ~/Downloads/Telegram/Telegram
 bindsym $mod+y exec bash ~/i3wm/i3/Scripts/yt-fscreen.sh
 # }}}
 # DMenu and Term# {{{
-bindsym $mod+Return exec uxterm 
+bindsym $mod+Return exec st 
 bindsym $mod+d exec ~/i3wm/i3/Scripts/dmenu.sh 
 
 #bindsym $mod+Shift+s exec rofi -show ssh
@@ -191,7 +191,7 @@ exec_always feh --bg-scale ~/i3wm/backgrounds/waterfrontmount.jpg
 exec_always killall polybar 
 exec_always exec ~/i3wm/polybar/launch.sh
 exec_always exec mopidy
-exec uxterm -e bash ~/i3wm/i3/Scripts/tmux.sh 
+exec st -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xbindkeys
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
