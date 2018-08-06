@@ -1,33 +1,18 @@
 #!/bin/bash
 
-res=$(echo "urls|add-on|vim|vimrc|polybar|zshrc|Xresources|i3config|theme|rofi" | rofi -sep "|" -dmenu -i -p 'Window Options: ' "")
+prompt=$(echo Power:)
+back=$(echo \#000000)
+fore=$(echo \#cc0000)
+selback=$(echo \#333)
+selfore=$(echo \#ffb52a)
+res=$(echo -e "vimrc\npolybar\nzshrc\nxresources\ni3\nscripts" | dmenu -b -p $prompt -nb $back -nf $fore -sb $selback -sf $selfore)
 
-if [ $res = "vimrc" ]; then
-	exec xterm -e vim ~/.vimrc
-
-elif [ $res = "polybar" ]; then
-	exec xterm -e vim ~/i3wm/polybar/config
-
-elif [ $res = "zshrc" ]; then
-	exec xterm -e vim ~/i3wm/zsh/zshrc
-
-elif [ $res = ".Xresources" ]; then
-	exec xterm -e vim ~/.xresources
-
-elif [ $res = "i3config" ]; then
-	exec xterm -e vim ~/i3wm/i3/config
-
-elif [ $res = "theme" ]; then
-	exec xterm -e vim /home/jason/.oh-my-zsh/themes/jasonzsh.zsh-theme
-
-elif [ $res = "vim" ]; then
-	exec xterm -e vim  
-elif [ $res = "rofi" ]; then
-	exec xterm -e vim +NERDTree ~/i3wm/i3/Rofi +q
-
-elif [ $res = "add-on" ]; then
-  exec xterm -e vim +NERDTree ~/Github/vim-nav-firefox +q
-
-elif [ $res = "urls" ]; then
-  exec xterm -e vim ~/i3wm/newsbeuter/urls
-fi
+case $res in
+  vimrc) st -e vim ~/.vimrc ;;
+  polybar) st -e vim ~/.config/polybar/config ;;
+  zshrc) st -e vim ~/.zshrc ;;
+  xresources) st -e vim ~/.Xresources ;;
+  i3) st -e vim ~/.config/i3/config ;;
+  scripts) st -e vim ~/i3wm/i3/Scripts ;;
+  *) echo "echo '[NOTIFY:NOT A VALID CONFIG]'" > ~/i3wm/polybar/error.sh; sleep 3; echo "echo ''" > ~/i3wm/polybar/error.sh ;;
+esac

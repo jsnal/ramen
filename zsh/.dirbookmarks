@@ -3,8 +3,8 @@ zbook /home/jason/git/shell-plugins/zshbookmarks/
 gt /home/jason/git
 dw /home/jason/Downloads
 drive /home/jason/gdrive/TestDrive
-st /home/jason/git/st/
 tt /home/jason/git/typetest
 cf /home/jason/i3wm
 cfz /home/jason/i3wm/zsh
 cfp /home/jason/i3wm/polybar
+st /home/jason/git/st

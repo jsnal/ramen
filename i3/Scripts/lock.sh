@@ -1,4 +1,5 @@
 #!/bin/bash
+# requires scrot and imagemagick
 
 # Take a screenshot:
 scrot /tmp/screen.png

@@ -1,6 +1,11 @@
 #!/bin/bash
- 
-res=$(echo "logout|reboot|shutdown|lock" | rofi -sep "|" -dmenu -i -p 'Power Menu: ' "") 
+
+prompt=$(echo Power:)
+back=$(echo \#000000)
+fore=$(echo \#cc0000)
+selback=$(echo \#333)
+selfore=$(echo \#ffb52a)
+res=$(echo -e "logout\nreboot\nshutdown\nlock" | dmenu -b -p $prompt -nb $back -nf $fore -sb $selback -sf $selfore)
 if [ $res = "lock" ]; then
     bash ~/i3wm/i3/Scripts/lock.sh 
 fi
