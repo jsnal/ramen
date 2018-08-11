@@ -97,12 +97,14 @@ bindsym $mod+Shift+q kill
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+c exec uxterm -c calc -hold -e python
+bindsym $mod+t exec st -c top -e htop
 
 for_window [instance="tmux"] move window to scratchpad, scratchpad hide 
 for_window [instance="tele"] move window to scratchpad, scratchpad hide
 for_window [class="tll"] floating enable, resize set 800 600, move position center
 for_window [class="mpv"] floating enable, resize set 1200 800, move position center 
 for_window [class="calc"] floating enable, resize set 800 600, move position center 
+for_window [class="top"] floating enable, resize set 800 600, move position center 
 # }}}
 # Workspaces# {{{
 set $workspace1 "1"
