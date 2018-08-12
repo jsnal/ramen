@@ -8,3 +8,4 @@ cf /home/jason/i3wm
 cfz /home/jason/i3wm/zsh
 cfp /home/jason/i3wm/polybar
 st /home/jason/git/st
+cfs /home/jason/i3wm/i3/Scripts
