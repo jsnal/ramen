@@ -58,7 +58,7 @@ font-0 = DejaVu Sans Mono:pixelsize=8.5;0
 module-margin = 0
 
 modules-center = xtitle
-modules-right = memory cpu
+modules-right = filesystem memory cpu
 
 [module/i3]
 type = internal/i3
@@ -154,8 +154,11 @@ exec = iwgetid -r
 label = |%{F#00CD00}%output%
 click-left = uxterm -hold -e nmtui
 
+;======== Top Status Bar Tools =========;
+
 [module/xtitle]
 type = internal/xwindow
+label-maxlen = 50
 
 [module/cpu]
 type = internal/cpu
@@ -200,3 +203,8 @@ bar-used-fill-font = 3
 bar-used-empty = █
 bar-used-empty-font = 3
 bar-used-empty-foreground = #44
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+spacing = 4

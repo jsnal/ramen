@@ -98,6 +98,7 @@ bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+c exec uxterm -c calc -hold -e python
 bindsym $mod+t exec ~/i3wm/i3/Scripts/polystatus.sh 
+bindsym $mod+g exec ~/i3wm/i3/Scripts/flipwindow.sh
 
 for_window [instance="tmux"] move window to scratchpad, scratchpad hide 
 for_window [instance="tele"] move window to scratchpad, scratchpad hide

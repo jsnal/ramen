@@ -15,15 +15,6 @@ function precmd {
 	USER="%F{yellow}"
 	GIT_BRANCH="%F{magenta}"
   ALTPROMPT="%F{red}"
-	BLACKLIST=( "/home/jason/2018-bot" )
-  SEPERATOR=":"
-
-	# Git Prompt
-	STATUS=false
-	STATUS_SIMP=true
-  HASH=false
-  # Simplified Overrides everything!
-  SIMPLIFIED=true
 
 	# Functions# {{{
 	function get_sudo() {
@@ -57,12 +48,7 @@ function precmd {
 	# }}}
 
   #  RPROMPT="$ALTPROMPT%B${session}%b"
-  if is_repo; then
-    GIT="($(git_branch)$(git_position)|$(git_status others)$(git_status modified)$(git_status deleted)$(git_staged))"
-  else
-    GIT=""
-  fi
-	DIR="[$DIR%B%~%b$GIT$BRACKET]% "
+	DIR="[$DIR%B%~%b$(git_full_prompt)$BRACKET]% "
 	USER="$BRACKET@$USER%m"
 	END="$PROMPT$ "
 
