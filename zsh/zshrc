@@ -3,7 +3,7 @@
 AltPrompt=git
 # Plugins# {{{
 source $HOME/i3wm/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/git/shell-plugins/zsh-git/git.plugin.zsh
+source $HOME/i3wm/zsh/plugins/shell-plugins/zsh-git/git.plugin.zsh
 function precmd {
 	source $HOME/i3wm/zsh/plugins/zsh-autopair/autopair.zsh
 # }}}

@@ -81,11 +81,12 @@ html, body {
 }
 
 input	{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
 	display: inline;
 	background: none;
 	display: inline;
 	border: none;
-	color: #FFF;
+	color: #B4B4B4;
 	width: 70%;
-	font-size: 14px;
 }
