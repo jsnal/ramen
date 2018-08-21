@@ -13,17 +13,20 @@
             let inputResult = initialInput.split(';');
             switch(inputResult[0]) {
               case "gt":
-                openInNewTab("https://github.com/search?q=" + inputResult[1]); break;
+                window.location = "https://github.com/search?=" + inputResult[1]; break;
+                //openInNewTab("https://github.com/search?q=" + inputResult[1]); break;
               case "r":
-                openInNewTab("https://reddit.com/r/" + inputResult[1]); break;
+                window.location = "https://reddit.com/r/" + inputResult[1]; break;
+                //openInNewTab("https://reddit.com/r/" + inputResult[1]); break;
               default:
-                openInNewTab("https://google.com/search?q=" + initialInput); break;
+                window.location = "https://google.com/search?q=" + initialInput; break;
+                //openInNewTab("https://google.com/search?q=" + initialInput); break;
             }
           }
         }
       }
       function openInNewTab(url, index) {
-        var win = window.open(url, '_blank');
+        var win = window.open(url, '__self');
         win.focus();
       }
     </script>
@@ -38,26 +41,26 @@
       <!-- General -->
       <div class="links-card">
         <h3><span class="red"> ~ [General]</span><span class="blue">:</span></h3>
-        <a class="blue" target="blank" href="http://jasonlong24.crabdance.com:8080/">Gitea</a>
-        <a class="pink" target="blank" href="https://github.com/">Github</a>
-        <a class="blue" target="blank" href="http://matrix.zelon.net:1337/build/">Paste</a>
-        <a class="blue" target="blank" href="https://forum.xda-developers.com/oneplus-2/development">XDA</a>
+        <a class="blue" target="_self" href="http://jasonlong24.crabdance.com:8080/">Gitea</a>
+        <a class="pink" target="_self" href="https://github.com/">Github</a>
+        <a class="blue" target="_self" href="http://matrix.zelon.net:1337/build/">Paste</a>
+        <a class="blue" target="_self" href="https://forum.xda-developers.com/oneplus-2/development">XDA</a>
       </div>
       <!-- Reddit -->
       <div class="links-card">
         <h3><span class="red"> ~ [Reddit]</span><span class="blue">:</span></h3>
-        <a class="blue" target="blank" href="https://www.reddit.com">Front Page</a>
-        <a class="blue" target="blank" href="https://www.reddit.com/r/unixporn/">/r/unixporn</a>
-        <a class="blue" target="blank" href="https://www.reddit.com/r/linuxquestions/">/r/linuxquestions</a>
-        <a class="blue" target="blank" href="https://www.reddit.com/r/vim/">/r/vim</a>
+        <a class="blue" target="_self" href="https://www.reddit.com">Front Page</a>
+        <a class="blue" target="_self" href="https://www.reddit.com/r/unixporn/">/r/unixporn</a>
+        <a class="blue" target="_self" href="https://www.reddit.com/r/linuxquestions/">/r/linuxquestions</a>
+        <a class="blue" target="_self" href="https://www.reddit.com/r/vim/">/r/vim</a>
       </div>
       <!-- Google -->
       <div class="links-card">
         <h3><span class="red"> ~ [Google]</span><span class="blue">:</span></h3>
-        <a class="pink" target="blank" href="https://youtube.com/">Youtube</a>
-        <a class="pink" target="blank" href="https://classroom.google.com/">Classroom</a>
-        <a class="blue" target="blank" href="https://gmail.com/">Gmail</a>
-        <a class="blue" target="blank" href="https://drive.google.com/">Drive</a>
+        <a class="pink" target="_self" href="https://youtube.com/">Youtube</a>
+        <a class="pink" target="_self" href="https://classroom.google.com/">Classroom</a>
+        <a class="blue" target="_self" href="https://gmail.com/">Gmail</a>
+        <a class="blue" target="_self" href="https://drive.google.com/">Drive</a>
       </div>
     </div>
   </div>
