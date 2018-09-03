@@ -17,6 +17,24 @@ function precmd {
     fi
   }
 
+  function get_build() {
+    buildfiles=$(find . -maxdepth 1 -type f | sed 's/^..//')
+    possfiles=("build.xml" "build.gradle" "CMake" "Makefile")
+    for (( i=1;i<=${#possfiles[@]};i++ )); do
+      buildfile=$(echo $buildfiles | grep ${possfiles[$i]})
+      build_type
+    done
+  }
+
+  function build_type() {
+    case $buildfile in
+      build.xml) echo "ant" ;;
+      build.gradle) echo "gradle" ;;
+      CMake) echo "cmake" ;;
+      Makefile) echo "make" ;;
+    esac
+  }
+
   case $AltPrompt in
     tmux)
       session="("$(tmux ls | wc -l)")" ;;
@@ -32,10 +50,10 @@ function precmd {
       session="" ;;
   esac
 
-  #  RPROMPT="$ALTPROMPT%B${session}%b"
   DIR="[$DIR%B%~%b$(git_full_prompt)$BRACKET]% "
   USER="$BRACKET@$USER%m"
   END="$PROMPT$ "
 
   PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
+  # RPROMPT=%{${_lineup}%}$(get_build)%{${_linedown}%}
 }
