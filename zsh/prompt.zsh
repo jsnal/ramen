@@ -50,7 +50,7 @@ function precmd {
       session="" ;;
   esac
 
-  DIR="[$DIR%B%~%b$(git_full_prompt)$BRACKET]% "
+  DIR="[$DIR%B%~%b$BRACKET$(git_full_prompt)$BRACKET]% "
   USER="$BRACKET@$USER%m"
   END="$PROMPT$ "
 
