@@ -14,6 +14,10 @@ for i in "${PACKAGES[@]}"; do
   fi
 done
 
+if [[ $1 = -w || $1 = --web ]]; then
+  echo "$(tput setaf 6)Cloning the Dotfiles$(tput sgr0)"
+  git clone --recursive --quiet https://github.com/JasonLong24/i3wm ~/i3w &>/dev/null
+fi
 
 echo "$(tput setaf 6)Installing dotfiles$(tput sgr0)"
 ln -sfv $DOTFILES_DIR/vim/vimrc ~/.vimrc
@@ -37,7 +41,7 @@ else
 fi
 
 echo "$(tput setaf 6)Installing zsh$(tput sgr0)"
-$DOTFILES/zsh/plugins/fzf/install
+$DOTFILES_DIR/zsh/plugins/fzf/install
 
 echo "$(tput setaf 6)Installing vim$(tput sgr0)"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

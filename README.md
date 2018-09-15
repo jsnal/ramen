@@ -5,16 +5,11 @@
 ### Setup
 - Clone this repo into your home directory
 - Run the installer.sh
+
+or
+
 ```
-./install.sh [function]
-deps            Installs dependencies
-install         Installs entire config including i3 and polybar
-shell           Installs just zsh(plugins) and tmux
-vi              Installs just vim config
-afterInstall    Runs the .afterinst config
-clean           Removes all symlinks to configs
-github          Menu for adding git info to gitconfig
-help            Displays the help menu
+bash <(wget -qO- https://raw.githubusercontent.com/JasonLong24/i3wm/master/install.sh) --web
 ```
 ##### After Install Config
 The after install config is located in the root directory. To use it just write a command you want to run after the install is complete.
