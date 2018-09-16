@@ -1,3 +1,10 @@
+[user]
+  email = jasonlongball@gmail.com
+  name = JasonLong24
+[push]
+  default = matching
+[credential]
+  helper = store
 [alias]
   co = checkout
   cob = checkout -b

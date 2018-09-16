@@ -12,6 +12,11 @@ function title() {
   echo "$(echo "$data" | grep -A 1 "\"xesam:title\"" | grep "variant" | grep -o '".*"' | tr -d '"')"
 }
 
+function polybar-format() {
+  newtitle=$(echo $(title) | sed 's/(Remastered)//' | cut -f1 -d"-")
+  echo $newtitle - $(artist)
+}
+
 function all() {
   echo -e Album: $(album)"\n"Artist: $(artist)"\n"Title: $(title)
 }

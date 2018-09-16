@@ -16,7 +16,7 @@ done
 
 if [[ $1 = -w || $1 = --web ]]; then
   echo "$(tput setaf 6)Cloning the Dotfiles$(tput sgr0)"
-  git clone --recursive --quiet https://github.com/JasonLong24/i3wm ~/i3w &>/dev/null
+  git clone --recursive --quiet https://github.com/JasonLong24/i3wm $HOME/i3wm &>/dev/null
 fi
 
 echo "$(tput setaf 6)Installing dotfiles$(tput sgr0)"
@@ -25,6 +25,7 @@ ln -sfv $DOTFILES_DIR/zsh/zshrc ~/.zshrc
 ln -sfv $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
 ln -sfv $DOTFILES_DIR/X/xmodmap ~/.xmodmap
 ln -sfv $DOTFILES_DIR/tmux.conf ~/.tmux.conf
+ln -sfv $DOTFILES_DIR/.gitconfig ~/.gitconfig
 
 if [[ -d ~/.config/i3 ]]; then
   ln -sfvv $DOTFILES_DIR/i3/config ~/.config/i3/.config
@@ -47,3 +48,6 @@ echo "$(tput setaf 6)Installing vim$(tput sgr0)"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +":PlugInstall" +qa
+
+chsh -s $(which zsh)
+echo "$(tput setaf 2)Install Complete! Restart your terminal."
