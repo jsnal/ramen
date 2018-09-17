@@ -16,3 +16,7 @@
   pod = push origin master
   plo = pull origin
   plom = pull origin master
+  # Submodules
+  subi = submodule init
+  suba = submodule add
+  subu = submodule update --recursive --remote
