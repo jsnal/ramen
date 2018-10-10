@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PACKAGES=("zsh" "curl" "vim")
+PACKAGES=("zsh" "curl" "vim" "jq")
 
 echo "$(tput setaf 6)Checking Installed Packages$(tput sgr0)"
 for i in "${PACKAGES[@]}"; do
@@ -9,8 +9,13 @@ for i in "${PACKAGES[@]}"; do
   if [ $? -eq 0 ]; then
     echo "-> $i Installed"
   else
-    echo -e "$(tput setaf 1)Install Failed\nPlease Install ${PACKAGES[@]}"
-    exit 1
+    echo -e "$(tput setaf 1)Install Failed\nPlease Install ${PACKAGES[@]}$(tput setaf 2)"
+    read -p "Do you wish to install this program? $(tput sgr0)" response 
+    case $response in
+      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\n$(tput setaf 2)Packages installed please rerun the script."; exit 0; break;;
+      [Nn]* ) exit 1;;
+      * ) echo "Please answer yes or no.";;
+    esac
   fi
 done
 

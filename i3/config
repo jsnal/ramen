@@ -187,7 +187,7 @@ mode "resize" {
 #bindsym $mod+r mode "resize"
 # }}}
 # Execute on Startup{{{
-exec_always xmodmap ~/.Xmodmap
+exec xmodmap ~/.Xmodmap
 exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 exec_always xrdb ~/.Xresources
