@@ -187,13 +187,13 @@ mode "resize" {
 #bindsym $mod+r mode "resize"
 # }}}
 # Execute on Startup{{{
+exec_always killall lemonbar
+exec_always ~/i3wm/lemonbar/lemon.sh | lemonbar -pb
 exec xmodmap ~/.Xmodmap
 exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 exec_always xrdb ~/.Xresources
 exec_always feh --bg-scale ~/i3wm/backgrounds/waterfrontmount.jpg
-exec_always killall polybar 
-exec_always exec ~/i3wm/polybar/launch.sh
 exec_always exec mopidy
 exec st -e bash ~/i3wm/i3/Scripts/tmux.sh 
 exec --no-startup-id xbindkeys

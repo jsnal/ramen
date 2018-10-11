@@ -12,11 +12,18 @@ clock() {
 }
 
 battery() {
-  cat /sys/class/power_supply/BAT0/capacity
+  bat=$(cat /sys/class/power_supply/BAT0/capacity)
+  if [[ bat -ge 70 ]]; then
+    echo %{F\#00ff00}$bat%{F\#fff}
+  elif [[ bat -le 69 && $bat -ge 26 ]]; then
+    echo %{F\#ffff00}$bat%{F\#fff}
+  else
+    echo %{F\#cc0000}$bat%{F\#fff}
+  fi
 }
 
 ssid() {
-  iwgetid -r
+  echo %{F\#00ff00}$(iwgetid -r)%{F\#fff}
 }
 
 address() {
