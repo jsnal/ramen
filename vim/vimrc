@@ -3,12 +3,12 @@
 call plug#begin('~/.vim/plugged')
 
 " Utils
-Plug 'https://github.com/mhinz/vim-signify'
+Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/junegunn/fzf'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 Plug 'https://github.com/vim-syntastic/syntastic'
 Plug 'https://github.com/tpope/vim-commentary'
-Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/jiangmiao/auto-pairs'
 
 " Snips
 Plug 'https://github.com/garbas/vim-snipmate'
@@ -17,13 +17,7 @@ Plug 'https://github.com/tomtom/tlib_vim.git'
 
 " Theming
 Plug 'https://github.com/sjl/badwolf'
-
-" Pandoc
-Plug 'https://github.com/junegunn/goyo.vim'
 Plug 'https://github.com/plasticboy/vim-markdown'
-
-" Java
-Plug 'https://github.com/pangloss/vim-javascript'
 
 call plug#end()
 "}}}
@@ -261,28 +255,6 @@ au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
 hi statusline guibg=DarkGrey ctermfg=darkgrey guifg=White ctermbg=white
 "}}}
-"---------------------------------------------------------------------------
-" Pairs{{{
-inoremap ( ()<Left>
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap < <><Left>
-inoremap ` ``<Left>
-
-function! PairsBackSpace() abort
-  let cur_line = getline('.')
-  let before_char = cur_line[col('.')-2]
-  let after_char = cur_line[col('.')-1]
-  if (before_char == '(' && after_char == ')') || (before_char == '{' && after_char == '}') || (before_char == '[' && after_char == ']') || (before_char == '"' && after_char == '"') || (before_char == '`' && after_char == '`') || (before_char == '<' && after_char == '>') || (before_char == "'" && after_char == "'")
-    return "\<Del>\<BS>"
-  else
-    return "\<BS>"
-  endfunction
-  inoremap <silent> <BS> <C-r>=PairsBackSpace()<CR>
-
-  "}}}
 "---------------------------------------------------------------------------
 " Syntastic{{{
 
