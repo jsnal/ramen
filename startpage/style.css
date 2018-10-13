@@ -90,3 +90,12 @@ input	{
 	color: #B4B4B4;
 	width: 70%;
 }
+
+.hint {
+  position: absolute;
+  z-index: 2147483647;
+  background-color: yellow;
+  border: 1px solid gold;
+  font-weight: bold;
+  color: black;
+}

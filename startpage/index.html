@@ -28,44 +28,84 @@
             }
           }
         }
+        document.onkeydown = function(e) {
+          if (e.altKey && e.keyCode == 76) {
+            linkHints();
+            getHint();
+          }
+        }
       }
       function openInNewTab(url, index) {
         var win = window.open(url, '__self');
         win.focus();
       }
+      function linkHints() {
+        var all = document.getElementsByTagName("a");
+        for (var i=0, max=all.length; i < max; i++) {
+          var el = document.getElementsByTagName("a")[i];
+          var createE = document.createElement("SPAN");
+          createE.setAttribute("class", "hint");
+          createE.setAttribute("style", "top: " + el.getClientRects()[0].top + "px; left: " + el.getClientRects()[0].left + "px;");
+          createE.setAttribute("title", el.href);
+          var createN = document.createTextNode(String.fromCharCode(97 + i));
+          createE.appendChild(createN);
+          document.getElementById('body').appendChild(createE);
+        } 
+      }
+      function getHint() {
+        document.onkeydown = function(e) {
+          console.log(e.keyCode);
+          if (e.keyCode == 8) {
+            location.reload();
+          }
+          var selection = String.fromCharCode(e.keyCode);
+          var selectionIndex = parseInt(selection, 36) - 10;
+          window.location = document.getElementsByClassName('hint')[selectionIndex].title;
+          removeHints();
+        }
+      }
+      function removeHints() {
+        var paras = document.getElementsByClassName('hint');
+
+        while(paras[0]) {
+          paras[0].parentNode.removeChild(paras[0]);
+        }
+      }
     </script>
   </head>
-  <div id="container">
-    <!-- Search -->
-    <div class="longbar">
-      <h3 style="display: inline;"><span class="red"> ~ </span> <span class="green">locate:</span></h3>
-      <input id="locate" type="text" autofocus="autofocus" onfocus="this.value=''"\>
-    </div> 
-    <div id="links-container">
-      <!-- General -->
-      <div class="links-card">
-        <h3><span class="red"> ~ [General]</span><span class="blue">:</span></h3>
-        <a class="blue" target="_self" href="http://jasonlong24.crabdance.com:8080/">Gitea</a>
-        <a class="pink" target="_self" href="https://github.com/">Github</a>
-        <a class="blue" target="_self" href="http://matrix.zelon.net:1337/build/">Paste</a>
-        <a class="blue" target="_self" href="https://forum.xda-developers.com/oneplus-2/development">XDA</a>
+  <body id="body">
+    <div id="container">
+      <!-- Search -->
+      <div class="longbar">
+        <h3 style="display: inline;"><span class="red"> ~ </span> <span class="green">locate:</span></h3>
+        <input id="locate" type="text" autofocus="autofocus" onfocus="this.value=''"\>
+      </div> 
+      <div id="links-container">
+        <!-- General -->
+        <div class="links-card">
+          <h3><span class="red"> ~ [General]</span><span class="blue">:</span></h3>
+          <a class="blue" target="_self" href="http://jasonlong24.crabdance.com:8080/">Gitea</a>
+          <a class="pink" target="_self" href="https://github.com/">Github</a>
+          <a class="blue" target="_self" href="http://matrix.zelon.net:1337/build/">Paste</a>
+          <a class="blue" target="_self" href="https://forum.xda-developers.com/oneplus-2/development">XDA</a>
+        </div>
+        <!-- Reddit -->
+        <div class="links-card">
+          <h3><span class="red"> ~ [Reddit]</span><span class="blue">:</span></h3>
+          <a class="blue" target="_self" href="https://www.reddit.com">Front Page</a>
+          <a class="blue" target="_self" href="https://www.reddit.com/r/unixporn/">/r/unixporn</a>
+          <a class="blue" target="_self" href="https://www.reddit.com/r/linuxquestions/">/r/linuxquestions</a>
+          <a class="blue" target="_self" href="https://www.reddit.com/r/vim/">/r/vim</a>
+        </div>
+        <!-- Google -->
+        <div class="links-card">
+          <h3><span class="red"> ~ [Google]</span><span class="blue">:</span></h3>
+          <a class="pink" target="_self" href="https://youtube.com/">Youtube</a>
+          <a class="pink" target="_self" href="https://classroom.google.com/">Classroom</a>
+          <a class="blue" target="_self" href="https://gmail.com/">Gmail</a>
+          <a class="blue" target="_self" href="https://drive.google.com/">Drive</a>
+        </div>
       </div>
-      <!-- Reddit -->
-      <div class="links-card">
-        <h3><span class="red"> ~ [Reddit]</span><span class="blue">:</span></h3>
-        <a class="blue" target="_self" href="https://www.reddit.com">Front Page</a>
-        <a class="blue" target="_self" href="https://www.reddit.com/r/unixporn/">/r/unixporn</a>
-        <a class="blue" target="_self" href="https://www.reddit.com/r/linuxquestions/">/r/linuxquestions</a>
-        <a class="blue" target="_self" href="https://www.reddit.com/r/vim/">/r/vim</a>
-      </div>
-      <!-- Google -->
-      <div class="links-card">
-        <h3><span class="red"> ~ [Google]</span><span class="blue">:</span></h3>
-        <a class="pink" target="_self" href="https://youtube.com/">Youtube</a>
-        <a class="pink" target="_self" href="https://classroom.google.com/">Classroom</a>
-        <a class="blue" target="_self" href="https://gmail.com/">Gmail</a>
-        <a class="blue" target="_self" href="https://drive.google.com/">Drive</a>
-      </div>
+  </body>
     </div>
-  </div>
 </html>
