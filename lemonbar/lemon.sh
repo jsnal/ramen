@@ -23,11 +23,21 @@ battery() {
 }
 
 ssid() {
-  echo %{F\#00ff00}$(iwgetid -r)%{F\#fff}
+  id=$(iwgetid -r)
+  if [[ $id == "" ]]; then
+    echo %{F\#cc0000}Not Connected%{F\#fff}
+  else
+    echo %{F\#00ff00}$id%{F\#fff}
+  fi
 }
 
 address() {
-  ip addr | ag "inet " | tr "/" " " | awk '{if (NR!=1) {print $2}}'
+  address=$(ip addr | ag "inet " | tr "/" " " | awk '{if (NR!=1) {print $2}}')
+  if [[ $address == "" ]]; then
+    echo %{F\#cc0000}None%{F\#fff}
+  else
+    echo %{F\#00ff00}$address%{F\#fff}
+  fi
 }
 
 brightness() {
@@ -38,9 +48,18 @@ volume() {
   amixer -M | grep Mono | awk 'NR==2 {print $4}' | sed 's/[^0-9]*//g'
 }
 
+song() {
+  current=$($HOME/i3wm/zsh/scripts/spotify-info.sh title)
+  if [[ $current = "" ]]; then
+    echo ""
+  else
+    echo $current \| 
+  fi
+}
+
 while true; do
   BAR_LEFT="%{l}$(workspace)"
-  BAR_RIGHT="%{r} B: $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) | $(battery)%"
+  BAR_RIGHT="%{r} $(song) B: $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) | $(battery)%"
   echo $BAR_LEFT $BAR_RIGHT
   sleep .5 
 done
