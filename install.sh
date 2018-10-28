@@ -21,8 +21,8 @@ done
 
 if [[ $1 = -w || $1 = --web ]]; then
   echo "$(tput setaf 6)Cloning the Dotfiles$(tput sgr0)"
-  git clone --recursive --quiet https://github.com/JasonLong24/i3wm $HOME/i3wm &>/dev/null
   DOTFILES_DIR="/home/$(whoami)/i3wm"
+  git clone --recursive --quiet https://github.com/JasonLong24/i3wm $DOTFILES_DIR &>/dev/null
 fi
 
 echo "$(tput setaf 6)Installing dotfiles$(tput sgr0)"
