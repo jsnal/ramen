@@ -2,7 +2,7 @@
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PACKAGES=("zsh" "curl" "vim" "jq" "git")
-
+WEBINST=false
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]
@@ -10,9 +10,7 @@ do
   key="$1"
   case $key in
     -w|--web)
-      echo "$(tput setaf 6)Cloning the Dotfiles$(tput sgr0)"
-      DOTFILES_DIR="/home/$(whoami)/i3wm"
-      git clone --recursive --quiet https://github.com/JasonLong24/i3wm $DOTFILES_DIR &>/dev/null
+      WEBINST=true
       shift 
       ;;
     -i|--ignore)
@@ -52,6 +50,15 @@ for i in "${PACKAGES[@]}"; do
     esac
   fi
 done
+
+function web-install() {
+  echo "$(tput setaf 6)Cloning the Dotfiles$(tput sgr0)"
+  DOTFILES_DIR="/home/$(whoami)/i3wm"
+  git clone --recursive --quiet https://github.com/JasonLong24/i3wm $DOTFILES_DIR &>/dev/null
+}
+
+if [[ $WEBINST = true ]]; then web-install; fi
+
 
 echo "$(tput setaf 6)Installing dotfiles$(tput sgr0)"
 ln -sfv $DOTFILES_DIR/vim/vimrc ~/.vimrc
