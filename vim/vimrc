@@ -35,7 +35,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 set background=dark
 set hlsearch
-colorscheme badwolf 
+colorscheme badwolf
 "let g:hybrid_custom_term_colors = 1
 "}}}
 "---------------------------------------------------------------------------

@@ -1,29 +1,57 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PACKAGES=("zsh" "curl" "vim" "jq")
+PACKAGES=("zsh" "curl" "vim" "jq" "git")
+
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+  key="$1"
+  case $key in
+    -w|--web)
+      echo "$(tput setaf 6)Cloning the Dotfiles$(tput sgr0)"
+      DOTFILES_DIR="/home/$(whoami)/i3wm"
+      git clone --recursive --quiet https://github.com/JasonLong24/i3wm $DOTFILES_DIR &>/dev/null
+      shift 
+      ;;
+    -i|--ignore)
+      ignore_list=$(echo $2 | sed 's/,/ /g')
+      shift
+      shift
+      ;;
+    *)
+      POSITIONAL+=("$1") 
+      shift 
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL[@]}"
 
 echo "$(tput setaf 6)Checking Installed Packages$(tput sgr0)"
 for i in "${PACKAGES[@]}"; do
-  dpkg -s $i &> /dev/null
+  if echo $ignore_list | grep -q $i; then
+    echo '' &>/dev/null
+  else
+    dpkg -s $i &> /dev/null
+  fi
   if [ $? -eq 0 ]; then
-    echo "-> $i Installed"
+    if echo $ignore_list | grep -q $i; then
+      echo "-> $i $(tput setaf 1)Ignored$(tput sgr0)"
+    else
+      echo "-> $i $(tput setaf 2)Installed$(tput sgr0)"
+    fi
   else
     echo -e "$(tput setaf 1)Install Failed\nPlease Install ${PACKAGES[@]}$(tput setaf 2)"
     read -p "Do you wish to install this program? $(tput sgr0)" response 
     case $response in
-      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\n$(tput setaf 2)Packages installed please rerun the script."; exit 0; break;;
+      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\n$(tput setaf 2)Packages installed please rerun the script."; break;;
       [Nn]* ) exit 1;;
       * ) echo "Please answer yes or no.";;
     esac
   fi
 done
-
-if [[ $1 = -w || $1 = --web ]]; then
-  echo "$(tput setaf 6)Cloning the Dotfiles$(tput sgr0)"
-  DOTFILES_DIR="/home/$(whoami)/i3wm"
-  git clone --recursive --quiet https://github.com/JasonLong24/i3wm $DOTFILES_DIR &>/dev/null
-fi
 
 echo "$(tput setaf 6)Installing dotfiles$(tput sgr0)"
 ln -sfv $DOTFILES_DIR/vim/vimrc ~/.vimrc
@@ -52,7 +80,7 @@ $DOTFILES_DIR/zsh/plugins/fzf/install
 
 echo "$(tput setaf 6)Installing vim$(tput sgr0)"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +":PlugInstall" +qa
 
 chsh -s $(which zsh)
