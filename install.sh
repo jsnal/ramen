@@ -44,7 +44,7 @@ for i in "${PACKAGES[@]}"; do
     echo -e "$(tput setaf 1)Install Failed\nPlease Install ${PACKAGES[@]}$(tput setaf 2)"
     read -p "Do you wish to install this program? $(tput sgr0)" response 
     case $response in
-      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\n$(tput setaf 2)Packages installed please rerun the script."; break;;
+      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\n$(tput setaf 2)Packages installed."; break;;
       [Nn]* ) exit 1;;
       * ) echo "Please answer yes or no.";;
     esac

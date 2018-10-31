@@ -54,7 +54,7 @@ bindsym $mod+Shift+w exec firefox
 bindsym $mod+s exec bash ~/i3wm/i3/Rofi/power.sh
 # bindsym $mod+r exec bash ~/i3wm/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/i3wm/i3/Rofi/config.sh
-# bindsym $mod+q exec rofi -show ssh 
+bindsym $mod+q exec bash ~/i3wm/i3/Scripts/dmenu-mount.sh 
 # bindsym $mod+t exec bash ~/i3wm/i3/Rofi/tll-interface.sh
 # }}}
 # Window Navigation# {{{
@@ -187,7 +187,7 @@ mode "resize" {
 #bindsym $mod+r mode "resize"
 # }}}
 # Execute on Startup{{{
-exec xmodmap ~/.Xmodmap
+exec xmodmap ~/.xmodmap
 exec_always --no-startup-id hsetroot -solid "#1b1b1b"
 exec --no-startup-id numlockx
 exec_always xrdb ~/.Xresources
