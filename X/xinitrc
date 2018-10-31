@@ -1,0 +1,11 @@
+if [ -f $HOME/.Xmodmap ]; then
+  xmodmap ~/.Xmodmap
+else
+  echo "Xmodmap not found"
+fi
+
+if [ -f $HOME/.xbindkeysrc ]; then
+  xbindkeys
+else
+  echo "~/.xbindkeysrc not found"
+fi

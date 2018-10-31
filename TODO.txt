@@ -1,3 +1,3 @@
-[] style dmenu in dmenu-mount.sh
+[x] style dmenu in dmenu-mount.sh
+[x] create xinitrc
 [] notifications for volume and brightness(notify-send)
-

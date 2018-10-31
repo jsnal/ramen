@@ -64,7 +64,8 @@ echo "$(tput setaf 6)Installing dotfiles$(tput sgr0)"
 ln -sfv $DOTFILES_DIR/vim/vimrc ~/.vimrc
 ln -sfv $DOTFILES_DIR/zsh/zshrc ~/.zshrc
 ln -sfv $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
-ln -sfv $DOTFILES_DIR/X/xmodmap ~/.xmodmap
+ln -sfv $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
+ln -sfv $DOTFILES_DIR/X/xinitrc ~/.xinitrc
 ln -sfv $DOTFILES_DIR/tmux.conf ~/.tmux.conf
 ln -sfv $DOTFILES_DIR/.gitconfig ~/.gitconfig
 
