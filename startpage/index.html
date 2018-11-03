@@ -4,9 +4,11 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="style.css"/>
+    <script src="QOTD.js"></script>
     <title>Homepage</title>
     <script charset="utf-8">
       window.onload = function() {
+        getQOTD();
         document.getElementById('locate').onkeydown = function(event) {
           if (event.keyCode == 13) {
             let initialInput = document.getElementById("locate").value;
@@ -105,6 +107,10 @@
           <a class="blue" target="_self" href="https://gmail.com/">Gmail</a>
           <a class="blue" target="_self" href="https://drive.google.com/">Drive</a>
         </div>
+      </div>
+      <!-- Quote of the Day -->
+      <div class="qotd-container">
+        <h3 id="qotd">Text</h3>
       </div>
   </body>
     </div>

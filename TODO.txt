@@ -1,3 +1,4 @@
 [x] style dmenu in dmenu-mount.sh
 [x] create xinitrc
 [] notifications for volume and brightness(notify-send)
+[] add wikipedia to author in QOTD

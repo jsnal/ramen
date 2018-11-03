@@ -25,7 +25,7 @@ html, body {
   width: 100%;
 }
 
-.links-card, .longbar {
+.qotd-container, .links-card, .longbar {
   box-shadow: 1px 1px 4px 0px #111;
   -moz-box-flex: 1;
   border-radius: 4px;
@@ -98,4 +98,13 @@ input	{
   border: 1px solid gold;
   font-weight: bold;
   color: black;
+}
+
+.qotd-container {
+  text-align: center;
+}
+
+#qotd {
+  font-weight: normal;
+  color: #4fa7a1
 }
