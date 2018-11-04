@@ -57,9 +57,19 @@ song() {
   fi
 }
 
+ssh-info() {
+  sessions="$(lsof -Pi | grep "ssh")"
+  if [ ! -z "$sessions" ]; then
+    count=$(echo "$sessions" | wc -l)
+    echo "SSH: $count |"
+  else
+    echo ""
+  fi
+}
+
 while true; do
   BAR_LEFT="%{l}$(workspace)"
-  BAR_RIGHT="%{r} $(song) B: $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) | $(battery)%"
+  BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} B: $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) | $(battery)%"
   echo $BAR_LEFT $BAR_RIGHT
   sleep .5 
 done
