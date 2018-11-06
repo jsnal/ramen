@@ -108,3 +108,12 @@ input	{
   font-weight: normal;
   color: #4fa7a1
 }
+
+.author {
+  text-decoration: none;
+  color: #4fa7a1;
+}
+
+.author:hover {
+  text-decoration: underline;
+}

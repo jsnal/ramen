@@ -20,7 +20,14 @@ function ajax_get(url, callback) {
 function getQOTD() {
   ajax_get('http://quotes.rest/qod.json', function(data) {
     let quoteBase = data["contents"]["quotes"][0];
-    let quoteFull = quoteBase["quote"] + " - " + quoteBase["author"];
-    document.getElementById("qotd").innerHTML = quoteFull;
+    let quoteAuthor = quoteBase["author"];
+    let quoteQuote = quoteBase["quote"];
+    document.getElementById("qotd").innerHTML = quoteQuote + " - ";
+    let createE = document.createElement("A");
+    createE.setAttribute("class", "author");
+    createE.setAttribute("href", "https://en.wikipedia.org/w/index.php?search=" + quoteAuthor);
+    var createN = document.createTextNode(quoteAuthor);
+    createE.appendChild(createN);
+    document.getElementById('qotd').appendChild(createE);
   });
 }
