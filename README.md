@@ -48,5 +48,3 @@ __*NOTE: Please delete all lines execpt for #!bin/bash so it doesn't run when it
 ### Fonts
 - Unifont
     - [Install Package](https://www.archlinux.org/packages/extra/any/bdf-unifont/)
-- Siji
-    - [Install Package](https://github.com/stark/siji)    
