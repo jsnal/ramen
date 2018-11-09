@@ -3,6 +3,7 @@
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PACKAGES=("zsh" "curl" "vim" "jq" "git")
 WEBINST=false
+VERINST=false
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]
@@ -11,6 +12,10 @@ do
   case $key in
     -w|--web)
       WEBINST=true
+      shift 
+      ;;
+    -v|--verify-install)
+      VERINST=true
       shift 
       ;;
     -i|--ignore)
@@ -57,7 +62,32 @@ function web-install() {
   git clone --recursive --quiet https://github.com/JasonLong24/i3wm $DOTFILES_DIR &>/dev/null
 }
 
+function verify-install() {
+  echo "$(tput setaf 6)Verifying Install$(tput sgr0)"
+  file=(
+  $DOTFILES_DIR/vim/vimrc \
+  $DOTFILES_DIR/zsh/zshrc \
+  $DOTFILES_DIR/X/xbindkeysrc \
+  $DOTFILES_DIR/X/xmodmap \
+  $DOTFILES_DIR/X/xinitrc \
+  $DOTFILES_DIR/tmux.conf \
+  $DOTFILES_DIR/.gitconfig \
+  $DOTFILES_DIR/i3/config \
+  )
+  for i in ${file[@]}; do
+    if [ -f "$i" ]; then
+      echo "-> $i $(tput setaf 2)Found$(tput sgr0)"
+    else
+      echo "$i not found."
+      echo "Install not verified"
+      exit 1
+    fi
+  done
+  exit 0
+}
+
 if [[ $WEBINST = true ]]; then web-install; fi
+if [[ $VERINST = true ]]; then verify-install; fi
 
 
 echo "$(tput setaf 6)Installing dotfiles$(tput sgr0)"

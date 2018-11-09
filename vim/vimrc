@@ -9,6 +9,7 @@ Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 Plug 'https://github.com/vim-syntastic/syntastic'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/ervandew/supertab'
 
 " Snips
 Plug 'https://github.com/garbas/vim-snipmate'
