@@ -4,6 +4,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PACKAGES=("zsh" "curl" "vim" "jq" "git")
 WEBINST=false
 VERINST=false
+CIINST=false
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]
@@ -17,6 +18,10 @@ do
     -v|--verify-install)
       VERINST=true
       shift 
+      ;;
+    -ci|--count-integration)
+      CIINST=true
+      shift
       ;;
     -i|--ignore)
       ignore_list=$(echo $2 | sed 's/,/ /g')
@@ -32,7 +37,7 @@ done
 
 set -- "${POSITIONAL[@]}"
 
-echo "$(tput setaf 6)Checking Installed Packages$(tput sgr0)"
+echo "Checking Installed Packages"
 for i in "${PACKAGES[@]}"; do
   if echo $ignore_list | grep -q $i; then
     echo '' &>/dev/null
@@ -41,15 +46,15 @@ for i in "${PACKAGES[@]}"; do
   fi
   if [ $? -eq 0 ]; then
     if echo $ignore_list | grep -q $i; then
-      echo "-> $i $(tput setaf 1)Ignored$(tput sgr0)"
+      echo "-> $i Ignored"
     else
-      echo "-> $i $(tput setaf 2)Installed$(tput sgr0)"
+      echo "-> $i Installed"
     fi
   else
-    echo -e "$(tput setaf 1)Install Failed\nPlease Install ${PACKAGES[@]}$(tput setaf 2)"
-    read -p "Do you wish to install this program? $(tput sgr0)" response 
+    echo -e "Install Failed\nPlease Install ${PACKAGES[@]}"
+    read -p "Do you wish to install this program? " response 
     case $response in
-      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\n$(tput setaf 2)Packages installed."; break;;
+      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\nPackages installed."; break;;
       [Nn]* ) exit 1;;
       * ) echo "Please answer yes or no.";;
     esac
@@ -57,13 +62,13 @@ for i in "${PACKAGES[@]}"; do
 done
 
 function web-install() {
-  echo "$(tput setaf 6)Cloning the Dotfiles$(tput sgr0)"
+  echo "Cloning the Dotfiles"
   DOTFILES_DIR="/home/$(whoami)/i3wm"
   git clone --recursive --quiet https://github.com/JasonLong24/i3wm $DOTFILES_DIR &>/dev/null
 }
 
 function verify-install() {
-  echo "$(tput setaf 6)Verifying Install$(tput sgr0)"
+  echo "Verifying Install"
   file=(
   $DOTFILES_DIR/vim/vimrc \
   $DOTFILES_DIR/zsh/zshrc \
@@ -76,7 +81,7 @@ function verify-install() {
   )
   for i in ${file[@]}; do
     if [ -f "$i" ]; then
-      echo "-> $i $(tput setaf 2)Found$(tput sgr0)"
+      echo "-> $i Found"
     else
       echo "$i not found."
       echo "Install not verified"
@@ -90,7 +95,7 @@ if [[ $WEBINST = true ]]; then web-install; fi
 if [[ $VERINST = true ]]; then verify-install; fi
 
 
-echo "$(tput setaf 6)Installing dotfiles$(tput sgr0)"
+echo "Installing dotfiles"
 ln -sfv $DOTFILES_DIR/vim/vimrc ~/.vimrc
 ln -sfv $DOTFILES_DIR/zsh/zshrc ~/.zshrc
 ln -sfv $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
@@ -113,13 +118,16 @@ else
   ln -sfv $DOTFILES_DIR/polybar/config ~/.config/polybar/config
 fi
 
-echo "$(tput setaf 6)Installing zsh$(tput sgr0)"
+echo "Installing zsh"
 $DOTFILES_DIR/zsh/plugins/fzf/install
 
-echo "$(tput setaf 6)Installing vim$(tput sgr0)"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+if [[ $CIINST = false ]]; then
+  echo "Installing vim"
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +":PlugInstall" +qa
+  vim +":PlugInstall" +qa
 
-chsh -s $(which zsh)
-echo "$(tput setaf 2)Install Complete! Restart your terminal."
+  chsh -s $(which zsh)
+fi
+
+echo "Install Complete! Restart your terminal."
