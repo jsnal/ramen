@@ -41,10 +41,12 @@ __*NOTE: Please delete all lines execpt for #!bin/bash so it doesn't run when it
 - Gyazo
     - Screenshot tool for certain parts of the screen
     - [Install Package](https://aur.archlinux.org/packages/gyazo/)
-- Polybar
+- Lemonbar
     - Replacement for i3Blocks but I still use some of the i3Block scripts
     - [Install Package](https://github.com/jaagr/polybar)
-    
-### Fonts
-- Unifont
-    - [Install Package](https://www.archlinux.org/packages/extra/any/bdf-unifont/)
+
+### Testing
+
+To be sure that each push will work on a fresh install of linux, I use a docker container with Ubuntu 18.04, which builds on a Jenkins server.
+
+[![Build Status](http://jasonlong24.crabdance.com:8080/buildStatus/icon?job=i3wm)](http://192.168.86.107:8080/job/i3wm/)
