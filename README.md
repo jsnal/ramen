@@ -1,4 +1,4 @@
-# i3wm Config
+# i3wm Config [![Build Status](http://192.168.86.107:8080/buildStatus/icon?job=i3wm)](http://192.168.86.107:8080/job/i3wm/)
  My i3wm config, scripts and setup.
 
  vim [Snippets](https://github.com/JasonLong24/snippets)
