@@ -129,5 +129,6 @@ if [[ $CIINST = false ]]; then
 
   chsh -s $(which zsh)
 fi
+git clone https://github.com/JasonLong24/snippets ~/.vim/snippets
 
 echo "Install Complete! Restart your terminal."
