@@ -6,13 +6,13 @@ function! s:buflist()
   return split(ls, '\n')
 endfunction
 
-function! s:bufopen(e)
+function! functions#bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
 
 nnoremap <silent> <Space><Space> :call fzf#run({
       \   'source':  reverse(<sid>buflist()),
-      \   'sink':    function('<sid>bufopen'),
+      \   'sink':    function('functions#bufopen'),
       \   'options': '+m',
       \   'down':    len(<sid>buflist()) + 2
       \ })<CR>
@@ -57,4 +57,16 @@ function! functions#spell() abort
     hi SpellBad cterm=underline
     setlocal spelllang=en
   endif
+endfunction
+
+" Opens file with predefined files
+function! functions#openwithbuffer(path) abort
+  for f in split(glob(a:path), '\n')
+    exe 'badd' f
+  endfor
+
+  call fzf#run({
+        \   'source':  <sid>buflist(),
+        \   'sink':    function('functions#bufopen'),
+        \   'options': '+m' })
 endfunction
