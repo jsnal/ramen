@@ -3,3 +3,6 @@
 [] notifications for volume and brightness(notify-send)
 [x] add wikipedia to author in QOTD
 [] todo-list zsh plugin
+[] configure YCM with certian files
+[] add YCM to install script
+[] fix goyo white line

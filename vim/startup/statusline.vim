@@ -14,7 +14,6 @@ set statusline+=%#LineNr#
 set statusline+=%=%#PmenuSel#
 set statusline+=%=\ %P\ %p%%
 set statusline+=%=\ (%l/%L)
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=\ <<
 
 function! InsertStatuslineColor(mode)
