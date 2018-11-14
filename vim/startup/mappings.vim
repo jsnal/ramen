@@ -25,7 +25,7 @@ map <Leader>f :b
 
 " Function Keys
 nmap <silent> <F2> :call functions#ToggleVExplorer()<CR>
-map <F5> :setlocal foldmethod=marker<CR> 
+map <F4> :setlocal foldmethod=marker<CR> 
 map <F6> mzgg=G`z`<CR>
 
 " Fuzzy Finding Splits
@@ -40,3 +40,6 @@ map <C-F> :fzf<CR>
 " Move Lines in Visual Mode
 xnoremap K :move '<-2 <CR> gv=gv
 xnoremap J :move '>+1 <CR> gv=gv
+
+" Check TODO List with date
+nnoremap <F5> lix<Esc>ll"=strftime("%c")<CR>P
