@@ -1,12 +1,12 @@
 function precmd {
   AltPrompt=null
-  BRACKET="%F{white}"
-  SUDO="%F{red}"
-  DIR="%F{cyan}"
-  PROMPT="%F{white}"
-  USER="%F{yellow}"
-  GIT_BRANCH="%F{magenta}"
-  ALTPROMPT="%F{red}"
+  BRACKET="%{%F{white}%}"
+  SUDO="%{%F{red}%}"
+  DIR="%{%F{cyan}%}"
+  PROMPT="%{%F{white}%}"
+  USER="%{%F{yellow}%}"
+  GIT_BRANCH="%{%F{magenta}%}"
+  ALTPROMPT="%{%F{red}%}"
 
   # Functions# {{{
   function get_sudo() {
@@ -15,24 +15,6 @@ function precmd {
     else
       echo "" 
     fi
-  }
-
-  function get_build() {
-    buildfiles=$(find . -maxdepth 1 -type f | sed 's/^..//')
-    possfiles=("build.xml" "build.gradle" "CMake" "Makefile")
-    for (( i=1;i<=${#possfiles[@]};i++ )); do
-      buildfile=$(echo $buildfiles | grep ${possfiles[$i]})
-      build_type
-    done
-  }
-
-  function build_type() {
-    case $buildfile in
-      build.xml) echo "ant" ;;
-      build.gradle) echo "gradle" ;;
-      CMake) echo "cmake" ;;
-      Makefile) echo "make" ;;
-    esac
   }
 
   case $AltPrompt in
@@ -50,10 +32,10 @@ function precmd {
       session="" ;;
   esac
 
-  DIR="[$DIR%B%~%b$BRACKET$(git_full_prompt)$BRACKET]% "
+  DIR="[$DIR%B%(5~|../%3~|%~)%b$BRACKET$BRACKET]% "
   USER="$BRACKET@$USER%m"
   END="$PROMPT$ "
 
   PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
-  # RPROMPT=%{${_lineup}%}$(get_build)%{${_linedown}%}
+  RPROMPT="$(git_full_prompt)"
 }
