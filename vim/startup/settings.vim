@@ -54,21 +54,3 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15
-
-" Syntastic
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_java_checkstyle_classpath = "~/wpilib/java/current/lib/WPILib.jar:~/wpilib/user/java/lib/CTRE_Phoenix.jar:~/git/2018-bot/src:~/wpilib/java/current/lib/cscore.jar:~/wpilib/user/java/lib/Pathfinder-Java-1.8.jar"
-let g:syntastic_java_javac_classpath = "~/wpilib/java/current/lib/WPILib.jar:~/wpilib/user/java/lib/CTRE_Phoenix.jar:~/git/2018-bot/src:~/wpilib/java/current/lib/cscore.jar:~/wpilib/user/java/lib/Pathfinder-Java-1.8.jar"
-" let g:syntastic_mode_map = {
-    " \ "mode": "active",
-    " \ "active_filetypes": ["java"],
-    " \ "passive_filetypes": ["*"] }
-
-let g:JavaComplete_LibsPath = "/home/jason/wpilib/java/current/lib/WPILib.jar"
-let g:JavaComplete_SourcesPath = "/home/jason/2018-bot/src/org/usfirst/frc/team2059/*"

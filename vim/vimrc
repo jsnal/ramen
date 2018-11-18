@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " Utils
 Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/junegunn/fzf'
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 Plug 'https://github.com/tpope/vim-commentary'
