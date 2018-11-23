@@ -127,6 +127,17 @@ if [[ $CIINST = false ]]; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   vim +":PlugInstall" +qa
 
+  read -p "Install YCM? " response 
+  case $response in
+    [Yy]* )  
+      if [[ $(vim --version | grep -c -w '+python') = 1 || $(vim --version | grep -c -w '+python3') = 1 ]]; then
+        python3 $HOME/.vim/plugged/YouCompleteMe/install.py --clang-completer
+      fi
+      ;;
+    [Nn]* ) echo "No YCM";;
+    * ) echo "Please answer yes or no.";;
+  esac 
+
   chsh -s $(which zsh)
 fi
 git clone https://github.com/JasonLong24/snippets ~/.vim/snippets
