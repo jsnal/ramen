@@ -16,6 +16,7 @@ Plug 'https://github.com/tomtom/tlib_vim.git'
 
 " Theming
 Plug 'https://github.com/sjl/badwolf'
+Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/junegunn/goyo.vim'
 
