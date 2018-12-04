@@ -11,6 +11,7 @@ set wildmenu
 set shortmess=a
 set cmdheight=2
 set showmode
+set splitbelow splitright
 
 " Numbering and Indent
 set number

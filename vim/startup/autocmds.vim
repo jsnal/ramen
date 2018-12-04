@@ -15,3 +15,8 @@ au BufReadPost,BufNewFile *.vimrc,vimrc call functions#openwithbuffer("~/i3wm/vi
 " Enter and Leave Goyo
 autocmd! User GoyoEnter call functions#goyo_enter()
 autocmd! User GoyoLeave call functions#goyo_leave()
+
+" delete whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+" remove new line auto comment
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
