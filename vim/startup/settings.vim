@@ -3,7 +3,7 @@ colorscheme badwolf
 syntax on
 
 " General
-set nocompatible 
+set nocompatible
 set laststatus=2
 set backspace=indent,eol,start
 set path+=**
@@ -12,6 +12,7 @@ set shortmess=a
 set cmdheight=2
 set showmode
 set splitbelow splitright
+set ignorecase smartcase
 
 " Numbering and Indent
 set number

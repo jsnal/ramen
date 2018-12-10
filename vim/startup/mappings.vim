@@ -1,4 +1,4 @@
-" noremap <C-x> :! pandoc --mathjax --toc -o '%:p:h'/out.pdf '%:p:h'/*.md \| zathura '%:p:h'/out.pdf &<CR><CR> 
+" noremap <C-x> :! pandoc --mathjax --toc -o '%:p:h'/out.pdf '%:p:h'/*.md \| zathura '%:p:h'/out.pdf &<CR><CR>
 
 noremap <TAB><TAB> :source %<CR>
 
@@ -25,7 +25,7 @@ map <Leader>f :b
 
 " Function Keys
 nmap <silent> <F2> :call functions#ToggleVExplorer()<CR>
-map <F4> :setlocal foldmethod=marker<CR> 
+map <F4> :setlocal foldmethod=marker<CR>
 map <F6> mzgg=G`z`<CR>
 
 " Fuzzy Finding Splits
@@ -53,3 +53,6 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" easymotion
+map s <Plug>(easymotion-prefix)
