@@ -1,5 +1,5 @@
 # Keyboard Shortcuts {{{
-bindkey -s '^e' 'cd ~ && vim $(fzf)\n cd $OLDPWD\nclear\n'	
+bindkey -s '^e' 'cd ~ && vim $(fzf)\n cd $OLDPWD\nclear\n'
 bindkey -s '^y' '. ~/.zshrc\nclear\n'
 bindkey -s '^n' './tg/bin/telegram-cli -W -N\n'
 function up_widget() {
@@ -47,7 +47,8 @@ alias tla='~/i3wm/i3/Scripts/tll.sh a "$@"'
 alias drivec="~/i3wm/zsh/scripts/drive-compile.sh"
 alias myip="ip -color address"
 export BM_CONFIG="$HOME/i3wm/zsh/plugins/shell-plugins/zshbookmarks/config.sh"
-alias c="source $HOME/i3wm/zsh/plugins/shell-plugins/zshbookmarks/zshbookmark.sh -c $HOME/i3wm/zsh/.dirbookmarks"
+alias d="source $HOME/i3wm/zsh/plugins/shell-plugins/zshbookmarks/zshbookmark.sh -c $HOME/i3wm/zsh/.dirbookmarks dir"
+alias f="source $HOME/i3wm/zsh/plugins/shell-plugins/zshbookmarks/zshbookmark.sh -c $HOME/i3wm/zsh/.filebookmarks file"
 alias stagit-gen="$HOME/i3wm/zsh/plugins/shell-plugins/stagit-gen/gen.sh"
 alias qp="git add --all && git commit && git push origin master"
 alias xmod-caps="xmodmap $HOME/.Xmodmap"
