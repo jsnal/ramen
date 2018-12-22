@@ -1,5 +1,6 @@
 # Keyboard Shortcuts {{{
-bindkey -s '^e' 'cd ~ && vim $(fzf)\n cd $OLDPWD\nclear\n'
+bindkey -s '^e' 'f -f\n'
+bindkey -s '^h' 'd -f\n'
 bindkey -s '^y' '. ~/.zshrc\nclear\n'
 bindkey -s '^n' './tg/bin/telegram-cli -W -N\n'
 function up_widget() {
