@@ -20,7 +20,7 @@ nnoremap <silent> <Space><Space> :call fzf#run({
 " Better Fold Method
 function! functions#Betterfdm()
   if &foldmethod =~ "marker"
-    set foldmethod=marker 
+    set foldmethod=marker
   else
     set foldmethod=indent
   endif
@@ -44,7 +44,7 @@ function! functions#ToggleVExplorer()
     endif
   else
     exec '1wincmd w'
-    Vexplore 
+    Vexplore
     let t:expl_buf_num = bufnr("%")
   endif
 endfunction
@@ -89,4 +89,5 @@ function! functions#openwithbuffer(path) abort
         \   'sink':    function('functions#bufopen'),
         \   'down':    len(<sid>buflist()) + 2,
         \   'options': '+m' })
+  filetype detect
 endfunction
