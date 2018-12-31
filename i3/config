@@ -4,7 +4,7 @@ set $TERMINAL uxterm
 floating_modifier $mod
 
 new_window none
-new_window pixel 2 
+new_window pixel 2
 # }}}
 # Colors and Font# {{{
 #Colors set for the whole config
@@ -30,20 +30,20 @@ font xft:DejaVu Sans Mono 9
 #font FontAwesome 9, Droid Sans Mono
 # }}}
 # Function Key Binds# {{{
-bindsym $mod+Shift+x exec bash ~/i3wm/i3/Scripts/lock.sh 
-#bindsym $mod+F6 exec xbacklight -inc 10   
+bindsym $mod+Shift+x exec bash ~/i3wm/i3/Scripts/lock.sh
+#bindsym $mod+F6 exec xbacklight -inc 10
 #bindsym $mod+F5 exec xbacklight -dec 10
-bindsym $mod+F7 exec xbacklight -set 0 
+bindsym $mod+F7 exec xbacklight -set 0
 
-bindsym F8 exec /opt/eclipse/eclipse 
+bindsym F8 exec /opt/eclipse/eclipse
 bindsym F9 exec ~/Downloads/Telegram/Telegram
 #bindsym $mod+F11 exec amixer -q sset "Master" 5%-
-#bindsym $mod+F12 exec amixer -q sset "Master" 5%+ 
+#bindsym $mod+F12 exec amixer -q sset "Master" 5%+
 bindsym $mod+y exec bash ~/i3wm/i3/Scripts/yt-fscreen.sh
 # }}}
 # DMenu and Term# {{{
-bindsym $mod+Return exec st 
-bindsym $mod+d exec ~/i3wm/i3/Scripts/dmenu.sh 
+bindsym $mod+Return exec st
+bindsym $mod+d exec ~/i3wm/i3/Scripts/dmenu.sh
 
 #bindsym $mod+Shift+s exec rofi -show ssh
 bindsym $mod+Shift+w exec firefox
@@ -54,7 +54,7 @@ bindsym $mod+Shift+w exec firefox
 bindsym $mod+s exec bash ~/i3wm/i3/Rofi/power.sh
 # bindsym $mod+r exec bash ~/i3wm/i3/Rofi/resize.sh
 bindsym $mod+a exec bash ~/i3wm/i3/Rofi/config.sh
-bindsym $mod+q exec bash ~/i3wm/i3/Scripts/dmenu-mount.sh 
+bindsym $mod+q exec bash ~/i3wm/i3/Scripts/dmenu-mount.sh
 # bindsym $mod+t exec bash ~/i3wm/i3/Rofi/tll-interface.sh
 # }}}
 # Window Navigation# {{{
@@ -97,14 +97,15 @@ bindsym $mod+Shift+q kill
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+c exec uxterm -c calc -hold -e python
-bindsym $mod+t exec ~/i3wm/i3/Scripts/polystatus.sh 
+bindsym $mod+t exec ~/i3wm/i3/Scripts/polystatus.sh
 bindsym $mod+g exec ~/i3wm/i3/Scripts/flipwindow.sh
+bindsym $mod+Shift+g exec ~/i3wm/emulation/start.sh
 
-for_window [instance="tmux"] move window to scratchpad, scratchpad hide 
+for_window [instance="tmux"] move window to scratchpad, scratchpad hide
 for_window [instance="tele"] move window to scratchpad, scratchpad hide
 for_window [class="tll"] floating enable, resize set 800 600, move position center
-for_window [class="mpv"] floating enable, resize set 1200 800, move position center 
-for_window [class="calc"] floating enable, resize set 800 600, move position center 
+for_window [class="mpv"] floating enable, resize set 1200 800, move position center
+for_window [class="calc"] floating enable, resize set 800 600, move position center
 # }}}
 # Workspaces# {{{
 set $workspace1 "1"
@@ -192,11 +193,11 @@ exec --no-startup-id numlockx
 exec_always xrdb ~/.Xresources
 exec_always feh --bg-scale ~/i3wm/backgrounds/waterfrontmount.jpg
 exec_always exec mopidy
-exec st -e bash ~/i3wm/i3/Scripts/tmux.sh 
+exec st -e bash ~/i3wm/i3/Scripts/tmux.sh
 exec --no-startup-id xbindkeys
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
 exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
-exec --no-startup-id amixer sset "Master" 0% 
+exec --no-startup-id amixer sset "Master" 0%
 exec_always python ~/i3wm/i3/Scripts/altlayout.py
 bar {
   i3bar_command $HOME/i3wm/lemonbar/launch.sh
