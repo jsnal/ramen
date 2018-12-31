@@ -11,39 +11,26 @@ or
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/JasonLong24/i3wm/master/install.sh) --web
 ```
-##### After Install Config
-The after install config is located in the root directory. To use it just write a command you want to run after the install is complete.
-__*NOTE: Please delete all lines execpt for #!bin/bash so it doesn't run when it shouldn't*__
-
-#### Or install by hand
-- Install dependencies
-- Install fonts for polybar in ~/usr/share/fonts
-- Clone [snippets](https://github.com/JasonLong24/snippets) into ~/.vim
-- Clone this github into ~/.config/
 
 ### Tools
-- i3Blocks
-    - Replacement for i3Status
-    - [Install Package](https://www.archlinux.org/packages/community/i686/i3blocks/)
-- i3Gaps
-    - Enables customization of the gaps in between windows
-    - [Install Package](https://aur.archlinux.org/packages/i3-gaps-git/)
-- Rofi
-    - Replacement for dmenu
-    - Used for different types of menus
-    - See all the menus in ~/.config/i3/Rofi/
-    - [Install Package](https://www.archlinux.org/packages/community/x86_64/rofi/)
-- Zsh
+- i3
+    - Tiling window manager for Xorg
+    - [Install Package](https://github.com/i3/i3)
+- dmenu
+    - Fuzzy Finder for applications and other things.
+    - [Install Package](https://git.suckless.org/dmenu/)
+- zsh
+    - Replacement for bash.
     - [Install package](https://www.archlinux.org/packages/extra/x86_64/zsh/)
-- Scrot
-    - Used for screenshot script
-    - [Install package](https://www.archlinux.org/packages/community/i686/scrot/)
-- Gyazo
-    - Screenshot tool for certain parts of the screen
-    - [Install Package](https://aur.archlinux.org/packages/gyazo/)
-- Lemonbar
+- lemonbar
     - Replacement for i3Blocks but I still use some of the i3Block scripts
     - [Install Package](https://github.com/jaagr/polybar)
+- st
+    - Terminal emulator written in 32k lines of C code.
+    - [Install Package](https://git.suckless.org/st/)
+- vim
+    - Modal based text editor.
+    - [Install Package](https://github.com/vim/vim)
 
 ### Testing
 
