@@ -15,16 +15,15 @@ set $text-inactive          #888888
 set $background-urgent      #900000
 set $indicator              #00ff00
 set $seperator              #666666
-set $border-inactive	    #000000
-#set $border		    #458588
+set $border-inactive	      #000000
 set $border                 #cc0000
 
 #Colors set for windows on different modes
-# classe                borda               fundo           texto                   indicador               borda_filha
-client.focused          $border				$background-inactive  $text                      $border				$border
-client.unfocused        $border				$background-inactive  $text-inactive		 $background-inactive			$border-inactive
-client.focused_inactive $border				$background-inactive  $text-inactive		 $background-inactive			$border-inactive
-client.urgent           $border				$background-inactive  $background-urgent         $background-inactive			$border-inactive
+# classe                borda               fundo                 texto                   indicador               borda_filha
+client.focused          $border				      $border               $text                   $border				          $border
+client.unfocused        $border				      $background-inactive  $text-inactive		      $background-inactive	  $border
+client.focused_inactive $border             $background-inactive  $text-inactive		      $background-inactive		$border
+client.urgent           $border             $background-inactive  $background-urgent      $background-inactive	  $border
 
 font xft:DejaVu Sans Mono 9
 #font FontAwesome 9, Droid Sans Mono
