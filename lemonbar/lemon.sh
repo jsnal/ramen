@@ -12,13 +12,15 @@ clock() {
 }
 
 battery() {
-  bat=$(cat /sys/class/power_supply/BAT0/capacity)
-  if [[ bat -ge 70 ]]; then
-    echo %{F\#00ff00}$bat%{F\#fff}
-  elif [[ bat -le 69 && $bat -ge 26 ]]; then
-    echo %{F\#ffff00}$bat%{F\#fff}
-  else
-    echo %{F\#cc0000}$bat%{F\#fff}
+  if [ ! -f /sys/class/power_supply/BAT0/capacity ]; then echo ''; else
+    local bat=$(cat /sys/class/power_supply/BAT0/capacity)
+    if [[ bat -ge 70 ]]; then
+      echo '| '%{F\#00ff00}$bat%{F\#fff}'%'
+    elif [[ bat -le 69 && $bat -ge 26 ]]; then
+      echo '| '%{F\#ffff00}$bat%{F\#fff}'%'
+    else
+      echo '| '%{F\#cc0000}$bat%{F\#fff}'%'
+    fi
   fi
 }
 
@@ -73,7 +75,7 @@ win-info() {
 
 while true; do
   BAR_LEFT="%{l}$(workspace) $(win-info)"
-  BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} B: $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) | $(battery)%"
+  BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} B: $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) $(battery)%"
   echo $BAR_LEFT $BAR_RIGHT
   sleep .5
 done
