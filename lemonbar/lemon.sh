@@ -53,7 +53,7 @@ song() {
   if [[ $current = "" ]]; then
     echo ""
   else
-    echo $current \| 
+    echo $current \|
   fi
 }
 
@@ -67,9 +67,13 @@ ssh-info() {
   fi
 }
 
+win-info() {
+  echo " []="$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)
+}
+
 while true; do
-  BAR_LEFT="%{l}$(workspace)"
+  BAR_LEFT="%{l}$(workspace) $(win-info)"
   BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} B: $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) | $(battery)%"
   echo $BAR_LEFT $BAR_RIGHT
-  sleep .5 
+  sleep .5
 done
