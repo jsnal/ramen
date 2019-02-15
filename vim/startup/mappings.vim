@@ -24,7 +24,7 @@ map <Leader>d :bd<Return>
 map <Leader>f :b
 
 " Function Keys
-nmap <silent> <F2> :call functions#ToggleVExplorer()<CR>
+nmap <silent> <F2> :NERDTreeToggle<CR>
 map <F4> :setlocal foldmethod=marker<CR>
 map <F6> mzgg=G`z`<CR>
 

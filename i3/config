@@ -21,9 +21,9 @@ set $border                 #cc0000
 #Colors set for windows on different modes
 # classe                borda               fundo                 texto                   indicador               borda_filha
 client.focused          $border				      $border               $text                   $border				          $border
-client.unfocused        $border				      $background-inactive  $text-inactive		      $background-inactive	  $border
-client.focused_inactive $border             $background-inactive  $text-inactive		      $background-inactive		$border
-client.urgent           $border             $background-inactive  $background-urgent      $background-inactive	  $border
+client.unfocused        $border				      $background-inactive  $text-inactive		      $background-inactive	  $border-inactive
+client.focused_inactive $border             $background-inactive  $text-inactive		      $background-inactive		$border-inactive
+client.urgent           $border             $background-inactive  $background-urgent      $background-inactive	  $border-inactive
 
 font xft:DejaVu Sans Mono 9
 #font FontAwesome 9, Droid Sans Mono

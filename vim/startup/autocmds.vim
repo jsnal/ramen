@@ -20,3 +20,6 @@ autocmd! User GoyoLeave call functions#goyo_leave()
 autocmd BufWritePre * %s/\s\+$//e
 " remove new line auto comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd FileType netrw setl bufhidden=wipe
+" close nerdtree if last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

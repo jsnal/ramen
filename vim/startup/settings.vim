@@ -47,12 +47,3 @@ if has ('persistent_undo')
   set undolevels=5000
   set undofile
 endif
-
-" Netrw
-let g:proj_window_width = 34
-let g:proj_window_increment = 0
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 15
