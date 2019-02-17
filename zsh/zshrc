@@ -1,14 +1,14 @@
 config_files=($HOME/i3wm/zsh)
+include () { [[ -f "$1" ]] && source "$1" }
+
 # Plugins# {{{
-source $config_files/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $config_files/plugins/shell-plugins/zsh-git/git.plugin.zsh
-source $config_files/plugins/zsh-autopair/autopair.zsh
+include $config_files/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+include $config_files/plugins/shell-plugins/zsh-git/git.plugin.zsh
+include $config_files/plugins/zsh-autopair/autopair.zsh
 # }}}
 # Config Files{{{
-source $config_files/prompt.zsh
-source $config_files/config.zsh
-source $config_files/aliases.zsh
-source $config_files/commands.zsh
-source $config_files/completion.zsh
+for (( i=1;i<=$(find ~/i3wm/zsh/*.zsh -maxdepth 1 -type f | wc -l);i++ )); do
+  source $(find ~/i3wm/zsh/*.zsh -maxdepth 1 -type f | awk NR==$i)
+done
 # }}}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

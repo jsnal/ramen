@@ -35,6 +35,13 @@ function tmuxn() { tmux -2 new -s "$@" }
 function tmuxk() { tmux kill-session -t "$@" }
 function tmuxa() { tmux -2 a -t "$@" }
 
+# Eaiser Backwards cd
+alias ..1='cd ..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ..4='cd ../../../..'
+alias ..5='cd ../../../../..'
+
 alias v='vim'
 alias z='zathura'
 alias ls='ls -Fh -I "*~" --color=always --group-directories'
