@@ -17,7 +17,6 @@ ENV HOME /home/tester
 WORKDIR /home/tester/projects/i3wm
 
 RUN git submodule init && git submodule update
-RUN ./install.sh -v
 RUN ./install.sh -ci
 
 CMD ["/bin/bash"]
