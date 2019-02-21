@@ -1,9 +1,9 @@
 function precmd {
 
   if [ $? -eq 0  ]; then
-    END="$PROMPTC$ "
+    END="$PROMPTC$%(1j.*.) "
   else
-    END="$ALTPROMPT$ "
+    END="$ALTPROMPT\$$PROMPTC%(1j.*.) "
   fi
 
   function get_sudo() {
@@ -23,7 +23,7 @@ function precmd {
   ALTPROMPT="%{%F{red}%}"
 
   DIR="[$DIR%B%(5~|../%3~|%~)%b$BRACKET$BRACKET]% "
-  USER="$BRACKET@$USER%m"
+  USER="$BRACKET@$USER%n"
 
   PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
   RPROMPT="$(git_full_prompt)"

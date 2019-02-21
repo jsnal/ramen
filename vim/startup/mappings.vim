@@ -30,12 +30,14 @@ map <F6> mzgg=G`z`<CR>
 
 " Fuzzy Finding Splits
 nnoremap <silent> <TAB>v :call fzf#run({
-      \   'sink':  'vertical botright split' })<CR>
+      \   'sink':  'vertical botright split',
+      \   'source': 'find . -path "*/\.*" -prune -o -type f ! -name "*~" -print -o -type l -print' })<CR>
 
 nnoremap <silent> <TAB>x :call fzf#run({
-      \   'sink': 'botright split' })<CR>
+      \   'sink': 'botright split',
+      \   'source': 'find . -path "*/\.*" -prune -o -type f ! -name "*~" -print -o -type l -print' })<CR>
 
-map <C-F> :fzf<CR>
+map <C-F> :HFiles<CR>
 
 " Move Lines in Visual Mode
 xnoremap K :move '<-2 <CR> gv=gv
@@ -53,6 +55,3 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
-" easymotion
-map s <Plug>(easymotion-prefix)

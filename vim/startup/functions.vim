@@ -62,11 +62,11 @@ function! functions#openwithbuffer(path) abort
     exe 'badd' f
   endfor
 
-  call fzf#run({
-        \   'source':  <sid>buflist(),
-        \   'sink':    function('functions#bufopen'),
-        \   'down':    len(<sid>buflist()) + 2,
-        \   'options': '+m' })
+  " call fzf#run({
+  "       \   'source':  <sid>buflist(),
+  "       \   'sink':    function('functions#bufopen'),
+  "       \   'down':    len(<sid>buflist()) + 2,
+  "       \   'options': '+m' })
   filetype detect
 endfunction
 

@@ -8,10 +8,10 @@ augroup END
 
 " Markdown, txt, LaTeX
 au BufReadPost,BufNewFile *.md,*.tex call functions#spell() |  Goyo 125
-" zshrc
+" load buffer with possible vim/zsh files to edit
 au BufReadPost,BufNewFile *.zshrc,zshrc call functions#openwithbuffer("~/i3wm/zsh/*.zsh")
-" vimrc
 au BufReadPost,BufNewFile *.vimrc,vimrc call functions#openwithbuffer("~/i3wm/vim/startup/*.vim")
+
 " Enter and Leave Goyo
 autocmd! User GoyoEnter call functions#goyo_enter()
 autocmd! User GoyoLeave call functions#goyo_leave()

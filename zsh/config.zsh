@@ -1,7 +1,6 @@
 bindkey -e
-#export ZSH=$HOME/.oh-my-zsh
-#export ZSHTHEME=$ZSH/themes/jason.zsh-theme
 export VISUAL="vim"
+export EDITOR="vim"
 export TERMINAL="st"
 export HIST_STAMPS="mm.dd.yyyy"
 export HISTSIZE=12000
