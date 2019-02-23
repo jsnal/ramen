@@ -13,7 +13,7 @@ set statusline+=\ %#PmenuSel#
 set statusline+=\ %r%m[%n]\ %f
 set statusline+=\ %#LineNr#
 set statusline+=%=%#PmenuSel#
-set statusline+=%=%{StatuslineGit()}
+" set statusline+=%=%{StatuslineGit()}
 set statusline+=%=\ %P\ %p%%
 set statusline+=%=\ (%l/%L)
 set statusline+=\ <<
