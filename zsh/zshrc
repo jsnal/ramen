@@ -1,9 +1,14 @@
 config_files=($HOME/i3wm/zsh)
 include () { [[ -f "$1" ]] && source "$1" }
+ZSH_TEST_PLUGINS="false"
 
 # Plugins# {{{
+if [[ $ZSH_TEST_PLUGINS = "true" ]]; then
+  source $HOME/git/shell-plugins/zsh-git/git.plugin.zsh
+else
+  include $config_files/plugins/shell-plugins/zsh-git/git.plugin.zsh
+fi
 include $config_files/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-include $config_files/plugins/shell-plugins/zsh-git/git.plugin.zsh
 include $config_files/plugins/zsh-autopair/autopair.zsh
 # }}}
 # Config Files{{{

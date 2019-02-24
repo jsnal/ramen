@@ -43,7 +43,7 @@ function precmd {
   USER="$BRACKET@$USER%n"
 
   PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
-  RPROMPT="%F{8}${timer_show}%F{white}%}$(git_full_dot_prompt)"
+  RPROMPT="%F{8}${timer_show}%F{white}%}$(git_full_prompt)"
 }
 
 zsh_command_time() {
