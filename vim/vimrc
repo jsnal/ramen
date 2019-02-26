@@ -1,26 +1,40 @@
 call plug#begin('~/.vim/plugged')
 
-" Utils
+" Git Notifications in Number Buffer
 Plug 'https://github.com/airblade/vim-gitgutter'
+
+" Fuzzy File Finder
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/junegunn/fzf'
-Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
+
+" Easy Commenting in and out
 Plug 'https://github.com/tpope/vim-commentary'
+
+" Automatically insert common characters
 Plug 'https://github.com/jiangmiao/auto-pairs'
+
+" Autocomplete Engine
 Plug 'https://github.com/Valloric/YouCompleteMe'
+
+" File Tree
 Plug 'https://github.com/scrooloose/nerdtree'
 
-" Snips
-Plug 'https://github.com/garbas/vim-snipmate'
-Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
-Plug 'https://github.com/tomtom/tlib_vim.git'
+" Change working dir to project root
+Plug 'https://github.com/airblade/vim-rooter'
 
-" Theming
+" Color Scheme
 Plug 'https://github.com/sjl/badwolf'
+
+" Highlight same words in document
+Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
+
+" Common syntax highlighting
 Plug 'https://github.com/sheerun/vim-polyglot'
-Plug 'https://github.com/plasticboy/vim-markdown'
+
+" Distraction Free Writing
 Plug 'https://github.com/junegunn/goyo.vim'
 
+" Plugin Total: 12
 call plug#end()
 
 filetype plugin on

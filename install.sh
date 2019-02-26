@@ -13,11 +13,11 @@ do
   case $key in
     -w|--web)
       WEBINST=true
-      shift 
+      shift
       ;;
     -v|--verify-install)
       VERINST=true
-      shift 
+      shift
       ;;
     -ci|--count-integration)
       CIINST=true
@@ -29,8 +29,8 @@ do
       shift
       ;;
     *)
-      POSITIONAL+=("$1") 
-      shift 
+      POSITIONAL+=("$1")
+      shift
       ;;
   esac
 done
@@ -52,7 +52,7 @@ for i in "${PACKAGES[@]}"; do
     fi
   else
     echo -e "Install Failed\nPlease Install ${PACKAGES[@]}"
-    read -p "Do you wish to install this program? " response 
+    read -p "Do you wish to install this program? " response
     case $response in
       [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\nPackages installed."; break;;
       [Nn]* ) exit 1;;
@@ -127,19 +127,18 @@ if [[ $CIINST = false ]]; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   vim +":PlugInstall" +qa
 
-  read -p "Install YCM? " response 
+  read -p "Install YCM? " response
   case $response in
-    [Yy]* )  
+    [Yy]* )
       if [[ $(vim --version | grep -c -w '+python') = 1 || $(vim --version | grep -c -w '+python3') = 1 ]]; then
         python3 $HOME/.vim/plugged/YouCompleteMe/install.py --clang-completer
       fi
       ;;
     [Nn]* ) echo "No YCM";;
     * ) echo "Please answer yes or no.";;
-  esac 
+  esac
 
   chsh -s $(which zsh)
 fi
-git clone https://github.com/JasonLong24/snippets ~/.vim/snippets
 
 echo "Install Complete! Restart your terminal."

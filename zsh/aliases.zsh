@@ -3,6 +3,7 @@ bindkey -s '^e' 'f -f\n'
 bindkey -s '^h' 'd -f\n'
 bindkey -s '^y' '. ~/.zshrc\nclear\n'
 bindkey -s '^n' './tg/bin/telegram-cli -W -N\n'
+bindkey -s '^f' 'vim $(fzf\n'
 function up_widget() {
       BUFFER="cd .."
       zle accept-line

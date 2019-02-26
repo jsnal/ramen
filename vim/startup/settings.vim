@@ -36,6 +36,7 @@ set ambiwidth=double
 set showcmd
 set backupdir=./.backup,.,/tmp
 set directory=.,./.backup,/tmp
+set autochdir
 
 " Hilight Cursor Words
 let g:HiCursorWords_linkStyle='Underlined'
@@ -47,3 +48,5 @@ if has ('persistent_undo')
   set undolevels=5000
   set undofile
 endif
+
+let g:fzf_nvim_statusline = 0
