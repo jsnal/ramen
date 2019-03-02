@@ -1,5 +1,0 @@
-[] notifications for volume and brightness(notify-send)
-[] todo-list zsh plugin
-[] configure YCM with certain files
-[] add YCM to install script
-[] fix goyo white line

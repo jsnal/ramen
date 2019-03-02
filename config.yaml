@@ -1,0 +1,97 @@
+actions:
+  pre:
+    vim-plug-install: test -e ~/.vim/autoload/plug.vim || (mkdir -p ~/.vim/autoload;
+      curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
+  vim-plug: vim +PlugInstall +qall
+  echoaction: echo '{0}' > {1}
+  st-test: echo "TEST"
+config:
+  backup: false
+  banner: false
+  create: false
+  dotpath: .
+  ignoreempty: false
+  keepdot: false
+  link_by_default: false
+  longkey: false
+  showdiff: false
+  workdir: ~/.config/dotdrop
+dotfiles:
+  f_config:
+    dst: ~/.config/i3/config
+    src: i3/config
+    link: true
+    actions:
+    - echoaction "i3 config installed" /tmp/i3wm_install.log
+  f_gitconfig:
+    dst: ~/.gitconfig
+    src: .gitconfig
+    link: true
+    actions:
+    - echoaction "gitconfig installed" /tmp/i3wm_install.log
+  f_polybar_config:
+    dst: ~/.config/polybar/config
+    src: polybar/config
+    link: true
+    actions:
+    - echoaction "polybar config installed" /tmp/i3wm_install.log
+  f_tmux.conf:
+    dst: ~/.tmux.conf
+    src: ./tmux.conf
+    link: true
+    actions:
+    - echoaction "tmux config installed" /tmp/i3wm_install.log
+  f_vimrc:
+    actions:
+    - vim-plug-install
+    - vim-plug
+    - echoaction "vim-plug and vim installed" /tmp/i3wm_install.log
+    dst: ~/.vimrc
+    src: vim/vimrc
+    link: true
+  f_xbindkeysrc:
+    dst: ~/.xbindkeysrc
+    src: X/xbindkeysrc
+    link: true
+    actions:
+    - echoaction "xbindkeysrc installed" /tmp/i3wm_install.log
+  f_xinitrc:
+    dst: ~/.xinitrc
+    src: X/xinitrc
+    link: true
+    actions:
+    - echoaction "xinitrc installed" /tmp/i3wm_install.log
+  f_xmodmap:
+    dst: ~/.Xmodmap
+    src: X/xmodmap
+    link: true
+    actions:
+    - echoaction "xmodmap installed" /tmp/i3wm_install.log
+  f_zshrc:
+    dst: ~/.zshrc
+    src: zsh/zshrc
+    link: true
+    actions:
+    - echoaction "zshrc installed" /tmp/i3wm_install.log
+profiles:
+  all:
+    dotfiles:
+    - ALL
+  gui:
+    dotfiles:
+      - f_polybar_config
+      - f_config
+      - f_xbindkeysrc
+      - f_xinitrc
+      - f_xmodmap
+  headless:
+    dotfiles:
+      - f_vimrc
+      - f_zshrc
+      - f_gitconfig
+      - f_xbindkeysrc
+      - f_xinitrc
+      - f_tmux.conf
+  vim:
+    dotfiles:
+      - f_vimrc
