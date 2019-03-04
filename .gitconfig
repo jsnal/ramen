@@ -1,6 +1,6 @@
 [user]
   email = jasonlongball@gmail.com
-  name = JasonLong24
+  name = jsnal
 [push]
   default = matching
 [credential]
@@ -21,3 +21,5 @@
   subi = submodule init
   suba = submodule add
   subu = submodule update --recursive --remote
+[core]
+	excludesfile = $HOME/.gitignore_global
