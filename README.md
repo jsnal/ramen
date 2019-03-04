@@ -1,4 +1,5 @@
-# i3wm Config [![Build Status](http://jasonlong24.crabdance.com:8080/buildStatus/icon?job=i3wm)](http://192.168.86.107:8080/job/i3wm/)
+# i3wm Config [![Build Status](http://jasonlong24.crabdance.com:8080/buildStatus/icon?job=i3wm/master)](http://jasonlong24.crabdance.com:8080/job/i3wm/job/master/)
+
  My i3wm config, scripts and setup.
 
  vim [Snippets](https://github.com/JasonLong24/snippets)
@@ -9,7 +10,7 @@
 or
 
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/JasonLong24/i3wm/master/install.sh) --web
+bash <(wget -qO- https://raw.githubusercontent.com/jsnal/i3wm/master/install.sh) --web
 ```
 
 ### Tools
@@ -36,4 +37,4 @@ bash <(wget -qO- https://raw.githubusercontent.com/JasonLong24/i3wm/master/insta
 
 To be sure that each push will work on a fresh install of linux, I use a docker container with Ubuntu 18.04, which builds on a Jenkins server.
 
-[![Build Status](http://jasonlong24.crabdance.com:8080/buildStatus/icon?job=i3wm)](http://192.168.86.107:8080/job/i3wm/)
+[![Build Status](http://jasonlong24.crabdance.com:8080/buildStatus/icon?job=i3wm/master)](http://jasonlong24.crabdance.com:8080/job/i3wm/job/master/)

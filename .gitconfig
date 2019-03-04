@@ -22,4 +22,4 @@
   suba = submodule add
   subu = submodule update --recursive --remote
 [core]
-	excludesfile = $HOME/.gitignore_global
+  excludesfile = $HOME/.gitignore_global
