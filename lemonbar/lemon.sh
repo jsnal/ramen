@@ -43,11 +43,11 @@ address() {
 }
 
 brightness() {
-  xbacklight | grep -o '^[0-9]*\.[0-9]'
+  echo %{F\#00E5E5}$(xbacklight | grep -o '^[0-9]*\.[0-9]')%{F\#fff}
 }
 
 volume() {
-  amixer -M | grep Mono | awk 'NR==2 {print $4}' | sed 's/[^0-9]*//g'
+  echo %{F\#00E5E5}$(amixer -M | grep Mono | awk 'NR==2 {print $4}' | sed 's/[^0-9]*//g')%{F\#fff}
 }
 
 song() {
