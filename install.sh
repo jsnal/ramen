@@ -5,6 +5,7 @@ PACKAGES=("python3-pip" "zsh" "curl" "vim" "jq" "git")
 PROFILEINST=false
 VERINST=false
 CIINST=false
+STINST=false
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]
@@ -22,6 +23,10 @@ do
       ;;
     -ci|--count-integration)
       CIINST=true
+      shift
+      ;;
+    -st|--simple-terminal)
+      STINST=true
       shift
       ;;
     -i|--ignore)
@@ -62,6 +67,13 @@ function verify-install() {
   exit 0
 }
 
+function install-st() {
+  git submodule update --init --recursive
+  sudo apt-get install libx11-dev libxft-dev libxext-dev fontconfig
+  cd $HOME/i3wm/st && sudo make install
+  exit 0
+}
+
 if [[ $WEBINST = true ]]; then web-install; fi
 if [[ $VERINST = true ]]; then verify-install; fi
 
@@ -95,6 +107,8 @@ if [ -d $HOME/i3wm ]; then
 else
   git clone --recursive --quiet https://github.com/JasonLong24/i3wm $HOME/i3wm &>/dev/null
 fi
+
+if [[ $STINST = true ]]; then install-st; fi
 
 echo "Installing dotdrop"
 sudo pip3 install -q -r $HOME/i3wm/dotdrop/requirements.txt
