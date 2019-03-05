@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM python:3
 MAINTAINER Jason Long
 
 RUN apt-get -qq update
