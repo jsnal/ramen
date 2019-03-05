@@ -1,5 +1,5 @@
 set background=dark
-colorscheme badwolf
+silent! colorscheme badwolf
 syntax on
 
 " General

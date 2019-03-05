@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PACKAGES=("zsh" "curl" "vim" "jq" "git")
-WEBINST=false
+PACKAGES=("python3-pip" "zsh" "curl" "vim" "jq" "git")
+PROFILEINST=false
 VERINST=false
 CIINST=false
 
@@ -11,8 +11,9 @@ while [[ $# -gt 0 ]]
 do
   key="$1"
   case $key in
-    -w|--web)
-      WEBINST=true
+    -pfl|--profile)
+      PROFILEINST=true
+      PROFILE_SELECT=$2
       shift
       ;;
     -v|--verify-install)
@@ -36,36 +37,6 @@ do
 done
 
 set -- "${POSITIONAL[@]}"
-
-echo "Checking Installed Packages"
-for i in "${PACKAGES[@]}"; do
-  if echo $ignore_list | grep -q $i; then
-    echo '' &>/dev/null
-  else
-    dpkg -s $i &> /dev/null
-  fi
-  if [ $? -eq 0 ]; then
-    if echo $ignore_list | grep -q $i; then
-      echo "-> $i Ignored"
-    else
-      echo "-> $i Installed"
-    fi
-  else
-    echo -e "Install Failed\nPlease Install ${PACKAGES[@]}"
-    read -p "Do you wish to install this program? " response
-    case $response in
-      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\nPackages installed."; break;;
-      [Nn]* ) exit 1;;
-      * ) echo "Please answer yes or no.";;
-    esac
-  fi
-done
-
-function web-install() {
-  echo "Cloning the Dotfiles"
-  DOTFILES_DIR="/home/$(whoami)/i3wm"
-  git clone --recursive --quiet https://github.com/JasonLong24/i3wm $DOTFILES_DIR &>/dev/null
-}
 
 function verify-install() {
   echo "Verifying Install"
@@ -94,51 +65,46 @@ function verify-install() {
 if [[ $WEBINST = true ]]; then web-install; fi
 if [[ $VERINST = true ]]; then verify-install; fi
 
+echo "Checking Installed Packages"
+for i in "${PACKAGES[@]}"; do
+  if echo $ignore_list | grep -q $i; then
+    echo '' &>/dev/null
+  else
+    dpkg -s $i &> /dev/null
+  fi
+  if [ $? -eq 0 ]; then
+    if echo $ignore_list | grep -q $i; then
+      echo "-> $i Ignored"
+    else
+      echo "-> $i Installed"
+    fi
+  else
+    echo -e "Install Failed\nPlease Install ${PACKAGES[@]}"
+    read -p "Do you wish to install this program? " response
+    case $response in
+      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\nPackages installed."; break;;
+      [Nn]* ) exit 1;;
+      * ) echo "Please answer yes or no.";;
+    esac
+  fi
+done
 
-echo "Installing dotfiles"
-ln -sfv $DOTFILES_DIR/vim/vimrc ~/.vimrc
-ln -sfv $DOTFILES_DIR/zsh/zshrc ~/.zshrc
-ln -sfv $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
-ln -sfv $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
-ln -sfv $DOTFILES_DIR/X/xinitrc ~/.xinitrc
-ln -sfv $DOTFILES_DIR/tmux.conf ~/.tmux.conf
-ln -sfv $DOTFILES_DIR/.gitconfig ~/.gitconfig
-
-if [[ -d ~/.config/i3 ]]; then
-  ln -sfvv $DOTFILES_DIR/i3/config ~/.config/i3/.config
+echo "Cloning i3wm Repository"
+if [ -d $HOME/i3wm ]; then
+  echo "-> Found $HOME/i3wm"
 else
-  mkdir -p ~/.config/i3
-  ln -sfv $DOTFILES_DIR/i3/config ~/.config/i3/.config
+  git clone --recursive --quiet https://github.com/JasonLong24/i3wm $HOME/i3wm &>/dev/null
 fi
 
-if [[ -d ~/.config/polybar ]]; then
-  ln -sfv $DOTFILES_DIR/polybar/config ~/.config/polybar/config
+echo "Installing dotdrop"
+sudo pip3 install -q -r $HOME/i3wm/dotdrop/requirements.txt
+echo "Dotdrop Installed"
+if [[ $PROFILEINST = true ]]; then
+  $HOME/i3wm/dotdrop.sh install --profile $($HOME/i3wm/dotdrop.sh list | sed -e '/^$/d' -e 1d | awk 'NR==profile {print $2}' profile="${PROFILE_SELECT}")
 else
-  mkdir -p ~/.config/polybar
-  ln -sfv $DOTFILES_DIR/polybar/config ~/.config/polybar/config
-fi
-
-echo "Installing zsh"
-$DOTFILES_DIR/zsh/plugins/fzf/install
-
-if [[ $CIINST = false ]]; then
-  echo "Installing vim"
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  vim +":PlugInstall" +qa
-
-  read -p "Install YCM? " response
-  case $response in
-    [Yy]* )
-      if [[ $(vim --version | grep -c -w '+python') = 1 || $(vim --version | grep -c -w '+python3') = 1 ]]; then
-        python3 $HOME/.vim/plugged/YouCompleteMe/install.py --clang-completer
-      fi
-      ;;
-    [Nn]* ) echo "No YCM";;
-    * ) echo "Please answer yes or no.";;
-  esac
-
-  chsh -s $(which zsh)
+  $HOME/i3wm/dotdrop.sh list | sed -e '/^$/d' -e 1d | awk '{print $2}' | nl
+  read -p "What profile would you like to install? " profile
+  $HOME/i3wm/dotdrop.sh install --profile $($HOME/i3wm/dotdrop.sh list | sed -e '/^$/d' -e 1d | awk 'NR==profile {print $2}' profile="${profile}")
 fi
 
 echo "Install Complete! Restart your terminal."
