@@ -9,6 +9,7 @@ export HISTSIZE=12000
 export SAVEHIST=12000
 export HISTFILE="$HOME/.zsh_history"
 export TERM="xterm-256color"
+export VIM_YCM=false
 setopt prompt_subst
 setopt promptsubst
 setopt append_history

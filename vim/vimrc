@@ -1,3 +1,4 @@
+let vim_ycm=$VIM_YCM
 call plug#begin('~/.vim/plugged')
 
 " Git Notifications in Number Buffer
@@ -14,7 +15,9 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 
 " Autocomplete Engine
-Plug 'https://github.com/Valloric/YouCompleteMe'
+if vim_ycm == 'true'
+  Plug 'Valloric/YouCompleteMe', { 'on': [] }
+endif
 
 " File Tree
 Plug 'https://github.com/scrooloose/nerdtree'
@@ -36,6 +39,12 @@ Plug 'https://github.com/junegunn/goyo.vim'
 
 " Plugin Total: 12
 call plug#end()
+
+augroup load_us_ycm
+  autocmd!
+  autocmd InsertEnter * call plug#load('YouCompleteMe')
+        \| autocmd! load_us_ycm
+augroup END
 
 filetype plugin on
 for f in split(glob('~/i3wm/vim/startup/*.vim'), '\n')
