@@ -2,8 +2,8 @@
 au BufWinLeave * silent mkview
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinLeave * silent mkview
-  autocmd BufWinEnter * silent loadview
+  autocmd BufWinLeave * silent! mkview
+  autocmd BufWinEnter * silent! loadview
 augroup END
 
 " Markdown, txt, LaTeX
