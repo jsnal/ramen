@@ -23,3 +23,5 @@
   subu = submodule update --recursive --remote
 [core]
   excludesfile = $HOME/.gitignore_global
+[color]
+  ui = true
