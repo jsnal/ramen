@@ -27,6 +27,7 @@ Plug 'https://github.com/airblade/vim-rooter'
 
 " Color Scheme
 Plug 'https://github.com/sjl/badwolf'
+Plug 'https://github.com/nanotech/jellybeans.vim'
 
 " Highlight same words in document
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'

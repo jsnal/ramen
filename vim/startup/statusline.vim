@@ -8,12 +8,20 @@ function! ModeCurrent() abort
   return l:current_status_mode
 endfunction
 
-set statusline=\ %{ModeCurrent()}>>
-set statusline+=\ %#PmenuSel#
-set statusline+=\ %r%m[%n]\ %f
-set statusline+=\ %#LineNr#
-set statusline+=%=%#PmenuSel#
+" Badwolf Statusline
+" set statusline=\ %{ModeCurrent()}>>
+" set statusline+=\ %#PmenuSel#
+" set statusline+=\ %r%m[%n]\ %f
+" set statusline+=\ %#LineNr#
+" set statusline+=%=%#PmenuSel#
 " set statusline+=%=%{StatuslineGit()}
+" set statusline+=%=\ %P\ %p%%
+" set statusline+=%=\ (%l/%L)
+" set statusline+=\ <<
+
+" Jellybean Statusline
+set statusline=\ %{ModeCurrent()}>>
+set statusline+=\ %r%m[%n]\ %f
 set statusline+=%=\ %P\ %p%%
 set statusline+=%=\ (%l/%L)
 set statusline+=\ <<

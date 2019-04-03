@@ -1,5 +1,5 @@
 set background=dark
-silent! colorscheme badwolf
+silent! colorscheme jellybeans
 syntax on
 
 " General
@@ -52,3 +52,12 @@ endif
 let g:fzf_nvim_statusline = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Setup Colorscheme
+let g:jellybeans_overrides = {
+      \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+      \ }
+
+if has('termguicolors') && &termguicolors
+  let g:jellybeans_overrides['background']['guibg'] = 'none'
+endif
