@@ -19,11 +19,12 @@ endfunction
 " set statusline+=%=\ (%l/%L)
 " set statusline+=\ <<
 
+hi StatusLine ctermfg=white ctermbg=NONE cterm=NONE
+hi StatusLineNC ctermfg=black ctermbg=NONE cterm=NONE
+
 " Jellybean Statusline
 set statusline=\ %{ModeCurrent()}>>
 set statusline+=\ %r%m[%n]\ %f
 set statusline+=%=\ %P\ %p%%
 set statusline+=%=\ (%l/%L)
 set statusline+=\ <<
-
-hi statusline guibg=black ctermfg=white guifg=white ctermbg=none

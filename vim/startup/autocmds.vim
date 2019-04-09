@@ -6,6 +6,12 @@ augroup AutoSaveFolds
   autocmd BufWinEnter * silent! loadview
 augroup END
 
+augroup BgHighlight
+  autocmd!
+  autocmd WinEnter * set relativenumber
+  autocmd WinLeave * set nonumber | set norelativenumber
+augroup END
+
 " Markdown, txt, LaTeX
 au BufReadPost,BufNewFile *.md,*.tex call functions#spell() |  Goyo 125
 " load buffer with possible vim/zsh files to edit

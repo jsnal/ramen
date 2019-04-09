@@ -22,7 +22,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
-set foldcolumn=2
+set foldcolumn=0
 set hlsearch
 set linebreak
 
