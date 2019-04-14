@@ -8,8 +8,9 @@ augroup END
 
 augroup BgHighlight
   autocmd!
-  autocmd WinEnter * set relativenumber
-  autocmd WinLeave * set nonumber | set norelativenumber
+  autocmd WinEnter * call functions#focused_win()
+  autocmd WinLeave * call functions#non_focused_win()
+  autocmd FileReadPre * call echom test
 augroup END
 
 " Markdown, txt, LaTeX

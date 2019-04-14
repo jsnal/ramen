@@ -78,3 +78,19 @@ function! StatuslineGit()
   let l:branchname = GitBranch()
   return strlen(l:branchname) > 0?' ('.l:branchname.')':''
 endfunction
+
+function! functions#focused_win()
+  set nocul
+endfunction
+
+function! functions#non_focused_win()
+  set nocul
+endfunction
+
+function! functions#focused_buffer()
+  let buffers = filter(range(1, bufnr('$')), 'bufexists(v:val)')
+  let j = 0
+  for i in buffers
+    let j = i
+  endfor
+endfunction

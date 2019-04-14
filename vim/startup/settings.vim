@@ -59,5 +59,8 @@ let g:jellybeans_overrides = {
       \ }
 
 if has('termguicolors') && &termguicolors
-  let g:jellybeans_overrides['background']['guibg'] = 'none'
+  let g:jellybeans_overrides['background'] = 'none'
 endif
+
+let g:vimade = {}
+let g:vimade.fadelevel = 0.5

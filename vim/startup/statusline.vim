@@ -20,7 +20,7 @@ endfunction
 " set statusline+=\ <<
 
 hi StatusLine ctermfg=white ctermbg=NONE cterm=NONE
-hi StatusLineNC ctermfg=black ctermbg=NONE cterm=NONE
+hi StatusLineNC ctermfg=240 ctermbg=NONE cterm=NONE
 
 " Jellybean Statusline
 set statusline=\ %{ModeCurrent()}>>
