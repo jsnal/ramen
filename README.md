@@ -10,7 +10,15 @@
 or
 
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/jsnal/i3wm/master/install.sh) --web
+bash <(wget -qO- https://raw.githubusercontent.com/jsnal/i3wm/master/install.sh)
+```
+
+### Minified Config
+
+- Install minified configs from [here](http://jasonlong24.crabdance.com/min/)
+
+```
+wget -O ~/.zshrc http://jasonlong24.crabdance.com/min/zshrc.min
 ```
 
 ### Tools
