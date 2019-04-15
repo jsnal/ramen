@@ -37,11 +37,6 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 " Distraction Free Writing
 Plug 'https://github.com/junegunn/goyo.vim'
 
-" Buffer fading
-if $VIM_DIM == 'true'
-  Plug 'https://github.com/TaDaa/vimade'
-endif
-
 " Plugin Total: 13
 call plug#end()
 
