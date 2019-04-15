@@ -21,6 +21,16 @@ bash <(wget -qO- https://raw.githubusercontent.com/jsnal/i3wm/master/install.sh)
 wget -O ~/.zshrc http://jasonlong24.crabdance.com/min/zshrc.min
 ```
 
+### Secret Config
+
+- Add secret.zsh to $HOME/zsh
+```
+# vim autocomplete
+export VIM_YCM=true
+# vim buffer dim
+export VIM_DIM=true
+```
+
 ### Tools
 - i3
     - Tiling window manager for Xorg

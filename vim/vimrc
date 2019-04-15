@@ -38,7 +38,9 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/junegunn/goyo.vim'
 
 " Buffer fading
-Plug 'https://github.com/TaDaa/vimade'
+if $VIM_DIM == 'true'
+  Plug 'https://github.com/TaDaa/vimade'
+endif
 
 " Plugin Total: 13
 call plug#end()
