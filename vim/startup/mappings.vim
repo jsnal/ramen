@@ -31,11 +31,11 @@ map <F6> mzgg=G`z`<CR>
 " Fuzzy Finding Splits
 nnoremap <silent> <TAB>v :call fzf#run({
       \   'sink':  'vertical botright split',
-      \   'source': 'find . -path "*/\.*" -prune -o -type f ! -name "*~" -name "*.class" -print -o -type l -print' })<CR>
+      \   'source': 'find . -path "*/\.*" -prune -o -type f ! -name "*~" ! -name "*.class" -print -o -type l -print' })<CR>
 
 nnoremap <silent> <TAB>x :call fzf#run({
       \   'sink': 'botright split',
-      \   'source': 'find . -path "*/\.*" -prune -o -type f ! -name "*~" -name "*.class" -print -o -type l -print' })<CR>
+      \   'source': 'find . -path "*/\.*" -prune -o -type f ! -name "*~" ! -name "*.class" -print -o -type l -print' })<CR>
 
 map <C-F> :HFiles<CR>
 

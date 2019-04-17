@@ -27,8 +27,6 @@ wget -O ~/.zshrc http://jasonlong24.crabdance.com/min/zshrc.min
 ```
 # vim autocomplete
 export VIM_YCM=true
-# vim buffer dim
-export VIM_DIM=true
 ```
 
 ### Tools
