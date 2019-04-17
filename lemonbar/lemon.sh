@@ -43,7 +43,9 @@ address() {
 }
 
 brightness() {
-  echo %{F\#00E5E5}$(xbacklight | grep -o '^[0-9]*\.[0-9]')%{F\#fff}
+  if [ ! -f /sys/class/power_supply/BAT0/capacity ]; then echo ''; else
+    echo B: %{F\#00E5E5}$(xbacklight | grep -o '^[0-9]*\.[0-9]')%{F\#fff}
+  fi
 }
 
 volume() {
@@ -75,7 +77,7 @@ win-info() {
 
 while true; do
   BAR_LEFT="%{l}$(workspace) $(win-info)"
-  BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} B: $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) $(battery)%"
+  BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) $(battery)"
   echo $BAR_LEFT $BAR_RIGHT
   sleep .5
 done
