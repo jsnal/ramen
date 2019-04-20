@@ -9,12 +9,12 @@ function src() {
   local cache=$ZSH_CACHE_DIR
   autoload -U compinit zrecompile
   compinit -d "$cache/zcomp-$HOST"
- 
+
   for f in ~/.zshrc "$cache/zcomp-$HOST"; do
   	zrecompile -p $f && command rm -f $f.zwc.old
   done
-  
-  source ~/.zshrc 
+
+  source ~/.zshrc
 }
 
 function extract {
@@ -79,7 +79,7 @@ function comp-type() {
 function playdoom() {
   poss=$(ls /usr/share/games/doom/ | nl -w2)
   echo -e "$poss"\n
-  echo Pick the wad you want to play. 
+  echo Pick the wad you want to play.
   read wad
   play=$(ls /usr/share/games/doom/ | awk NR==$wad)
   echo $play
@@ -126,7 +126,7 @@ function kernel-update() {
 
 function encrypt() {
   if [[ -d = $1 ]]; then
-    gpg -d $2 | tar xz 
+    gpg -d $2 | tar xz
   else
     tar -cz $1 | gpg -c -o $1.tgz.gpg
   fi
@@ -138,4 +138,19 @@ function vl() {
   down) amixer -q sset "Master" $2%- && echo $(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master));;
    off) amixer set "Master" 0% && echo "Muted"
   esac
+}
+
+function ebackup() {
+  if [ $1 = "-h" ]; then echo 'ebackup [DIR] [RECIPIENT]' && return 0; fi
+  if [ ! -d $1 ]; then echo $1 'is not a directory.' && return 1; fi
+  echo 'Encrypting' $1
+  local date=$(date +%D | sed 's/\//-/g')
+  tar -cz $1 | gpg --recipient $2 -e -o $1\-$date.tgz.gpg
+}
+
+function dbackup() {
+  if [ $1 = "-h" ]; then echo 'dbackup [FILE]' && return 0; fi
+  if [ ! -f $1 ]; then echo $1 'is not a file.' && return 1; fi
+  echo 'Decrypting' $1 '.tgz.gpg'
+  gpg -d $1 | tar xz
 }
