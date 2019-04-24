@@ -18,7 +18,11 @@ bash <(wget -qO- https://raw.githubusercontent.com/jsnal/i3wm/master/install.sh)
 - Install minified configs from [here](http://jasonlong24.crabdance.com/min/)
 
 ```
+# zsh
 wget -O ~/.zshrc http://jasonlong24.crabdance.com/min/zshrc.min
+
+# vim
+wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min && test -e ~/.vim/autoload/plug.vim || (mkdir -p ~/.vim/autoload; curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) && vim +PlugInstall +qall
 ```
 
 ### Secret Config

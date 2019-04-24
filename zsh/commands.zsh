@@ -154,3 +154,12 @@ function dbackup() {
   echo 'Decrypting' $1 '.tgz.gpg'
   gpg -d $1 | tar xz
 }
+
+function paste-send() {
+  local SEND_OUTPUT_HOST="jasonlong24.crabdance.com"
+  local SEND_OUTPUT_PORT="2757"
+  if [ ! -f $1 ]; then echo "$1 is not a valid file."; return 1; fi
+  read -p "Please enter a title: " entryTitle && read -p "Please enter the date: " entryDate && read -p "Please enter a filetype: " entryFT
+  echo -e "{{*title: $entryTitle\n{{*date: $entryDate\n{{*filetype: $entryFT" | cat - $1 | nc -v -q 0 $SEND_OUTPUT_HOST $SEND_OUTPUT_PORT
+  echo "File Sent!"
+}
