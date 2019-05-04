@@ -1,5 +1,13 @@
+" Setup Colorscheme
+if has('gui_running')
+  silent! colorscheme default
+else
+  silent! colorscheme jellybeans
+  hi Normal  ctermbg=NONE
+  hi LineNr  ctermbg=NONE
+  hi nonText ctermbg=NONE
+endif
 set background=dark
-silent! colorscheme jellybeans
 syntax on
 
 " General
@@ -52,15 +60,3 @@ endif
 let g:fzf_nvim_statusline = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-
-" Setup Colorscheme
-let g:jellybeans_overrides = {
-      \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-      \ }
-
-if has('termguicolors') && &termguicolors
-  let g:jellybeans_overrides['background'] = 'none'
-endif
-
-let g:vimade = {}
-let g:vimade.fadelevel = 0.5
