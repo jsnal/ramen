@@ -16,5 +16,7 @@ for (( i=1;i<=$(find ~/i3wm/zsh/*.zsh -maxdepth 1 -type f | wc -l);i++ )); do
   source $(find ~/i3wm/zsh/*.zsh -maxdepth 1 -type f | awk NR==$i)
 done
 source ~/i3wm/zsh/secret.zsh 2>/dev/null
+# TODO: Find a better way to source this last
+source ~/i3wm/zsh/aliases.zsh 2>/dev/null
 # }}}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

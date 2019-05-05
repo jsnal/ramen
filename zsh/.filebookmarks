@@ -1,8 +1,8 @@
-zsh /home/jason/.zshrc
-vim /home/jason/.vimrc
-gtc /home/jason/i3wm/.gitconfig
-cfgm /home/jason/i3wm/.gitmodules
-cfi /home/jason/i3wm/install.sh
-i3cf /home/jason/i3wm/i3/config
-lmcf /home/jason/i3wm/lemonbar/lemon.sh
-tmux /home/jason/.tmux.conf
+zsh /home/jsnal/.zshrc
+vim /home/jsnal/.vimrc
+gtc /home/jsnal/i3wm/.gitconfig
+cfgm /home/jsnal/i3wm/.gitmodules
+cfi /home/jsnal/i3wm/install.sh
+i3cf /home/jsnal/i3wm/i3/config
+lmcf /home/jsnal/i3wm/lemonbar/lemon.sh
+tmux /home/jsnal/.tmux.conf

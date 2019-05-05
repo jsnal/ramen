@@ -9,3 +9,4 @@ if [ -f $HOME/.xbindkeysrc ]; then
 else
   echo "~/.xbindkeysrc not found"
 fi
+exec i3
