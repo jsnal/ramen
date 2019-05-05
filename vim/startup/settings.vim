@@ -1,4 +1,6 @@
 " Setup Colorscheme
+set background=dark
+syntax on
 if has('gui_running')
   silent! colorscheme default
 else
@@ -7,8 +9,6 @@ else
   hi LineNr  ctermbg=NONE
   hi nonText ctermbg=NONE
 endif
-set background=dark
-syntax on
 
 " General
 set nocompatible
