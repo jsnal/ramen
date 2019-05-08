@@ -34,7 +34,7 @@ ssid() {
 }
 
 address() {
-  address=$(ip addr | ag "inet " | tr "/" " " | awk '{if (NR!=1) {print $2}}')
+  address=$(ip addr | ag "inet " | tr "/" " " | awk 'NR==2 {print $2}')
   if [[ $address == "" ]]; then
     echo %{F\#cc0000}None%{F\#fff}
   else
