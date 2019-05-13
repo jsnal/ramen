@@ -1,13 +1,14 @@
-# Borders and Init# {{{
+# General Configuration
 set $mod Mod4
 set $TERMINAL uxterm
 floating_modifier $mod
 
+font xft:DejaVu Sans Mono 9
+
 new_window none
 new_window pixel 2
-# }}}
-# Colors and Font# {{{
-#Colors set for the whole config
+
+# Colors
 set $background             #1b1b1b
 set $background-inactive    #222222
 set $text                   #ffffff
@@ -18,46 +19,24 @@ set $seperator              #666666
 set $border-inactive	      #000000
 set $border                 #cc0000
 
-#Colors set for windows on different modes
-# classe                borda               fundo                 texto                   indicador               borda_filha
+# Specifc Window colors
 client.focused          $border				      $border               $text                   $border				          $border
 client.unfocused        $border				      $background-inactive  $text-inactive		      $background-inactive	  $border-inactive
 client.focused_inactive $border             $background-inactive  $text-inactive		      $background-inactive		$border-inactive
 client.urgent           $border             $background-inactive  $background-urgent      $background-inactive	  $border-inactive
 
-font xft:DejaVu Sans Mono 9
-#font FontAwesome 9, Droid Sans Mono
-# }}}
-# Function Key Binds# {{{
 bindsym $mod+Shift+x exec bash ~/i3wm/i3/Scripts/lock.sh
-#bindsym $mod+F6 exec xbacklight -inc 10
-#bindsym $mod+F5 exec xbacklight -dec 10
 bindsym $mod+F7 exec xbacklight -set 0
 
-bindsym F8 exec /opt/eclipse/eclipse
-bindsym F9 exec ~/Downloads/Telegram/Telegram
-#bindsym $mod+F11 exec amixer -q sset "Master" 5%-
-#bindsym $mod+F12 exec amixer -q sset "Master" 5%+
-bindsym $mod+y exec bash ~/i3wm/i3/Scripts/yt-fscreen.sh
-# }}}
-# DMenu and Term# {{{
+# Application launching
 bindsym $mod+Return exec st
-bindsym $mod+d exec ~/i3wm/i3/Scripts/dmenu.sh
-
-#bindsym $mod+Shift+s exec rofi -show ssh
 bindsym $mod+Shift+w exec firefox
-# }}}
-# Rofi# {{{
-#Rofi commands for easy navigation
-# Now runs dmenu!
-bindsym $mod+s exec bash ~/i3wm/i3/Rofi/power.sh
-# bindsym $mod+r exec bash ~/i3wm/i3/Rofi/resize.sh
-bindsym $mod+a exec bash ~/i3wm/i3/Rofi/config.sh
-bindsym $mod+q exec bash ~/i3wm/i3/Scripts/dmenu-mount.sh
-# bindsym $mod+t exec bash ~/i3wm/i3/Rofi/tll-interface.sh
-# }}}
-# Window Navigation# {{{
-#Keys used for window navigation and moving
+
+# Dmenu helpers
+bindsym $mod+d exec ~/i3wm/i3/Scripts/dmenu.sh
+bindsym $mod+s exec ~/i3wm/i3/Rofi/power.sh
+bindsym $mod+q exec ~/i3wm/i3/Scripts/dmenu-mount.sh
+
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
@@ -82,12 +61,8 @@ bindsym $mod+v split h
 bindsym $mod+x split v
 
 bindsym $mod+f fullscreen toggle
-# }}}
-# Window Manipulation# {{{
-#Different window modes
-bindsym $mod+Shift+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+
+# Window Manipulation
 bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+space focus mode_toggle
@@ -96,17 +71,13 @@ bindsym $mod+Shift+q kill
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+c exec uxterm -c calc -hold -e python
-bindsym $mod+t exec ~/i3wm/i3/Scripts/polystatus.sh
-bindsym $mod+g exec ~/i3wm/i3/Scripts/flipwindow.sh
 bindsym $mod+Shift+g exec ~/i3wm/emulation/start.sh
 
-for_window [instance="tmux"] move window to scratchpad, scratchpad hide
-for_window [instance="tele"] move window to scratchpad, scratchpad hide
-for_window [class="tll"] floating enable, resize set 800 600, move position center
+for_window [class="tmux"] move window to scratchpad, scratchpad show
 for_window [class="mpv"] floating enable, resize set 1200 800, move position center
 for_window [class="calc"] floating enable, resize set 800 600, move position center
-# }}}
-# Workspaces# {{{
+
+# Workspaces
 set $workspace1 "1"
 set $workspace2 "2"
 set $workspace3 "3"
@@ -118,7 +89,7 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10"
 
-# switch to workspace
+# Switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -130,7 +101,7 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-# move focused container to workspace
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
@@ -143,10 +114,10 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class="Firefox"] $workspace1
-assign [class="Spotify"] $workspace10
 assign [class="mpv"] $workspace9
-# }}}
-# Resize and Reset# {{{
+for_window [class="Spotify"] move to workspace $workspace10
+
+# Resize and Reset
 bindsym $mod+i resize grow height 10 px or 10 ppt
 bindsym $mod+o resize shrink height 10 px or 10 ppt
 bindsym $mod+p resize grow width 10 px or 10 ppt
@@ -154,51 +125,16 @@ bindsym $mod+u resize shrink width 10 px or 10 ppt
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+t exec --no-startup-id ~/i3wm/polybar/launch.sh
+bindsym $mod+Shift+t exec --no-startup-id ~/i3wm/lemonbar/launch.sh
 
-# Power Menu
-#You can also use $mod+s
-mode "[p]oweroff, [r]eboot, [L]ogout, L[o]ck" {
-	bindsym l exec i3-msg exit
-	bindsym r exec reboot
-	bindsym p exec systemctl poweroff
-	bindsym o exec i3lock
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+e mode "[p]oweroff, [r]eboot, [L]ogout, L[o]ck"
-# }}}
-# Resize Mode {{{
-mode "resize" {
-	bindsym j resize shrink width 10 px or 10 ppt
-	bindsym k resize grow height 10 px or 10 ppt
-	bindsym l resize shrink height 10 px or 10 ppt
-	bindsym semicolon resize grow width 10 px or 10 ppt
-
-	bindsym Left resize shrink width 10 px or 10 ppt
-	bindsym Down resize grow height 10 px or 10 ppt
-	bindsym Up resize shrink height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
-
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
-#bindsym $mod+r mode "resize"
-# }}}
-# Execute on Startup{{{
-exec_always --no-startup-id hsetroot -solid "#1b1b1b"
-exec --no-startup-id numlockx
-exec_always xrdb ~/.Xresources
+# Execute on Startup
 exec_always feh --bg-scale ~/i3wm/backgrounds/waterfrontmount.jpg
-exec_always exec mopidy
-exec st -e bash ~/i3wm/i3/Scripts/tmux.sh
-exec --no-startup-id xbindkeys
-exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
-exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
-exec --no-startup-id amixer sset "Master" 0%
 exec_always python ~/i3wm/i3/Scripts/altlayout.py
+exec_always --no-startup-id st -c tmux -e bash ~/i3wm/i3/Scripts/tmux.sh
+exec --no-startup-id amixer sset "Master" 0%
+
+# Start lemonbar
+# Found in i3wm/lemonbar/lemon.sh
 bar {
   i3bar_command $HOME/i3wm/lemonbar/launch.sh
 }
-# }}}

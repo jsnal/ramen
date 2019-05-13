@@ -3,4 +3,5 @@ tmux att -t get ||
 tmux -2 \
 	new \; \
 	neww -n 'volume' alsamixer\; \
-	selectw -t 0\; \
+  neww -n 'profile' bash ~/i3wm/i3/Scripts/window-selector.sh\; \
+	selectw -t 1\; \
