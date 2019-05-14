@@ -8,7 +8,7 @@ selfore=$(echo \#ffb52a)
 res=$(echo -e "suspend\nlogout\nreboot\nshutdown\nlock" | dmenu -b -p $prompt -nb $back -nf $fore -sb $selback -sf $selfore)
 
 if [ $res = "lock" ]; then
-    bash ~/i3wm/i3/Scripts/lock.sh 
+    bash ~/i3wm/i3/Scripts/lock.sh
 fi
 if [ $res = "logout" ]; then
     i3-msg exit
@@ -17,11 +17,13 @@ if [ $res = "suspend" ]; then
   ~/i3wm/i3/Scripts/suspend.sh
 fi
 if [ $res = "reboot" ]; then
+  notify-send -u critical "Warning: You're about to reboot"
   if [ $(echo -e "No\nYes" | dmenu -i -b -p "$1" -nb darkred -sb red -sf white -nf gray -fn mono) == "Yes" ]; then
     systemctl reboot
   fi
 fi
 if [ $res = "shutdown" ]; then
+  notify-send -u critical "Warning: You're about to shutdown"
   if [ $(echo -e "No\nYes" | dmenu -i -b -p "$1" -nb darkred -sb red -sf white -nf gray -fn mono) == "Yes" ]; then
     systemctl poweroff
   fi

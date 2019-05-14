@@ -52,6 +52,13 @@ export VIM_YCM=true
 - vim
     - Modal based text editor.
     - [Install Package](https://github.com/vim/vim)
+- zathura
+    - Minimal pdf viewer
+    - [Install Package](https://www.archlinux.org/packages/community/x86_64/zathura/)
+    - [Install PDF Plugin](https://www.archlinux.org/packages/community/x86_64/zathura-pdf-mupdf/)
+- dunst
+    - Minimal notification displayer
+    - [Install Package](https://www.archlinux.org/packages/community/x86_64/dunst/)
 
 ### Testing
 
