@@ -163,3 +163,19 @@ function paste-send() {
   echo -e "{{*title: $entryTitle\n{{*date: $entryDate\n{{*filetype: $entryFT" | cat - $1 | nc -v -q 0 $SEND_OUTPUT_HOST $SEND_OUTPUT_PORT
   echo "File Sent!"
 }
+
+# For checking local package on a failed command.
+# https://wiki.archlinux.org/index.php/Zsh#The_%22command_not_found%22_hook
+command_not_found_handler() {
+  local pkgs cmd="$1"
+
+  pkgs=(${(f)"$(pkgfile -b -- "$cmd" 2>/dev/null)"})
+  if [[ -n "$pkgs" ]]; then
+    printf '%s may be found in the following packages:\n' "$cmd"
+    printf '  %s\n' $pkgs[@]
+    return 0
+  fi
+
+  printf 'zsh: command not found: %s\n' "$cmd" 1>&2
+  return 127
+}

@@ -1,40 +1,13 @@
-# Keyboard Shortcuts {{{
-bindkey -s '^e' 'f -f\n'
-bindkey -s '^h' 'd -f\n'
-bindkey -s '^y' '. ~/.zshrc\nclear\n'
-bindkey -s '^n' './tg/bin/telegram-cli -W -N\n'
-bindkey -s '^f' 'vim $(fzf\n'
-function up_widget() {
-      BUFFER="cd .."
-      zle accept-line
-}
-zle -N up_widget
-bindkey "^u" up_widget
-bindkey '^w' forward-word
-bindkey '^b' backward-word
-bindkey '^d' kill-whole-line
-bindkey -r "^k"
-bindkey '^k' backward-kill-word
-# }}}
-# Package Manager {{{
-function aptup() { sudo apt-get update }
-function aptupgr() { sudo apt-get upgrade }
-function aptcln() { sudo apt-get clean }
-function aptinst() { sudo apt-get install "$1" }
-function aptprg() { sudo apt-get purge "$1" }
-function aptshow() { sudo apt-cache show "$1" }
-function aptdep() { sudo apt-cache showpkg "$1" }
-# Pacman
-function pacup() { sudo pacman -Sy && sudo abs && sudo aur }
-function pacls() { pacman -Qi }
-function yaup() { yaourt -Sy && sudo abs && sudo aur }
-function yals() { yaourt -Qi }
-function yamir() { yaourt -Syy }
-# }}}
+# Short Pacman
+alias pacup='sudo pacman -Sy && sudo abs && sudo aur'
+alias pacls='pacman -Qi'
+alias yaup='yay -Sy && sudo abs && sudo aur'
+alias yals='yay -Qi'
+alias yamir='yay -Syy'
 
-function tmuxn() { tmux -2 new -s "$@" }
-function tmuxk() { tmux kill-session -t "$@" }
-function tmuxa() { tmux -2 a -t "$@" }
+alias tmuxn='tmux -2 new -s "$@"'
+alias tmuxk='tmux kill-session -t "$@"'
+alias tmuxa='tmux -2 a -t "$@"'
 
 # Eaiser Backwards cd
 alias ..1='cd ..'
@@ -55,6 +28,8 @@ alias tlc='~/i3wm/i3/Scripts/tll.sh c "$@"'
 alias tla='~/i3wm/i3/Scripts/tll.sh a "$@"'
 alias drivec="~/i3wm/zsh/scripts/drive-compile.sh"
 alias myip="ip -color address"
+
+# Personal Plugins
 export BM_CONFIG="$HOME/i3wm/zsh/plugins/shell-plugins/zshbookmarks/config.sh"
 alias d="source $HOME/i3wm/zsh/plugins/shell-plugins/zshbookmarks/zshbookmark.sh -c $HOME/i3wm/zsh/.dirbookmarks dir"
 alias f="source $HOME/i3wm/zsh/plugins/shell-plugins/zshbookmarks/zshbookmark.sh -c $HOME/i3wm/zsh/.filebookmarks file"
