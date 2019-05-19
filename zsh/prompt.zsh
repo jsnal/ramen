@@ -35,14 +35,14 @@ function precmd {
   SUDO="%{%F{red}%}"
   DIR="%{%F{cyan}%}"
   PROMPTC="%{%F{white}%}"
-  USER="%{%F{yellow}%}"
+  CUSER="%{%F{yellow}%}"
   GIT_BRANCH="%{%F{magenta}%}"
   ALTPROMPT="%{%F{red}%}"
 
   DIR="[$DIR%B%(5~|../%3~|%~)%b$BRACKET$BRACKET]% "
-  USER="$BRACKET@$USER%n"
+  CUSER="$BRACKET@$CUSER%n"
 
-  PROMPT="$SUDO$(get_sudo)$USER$BRACKET$DIR$END%{$reset_color%}%"
+  PROMPT="$SUDO$(get_sudo)$CUSER$BRACKET$DIR$END%{$reset_color%}%"
   RPROMPT="%F{8}${timer_show}%F{white}%}$(git_full_prompt)"
 }
 

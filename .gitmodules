@@ -16,9 +16,6 @@
 [submodule "st"]
 	path = st
 	url = https://github.com/JasonLong24/st
-[submodule "vim/snippets"]
-	path = vim/snippets
-	url = https://github.com/JasonLong24/snippets
 [submodule "dotdrop"]
 	path = dotdrop
 	url = https://github.com/deadc0de6/dotdrop.git
