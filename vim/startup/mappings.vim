@@ -1,5 +1,3 @@
-" noremap <C-x> :! pandoc --mathjax --toc -o '%:p:h'/out.pdf '%:p:h'/*.md \| zathura '%:p:h'/out.pdf &<CR><CR>
-
 noremap <TAB><TAB> :source %<CR>
 
 " Movement
@@ -28,16 +26,12 @@ nmap <silent> <F2> :NERDTreeToggle<CR>
 map <F4> :setlocal foldmethod=marker<CR>
 map <F6> mzgg=G`z`<CR>
 
-" Fuzzy Finding Splits
-nnoremap <silent> <TAB>v :call fzf#run({
-      \   'sink':  'vertical botright split',
-      \   'source': 'find . -path "*/\.*" -prune -o -type f ! -name "*~" ! -name "*.class" -print -o -type l -print' })<CR>
-
-nnoremap <silent> <TAB>x :call fzf#run({
-      \   'sink': 'botright split',
-      \   'source': 'find . -path "*/\.*" -prune -o -type f ! -name "*~" ! -name "*.class" -print -o -type l -print' })<CR>
-
+" FZF Bindings
 map <C-F> :HFiles<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " Move Lines in Visual Mode
 xnoremap K :move '<-2 <CR> gv=gv
