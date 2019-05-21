@@ -1,22 +1,3 @@
-" FZF Buffer
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! functions#bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-nnoremap <silent> <Space><Space> :call fzf#run({
-      \   'source':  reverse(<sid>buflist()),
-      \   'sink':    function('functions#bufopen'),
-      \   'options': '--prompt=">> " --color fg:-1,bg:-1,hl:230,fg+:167,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:0 +m',
-      \   'left':   '~25%'
-      \ })<CR>
-
 " Better Fold Method
 function! functions#Betterfdm()
   if &foldmethod =~ "marker"
@@ -37,36 +18,12 @@ function! functions#spell() abort
   endif
 endfunction
 
-" Force Goyo to quite vim on q or q!
-function! functions#goyo_enter()
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-endfunction
-
-function! functions#goyo_leave()
-  " Quit Vim if this is the only remaining buffer
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-endfunction
-
 " Opens file with predefined files
 function! functions#openwithbuffer(path) abort
   for f in split(glob(a:path), '\n')
     exe 'badd' f
   endfor
 
-  " call fzf#run({
-  "       \   'source':  <sid>buflist(),
-  "       \   'sink':    function('functions#bufopen'),
-  "       \   'down':    len(<sid>buflist()) + 2,
-  "       \   'options': '+m' })
   filetype detect
 endfunction
 

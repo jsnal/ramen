@@ -104,15 +104,18 @@ fi
 
 if [[ $STINST = true ]]; then install-st; fi
 
-echo "Installing dotdrop"
-sudo pip3 install -q -r $HOME/i3wm/dotdrop/requirements.txt
-echo "Dotdrop Installed"
-if [[ $PROFILEINST = true ]]; then
-  $HOME/i3wm/dotdrop.sh install --profile $($HOME/i3wm/dotdrop.sh list | sed -e '/^$/d' -e 1d | awk 'NR==profile {print $2}' profile="${PROFILE_SELECT}")
-else
-  $HOME/i3wm/dotdrop.sh list | sed -e '/^$/d' -e 1d | awk '{print $2}' | nl
-  read -p "What profile would you like to install? " profile
-  $HOME/i3wm/dotdrop.sh install --profile $($HOME/i3wm/dotdrop.sh list | sed -e '/^$/d' -e 1d | awk 'NR==profile {print $2}' profile="${profile}")
-fi
+echo "Symlinking files"
+# Symlink Files
+ln -sfv $DOTFILES_DIR/vim/vimrc ~/.vimrc
+ln -sfv $DOTFILES_DIR/zsh/zshrc ~/.zshrc
+ln -sfv $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
+ln -sfv $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
+ln -sfv $DOTFILES_DIR/X/xinitrc ~/.xinitrc
+ln -sfv $DOTFILES_DIR/tmux.conf ~/.tmux.conf
+ln -sfv $DOTFILES_DIR/.gitconfig ~/.gitconfig
+
+# Symlink Directories
+ln -sfv $DOTFILES_DIR/vim/plugin ~/.vim/plugin
+ln -sfv $DOTFILES_DIR/vim/autoload ~/.vim/autoload
 
 echo "Install Complete! Restart your terminal."
