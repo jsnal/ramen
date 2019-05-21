@@ -115,7 +115,6 @@ ln -sfv $DOTFILES_DIR/tmux.conf ~/.tmux.conf
 ln -sfv $DOTFILES_DIR/.gitconfig ~/.gitconfig
 
 # Symlink Directories
-ln -sfv $DOTFILES_DIR/vim/plugin ~/.vim/plugin
-ln -sfv $DOTFILES_DIR/vim/autoload ~/.vim/autoload
+ln -sfv $DOTFILES_DIR/vim/plugin ~/.vim
 
 echo "Install Complete! Restart your terminal."

@@ -6,13 +6,6 @@ augroup AutoSaveFolds
   autocmd BufWinEnter * silent! loadview
 augroup END
 
-augroup BgHighlight
-  autocmd!
-  autocmd WinEnter * call functions#focused_win()
-  autocmd WinLeave * call functions#non_focused_win()
-  autocmd FileReadPre * call echom test
-augroup END
-
 " Markdown, txt, LaTeX
 au BufReadPost,BufNewFile *.md,*.tex call functions#spell() |  Goyo 125
 " load buffer with possible vim/zsh files to edit
@@ -20,8 +13,8 @@ au BufReadPost,BufNewFile *.zshrc,zshrc call functions#openwithbuffer("~/i3wm/zs
 au BufReadPost,BufNewFile *.vimrc,vimrc call functions#openwithbuffer("~/i3wm/vim/startup/*.vim")
 
 " Enter and Leave Goyo
-autocmd! User GoyoEnter call functions#goyo_enter()
-autocmd! User GoyoLeave call functions#goyo_leave()
+autocmd! User GoyoEnter call goyo#goyo_enter()
+autocmd! User GoyoLeave call goyo#goyo_leave()
 
 " delete whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
