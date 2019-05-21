@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PACKAGES=("python3-pip" "zsh" "curl" "vim" "jq" "git")
+PACKAGES=("python-pip" "zsh" "curl" "vim" "jq" "git")
 PROFILEINST=false
 VERINST=false
 CIINST=false
@@ -82,7 +82,7 @@ for i in "${PACKAGES[@]}"; do
   if echo $ignore_list | grep -q $i; then
     echo '' &>/dev/null
   else
-    dpkg -s $i &> /dev/null
+    pacman -Qi $i &> /dev/null
   fi
   if [ $? -eq 0 ]; then
     if echo $ignore_list | grep -q $i; then
@@ -92,12 +92,6 @@ for i in "${PACKAGES[@]}"; do
     fi
   else
     echo -e "Install Failed\nPlease Install ${PACKAGES[@]}"
-    read -p "Do you wish to install this program? " response
-    case $response in
-      [Yy]* ) sudo apt-get install ${PACKAGES[@]}; echo -e "\nPackages installed."; break;;
-      [Nn]* ) exit 1;;
-      * ) echo "Please answer yes or no.";;
-    esac
   fi
 done
 

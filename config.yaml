@@ -42,7 +42,7 @@ dotfiles:
     - echoaction "tmux config installed" /tmp/i3wm_install.log
     dst: ~/.tmux.conf
     link: link
-    src: ./tmux.conf
+    src: tmux/tmux.conf
   f_vimrc:
     actions:
     - vim-plug-install
