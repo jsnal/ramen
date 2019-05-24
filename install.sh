@@ -111,7 +111,7 @@ ln -sfv $DOTFILES_DIR/zsh/zshrc ~/.zshrc
 ln -sfv $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
 ln -sfv $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
 ln -sfv $DOTFILES_DIR/X/xinitrc ~/.xinitrc
-ln -sfv $DOTFILES_DIR/tmux.conf ~/.tmux.conf
+ln -sfv $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
 ln -sfv $DOTFILES_DIR/.gitconfig ~/.gitconfig
 
 # Symlink Directories
