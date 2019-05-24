@@ -34,8 +34,8 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 " Move Lines in Visual Mode
-xnoremap K :move '<-2 <CR> gv=gv
-xnoremap J :move '>+1 <CR> gv=gv
+xnoremap <silent> K :call visual#move_up()<CR>
+xnoremap <silent> J :call visual#move_down()<CR>
 
 " Check TODO List with date
 nnoremap <F5> lix<Esc>ll"=strftime("%c")<CR>P
