@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PACKAGES=("python-pip" "zsh" "curl" "vim" "jq" "git")
+DOTFILES_DIR="$HOME/i3wm"
+PACKAGES=("zsh" "curl" "vim" "jq" "git")
 PROFILEINST=false
 VERINST=false
 CIINST=false
@@ -115,6 +115,7 @@ ln -sfv $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
 ln -sfv $DOTFILES_DIR/.gitconfig ~/.gitconfig
 
 # Symlink Directories
-ln -sfv $DOTFILES_DIR/vim/plugin ~/.vim
+mkdir -p ~/.vim/plugin
+ln -sfv $DOTFILES_DIR/vim/plugin/* ~/.vim/plugin/
 
 echo "Install Complete! Restart your terminal."
