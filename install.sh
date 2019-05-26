@@ -91,7 +91,7 @@ for i in "${PACKAGES[@]}"; do
       echo "-> $i Installed"
     fi
   else
-    echo -e "Install Failed\nPlease Install ${PACKAGES[@]}"
+    echo -e "Install Failed\nPlease Install ${PACKAGES[@]}" && exit 1
   fi
 done
 

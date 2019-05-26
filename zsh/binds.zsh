@@ -3,8 +3,8 @@ zle -N edit-command-line
 
 # Easy backwards cd
 function up_widget() {
-      BUFFER="cd .."
-      zle accept-line
+  BUFFER="cd .."
+  zle accept-line
 }
 zle -N up_widget
 
@@ -18,8 +18,18 @@ function smart-fg() {
 }
 zle -N smart-fg
 
+# Easy way to fzf in commonly used directories.
+function fzf-edit() {
+  local choice=$(find i3wm Documents Downloads git -type f | fzf)
+  if [ ! -z $choice ]; then
+    vim $choice
+  fi
+}
+zle -N fzf-edit
+
 bindkey -s '^e' 'f -f^M'
 bindkey -s '^h' 'd -f^M'
+bindkey -s '^f' 'fzf-edit^M'
 bindkey -s '^y' '. ~/.zshrc^Mclear^M'
 bindkey "^u" up_widget
 bindkey '^w' forward-word
