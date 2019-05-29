@@ -43,6 +43,10 @@ done
 
 set -- "${POSITIONAL[@]}"
 
+function link-file() {
+  ln -sfv $1 $2 | sed "s/'//g"
+}
+
 function verify-install() {
   echo "Verifying Install"
   file=(
@@ -51,7 +55,7 @@ function verify-install() {
   $DOTFILES_DIR/X/xbindkeysrc \
   $DOTFILES_DIR/X/xmodmap \
   $DOTFILES_DIR/X/xinitrc \
-  $DOTFILES_DIR/tmux.conf \
+  $DOTFILES_DIR/tmux/tmux.conf \
   $DOTFILES_DIR/.gitconfig \
   $DOTFILES_DIR/i3/config \
   )
@@ -91,11 +95,15 @@ for i in "${PACKAGES[@]}"; do
       echo "-> $i Installed"
     fi
   else
-    echo -e "Install Failed\nPlease Install ${PACKAGES[@]}" && exit 1
+    echo -e "Missing Packages Found\nPlease Install ${PACKAGES[@]}\n"
+    read -r -p "Continue Anyways? [y/N] " response
+    if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+      exit 1
+    fi
   fi
 done
 
-echo "Cloning i3wm Repository"
+echo -e "\nCloning i3wm Repository"
 if [ -d $HOME/i3wm ]; then
   echo "-> Found $HOME/i3wm"
 else
@@ -104,18 +112,18 @@ fi
 
 if [[ $STINST = true ]]; then install-st; fi
 
-echo "Symlinking files"
+echo -e "\nSymlinking files"
 # Symlink Files
-ln -sfv $DOTFILES_DIR/vim/vimrc ~/.vimrc
-ln -sfv $DOTFILES_DIR/zsh/zshrc ~/.zshrc
-ln -sfv $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
-ln -sfv $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
-ln -sfv $DOTFILES_DIR/X/xinitrc ~/.xinitrc
-ln -sfv $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
-ln -sfv $DOTFILES_DIR/.gitconfig ~/.gitconfig
+link-file $DOTFILES_DIR/vim/vimrc ~/.vimrc
+link-file $DOTFILES_DIR/zsh/zshrc ~/.zshrc
+link-file $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
+link-file $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
+link-file $DOTFILES_DIR/X/xinitrc ~/.xinitrc
+link-file $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
+link-file $DOTFILES_DIR/.gitconfig ~/.gitconfig
 
 # Symlink Directories
 mkdir -p ~/.vim/plugin
-ln -sfv $DOTFILES_DIR/vim/plugin/* ~/.vim/plugin/
+ln -sfv $DOTFILES_DIR/vim/plugin/* ~/.vim/plugin/ | sed "s/'//g"
 
-echo "Install Complete! Restart your terminal."
+echo -e "\nInstall Complete! Restart your terminal."
