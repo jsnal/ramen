@@ -1,10 +1,9 @@
-# i3wm Config [![Build Status](http://jasonlong24.crabdance.com:8080/buildStatus/icon?job=i3wm/master)](http://jasonlong24.crabdance.com:8080/job/i3wm/job/master/)
+# i3wm Config
 
  My i3wm config, scripts and setup.
 
- vim [Snippets](https://github.com/JasonLong24/snippets)
 ### Setup
-- Clone this repo into your home directory
+- Recursively clone this repo into your home directory
 - Run the installer.sh
 
 or
@@ -27,7 +26,6 @@ wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min && test -e ~/.vi
 
 ### Secret Config
 
-- Add secret.zsh to $HOME/zsh
 ```
 # vim autocomplete
 export VIM_YCM=true
@@ -59,9 +57,10 @@ export VIM_YCM=true
 - dunst
     - Minimal notification displayer
     - [Install Package](https://www.archlinux.org/packages/community/x86_64/dunst/)
+- fzf
+    - light and fast fuzzy file finder
+    - [Install Package](https://www.archlinux.org/packages/community/x86_64/dunst/)
 
 ### Testing
 
 To be sure that each push will work on a fresh install of linux, I use a docker container with Ubuntu 18.04, which builds on a Jenkins server.
-
-[![Build Status](http://jasonlong24.crabdance.com:8080/buildStatus/icon?job=i3wm/master)](http://jasonlong24.crabdance.com:8080/job/i3wm/job/master/)
