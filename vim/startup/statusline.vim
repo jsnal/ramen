@@ -23,8 +23,8 @@ hi StatusLine ctermfg=white ctermbg=NONE cterm=NONE
 hi StatusLineNC ctermfg=240 ctermbg=NONE cterm=NONE
 
 " Jellybean Statusline
-set statusline=\ %{ModeCurrent()}>>
-set statusline+=\ %r%m[%n]\ %f
-set statusline+=%=\ %P\ %p%%
+set statusline=\ %f\ >>
+set statusline+=\ %r[%n]
+set statusline+=%=\ %y
 set statusline+=%=\ (%l/%L)
 set statusline+=\ <<
