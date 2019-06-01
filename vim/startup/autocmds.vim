@@ -10,8 +10,10 @@ augroup END
 au BufReadPost,BufNewFile *.md,*.tex call functions#spell() |  Goyo 125
 
 " load buffer with possible vim/zsh files to edit
-au BufReadPost,BufNewFile *.zshrc,zshrc call functions#openwithbuffer("~/i3wm/zsh/*.zsh")
-au BufReadPost,BufNewFile *.vimrc,vimrc call functions#openwithbuffer("~/i3wm/vim/startup/*.vim")
+if isdirectory($HOME . "/i3wm")
+  au BufReadPost,BufNewFile *.zshrc,zshrc call functions#openwithbuffer("~/i3wm/zsh/*.zsh")
+  au BufReadPost,BufNewFile *.vimrc,vimrc call functions#openwithbuffer("~/i3wm/vim/startup/*.vim")
+endif
 
 " Enter and Leave Goyo
 autocmd! User GoyoEnter call goyo#goyo_enter()

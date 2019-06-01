@@ -57,9 +57,11 @@ endif
 
 " Source all files in startup
 filetype plugin on
-for f in split(glob('~/i3wm/vim/startup/*.vim'), '\n')
+if isdirectory($HOME . "/i3wm")
+  for f in split(glob('~/i3wm/vim/startup/*.vim'), '\n')
     exe 'source' f
-endfor
+  endfor
 
-" Source highlight settings last
-exe 'source ~/i3wm/vim/startup/highlight.vim'
+  " Source highlight settings last
+  exe 'source ~/i3wm/vim/startup/highlight.vim'
+endif

@@ -41,10 +41,6 @@ xnoremap <silent> J :call visual#move_down()<CR>
 " Check TODO List with date
 nnoremap <F5> lix<Esc>ll"=strftime("%c")<CR>P
 
-" Change SnipMate for YCM
-imap <C-C> <esc>a<Plug>snipMateNextOrTrigger
-smap <C-C> <Plug>snipMateNextOrTrigger
-
 " Better split navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
