@@ -18,3 +18,6 @@ setopt hist_reduce_blanks
 setopt always_to_end
 setopt complete_in_word
 setopt auto_menu
+setopt correct
+setopt correctall
+setopt noflowcontrol

@@ -179,3 +179,13 @@ command_not_found_handler() {
   printf 'zsh: command not found: %s\n' "$cmd" 1>&2
   return 127
 }
+
+# Dump vim startup statistics.
+function vim-dump() {
+  vim --cmd 'profile start profile.log' \
+    --cmd 'profile func *' \
+    --cmd 'profile file *' \
+    -c 'profdel func *' \
+    -c 'profdel file *' \
+    -c 'qa!'
+}

@@ -65,3 +65,5 @@ zsh_command_time() {
     fi
   fi
 }
+
+export SPROMPT="%B%F{red}'%R'%b%f -> %B%F{red}'%r'%b%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "
