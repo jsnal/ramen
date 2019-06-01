@@ -19,9 +19,6 @@ endfunction
 " set statusline+=%=\ (%l/%L)
 " set statusline+=\ <<
 
-hi StatusLine ctermfg=white ctermbg=NONE cterm=NONE
-hi StatusLineNC ctermfg=240 ctermbg=NONE cterm=NONE
-
 " Jellybean Statusline
 set statusline=\ %f\ >>
 set statusline+=\ %r[%n]

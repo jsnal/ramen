@@ -32,6 +32,7 @@ set expandtab
 set autoindent
 set foldcolumn=0
 set hlsearch
+set incsearch
 set linebreak
 
 " File Settings

@@ -29,3 +29,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Override Default fzf statusline
 autocmd! User FzfStatusLine call fzf#fzf_statusline()
+
+" Remove highlighting on insert mode
+autocmd InsertEnter * :let @/=""
