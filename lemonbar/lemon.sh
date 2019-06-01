@@ -11,15 +11,21 @@ clock() {
   date +%I:%M
 }
 
+charging() {
+  if ! cat /sys/class/power_supply/BAT0/status | grep "Discharging" &>/dev/null; then
+    echo "*"
+  fi
+}
+
 battery() {
   if [ ! -f /sys/class/power_supply/BAT0/capacity ]; then echo ''; else
     local bat=$(cat /sys/class/power_supply/BAT0/capacity)
     if [[ bat -ge 70 ]]; then
-      echo '| '%{F\#00ff00}$bat%{F\#fff}'%'
+      echo '| '%{F\#00ff00}$bat%{F\#fff}'%'$(charging)
     elif [[ bat -le 69 && $bat -ge 26 ]]; then
-      echo '| '%{F\#ffff00}$bat%{F\#fff}'%'
+      echo '| '%{F\#ffff00}$bat%{F\#fff}'%'$(charging)
     else
-      echo '| '%{F\#cc0000}$bat%{F\#fff}'%'
+      echo '| '%{F\#cc0000}$bat%{F\#fff}'%'$(charging)
     fi
   fi
 }

@@ -128,7 +128,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+t exec --no-startup-id ~/i3wm/lemonbar/launch.sh
 
 # Execute on Startup
-exec_always feh --bg-scale ~/i3wm/backgrounds/waterfrontmount.jpg
+exec_always feh --bg-scale ~/i3wm/backgrounds/ywbabstract.jpg
 exec_always python ~/i3wm/i3/Scripts/altlayout.py
 exec_always --no-startup-id dunst
 exec --no-startup-id st -c tmux -e bash ~/i3wm/i3/Scripts/tmux.sh
