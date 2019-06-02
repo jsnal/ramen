@@ -189,3 +189,23 @@ function vim-dump() {
     -c 'profdel file *' \
     -c 'qa!'
 }
+
+function zsh-minify() {
+  local OUT=$1
+  if [ -z $1 ]; then local OUT="zshrc.min"; fi
+  if [ -d $HOME/i3wm ]; then
+    git -C $HOME/i3wm pull origin master
+    cat $HOME/i3wm/zsh/zshrc.min > $OUT
+    cat $HOME/i3wm/zsh/*.zsh >> $OUT
+  fi
+}
+
+function vim-minify() {
+  local OUT=$1
+  if [ -z $1 ]; then local OUT="vimrc.min"; fi
+  if [ -d $HOME/i3wm ]; then
+    git -C $HOME/i3wm pull origin master
+    cat $HOME/i3wm/vim/vimrc > $OUT
+    find $HOME/i3wm/vim/startup -maxdepth 1 -iname '*.vim' -not -name 'functions.vim' -exec cat {} +>> $OUT
+  fi
+}
