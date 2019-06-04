@@ -78,7 +78,7 @@ for_window [class="mpv"] floating enable, resize set 1200 800, move position cen
 for_window [class="calc"] floating enable, resize set 800 600, move position center
 
 # Workspaces
-set $workspace1 "1"
+set $workspace1 "web"
 set $workspace2 "2"
 set $workspace3 "3"
 set $workspace4 "4"

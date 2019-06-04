@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
+#
+# Depends on i3 and jq for workspace data.
 
 workspace() {
   current=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)
-  windows=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+  windows=("web" "2" "3" "4" "5" "6" "7" "8" "9" "10")
   windows[$(expr $current - 1)]="["%{F\#00ff00}$current%{F\#fff}"]"
   echo ${windows[@]}
 }
 
 clock() {
   date +%I:%M
+}
+
+c_date() {
+  date +%D | sed 's/\//-/g'
 }
 
 charging() {
@@ -83,7 +89,7 @@ win-info() {
 
 while true; do
   BAR_LEFT="%{l}$(workspace) $(win-info)"
-  BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} $(brightness) | V: $(volume) | $(clock) | $(ssid) | $(address) $(battery)"
+  BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} $(brightness) | V: $(volume) | $(clock) | $(c_date) | $(ssid) | $(address) $(battery)"
   echo $BAR_LEFT $BAR_RIGHT
   sleep .5
 done
