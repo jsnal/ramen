@@ -20,7 +20,7 @@ endfunction
 " set statusline+=\ <<
 
 " Jellybean Statusline
-set statusline=\ %f\ >>
+set statusline=\ %t\ >>
 set statusline+=\ %r[%n]
 set statusline+=%=\ %y
 set statusline+=%=\ (%l/%L)
