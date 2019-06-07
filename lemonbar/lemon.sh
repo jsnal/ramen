@@ -89,7 +89,7 @@ win-info() {
 
 while true; do
   BAR_LEFT="%{l}$(workspace) $(win-info)"
-  BAR_RIGHT="%{r} $(ssh-info) %{A:i3-msg '[class="Spotify"] focus':}$(song)%{A} $(brightness) | V: $(volume) | $(clock) | $(c_date) | $(ssid) | $(address) $(battery)"
+  BAR_RIGHT="%{r} $(ssh-info) $(brightness) | V: $(volume) | $(clock) | $(c_date) | $(ssid) | $(address) $(battery)"
   echo $BAR_LEFT $BAR_RIGHT
-  sleep .5
+  sleep 15
 done
