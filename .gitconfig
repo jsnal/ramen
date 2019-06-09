@@ -6,22 +6,32 @@
 [credential]
   helper = store
 [alias]
+  # Branch
   co = checkout
   cob = checkout -b
   br = branch
-  st = status
-  aa = add -A .
-  cm = commit -m
+  st = status -s
+  cm = commit -v
+
+  # Pushing/Pulling
   po = push origin
   pod = push origin master
   plo = pull origin
   plom = pull origin master
-  qp = add --all && commit && push origin master
+  qp = !"git add --all && git commit && git push origin master"
+  aa = add -A
+
   # Submodules
   subi = submodule init
   suba = submodule add
   subu = submodule update --recursive --remote
+
+  # Misc
+  ack = grep --break --heading
+  lg = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
 [core]
   excludesfile = $HOME/.gitignore_global
 [color]
   ui = true
+[status]
+  submodulesummary = true

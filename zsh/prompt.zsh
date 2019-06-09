@@ -8,12 +8,6 @@ function preexec() {
 
 function precmd {
 
-  if [ $? -eq 0  ]; then
-    END="$PROMPTC$%(1j.*.) "
-  else
-    END="$ALTPROMPT\$$PROMPTC%(1j.*.) "
-  fi
-
   if [ $timer ]; then
     timer_show=$(($SECONDS - $timer))
     export ZSH_COMMAND_TIME="$timer_show"
@@ -23,13 +17,20 @@ function precmd {
     unset timer
   fi
 
-  function get_sudo() {
+  function get_trailing_symbol() {
     if sudo -n true 2>/dev/null; then
-      echo "sudo"
+      end_symbol="$SUDO#"
     else
-      echo ""
+      end_symbol="$"
     fi
   }
+  get_trailing_symbol
+
+  if [ $? -eq 0  ]; then
+    END="$PROMPTC${end_symbol}%(1j.*.) "
+  else
+    END="$ALTPROMPT${end_symbol}$PROMPTC%(1j.*.) "
+  fi
 
   BRACKET="%{%F{white}%}"
   SUDO="%{%F{red}%}"
@@ -42,7 +43,7 @@ function precmd {
   DIR="[$DIR%B%(5~|../%3~|%~)%b$BRACKET$BRACKET]% "
   CUSER="$BRACKET@$CUSER%n"
 
-  PROMPT="$SUDO$(get_sudo)$CUSER$BRACKET$DIR$END%{$reset_color%}%"
+  PROMPT="$CUSER$BRACKET$DIR$END%{$reset_color%}%"
   RPROMPT="%F{8}${timer_show}%F{white}%}$(git_full_prompt)"
 }
 
