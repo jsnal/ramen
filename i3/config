@@ -71,7 +71,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+c exec uxterm -c calc -hold -e python
-bindsym $mod+Shift+g exec ~/i3wm/emulation/start.sh
+bindsym $mod+Shift+g exec ~/i3wm/i3/emulation/start.sh
 
 for_window [class="tmux"] move window to scratchpad, scratchpad show
 for_window [class="mpv"] floating enable, resize set 1200 800, move position center

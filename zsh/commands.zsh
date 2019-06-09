@@ -209,3 +209,8 @@ function vim-minify() {
     find $HOME/i3wm/vim/startup -maxdepth 1 -iname '*.vim' -not -name 'functions.vim' -exec cat {} +>> $OUT
   fi
 }
+
+function caln() {
+  if [ -z $1 ]; then local months="3"; else; local months="$1"; fi
+  cal -n $months
+}
