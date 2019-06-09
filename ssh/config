@@ -1,0 +1,9 @@
+Host main
+  HostName jasonlong24.crabdance.com
+  Port 22
+  User chc-2
+
+Host zelon
+  HostName matrix.zelon.net
+  Port 22
+  User int0x191f2

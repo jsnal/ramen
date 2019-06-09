@@ -120,7 +120,9 @@ link-file $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
 link-file $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
 link-file $DOTFILES_DIR/X/xinitrc ~/.xinitrc
 link-file $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
-link-file $DOTFILES_DIR/.gitconfig ~/.gitconfig
+link-file $DOTFILES_DIR/git/gitconfig ~/.gitconfig
+link-file $DOTFILES_DIR/ssh/config ~/.ssh/config
+link-file $DOTFILES_DIR/git/gitignore ~/.gitignore_global
 
 # Symlink Directories
 mkdir -p ~/.vim/plugin

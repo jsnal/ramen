@@ -1,0 +1,11 @@
+# vim
+*~
+*.swp
+*.swo
+
+# node
+npm-debug.log
+node_modules
+
+# java
+.idea
