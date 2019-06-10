@@ -26,7 +26,7 @@ if $VIM_YCM == 'true'
 endif
 
 " File Tree
-Plug 'https://github.com/scrooloose/nerdtree'
+Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Change working dir to project root
 Plug 'https://github.com/airblade/vim-rooter'
