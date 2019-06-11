@@ -49,3 +49,7 @@ map <C-l> <C-w>l
 
 " Ag for word under cursor
 nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
+
+" Move the cursor in wildmenu
+cnoremap <Left> <Space><BS><Left>
+cnoremap <Right> <Space><BS><Right>

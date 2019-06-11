@@ -16,11 +16,13 @@ set laststatus=2
 set backspace=indent,eol,start
 set path+=**
 set wildmenu
+set wildmode=longest:full,full
 set shortmess=a
 set cmdheight=2
 set showmode
 set splitbelow splitright
 set ignorecase smartcase
+set hidden
 
 " Numbering and Indent
 set number
@@ -46,6 +48,8 @@ set showcmd
 set backupdir=./.backup,.,/tmp
 set directory=.,./.backup,/tmp
 set autochdir
+set nobackup
+set nowritebackup
 
 " Hilight Cursor Words
 let g:HiCursorWords_linkStyle='Underlined'
