@@ -29,6 +29,7 @@ alias tla='~/i3wm/i3/Scripts/tll.sh a "$@"'
 alias drivec="~/i3wm/zsh/scripts/drive-compile.sh"
 alias myip="ip -color address"
 alias crontab-all="crontab -l | grep -v '^#' | cut -f 6- -d ' ' | while read CMD; do eval $CMD; done"
+alias bat="cat /sys/class/power_supply/BAT0/capacity"
 
 # Personal Plugins
 export BM_CONFIG="$HOME/i3wm/zsh/plugins/shell-plugins/zshbookmarks/config.sh"

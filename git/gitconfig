@@ -12,10 +12,12 @@
   br = branch
   st = status -s
   cm = commit -v
+  rrh = reset --hard
 
   # Pushing/Pulling
+  p = push
   po = push origin
-  pod = push origin master
+  pom = push origin master
   plo = pull origin
   plom = pull origin master
   qp = !"git add --all && git commit && git push origin master"
