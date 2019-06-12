@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR="$HOME/i3wm"
-PACKAGES=("zsh" "curl" "vim" "jq" "git")
 PROFILEINST=false
 VERINST=false
 CIINST=false
@@ -81,28 +80,7 @@ function install-st() {
 if [[ $WEBINST = true ]]; then web-install; fi
 if [[ $VERINST = true ]]; then verify-install; fi
 
-echo "Checking Installed Packages"
-for i in "${PACKAGES[@]}"; do
-  if echo $ignore_list | grep -q $i; then
-    echo '' &>/dev/null
-  else
-    pacman -Qi $i &> /dev/null
-  fi
-  if [ $? -eq 0 ]; then
-    if echo $ignore_list | grep -q $i; then
-      echo "-> $i Ignored"
-    else
-      echo "-> $i Installed"
-    fi
-  else
-    echo -e "Missing Packages Found\nPlease Install ${PACKAGES[@]}\n"
-    read -r -p "Continue Anyways? [y/N] " response
-    if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
-      exit 1
-    fi
-  fi
-done
-
+echo -e "Please Install: zsh, vim, tmux; optionally i3wm, jq, lemonbar"
 echo -e "\nCloning i3wm Repository"
 if [ -d $HOME/i3wm ]; then
   echo "-> Found $HOME/i3wm"
