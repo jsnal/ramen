@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR="$HOME/i3wm"
-PROFILEINST=false
+PROFILES=("all" "desktop" "terminal" "minimal")
+PROFILE_SELECT="terminal"
 VERINST=false
-CIINST=false
 STINST=false
 
 POSITIONAL=()
@@ -11,35 +11,16 @@ while [[ $# -gt 0 ]]
 do
   key="$1"
   case $key in
-    -pfl|--profile)
-      PROFILEINST=true
-      PROFILE_SELECT=$2
-      shift
-      ;;
+    -p|--profile)
+      PROFILE_SELECT=$2; shift ;;
     -v|--verify-install)
-      VERINST=true
-      shift
-      ;;
-    -ci|--count-integration)
-      CIINST=true
-      shift
-      ;;
+      VERINST=true; shift ;;
     -st|--simple-terminal)
-      STINST=true
-      shift
-      ;;
-    -i|--ignore)
-      ignore_list=$(echo $2 | sed 's/,/ /g')
-      shift
-      shift
-      ;;
+      STINST=true; shift ;;
     *)
-      POSITIONAL+=("$1")
-      shift
-      ;;
+      POSITIONAL+=("$1"); shift ;;
   esac
 done
-
 set -- "${POSITIONAL[@]}"
 
 function link-file() {
@@ -55,7 +36,7 @@ function verify-install() {
   $DOTFILES_DIR/X/xmodmap \
   $DOTFILES_DIR/X/xinitrc \
   $DOTFILES_DIR/tmux/tmux.conf \
-  $DOTFILES_DIR/.gitconfig \
+  $DOTFILES_DIR/git/gitconfig \
   $DOTFILES_DIR/i3/config \
   )
   for i in ${file[@]}; do
@@ -72,13 +53,43 @@ function verify-install() {
 
 function install-st() {
   git submodule update --init --recursive
-  sudo apt-get install libx11-dev libxft-dev libxext-dev fontconfig
+  echo -e 'Please Install: libx11-dev libxft-dev libxext-dev fontconfig'
   cd $HOME/i3wm/st && sudo make install
   exit 0
 }
 
-if [[ $WEBINST = true ]]; then web-install; fi
+if [[ $STINST = true ]]; then install-st; fi
 if [[ $VERINST = true ]]; then verify-install; fi
+
+function desktop() {
+  link-file $DOTFILES_DIR/i3/config ~/.config/i3/config
+  link-file $DOTFILES_DIR/X/xinitrc ~/.xinitrc
+  link-file $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
+  link-file $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
+}
+
+function terminal() {
+  link-file $DOTFILES_DIR/zsh/zshrc ~/.zshrc
+  link-file $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
+  link-file $DOTFILES_DIR/git/gitconfig ~/.gitconfig
+  link-file $DOTFILES_DIR/git/gitignore ~/.gitignore_global
+
+  mkdir -p ~/.vim/plugin
+  link-file $DOTFILES_DIR/vim/vimrc ~/.vimrc
+  ln -sfv $DOTFILES_DIR/vim/plugin/* ~/.vim/plugin/ | sed "s/'//g"
+}
+
+function all() {
+  desktop
+  terminal
+  link-file $DOTFILES_DIR/ssh/config ~/.ssh/config
+}
+
+function minimal() {
+  wget -O ~/.zshrc http://jasonlong24.crabdance.com/min/zshrc.min
+  wget -O ~/.tmux.conf http://jasonlong24.crabdance.com/min/tmux.min
+  wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min
+}
 
 echo -e "Please Install: zsh, vim, tmux; optionally i3wm, jq, lemonbar"
 echo -e "\nCloning i3wm Repository"
@@ -88,22 +99,11 @@ else
   git clone --recursive --quiet https://github.com/JasonLong24/i3wm $HOME/i3wm &>/dev/null
 fi
 
-if [[ $STINST = true ]]; then install-st; fi
-
 echo -e "\nSymlinking files"
 # Symlink Files
-link-file $DOTFILES_DIR/vim/vimrc ~/.vimrc
-link-file $DOTFILES_DIR/zsh/zshrc ~/.zshrc
-link-file $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
-link-file $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
-link-file $DOTFILES_DIR/X/xinitrc ~/.xinitrc
-link-file $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
-link-file $DOTFILES_DIR/git/gitconfig ~/.gitconfig
-link-file $DOTFILES_DIR/ssh/config ~/.ssh/config
-link-file $DOTFILES_DIR/git/gitignore ~/.gitignore_global
-
-# Symlink Directories
-mkdir -p ~/.vim/plugin
-ln -sfv $DOTFILES_DIR/vim/plugin/* ~/.vim/plugin/ | sed "s/'//g"
-
-echo -e "\nInstall Complete! Restart your terminal."
+for i in ${PROFILES[@]}; do
+  if [ $i = $PROFILE_SELECT ]; then
+    $PROFILE_SELECT; echo -e "\nInstall Complete! Restart your terminal."; exit 0
+  fi
+done
+echo -e "\"$PROFILE_SELECT\" is not a valid profile: ["${PROFILES[@]}"]"; exit 1

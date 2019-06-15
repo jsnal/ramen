@@ -60,7 +60,3 @@ export VIM_YCM=true
 - fzf
     - light and fast fuzzy file finder
     - [Install Package](https://www.archlinux.org/packages/community/x86_64/dunst/)
-
-### Testing
-
-To be sure that each push will work on a fresh install of linux, I use a docker container with Ubuntu 18.04, which builds on a Jenkins server.
