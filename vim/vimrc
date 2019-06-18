@@ -21,8 +21,9 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 
 " Autocomplete Engine
-if $VIM_YCM == 'true'
-  Plug 'Valloric/YouCompleteMe', { 'on': [] }
+if $VIM_COC == 'true'
+  Plug 'https://github.com/neoclide/coc.nvim', { 'branch': 'release', 'on': [] }
+  Plug 'https://github.com/neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 endif
 
 " File Tree
@@ -48,15 +49,6 @@ Plug 'https://github.com/mattn/emmet-vim', { 'for': ['html', 'css'] }
 
 " Plugin Total: 13
 call plug#end()
-
-" Enable YouCompleteMe only when told and on insert mode.
-if $VIM_YCM == 'true'
-  augroup load_us_ycm
-    autocmd!
-    autocmd InsertEnter * call plug#load('YouCompleteMe')
-          \| autocmd! load_us_ycm
-  augroup END
-endif
 
 " Source all files in startup
 filetype plugin on
