@@ -13,6 +13,7 @@
   st = status -s
   cm = commit -v
   rrh = reset --hard
+  rf = checkout HEAD --
 
   # Pushing/Pulling
   p = push
