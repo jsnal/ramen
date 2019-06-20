@@ -45,9 +45,6 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 " Distraction Free Writing
 Plug 'https://github.com/junegunn/goyo.vim'
 
-" HTML Shortcuts
-Plug 'https://github.com/mattn/emmet-vim', { 'for': ['html', 'css'] }
-
 " Plugin Total: 15
 call plug#end()
 

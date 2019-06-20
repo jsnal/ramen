@@ -11,24 +11,24 @@ noremap <C-e> <C-e><C-e><C-e>
 " Very magic search
 nnoremap +/ /\v
 vnoremap +/ /\v
-map <C-R> :%s/
+noremap <C-R> :%s/
 
 " Leader
 let mapleader = ","
 noremap <Leader>c :Commentary<CR>
 nnoremap <Leader>l :nohlsearch<CR>
-map <Leader>a :bprev<Return>
-map <Leader>s :bnext<Return>
-map <Leader>d :bd<Return>
-map <Leader>f :b
+noremap <Leader>a :bprev<Return>
+noremap <Leader>s :bnext<Return>
+noremap <Leader>d :bd<Return>
+noremap <Leader>f :b
 
 " Function Keys
-nmap <silent> <F2> :NERDTreeToggle<CR>
-map <F4> :setlocal foldmethod=marker<CR>
-map <F6> mzgg=G`z`<CR>
+noremap <silent> <F2> :NERDTreeToggle<CR>
+noremap <F4> :setlocal foldmethod=marker<CR>
+noremap <F6> mzgg=G`z`<CR>
 
 " FZF Bindings
-map <C-F> :HFiles<CR>
+noremap <C-F> :HFiles<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -42,13 +42,13 @@ xnoremap <silent> J :call visual#move_down()<CR>
 nnoremap <F5> lix<Esc>ll"=strftime("%c")<CR>P
 
 " Better split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " Ag for word under cursor
-nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <leader>ag :Ag<CR>
 
 " Move the cursor in wildmenu
 cnoremap <Left> <Space><BS><Left>

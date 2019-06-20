@@ -10,7 +10,7 @@
   co = checkout
   cob = checkout -b
   br = branch
-  st = status -s
+  st = -c color.status=always status -sb
   cm = commit -v
   rrh = reset --hard
   rf = checkout HEAD --
