@@ -31,6 +31,7 @@
 
   # Misc
   ack = grep --break --heading
+  show-files = show --pretty=format:'%C(auto)%H %C(cyan)<%cn>' --name-only
   lg = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
 [core]
   excludesfile = $HOME/.gitignore_global
