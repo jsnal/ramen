@@ -39,3 +39,7 @@
   ui = true
 [status]
   submodulesummary = true
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
