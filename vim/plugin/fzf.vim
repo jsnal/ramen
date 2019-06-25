@@ -11,7 +11,7 @@ function! fzf#bufopen(e)
 endfunction
 
 function! fzf#fzf_statusline()
-  highlight fzf ctermfg=255 ctermbg=0 cterm=NONE
+  highlight fzf ctermfg=253 ctermbg=235 cterm=NONE
   highlight accent ctermfg=167 ctermbg=0
   setlocal statusline=%#fzf#\>\ fzf
 endfunction
