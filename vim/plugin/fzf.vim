@@ -19,6 +19,6 @@ endfunction
 nnoremap <silent> <Space><Space> :call fzf#run({
       \   'source':  reverse(<sid>buflist()),
       \   'sink':    function('fzf#bufopen'),
-      \   'options': '--prompt=">>> " --color fg:-1,bg:-1,hl:230,fg+:167,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:0',
+      \   'options': '--prompt=">>> " --color fg:-1,bg:-1,hl:214,fg+:-1,bg+:235,hl+:214 --color info:150,prompt:167,spinner:150,pointer:167,marker:0',
       \   'right':   '~25%'
       \ })<CR>
