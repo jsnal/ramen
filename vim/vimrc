@@ -42,9 +42,6 @@ Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 " Common syntax highlighting
 Plug 'https://github.com/sheerun/vim-polyglot'
 
-" Distraction Free Writing
-Plug 'https://github.com/junegunn/goyo.vim'
-
 " Plugin Total: 15
 call plug#end()
 
