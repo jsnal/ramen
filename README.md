@@ -27,8 +27,8 @@ wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min && test -e ~/.vi
 ### Secret Config
 
 ```
-# vim autocomplete
-export VIM_YCM=true
+# vim autocomplete (coc)
+export VIM_COC=true
 ```
 
 ### Tools
@@ -60,3 +60,6 @@ export VIM_YCM=true
 - fzf
     - light and fast fuzzy file finder
     - [Install Package](https://www.archlinux.org/packages/community/x86_64/dunst/)
+- the-silver-searcher
+    - A tool for quickly looking through code
+    - [Install Package](https://www.archlinux.org/packages/community/x86_64/the_silver_searcher/)

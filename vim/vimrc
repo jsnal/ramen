@@ -24,7 +24,6 @@ Plug 'https://github.com/jiangmiao/auto-pairs'
 if $VIM_COC == 'true'
   Plug 'https://github.com/neoclide/coc.nvim', { 'branch': 'release', 'on': [] }
   Plug 'https://github.com/neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'https://github.com/neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 endif
 
 " File Tree
