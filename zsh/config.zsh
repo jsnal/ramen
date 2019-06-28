@@ -1,5 +1,6 @@
 bindkey -e
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --prompt=">> " --color fg:-1,bg:-1,hl:230,fg+:167,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:0'
+export FZF_DEFAULT_OPTS=' --prompt=">> " --color fg:-1,bg:-1,hl:208,fg+:-1,bg+:235,hl+:214 --color info:150,prompt:167,spinner:150,pointer:167,marker:0'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export VISUAL="vim"
 export EDITOR="vim"
 export TERMINAL="st"

@@ -70,6 +70,7 @@ function desktop() {
 
 function terminal() {
   link-file $DOTFILES_DIR/zsh/zshrc ~/.zshrc
+  source $DOTFILES_DIR/zsh/plugins/fzf/install
   link-file $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
   link-file $DOTFILES_DIR/git/gitconfig ~/.gitconfig
   link-file $DOTFILES_DIR/git/gitignore ~/.gitignore_global
@@ -91,7 +92,7 @@ function minimal() {
   wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min
 }
 
-echo -e "Please Install: zsh, vim, tmux; optionally i3wm, jq, lemonbar"
+echo -e "Please Install: zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher"
 echo -e "\nCloning i3wm Repository"
 if [ -d $HOME/i3wm ]; then
   echo "-> Found $HOME/i3wm"

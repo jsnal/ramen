@@ -28,7 +28,7 @@ noremap <F4> :setlocal foldmethod=marker<CR>
 noremap <F6> mzgg=G`z`<CR>
 
 " FZF Bindings
-noremap <C-F> :HFiles<CR>
+noremap <C-f> :Files<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
