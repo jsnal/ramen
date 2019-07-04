@@ -1,7 +1,8 @@
 #!/bin/bash
 
-compileDirectories=$(find . -maxdepth 1 -type d | grep -v build | sed -e 1d -e 's/^.\///g')
+compileDirectories=$(find . -maxdepth 1 -type d | grep -v -e "build" -e "ignore" | sed -e 1d -e 's/^.\///g')
 dirCount=$(echo "$compileDirectories" | wc -l)
+MASTER_DOC="false"
 f_verbose=''
 
 function isProjectInit() {
@@ -27,18 +28,35 @@ function compileAll() {
     local fileCount=$(ls -1q $(echo "$compileDirectories" | awk NR==$i)/*.md | wc -l)
     local files=$(ls -1q $(echo "$compileDirectories" | awk NR==$i)/*.md)
     for (( j=1;j<=$fileCount;j++ )); do
+      mkdir -p build/$(echo "$files" | awk NR==$j | cut -d'/' -f1)
       pandoc $f_verbose $(echo "$files" | awk NR==$j) --output build/$(echo "$files" | awk NR==$j | cut -f 1 -d '.').pdf
     done
   done
 }
 
+function compileSingle() {
+  echo 'Compiling' $1
+  local fileCount=$(ls -1q $(echo "$compileDirectories" | grep $1)/*.md | wc -l)
+  local files=$(ls -1q $(echo "$compileDirectories" | grep $1)/*.md)
+  for (( i=1;i<=$fileCount;i++ )); do
+    mkdir -p build/$1
+    pandoc $f_verbose $(echo "$files" | awk NR==$i) --output build/$(echo "$files" | awk NR==$i | cut -f 1 -d '.').pdf
+  done
+}
+
+function compileMasterDoc() {
+  echo 'Compiling master doc...'
+  pdfunite $(find build -maxdepth 2 -type f | sort) build/master.pdf
+}
+
 function mdcompile() {
-  local fzf_return=$({ echo "$compileDirectories" && echo "all"; } | fzf)
+  local fzf_return=$({ echo "$compileDirectories" && echo "all"; } | fzf --height 20%)
+  [ -z $fzf_return ] && echo "Cancelling compiler..." && exit 1
   case $fzf_return in
     'all')
-      compileAll; exit 0 ;;
+      compileAll ;;
     *)
-      echo 'Please pick a valid option.'; exit 1 ;;
+      compileSingle $fzf_return ;;
   esac
 }
 
@@ -56,6 +74,10 @@ do
       projectInit; exit ;;
     -v|--verbose)
       f_verbose="--verbose"; shift ;;
+    -c|--clear)
+      rm -rf build && mkdir -p build; shift ;;
+    -md|--master-doc)
+      MASTER_DOC="true"; shift ;;
     *)
       POSITIONAL+=("$1")
       shift
@@ -65,3 +87,4 @@ done
 set -- "${POSITIONAL[@]}"
 
 mdcompile
+[ $MASTER_DOC = "true" ] && compileMasterDoc && exit 0

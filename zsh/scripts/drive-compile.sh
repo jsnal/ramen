@@ -11,10 +11,10 @@ function onDirPick() {
   rm -rf build/*
   if [[ $dirPick = "0" ]]; then
     for (( i=1;i<=$dirCount;i++ )); do
-      mkdir -v -p build/$(echo */ | tr -d '/' | sed -e 's/build //g' | awk '{print $number}' number=$i) 
+      mkdir -v -p build/$(echo */ | tr -d '/' | sed -e 's/build //g' | awk '{print $number}' number=$i)
     done
   elif [[ $dirPick =~ ^[1-9]+$ ]]; then
-    mkdir -v -p build/$(echo "$availDirs" | awk NR==$dirPick) 
+    mkdir -v -p build/$(echo "$availDirs" | awk NR==$dirPick)
   else
     dirPickList=$(echo $dirPick | sed -e 's/,/ /g')
     for (( i=1;i<=$(echo $dirPickList | wc -w);i++ )); do
@@ -54,7 +54,7 @@ function start() {
   if [[ -f .drivecompile ]] && [[ -d build ]]; then
     if [[ $all = 0 ]]; then
       listDirs
-    fi 
+    fi
     onDirPick
     compile
     echo -e "\nBuild finished"

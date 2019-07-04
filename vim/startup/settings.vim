@@ -16,7 +16,7 @@ set laststatus=2
 set backspace=indent,eol,start
 set path+=**
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest,list,full
 set shortmess=a
 set cmdheight=2
 set showmode
