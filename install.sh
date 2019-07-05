@@ -17,6 +17,10 @@ do
       VERINST=true; shift ;;
     -st|--simple-terminal)
       STINST=true; shift ;;
+    --git-user)
+      GT_USR=$2; shift ;;
+    --git-email)
+      GT_EML=$2; shift ;;
     *)
       POSITIONAL+=("$1"); shift ;;
   esac
@@ -78,6 +82,9 @@ function terminal() {
   mkdir -p ~/.vim/plugin
   link-file $DOTFILES_DIR/vim/vimrc ~/.vimrc
   ln -sfv $DOTFILES_DIR/vim/plugin/* ~/.vim/plugin/ | sed "s/'//g"
+
+  [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
+  [ ! -z $GT_EML ] && git config --global user.email "$GT_EML"
 }
 
 function all() {

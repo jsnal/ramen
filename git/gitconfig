@@ -1,6 +1,3 @@
-[user]
-  email = jasonlongball@gmail.com
-  name = jsnal
 [push]
   default = matching
 [credential]
@@ -43,3 +40,6 @@
   tool = vimdiff
 [difftool]
   prompt = false
+[user]
+  name = jsnal
+  email = jasonlongball@gmail.com
