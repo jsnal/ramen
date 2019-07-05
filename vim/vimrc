@@ -33,7 +33,7 @@ Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'https://github.com/airblade/vim-rooter'
 
 " Color Scheme
-Plug 'https://github.com/nanotech/jellybeans.vim'
+Plug 'https://github.com/jsnal/vim-serape'
 
 " Highlight same words in document
 Plug 'https://github.com/pboettch/vim-highlight-cursor-words'

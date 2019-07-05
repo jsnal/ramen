@@ -4,7 +4,7 @@ syntax on
 if has('gui_running')
   silent! colorscheme default
 else
-  silent! colorscheme jellybeans
+  silent! colorscheme serape
   hi Normal  ctermbg=NONE
   hi LineNr  ctermbg=NONE
   hi nonText ctermbg=NONE
