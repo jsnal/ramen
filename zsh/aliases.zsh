@@ -27,7 +27,6 @@ alias tll='~/i3wm/i3/Scripts/tll.sh l'
 alias tlc='~/i3wm/i3/Scripts/tll.sh c "$@"'
 alias tla='~/i3wm/i3/Scripts/tll.sh a "$@"'
 alias drivec="~/i3wm/zsh/scripts/drive-compile.sh"
-alias mdcompile="~/i3wm/zsh/scripts/markdown-compile.sh"
 alias myip="ip -color address"
 alias crontab-all="crontab -l | grep -v '^#' | cut -f 6- -d ' ' | while read CMD; do eval $CMD; done"
 alias bat="cat /sys/class/power_supply/BAT0/capacity"

@@ -3,6 +3,7 @@ export FZF_DEFAULT_OPTS=' --prompt=">> " --color fg:-1,bg:-1,hl:208,fg+:-1,bg+:2
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export VISUAL="vim"
 export EDITOR="vim"
+export PATH="$PATH:$HOME/i3wm/zsh/scripts/"
 export TERMINAL="st"
 export HIST_STAMPS="mm.dd.yyyy"
 export HISTSIZE=12000
