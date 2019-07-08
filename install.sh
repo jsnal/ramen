@@ -3,6 +3,8 @@
 DOTFILES_DIR="$HOME/i3wm"
 PROFILES=("all" "desktop" "terminal" "minimal")
 PROFILE_SELECT="terminal"
+GT_USR=""
+GT_EML=""
 VERINST=false
 STINST=false
 
