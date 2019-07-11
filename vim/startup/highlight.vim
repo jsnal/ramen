@@ -1,6 +1,6 @@
 " Statusline
-hi StatusLine       ctermfg=253  ctermbg=235  cterm=bold
-hi StatusLineNC     ctermfg=235  ctermbg=235  cterm=NONE
+hi StatusLine       ctermfg=15  ctermbg=235  cterm=bold
+hi StatusLineNC     ctermfg=243 ctermbg=235  cterm=bold
 
 " Vertical Split
 hi VertSplit        ctermfg=235  ctermbg=235
