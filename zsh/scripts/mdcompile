@@ -46,6 +46,7 @@ function compileSingle() {
 
 function compileMasterDoc() {
   echo 'Compiling master doc...'
+  rm build/master.pdf
   pdfunite $(find build -maxdepth 2 -type f | sort) build/master.pdf
 }
 
