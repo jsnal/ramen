@@ -19,6 +19,7 @@
   plo = pull origin
   plom = pull origin master
   qp = !"git add --all && git commit && git push origin master"
+  a = add
   aa = add -A
 
   # Submodules
@@ -30,6 +31,8 @@
   ack = grep --break --heading
   show-files = show --pretty=format:'%C(auto)%H %C(cyan)<%cn>' --name-only
   lg = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
+  cm-name = shortlog -s -n --all --no-merges
+  cm-num = !"git shortlog -s -n --all --no-merges | awk '{total = total + $1}END{print total}'"
 [core]
   excludesfile = $HOME/.gitignore_global
 [color]
