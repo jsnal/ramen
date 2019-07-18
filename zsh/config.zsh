@@ -1,6 +1,7 @@
 bindkey -e
 export FZF_DEFAULT_OPTS=' --prompt=">> " --color fg:-1,bg:-1,hl:208,fg+:-1,bg+:235,hl+:214 --color info:150,prompt:167,spinner:150,pointer:167,marker:0'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export KEYTIMEOUT=1
 export VISUAL="vim"
 export EDITOR="vim"
 export PATH="$PATH:$HOME/i3wm/zsh/scripts/"
