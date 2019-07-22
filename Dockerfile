@@ -18,6 +18,6 @@ ENV HOME /home/tester
 WORKDIR /home/tester/i3wm
 
 RUN git submodule init && git submodule update
-RUN ./install.sh --profile 1
+RUN ./install.sh --profile all
 
 CMD ["/bin/bash"]
