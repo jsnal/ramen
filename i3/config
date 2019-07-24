@@ -8,6 +8,8 @@ font xft:DejaVu Sans Mono 9
 new_window none
 new_window pixel 2
 
+hide_edge_borders smart
+
 # Colors
 set $background             #1b1b1b
 set $background-inactive    #222222

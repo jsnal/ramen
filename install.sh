@@ -59,13 +59,15 @@ function verify-install() {
 
 function install-st() {
   git submodule update --init --recursive
+  echo -e '------------------------------------------------------------'
   echo -e 'Please Install: libx11-dev libxft-dev libxext-dev fontconfig'
+  echo -e '------------------------------------------------------------'
   cd $HOME/i3wm/st && sudo make install
   exit 0
 }
 
-if [[ $STINST = true ]]; then install-st; fi
-if [[ $VERINST = true ]]; then verify-install; fi
+[[ $STINST = true ]]  && install-st
+[[ $VERINST = true ]] && verify-install
 
 function desktop() {
   link-file $DOTFILES_DIR/i3/config ~/.config/i3/config
