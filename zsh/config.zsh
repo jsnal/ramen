@@ -10,7 +10,7 @@ export HIST_STAMPS="mm.dd.yyyy"
 export HISTSIZE=12000
 export SAVEHIST=12000
 export HISTFILE="$HOME/.zsh_history"
-export TERM="xterm-256color"
+export TERM="st-256color"
 export VIM_YCM=false
 export WORDCHARS='*?_-.[]~=&;!#%^(){}<>'
 setopt prompt_subst
