@@ -29,6 +29,7 @@ client.urgent           $border             $background-inactive  $background-ur
 
 bindsym $mod+Shift+x exec bash ~/i3wm/i3/Scripts/lock.sh
 bindsym $mod+F7 exec xbacklight -set 0
+bindsym $mod+b exec ~/i3wm/i3/Scripts/battery.sh
 
 # Application launching
 bindsym $mod+Return exec st
