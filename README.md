@@ -31,6 +31,14 @@ wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min && test -e ~/.vi
 export VIM_COC=true
 ```
 
+### WeeChat
+
+[Networking](http://jasonlong24.crabdance.com/paste/build/view/qAofhxJq.txt.html)
+
+```
+/exec -sh -oc cat ~/i3wm/weechat/config.txt
+```
+
 ### Tools
 - i3
     - Tiling window manager for Xorg
