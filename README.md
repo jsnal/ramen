@@ -1,6 +1,6 @@
 # i3wm Config
 
- My i3wm config, scripts and setup.
+My i3wm config, scripts and setup.
 
 ### Setup
 - Recursively clone this repo into your home directory
@@ -33,13 +33,14 @@ export VIM_COC=true
 
 ### WeeChat
 
-[Networking](http://jasonlong24.crabdance.com/paste/build/view/qAofhxJq.txt.html)
+- Setup [networking](http://jasonlong24.crabdance.com/paste/build/view/qAofhxJq.txt.html) first
 
 ```
 /exec -sh -oc cat ~/i3wm/weechat/config.txt
 ```
 
 ### Tools
+
 - i3
     - Tiling window manager for Xorg
     - [Install Package](https://github.com/i3/i3)
@@ -71,3 +72,6 @@ export VIM_COC=true
 - the-silver-searcher
     - A tool for quickly looking through code
     - [Install Package](https://www.archlinux.org/packages/community/x86_64/the_silver_searcher/)
+- weechat
+    - terminal irc
+    - [Install Package](https://www.archlinux.org/packages/?name=weechat)
