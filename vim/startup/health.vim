@@ -1,5 +1,3 @@
-let s:failed = 0
-
 function! s:echowarn(msg)
   echohl WarningMsg
   echo "Warning:"
@@ -15,6 +13,12 @@ function! s:make_check(feature)
 endfunction
 
 function! health#check() abort
+
+  echon "Running health check on Vim " . v:version . "\n\n"
+
+  " Number of threats found
+  let s:failed = 0
+
   " Check python versions
   call s:make_check('python3')
   call s:make_check('python')
@@ -26,7 +30,13 @@ function! health#check() abort
   " Check for 256 Colors
   if &t_Co != 256
     call s:echowarn('t_Co is not set to 256. Is this not a 256 color terminal?')
+    let s:failed += 1
   endif
 
-  echon "\n\nHealth check done: " . s:failed . " problems found."
+  if v:version < 800
+    call s:echowarn('asynchronous tasks is not supported in this verion of vim')
+    let s:failed += 1
+  endif
+
+  echon "\n\nHealth check done: " . s:failed . " threats found"
 endfunction
