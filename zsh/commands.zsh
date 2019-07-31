@@ -1,10 +1,4 @@
-function viz { vim $(fzf) }
-
-function vif() {
-    i3 fullscreen toggle & vim "$@"
-    clear
-}
-
+# Resource all things zsh
 function src() {
   local cache=$ZSH_CACHE_DIR
   autoload -U compinit zrecompile
@@ -17,6 +11,7 @@ function src() {
   source ~/.zshrc
 }
 
+# One command to extract all
 function extract {
   echo Extracting $1 ...
   if [ -f $1 ] ; then
@@ -39,16 +34,9 @@ function extract {
   fi
 }
 
-function os() {
-  screenfetch | grep -o 'OS:.*'
-}
-
-function forcast() {
-        curl wttr.in/"$@"
-}
-
+# Test internet connect with a ping test and speedtest
 function net() {
-  if [ -l = $1 ]
+  if [ -p = $1 ]
   then
     printf "Pinging Google.com... \n"
     ping -c 5 google.com | awk 'NR==2,NR==6{print $8}' | cut -c 6-
@@ -66,80 +54,7 @@ function net() {
   fi
 }
 
-function comp-type() {
-	type=$(ls /sys/class/power_supply | grep BAT)
-
-	if [ "$type" != "BAT0" ]; then
-		echo "desktop"
-	else
-		echo "laptop"
-	fi
-}
-
-function playdoom() {
-  poss=$(ls /usr/share/games/doom/ | nl -w2)
-  echo -e "$poss"\n
-  echo Pick the wad you want to play.
-  read wad
-  play=$(ls /usr/share/games/doom/ | awk NR==$wad)
-  echo $play
-  i3-msg move scratchpad
-  prboom-plus -iwad /usr/share/games/doom/$play
-}
-
-function mdc() {
-  if [ -d = "$1" ]
-  then
-    rm "$2"
-    pandoc --mathjax --toc -o "$2" "$3"/*.md
-    evince "$2"
-	elif [ -f = "$1" ]; then
-		rm "$2"
-		pandoc --mathjax --toc -o "$2" "$3"
-		zathura "$2"
-  else
-    echo "Usage: mdc [OPTION] <Output Path> <Directory>"
-  fi
-}
-
-function kernel-update() {
-	latest=$(w3m -dump kernel.ubuntu.com/~kernel-ppa/mainline/ | tail -5 | awk 'FNR == 1 {print $2}')
-	echo -n "Version "$latest" (y/n)? "
-	read answer
-	if echo "$answer" | grep -iq "^y" ;then
-  	  echo Yes
-	rm -r ~/.kernel-deb/*.deb
-  headersall=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/headers/ && /generic/ && /amd64/')
-	echo "\n--> Headers amd64 found "$headersall""
-  headersamd64=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/headers/ && /all/')
-	echo "\n--> Headers all found "$headersamd64""
-  image=$(w3m -dump http://kernel.ubuntu.com/\~kernel-ppa/mainline/"$latest" | awk '{print $3}' | awk '/image/ && /generic/ && /amd64/')
-	echo "\n--> Image found "$image""
-	echo "\n"
-	wget -P ~/.kernel-deb http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersall" http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$headersamd64" http://kernel.ubuntu.com/~kernel-ppa/mainline/"$latest""$image"
-	echo "\n--> Installing kernel version "$latest""
-	sudo dpkg -i ~/.kernel-deb/*.deb
-	else
-    	echo No
-	fi
-}
-
-function encrypt() {
-  if [[ -d = $1 ]]; then
-    gpg -d $2 | tar xz
-  else
-    tar -cz $1 | gpg -c -o $1.tgz.gpg
-  fi
-}
-
-function vl() {
-  case $1 in
-    up) amixer -q sset "Master" $2%+ && echo $(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master));;
-  down) amixer -q sset "Master" $2%- && echo $(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master));;
-   off) amixer set "Master" 0% && echo "Muted"
-  esac
-}
-
+# Bundle and encrypt a directory with a gpg recipient.
 function ebackup() {
   if [ $1 = "-h" ]; then echo 'ebackup [DIR] [RECIPIENT]' && return 0; fi
   if [ ! -d $1 ]; then echo $1 'is not a directory.' && return 1; fi
@@ -148,6 +63,7 @@ function ebackup() {
   tar -cz $1 | gpg --recipient $2 -e -o $1\-$date.tgz.gpg
 }
 
+# Uncompress and decrypt a directory for a gpg recipient.
 function dbackup() {
   if [ $1 = "-h" ]; then echo 'dbackup [FILE]' && return 0; fi
   if [ ! -f $1 ]; then echo $1 'is not a file.' && return 1; fi
@@ -155,6 +71,7 @@ function dbackup() {
   gpg -d $1 | tar xz
 }
 
+# Send and create a new paste at jasonlong24.crabdance.com/paste
 function paste-send() {
   local SEND_OUTPUT_HOST="jasonlong24.crabdance.com"
   local SEND_OUTPUT_PORT="2757"
@@ -190,9 +107,10 @@ function vim-dump() {
     -c 'qa!'
 }
 
+# Merge my zshrc and zsh/ files together.
 function zsh-minify() {
   local OUT=$1
-  if [ -z $1 ]; then local OUT="zshrc.min"; fi
+  [ -z $1 ] && local OUT="./zshrc.min"
   if [ -d $HOME/i3wm ]; then
     git -C $HOME/i3wm pull origin master
     cat $HOME/i3wm/zsh/zshrc.min > $OUT
@@ -200,9 +118,10 @@ function zsh-minify() {
   fi
 }
 
+# Merge my vimrc and vim/startup files together.
 function vim-minify() {
   local OUT=$1
-  if [ -z $1 ]; then local OUT="vimrc.min"; fi
+  [ -z $1 ] && local OUT="./vimrc.min"
   if [ -d $HOME/i3wm ]; then
     git -C $HOME/i3wm pull origin master
     cat $HOME/i3wm/vim/vimrc > $OUT
@@ -215,11 +134,21 @@ function caln() {
   cal -n $months
 }
 
+# Simple coutdown timer.
 function countdown(){
   date1=$((`date +%s` + $1));
   while [ "$date1" -ge `date +%s` ]; do
     echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
     sleep 0.1
   done
-  echo "Timer Done!"
+  printf '\aTimer Done!'
+}
+
+# Create a temporary directory and enter a new shell
+function scratch() {
+  local SCRATCH=$(mktemp -d)
+  echo -e "Opening temporary shell:\n\t$SCRATCH"
+  (cd $SCRATCH; zsh)
+  echo "Removing scratch directory"
+  rm -r "$SCRATCH"
 }
