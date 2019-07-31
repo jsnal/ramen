@@ -13,8 +13,8 @@ function! functions#spell() abort
   if has('syntax')
     setlocal spell
     setlocal spellfile=~/.vim/spell/en.utf-7.add
-    hi SpellBad cterm=underline
     setlocal spelllang=en
+    setlocal formatoptions+=r
   endif
 endfunction
 
