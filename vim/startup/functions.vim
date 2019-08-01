@@ -14,8 +14,17 @@ function! functions#spell() abort
     setlocal spell
     setlocal spellfile=~/.vim/spell/en.utf-7.add
     setlocal spelllang=en
-    setlocal formatoptions+=r
   endif
+endfunction
+
+" Plaintext mode for markdown files mainly
+function! functions#plaintext() abort
+  setlocal formatoptions+=r
+  setlocal textwidth=0
+  setlocal wrap
+  setlocal wrapmargin=0
+
+  call functions#spell()
 endfunction
 
 " Opens file with predefined files

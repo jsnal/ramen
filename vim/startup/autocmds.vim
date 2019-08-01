@@ -7,7 +7,7 @@ augroup AutoSaveFolds
 augroup END
 
 " Markdown, txt, LaTeX
-au BufReadPost,BufNewFile *.md,*.tex call functions#spell()
+au BufReadPost,BufNewFile *.md,*.tex call functions#plaintext()
 
 " load buffer with possible vim/zsh files to edit
 if isdirectory($HOME . "/i3wm")
