@@ -1,9 +1,0 @@
-zsh /home/jsnal/.zshrc
-vim /home/jsnal/.vimrc
-cfgm /home/jsnal/i3wm/.gitmodules
-cfi /home/jsnal/i3wm/install.sh
-i3cf /home/jsnal/i3wm/i3/config
-lmcf /home/jsnal/i3wm/lemonbar/lemon.sh
-tmux /home/jsnal/.tmux.conf
-dotconf /home/jsnal/i3wm/config.yaml
-gtc /home/jsnal/i3wm/git/gitconfig
