@@ -83,9 +83,13 @@ function terminal() {
   link-file $DOTFILES_DIR/git/gitconfig ~/.gitconfig
   link-file $DOTFILES_DIR/git/gitignore ~/.gitignore_global
 
+  # Make vim directories
   mkdir -p ~/.vim/plugin
+  mkdir -p ~/.vim/spell
+  # Link vim files
   link-file $DOTFILES_DIR/vim/vimrc ~/.vimrc
   ln -sfv $DOTFILES_DIR/vim/plugin/* ~/.vim/plugin/ | sed "s/'//g"
+  ln -sfv $DOTFILES_DIR/vim/spell/*  ~/.vim/spell/  | sed "s/'//g"
 
   [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
   [ ! -z $GT_EML ] && git config --global user.email "$GT_EML"
