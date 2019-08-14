@@ -42,3 +42,8 @@ if $VIM_COC == 'true'
     autocmd CursorHold * call plug#load('coc.nvim') | autocmd! load_coc
   augroup END
 endif
+
+" Set tabs to 4 spaces in python
+autocmd Filetype *      set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd BufEnter *.py   set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
