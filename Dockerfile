@@ -5,16 +5,16 @@ RUN apt-get -qq update
 RUN apt-get install vim jq curl zsh git sudo -qq -y
 RUN apt-get install python3-pip -y -qq
 
-RUN useradd -m -s /bin/zsh tester
-RUN usermod -aG sudo tester
-RUN echo "tester   ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers
+RUN useradd -m -s /bin/zsh jenkins
+RUN usermod -aG sudo jenkins
+RUN echo "jenkins   ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers
 
-ADD . /home/tester/i3wm
-RUN chown -R tester:tester /home/tester
+ADD . /home/jenkins/i3wm
+RUN chown -R jenkins:jenkins /home/jenkins
 
-USER tester
-ENV HOME /home/tester
+USER jenkins
+ENV HOME /home/jenkins
 
-WORKDIR /home/tester/i3wm
+WORKDIR /home/jenkins/i3wm
 
 CMD ["/bin/bash"]
