@@ -1,20 +1,14 @@
 pipeline {
   agent {
-    docker { image 'debian:stretch-slim' }
+    dockerfile true
   }
   stages {
-    stage('update') {
-      steps {
-        sh 'apt update -y'
-        sh 'apt install zsh vim curl -y'
-      }
-    }
     stage('verify') {
       steps {
         sh './install.sh -v'
       }
     }
-    stage('Test') {
+    stage('install') {
       steps {
         sh './install.sh --profile all'
       }
