@@ -28,7 +28,7 @@ function get_branch() {
     # Check if you're attached to a branch
     git symbolic-ref HEAD &>/dev/null
     if [ $? != 0 ]; then
-      echo "${red}$local_branch (no branch)"
+      echo "${red}$(git rev-parse --short HEAD) (no branch)"
     else
       echo "${green}$local_branch"
     fi
@@ -38,10 +38,24 @@ function get_branch() {
   fi
 }
 
+# Get any changes within the repository in real time.
+# Symbols:
+#   ! - Changes
+#   ? - Untracked Files
+#   # - Deleted Files
 function get_change() {
-  if [[ -n $(git status --porcelain) ]]; then
-    echo '${orange}! '
-  fi
+  local symbols=""
+
+  # check for any changes
+  [[ -n $(git status --porcelain) ]] && local symbols="${symbols}!"
+
+  # check for untracked files
+  [[ -n $(git ls-files --other --directory --exclude-standard) ]] && local symbols="?${symbols}"
+
+  # check for deleted files
+  [[ -n $(git ls-files --deleted --directory --exclude-standard) ]] && local symbols="${symbols}#"
+
+  echo "${orange}$symbols "
 }
 
 function git_prompt_info() {
