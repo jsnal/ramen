@@ -1,6 +1,5 @@
 config_files=($HOME/i3wm/zsh)
 include () { [[ -f "$1" ]] && source "$1" }
-ZSH_TEST_PLUGINS="false"
 
 # Config Files
 ZSH_SOURCE_FILES=$(find ~/i3wm/zsh/*.zsh -maxdepth 1 -type f ! -iname "binds.zsh" ! -iname "secret.zsh")
@@ -11,11 +10,6 @@ source ~/i3wm/zsh/secret.zsh 2>/dev/null
 source ~/i3wm/zsh/binds.zsh 2>/dev/null
 
 # Plugins
-if [[ $ZSH_TEST_PLUGINS = "true" ]]; then
-  source $HOME/git/shell-plugins/zsh-git/git.plugin.zsh
-else
-  include $config_files/plugins/shell-plugins/zsh-git/git.plugin.zsh
-fi
 include $config_files/plugins/zsh-autopair/autopair.plugin.zsh
 include $config_files/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

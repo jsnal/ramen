@@ -46,7 +46,7 @@ function precmd {
   CUSER="$BRACKET@$CUSER%n"
 
   PROMPT="$CUSER$BRACKET$DIR${end_symbol}$END%{$reset_color%}%"
-  RPROMPT="%F{8}${timer_show}%F{white}%}$(git_full_prompt)"
+  RPROMPT="%F{8}${timer_show}%F{white}%}$(git_prompt_info)"
 }
 
 zsh_command_time() {
