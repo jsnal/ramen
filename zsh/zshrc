@@ -2,12 +2,12 @@ config_files=($HOME/i3wm/zsh)
 include () { [[ -f "$1" ]] && source "$1" }
 
 # Config Files
-ZSH_SOURCE_FILES=$(find ~/i3wm/zsh/*.zsh -maxdepth 1 -type f ! -iname "binds.zsh" ! -iname "secret.zsh")
+ZSH_SOURCE_FILES=$(find ~/i3wm/zsh/startup/*.zsh -maxdepth 1 -type f ! -iname "binds.zsh" ! -iname "secret.zsh")
 for (( i=1;i<=$(echo "$ZSH_SOURCE_FILES" | wc -l);i++ )); do
   source $(echo "$ZSH_SOURCE_FILES" | awk NR==$i)
 done
-source ~/i3wm/zsh/secret.zsh 2>/dev/null
-source ~/i3wm/zsh/binds.zsh 2>/dev/null
+source ~/i3wm/zsh/startup/secret.zsh 2>/dev/null
+source ~/i3wm/zsh/startup/binds.zsh 2>/dev/null
 
 # Plugins
 include $config_files/plugins/zsh-autopair/autopair.plugin.zsh

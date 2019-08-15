@@ -28,8 +28,6 @@ function fzf-edit() {
 }
 zle -N fzf-edit
 
-bindkey -s '^e' 'f -f^M'
-bindkey -s '^h' 'd -f^M'
 bindkey -s '^f' 'fzf-edit^M'
 bindkey -s '^y' '. ~/.zshrc^Mclear^M'
 bindkey "^u" up_widget

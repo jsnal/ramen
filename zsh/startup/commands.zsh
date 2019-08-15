@@ -114,7 +114,7 @@ function zsh-minify() {
   if [ -d $HOME/i3wm ]; then
     git -C $HOME/i3wm pull origin master
     cat $HOME/i3wm/zsh/zshrc.min > $OUT
-    cat $HOME/i3wm/zsh/*.zsh >> $OUT
+    cat $HOME/i3wm/zsh/startup/*.zsh >> $OUT
   fi
 }
 
