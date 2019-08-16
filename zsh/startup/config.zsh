@@ -1,4 +1,3 @@
-bindkey -e
 export FZF_DEFAULT_OPTS=' --prompt=">> " --color fg:-1,bg:-1,hl:208,fg+:-1,bg+:235,hl+:214 --color info:150,prompt:167,spinner:150,pointer:167,marker:0'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export KEYTIMEOUT=1
@@ -25,3 +24,5 @@ setopt auto_menu
 setopt correct
 setopt correctall
 setopt noflowcontrol
+setopt hist_verify
+setopt list_packed
