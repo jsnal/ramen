@@ -1,18 +1,18 @@
 # Inspired from: https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.zsh/hash
 () {
-	local SITE=/var/www/html
-	local PASTE=~/git/paste-light
-	local SERAPE=~/.vim/plugged/vim-serape
+  local SITE=/var/www/html
+  local PASTE=~/git/paste-light
+  local SERAPE=~/.vim/plugged/vim-serape
   local i3wm=~/i3wm
-	local ZSH=~/i3wm/zsh
-	local VIM=~/i3wm/vim
+  local ZSH=~/i3wm/zsh
+  local VIM=~/i3wm/vim
 
-	test -d "$SITE" && hash -d site="$SITE"
-	test -d "$PASTE" && hash -d paste="$PASTE"
-	test -d "$SERAPE" && hash -d serape="$SERAPE"
-	test -d "$i3wm" && hash -d i3wm="$i3wm"
-	test -d "$ZSH" && hash -d zsh="$ZSH"
-	test -d "$VIM" && hash -d vim="$VIM"
+  test -d "$SITE" && hash -d site="$SITE"
+  test -d "$PASTE" && hash -d paste="$PASTE"
+  test -d "$SERAPE" && hash -d serape="$SERAPE"
+  test -d "$i3wm" && hash -d i3wm="$i3wm"
+  test -d "$ZSH" && hash -d zsh="$ZSH"
+  test -d "$VIM" && hash -d vim="$VIM"
 }
 
 # Quickly skim through all child directories and put them into std out
@@ -37,16 +37,16 @@ function jump() {
       hash -d | sed 's/=/ -> /g'  && return 1
     fi
 
-		local DIR="$1"
-		if [ $(hash -d|cut -d= -f1|grep -c "^${DIR}\$") = 0 ]; then
+    local DIR="$1"
+    if [ $(hash -d|cut -d= -f1|grep -c "^${DIR}\$") = 0 ]; then
       local DIR_FD=$(fd $1)
 
       # Check that fd actually found something
       [ -z $DIR_FD ] && echo "$1 not found anywhere" && return 1
       cd $(echo $DIR_FD | fzf)
-		else
-			cd ~"$DIR"
-		fi
-	fi
+    else
+      cd ~"$DIR"
+    fi
+  fi
 
 }

@@ -1,4 +1,4 @@
 *~
 *.swp
 *.swo
-zsh/secret.zsh
+zsh/startup/secret.zsh

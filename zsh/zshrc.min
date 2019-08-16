@@ -1,10 +1,10 @@
 include () { [[ -f "$1" ]] && source "$1" }
 
-if [ ! -d $HOME/.zsh ]; then mkdir .zsh; fi
+[ ! -d $HOME/.zsh ] && mkdir .zsh
 
 plug_loc=($HOME/.zsh)
-if [ ! -d $plug_loc/zsh-syntax-highlighting ]; then git clone https://github.com/zsh-users/zsh-syntax-highlighting $plug_loc/zsh-syntax-highlighting; fi
-if [ ! -d $plug_loc/zsh-autopair ]; then git clone https://github.com/hlissner/zsh-autopair $plug_loc/zsh-autopair; fi
+[ ! -d $plug_loc/zsh-syntax-highlighting ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting $plug_loc/zsh-syntax-highlighting
+[ ! -d $plug_loc/zsh-autopair ] && git clone https://github.com/hlissner/zsh-autopair $plug_loc/zsh-autopair
 
 include $plug_loc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 include $plug_loc/zsh-autopair/autopair.zsh
