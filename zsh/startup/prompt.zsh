@@ -1,52 +1,51 @@
 # command time partly from: https://github.com/popstas/zsh-command-time
 
+# Colors
+_i3wm[WHITE]="%{%F{white}%}"
+_i3wm[GRAY]="%{%F{8}%}"
+_i3wm[RED]="%{%F{red}%}"
+_i3wm[CYAN]="%{%F{cyan}%}"
+_i3wm[YELLOW]="%{%F{yellow}%}"
+_i3wm[MAGENTA]="%{%F{magenta}%}"
+_i3wm[ORANGE]="%{%F{202}%}"
+
 function preexec() {
   timer=${timer:-$SECONDS}
-  ZSH_COMMAND_TIME_MSG=${ZSH_COMMAND_TIME_MSG-"%s"}
   export ZSH_COMMAND_TIME=""
 }
 
 function precmd {
 
-  # Must be executed first!
-  if [ $? -eq 0 ]; then
-    END="%(1j.*.) "
+  _i3wm[LAST_EXIT_CODE]=$?
+
+  if [ $_i3wm[LAST_EXIT_CODE] -eq 0 ]; then
+    local END="%(1j.*.) "
+  elif [ $_i3wm[LAST_EXIT_CODE] -eq 1 ]; then
+    local END="%B$_i3wm[ORANGE]!$_i3wm[WHITE]%b%(1j.*.) "
   else
-    END="%B$ERROR!$PROMPTC%b%(1j.*.) "
+    local END="%(1j.*.) %B$_i3wm[ORANGE]$_i3wm[LAST_EXIT_CODE]$_i3wm[WHITE]%b "
   fi
 
   if [ $timer ]; then
-    timer_show=$(($SECONDS - $timer))
-    export ZSH_COMMAND_TIME="$timer_show"
-    if [ ! -z ${ZSH_COMMAND_TIME_MSG} ]; then
-      zsh_command_time
-    fi
+    _i3wm[COMMAND_TIME]=$(($SECONDS - $timer))
+    export ZSH_COMMAND_TIME="$_i3wm[COMMAND_TIME]"
+    zsh_command_time
     unset timer
   fi
 
   function get_trailing_symbol() {
     if sudo -n true 2>/dev/null; then
-      end_symbol="$SUDO#$PROMPTC"
+      echo "$_i3wm[RED]#$_i3wm[WHITE]"
     else
-      end_symbol="$"
+      echo "$_i3wm[WHITE]$"
     fi
   }
-  get_trailing_symbol
 
-  BRACKET="%{%F{white}%}"
-  SUDO="%{%F{red}%}"
-  DIR="%{%F{cyan}%}"
-  PROMPTC="%{%F{white}%}"
-  CUSER="%{%F{yellow}%}"
-  GIT_BRANCH="%{%F{magenta}%}"
-  ALTPROMPT="%{%F{red}%}"
-  ERROR="%{%F{202}%}"
+  local DIR="[$_i3wm[CYAN]%B%(5~|../%3~|%~)%b$_i3wm[WHITE]]% "
+  local CUSER="$_i3wm[WHITE]@$_i3wm[YELLOW]%n"
 
-  DIR="[$DIR%B%(5~|../%3~|%~)%b$BRACKET$BRACKET]% "
-  CUSER="$BRACKET@$CUSER%n"
-
-  PROMPT="$CUSER$BRACKET$DIR${end_symbol}$END%{$reset_color%}%"
-  RPROMPT="%F{8}${timer_show}%F{white}%}$(git_prompt_info)"
+  PROMPT="${CUSER}$_i3wm[WHITE]${DIR}$(get_trailing_symbol)${END}$_i3wm[WHITE]"
+  RPROMPT="$_i3wm[GRAY]${_i3wm[COMMAND_TIME]}$_i3wm[WHITE]$(git_prompt_info)"
 }
 
 zsh_command_time() {
@@ -55,17 +54,17 @@ zsh_command_time() {
     min=$(($ZSH_COMMAND_TIME/60))
     sec=$(($ZSH_COMMAND_TIME%60))
     if [ "$ZSH_COMMAND_TIME" -le 1 ]; then
-      timer_show=""
+      _i3wm[COMMAND_TIME]=""
     elif [ "$ZSH_COMMAND_TIME" -le 60 ]; then
-      timer_show="${ZSH_COMMAND_TIME}s "
+      _i3wm[COMMAND_TIME]="${ZSH_COMMAND_TIME}s "
     elif [ "$ZSH_COMMAND_TIME" -gt 60 ] && [ "$ZSH_COMMAND_TIME" -le 180 ]; then
-      timer_show="${min}min ${sec}s "
+      _i3wm[COMMAND_TIME]="${min}min ${sec}s "
     else
       if [ "$hours" -gt 0 ]; then
         min=$(($min%60))
-        timer_show="${hours}h ${min}min ${sec}s "
+        _i3wm[COMMAND_TIME]="${hours}h ${min}min ${sec}s "
       else
-        timer_show="${min}min ${sec}s "
+        _i3wm[COMMAND_TIME]="${min}min ${sec}s "
       fi
     fi
   fi
