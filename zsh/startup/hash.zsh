@@ -30,7 +30,11 @@ function jump() {
   emulate -L zsh
 
   if [ $# -eq 0 ]; then
-    cd $(fd | fzf)
+    local DIR_FD=$(fd | fzf)
+
+    # If it is empty assume the command was cancelled
+    [ -z $DIR_FD ] && return 1
+    cd $DIR_FD
   else
 
     if [ $1 = "-l" ] || [ $1 = "--list" ]; then

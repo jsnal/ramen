@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
 
-red="%{%F{red}%}"
-green="%{%F{green}%}"
-orange="%{%F{214}%}"
-reset="%{%F{white}%}"
-
 function dot_git() {
   dot_git="$(git rev-parse --git-dir 2>/dev/null)"
   printf '%s' $dot_git
@@ -28,13 +23,13 @@ function get_branch() {
     # Check if you're attached to a branch
     git symbolic-ref HEAD &>/dev/null
     if [ $? != 0 ]; then
-      echo "${red}$(git rev-parse --short HEAD) (no branch)"
+      echo "${_i3wm[RED]}$(git rev-parse --short HEAD) (no branch)"
     else
-      echo "${green}$local_branch"
+      echo "${_i3wm[GREEN]}$local_branch"
     fi
 
   else
-    echo "${green}$local_branch${reset}...${red}$upstream_branch"
+    echo "${_i3wm[GREEN]}$local_branch${_i3wm[WHITE]}...${_i3wm[RED]}$upstream_branch"
   fi
 }
 
@@ -55,7 +50,7 @@ function get_change() {
   # check for deleted files
   [[ -n $(git ls-files --deleted --directory --exclude-standard) ]] && local symbols="${symbols}#"
 
-  echo "${orange}$symbols "
+  echo "${_i3wm[ORANGE]}$symbols "
 }
 
 function git_prompt_info() {
