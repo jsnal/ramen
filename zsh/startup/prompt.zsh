@@ -4,6 +4,7 @@
 _i3wm[WHITE]="%{%F{white}%}"
 _i3wm[GRAY]="%{%F{8}%}"
 _i3wm[RED]="%{%F{red}%}"
+_i3wm[BLUE]="%{%F{blue}%}"
 _i3wm[CYAN]="%{%F{cyan}%}"
 _i3wm[YELLOW]="%{%F{yellow}%}"
 _i3wm[GREEN]="%{%F{green}%}"
@@ -18,13 +19,22 @@ function preexec() {
 function precmd {
 
   _i3wm[LAST_EXIT_CODE]=$?
+  local END=""
 
-  if [ $_i3wm[LAST_EXIT_CODE] -eq 0 ]; then
-    local END="%(1j.*.) "
-  elif [ $_i3wm[LAST_EXIT_CODE] -eq 1 ]; then
-    local END="%B$_i3wm[ORANGE]!$_i3wm[WHITE]%b%(1j.*.) "
+  # Sudo shell
+  if sudo -n true 2>/dev/null; then
+    TRAILING_SYMBOL="$_i3wm[RED]#$_i3wm[WHITE]"
   else
-    local END="%(1j.*.) %B$_i3wm[ORANGE]$_i3wm[LAST_EXIT_CODE]$_i3wm[WHITE]%b "
+    TRAILING_SYMBOL="$_i3wm[WHITE]%%"
+  fi
+
+  # Error code and backgrounded tasks
+  if [ $_i3wm[LAST_EXIT_CODE] -eq 0 ]; then
+    END="$TRAILING_SYMBOL%(1j.*.) "
+  elif [ $_i3wm[LAST_EXIT_CODE] -eq 1 ]; then
+    END="$TRAILING_SYMBOL%B$_i3wm[ORANGE]!$_i3wm[WHITE]%b%(1j.*.) "
+  else
+    END="%(1j.*.) %B$_i3wm[ORANGE]$_i3wm[LAST_EXIT_CODE]$_i3wm[WHITE]%b $TRAILING_SYMBOL "
   fi
 
   if [ $timer ]; then
@@ -34,18 +44,10 @@ function precmd {
     unset timer
   fi
 
-  function get_trailing_symbol() {
-    if sudo -n true 2>/dev/null; then
-      echo "$_i3wm[RED]#$_i3wm[WHITE]"
-    else
-      echo "$_i3wm[WHITE]$"
-    fi
-  }
-
   local DIR="[$_i3wm[CYAN]%B%(5~|../%3~|%~)%b$_i3wm[WHITE]]% "
   local CUSER="$_i3wm[WHITE]@$_i3wm[YELLOW]%n"
 
-  PROMPT="${CUSER}$_i3wm[WHITE]${DIR}$(get_trailing_symbol)${END}$_i3wm[WHITE]"
+  PROMPT="${CUSER}$_i3wm[WHITE]${DIR}${END}$_i3wm[WHITE]"
   RPROMPT="$_i3wm[GRAY]${_i3wm[COMMAND_TIME]}$_i3wm[WHITE]$(git_prompt_info)"
 }
 
