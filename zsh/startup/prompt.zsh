@@ -63,7 +63,7 @@ zsh_command_time() {
     else
       if [ "$hours" -gt 0 ]; then
         min=$(($min%60))
-        _i3wm[COMMAND_TIME]="${hours}h ${min}min ${sec}s "
+        _i3wm[COMMAND_TIME]="%B$_i3wm[RED]${hours}h%b$_i3wm[GRAY] ${min}min ${sec}s "
       else
         _i3wm[COMMAND_TIME]="${min}min ${sec}s "
       fi
