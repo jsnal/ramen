@@ -23,13 +23,13 @@ function get_branch() {
     # Check if you're attached to a branch
     git symbolic-ref HEAD &>/dev/null
     if [ $? != 0 ]; then
-      echo "${_i3wm[RED]}$(git rev-parse --short HEAD) (no branch)"
+      echo "${_i3wm[RED]}$(git name-rev --name-only --no-undefined --always HEAD) (no branch)"
     else
       echo "${_i3wm[GREEN]}$local_branch"
     fi
 
   else
-    echo "${_i3wm[GREEN]}$local_branch${_i3wm[WHITE]}...${_i3wm[RED]}$upstream_branch"
+    echo "${_i3wm[GREEN]}$local_branch${_i3wm[WHITE]} > ${_i3wm[RED]}$upstream_branch"
   fi
 }
 
