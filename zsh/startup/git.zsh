@@ -18,6 +18,10 @@ function get_branch() {
   local local_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @ 2>/dev/null)
   local upstream_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
 
+  if [ -f $(git rev-parse --git-dir)/MERGE_HEAD ]; then
+    local ongoing_merge="${_i3wm[MAGENTA]}(merge)"
+  fi
+
   if [ -z $upstream_branch ]; then
 
     # Check if you're attached to a branch
@@ -25,11 +29,11 @@ function get_branch() {
     if [ $? != 0 ]; then
       echo "${_i3wm[RED]}$(git name-rev --name-only --no-undefined --always HEAD) (no branch)"
     else
-      echo "${_i3wm[GREEN]}$local_branch"
+      echo "${_i3wm[GREEN]}$local_branch $ongoing_merge"
     fi
 
   else
-    echo "${_i3wm[GREEN]}$local_branch${_i3wm[WHITE]} > ${_i3wm[RED]}$upstream_branch"
+    echo "${_i3wm[GREEN]}$local_branch${_i3wm[WHITE]} > ${_i3wm[RED]}$upstream_branch $ongoing_merge"
   fi
 }
 
@@ -42,13 +46,13 @@ function get_change() {
   local symbols=""
 
   # check for any changes
-  [[ -n $(git status --porcelain) ]] && local symbols="${symbols}!"
+  [[ -n $(git status --porcelain 2>/dev/null) ]] && local symbols="${symbols}!"
 
   # check for untracked files
-  [[ -n $(git ls-files --other --directory --exclude-standard) ]] && local symbols="?${symbols}"
+  [[ -n $(git ls-files --other --directory --exclude-standard 2>/dev/null) ]] && local symbols="?${symbols}"
 
   # check for deleted files
-  [[ -n $(git ls-files --deleted --directory --exclude-standard) ]] && local symbols="${symbols}#"
+  [[ -n $(git ls-files --deleted --directory --exclude-standard 2>/dev/null) ]] && local symbols="${symbols}#"
 
   echo "${_i3wm[ORANGE]}$symbols "
 }
