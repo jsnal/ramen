@@ -8,8 +8,12 @@ function! ModeCurrent() abort
   return l:current_status_mode
 endfunction
 
-" Jellybean Statusline
-set statusline=\ %f
+" Statusline
+set statusline=%#FileHeader#
+set statusline+=\ %{expand('%:h')}/
+set statusline+=%#FileTail#
+set statusline+=%t
+set statusline+=%#StatusLine#
 set statusline+=\ %r%m
 set statusline+=%=\ %y
 set statusline+=%=\ (%l/%L)
