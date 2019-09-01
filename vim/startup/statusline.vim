@@ -1,20 +1,35 @@
-let g:currentmode={ 'n' : 'Normal ', 'no' : 'N·Operator Pending ', 'v' : 'Visual ', 'V' : 'V-Line ', '^V' : 'V·Block ', 's' : 'Select ', 'S': 'S·Line ', '^S' : 'S·Block ', 'i' : 'Insert ', 'R' : 'Replace ', 'Rv' : 'V·Replace ', 'c' : 'Command ', 'cv' : 'Vim Ex ', 'ce' : 'Ex ', 'r' : 'Prompt ', 'rm' : 'More ', 'r?' : 'Confirm ', '!' : 'Shell ', 't' : 'Terminal '}
-
-function! ModeCurrent() abort
-  let l:modecurrent = mode()
-  let l:modelist = toupper(get(g:currentmode, l:modecurrent, 'V-Block '))
-  let l:current_status_mode = l:modelist
-  hi! StatusLine ctermfg=white
-  return l:current_status_mode
+" Exclude certain filetypes from changing the statusline
+function! s:check_ft()
+  if &ft =~ 'nerdtree'
+    return 1
+  endif
 endfunction
 
-" Statusline
-set statusline=%#FileHeader#
-set statusline+=\ %{expand('%:h')}/
-set statusline+=%#FileTail#
-set statusline+=%t
-set statusline+=%#StatusLine#
-set statusline+=\ %r%m
-set statusline+=%=\ %y
-set statusline+=%=\ (%l/%L)
-set statusline+=\ %p%%
+" Window or Buffer Focsed StatusLine
+function! statusline#focus() abort
+
+  if s:check_ft() == 1
+    return
+  endif
+
+  setlocal statusline=%#FileHeader#
+  setlocal statusline+=\ %{expand('%:h')}/
+  setlocal statusline+=%#FileTail#
+  setlocal statusline+=%t
+  setlocal statusline+=%#StatusLine#
+  setlocal statusline+=\ %r%m
+  setlocal statusline+=%=\ %y
+  setlocal statusline+=%=\ (%l/%L)
+  setlocal statusline+=\ %p%%
+endfunction
+
+" Window or Buffer Blurred StatusLine
+function! statusline#blur() abort
+
+  if s:check_ft() == 1
+    return
+  endif
+
+  setlocal statusline=\ %{expand('%:h')}/
+  setlocal statusline+=%t\ %y
+endfunction

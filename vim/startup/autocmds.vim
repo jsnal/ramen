@@ -27,7 +27,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType netrw setl bufhidden=wipe
 
 " close nerdtree if last window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Override Default fzf statusline
 autocmd! User FzfStatusLine call fzf#fzf_statusline()
@@ -47,3 +47,7 @@ endif
 autocmd Filetype *      set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd BufEnter *.py   set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
+" Set StatusLine
+autocmd BufLeave,WinLeave * call statusline#blur()
+autocmd BufEnter,WinEnter * call statusline#focus()
