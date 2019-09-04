@@ -1,13 +1,3 @@
-" Better Fold Method
-function! functions#Betterfdm()
-  if &foldmethod =~ "marker"
-    set foldmethod=marker
-  else
-    set foldmethod=indent
-  endif
-endfunction
-call functions#Betterfdm()
-
 " Spell Check
 function! functions#spell() abort
   if has('syntax')
@@ -35,4 +25,13 @@ function! functions#openwithbuffer(path) abort
   endfor
 
   filetype detect
+endfunction
+
+" Better inline fold text when the text is folded
+function! functions#foldline() abort
+	let numlines_folded = v:foldend - v:foldstart + 1
+  let preamble = printf("[%d lines folded]", numlines_folded)
+	" let first_line = substitute(getline(v:foldstart),"^ *","",1)
+
+	return '+~~ ' . preamble . ' '
 endfunction

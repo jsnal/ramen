@@ -34,7 +34,6 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
-set foldcolumn=0
 set hlsearch
 set incsearch
 set linebreak
@@ -52,6 +51,14 @@ set directory=.,./.backup,/tmp
 set autochdir
 set nobackup
 set nowritebackup
+
+" Fold Settings
+if has('folding')
+  set foldcolumn=0
+  set fillchars+=fold:~
+  set foldmethod=indent
+  set foldtext=functions#foldline()
+endif
 
 " Hilight Cursor Words
 let g:HiCursorWords_linkStyle='Underlined'
