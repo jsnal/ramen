@@ -5,6 +5,12 @@ function! s:check_ft()
   endif
 endfunction
 
+" Remove the ./ if it is a root level file
+function! statusline#get_file_header()
+  let s:file_header = expand('%:h') . '/'
+  return substitute(s:file_header, '^\.\/', '\1', '')
+endfunction
+
 " Window or Buffer Focsed StatusLine
 function! statusline#focus() abort
 
@@ -13,7 +19,7 @@ function! statusline#focus() abort
   endif
 
   setlocal statusline=%#FileHeader#
-  setlocal statusline+=\ %{expand('%:h')}/
+  setlocal statusline+=\ %{statusline#get_file_header()}
   setlocal statusline+=%#FileTail#
   setlocal statusline+=%t
   setlocal statusline+=%#StatusLine#
@@ -30,6 +36,6 @@ function! statusline#blur() abort
     return
   endif
 
-  setlocal statusline=\ %{expand('%:h')}/
+  setlocal statusline=\ %{statusline#get_file_header()}
   setlocal statusline+=%t\ %y
 endfunction
