@@ -54,6 +54,9 @@ function get_change() {
   # check for deleted files
   [[ -n $(git ls-files --deleted --directory --exclude-standard 2>/dev/null) ]] && local symbols="${symbols}#"
 
+  # don't add the extra space if the working tree is clean
+  [[ -z $symbols ]] && echo "" && return
+
   echo "${_i3wm[ORANGE]}$symbols "
 }
 
