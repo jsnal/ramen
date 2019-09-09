@@ -1,16 +1,5 @@
 # command time partly from: https://github.com/popstas/zsh-command-time
 
-# Colors
-_i3wm[WHITE]="%{%F{white}%}"
-_i3wm[GRAY]="%{%F{8}%}"
-_i3wm[RED]="%{%F{red}%}"
-_i3wm[BLUE]="%{%F{blue}%}"
-_i3wm[CYAN]="%{%F{cyan}%}"
-_i3wm[YELLOW]="%{%F{yellow}%}"
-_i3wm[GREEN]="%{%F{green}%}"
-_i3wm[MAGENTA]="%{%F{magenta}%}"
-_i3wm[ORANGE]="%{%F{214}%}"
-
 function preexec() {
   timer=${timer:-$SECONDS}
   export ZSH_COMMAND_TIME=""
