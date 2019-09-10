@@ -8,7 +8,7 @@ endfunction
 " Remove the ./ if it is a root level file
 function! statusline#get_file_header()
   let s:file_header = expand('%:h') . '/'
-  return substitute(s:file_header, '^\.\/', '\1', '')
+  return substitute(s:file_header, '^\.\/\|^\/', '\1', '')
 endfunction
 
 " Window or Buffer Focsed StatusLine
