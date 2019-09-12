@@ -3,6 +3,7 @@ typeset -A _i3wm
 # Configure this repo with the i3wm typeset
 _i3wm[config_files]="$HOME/i3wm/zsh"
 _i3wm[color_env]='256'
+_i3wm[vim_coc]='false'
 
 include () { [[ -f "$1" ]] && source "$1" }
 

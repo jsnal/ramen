@@ -10,7 +10,6 @@ export HISTSIZE=12000
 export SAVEHIST=12000
 export HISTFILE="$HOME/.zsh_history"
 export TERM="st-256color"
-export VIM_COC=false
 export WORDCHARS='*?_-.[]~=&;!#%^(){}<>'
 setopt prompt_subst
 setopt promptsubst

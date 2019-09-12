@@ -60,6 +60,9 @@ if has('folding')
   set foldtext=functions#foldline()
 endif
 
+" List Chars
+set showbreak=\\
+
 " Hilight Cursor Words
 let g:HiCursorWords_linkStyle='Underlined'
 let g:HiCursorWords_delay = 100

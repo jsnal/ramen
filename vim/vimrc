@@ -5,6 +5,9 @@ if ! filereadable(expand('~/.vim/autoload/plug.vim'))
   silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.vim/autoload/plug.vim
 endif
 
+" Grab the configuration for COC
+let vim_coc=system("source ~/.zshrc && echo $_i3wm[vim_coc]")
+
 call plug#begin('~/.vim/plugged')
 
 " Git Notifications in Number Buffer
@@ -21,7 +24,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 
 " Autocomplete Engine
-if $VIM_COC == 'true'
+if vim_coc =~ 'true'
   Plug 'https://github.com/neoclide/coc.nvim', { 'branch': 'release', 'on': [] }
   Plug 'https://github.com/neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 endif
