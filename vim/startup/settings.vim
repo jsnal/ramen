@@ -52,13 +52,9 @@ set autochdir
 set nobackup
 set nowritebackup
 
-" Fold Settings
-if has('folding')
-  set foldcolumn=0
-  set fillchars+=fold:~
-  set foldmethod=indent
-  set foldtext=functions#foldline()
-endif
+" Fold Options
+call functions#foldoptions()
+
 
 " List Chars
 set showbreak=\\

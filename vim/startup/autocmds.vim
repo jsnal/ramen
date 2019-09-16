@@ -1,10 +1,6 @@
 " " Folds
-" au BufWinLeave * silent mkview
-" augroup AutoSaveFolds
-"   autocmd!
-"   autocmd BufWinLeave * silent! mkview
-"   autocmd BufWinEnter * silent! loadview
-" augroup END
+autocmd BufWinLeave *.* mkview!
+autocmd BufWinEnter *.* call functions#loadview()
 
 " Markdown, txt, LaTeX
 autocmd BufReadPost,BufNewFile *.md,*.tex call functions#plaintext()

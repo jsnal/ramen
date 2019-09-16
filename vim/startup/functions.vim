@@ -35,3 +35,19 @@ function! functions#foldline() abort
 
 	return '+~~ ' . preamble . ' '
 endfunction
+
+" Set general fold options
+function! functions#foldoptions() abort
+  if has('folding')
+    set foldcolumn=0
+    set fillchars+=fold:~
+    set foldmethod=indent
+    set foldtext=functions#foldline()
+  endif
+endfunction
+
+" Refresh the fold options when you load the view
+function! functions#loadview() abort
+	silent loadview
+  silent call functions#foldoptions()
+endfunction
