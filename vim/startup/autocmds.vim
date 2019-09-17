@@ -28,7 +28,7 @@ autocmd! User FzfStatusLine call fzf#fzf_statusline()
 autocmd InsertEnter * :let @/=""
 
 " Enable coc.nvim when CursorHold is enabled, 500 Milliseconds
-if vim_coc == 'true'
+if vim_coc =~ 'true'
   augroup load_coc
     autocmd!
     autocmd CursorHold * call plug#load('coc.nvim') | autocmd! load_coc

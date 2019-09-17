@@ -31,3 +31,4 @@ alias crontab-all="crontab -l | grep -v '^#' | cut -f 6- -d ' ' | while read CMD
 alias j="jump"
 alias paste-search="wget -qO- jasonlong.xyz/paste/posts.md | sed 1,5d | grep -i "$1""
 alias test_color="printf '\e[48;5;%dm ' {0..255}; printf '\e[0m \n'"
+alias config_version="git --git-dir ~/i3wm/.git rev-parse HEAD"

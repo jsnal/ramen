@@ -8,6 +8,11 @@ GT_EML=""
 VERINST=false
 STINST=false
 
+# ANSI Escape Codes
+BOLD="\033[1m"
+UNDR="\033[4m"
+ENDL="\033[0m"
+
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -107,7 +112,7 @@ function minimal() {
   wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min
 }
 
-echo -e "Please Install: zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher"
+echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher"
 echo -e "\nCloning i3wm Repository"
 if [ -d $HOME/i3wm ]; then
   echo "-> Found $HOME/i3wm"
@@ -115,6 +120,7 @@ else
   git clone --recursive --quiet https://github.com/JasonLong24/i3wm $HOME/i3wm &>/dev/null
 fi
 
+echo -e "\nInstalling config version ${BOLD}$(git rev-parse HEAD)${ENDL}"
 echo -e "\nSymlinking files"
 # Symlink Files
 for i in ${PROFILES[@]}; do
