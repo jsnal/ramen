@@ -52,10 +52,6 @@ set autochdir
 set nobackup
 set nowritebackup
 
-" Fold Options
-call functions#foldoptions()
-
-
 " List Chars
 set showbreak=\\
 
