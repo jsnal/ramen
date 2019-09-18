@@ -6,6 +6,7 @@
   local i3wm=~/i3wm
   local ZSH=~/i3wm/zsh
   local VIM=~/i3wm/vim
+  local GIT=~/git
 
   test -d "$SITE" && hash -d site="$SITE"
   test -d "$PASTE" && hash -d paste="$PASTE"
@@ -13,6 +14,7 @@
   test -d "$i3wm" && hash -d i3wm="$i3wm"
   test -d "$ZSH" && hash -d zsh="$ZSH"
   test -d "$VIM" && hash -d vim="$VIM"
+  test -d "$GIT" && hash -d git="$GIT"
 }
 
 # Quickly skim through all child directories and put them into std out
@@ -38,7 +40,7 @@ function jump() {
   else
 
     if [ $1 = "-l" ] || [ $1 = "--list" ]; then
-      hash -d | sed 's/=/ -> /g'  && return 1
+      hash -d | sed 's/=/ -> /g' | column -t  && return 1
     fi
 
     local DIR="$1"
@@ -52,5 +54,4 @@ function jump() {
       cd ~"$DIR"
     fi
   fi
-
 }
