@@ -39,10 +39,12 @@ Plug 'https://github.com/airblade/vim-rooter'
 Plug 'https://github.com/jsnal/vim-serape'
 
 " Highlight same words in document
-Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
+" Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
 
 " Common syntax highlighting
 Plug 'https://github.com/sheerun/vim-polyglot'
+
+Plug 'andymass/vim-matchup'
 
 " Plugin Total: 15
 call plug#end()
