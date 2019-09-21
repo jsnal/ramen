@@ -1,0 +1,17 @@
+#!/bin/bash
+# Program for compiling markdown files in vim on the fly.
+# Pandoc and zathura are required to use.
+
+[ $# -eq 0 ] && exit 1
+
+INPUT_FILE=$1
+OUTPUT_FILE=${INPUT_FILE%.*}.pdf
+
+[ ! -f $INPUT_FILE ] && exit 1
+
+pandoc $INPUT_FILE -f markdown --output $OUTPUT_FILE
+
+killall -q zathura
+while pgrep -u $UID -x zathura >/dev/null; do sleep 0.1; done
+
+cat $OUTPUT_FILE | zathura - &

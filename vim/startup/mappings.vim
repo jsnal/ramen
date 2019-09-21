@@ -50,6 +50,9 @@ noremap <C-l> <C-w>l
 " Ag for word under cursor
 nnoremap <silent> <leader>ag :Ag<CR>
 
+" Compile markdown on the fly
+nnoremap <silent> <leader>p :execute '!~/i3wm/zsh/scripts/vim_md ' . expand('%:p')<CR><CR>
+
 " Move the cursor in wildmenu
 cnoremap <Left> <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
