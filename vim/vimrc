@@ -44,7 +44,7 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 " Better highlighting for matching syntax
 Plug 'andymass/vim-matchup'
 
-" Plugin Total: 15
+" Plugin Total: 13
 call plug#end()
 
 " Source all files in startup

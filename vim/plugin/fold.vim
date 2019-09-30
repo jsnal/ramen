@@ -1,10 +1,18 @@
+" Better inline fold text when the text is folded
+function! fold#foldline() abort
+	let numlines_folded = v:foldend - v:foldstart + 1
+  let preamble = printf("[%d folded]", numlines_folded)
+
+	return '+~~ ' . preamble . ' '
+endfunction
+
 " Set general fold options
 function! fold#options() abort
   if has('folding')
     set foldcolumn=0
     set fillchars+=fold:~
     set foldmethod=indent
-    set foldtext=functions#foldline()
+    set foldtext=fold#foldline()
   endif
 endfunction
 

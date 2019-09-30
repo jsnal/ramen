@@ -38,4 +38,5 @@ function! statusline#blur() abort
 
   setlocal statusline=\ %{statusline#get_file_header()}
   setlocal statusline+=%t\ %y
+  setlocal statusline+=%=\ (%l/%L)
 endfunction
