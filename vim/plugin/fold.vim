@@ -9,10 +9,10 @@ endfunction
 " Set general fold options
 function! fold#options() abort
   if has('folding')
-    set foldcolumn=0
-    set fillchars+=fold:~
-    set foldmethod=indent
-    set foldtext=fold#foldline()
+    setlocal foldcolumn=0
+    setlocal fillchars+=fold:~
+    setlocal foldmethod=indent
+    setlocal foldtext=fold#foldline()
   endif
 endfunction
 
