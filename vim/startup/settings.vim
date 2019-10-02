@@ -1,13 +1,17 @@
 " Setup Colorscheme
 set background=dark
-syntax on
+
+if has('syntax')
+  syntax on
+endif
+
 if has('gui_running')
   silent! colorscheme default
 else
   silent! colorscheme serape
-  hi Normal  ctermbg=NONE
-  hi LineNr  ctermbg=NONE
-  hi nonText ctermbg=NONE
+  hi Normal  ctermbg=none
+  hi LineNr  ctermbg=none
+  hi NonText ctermbg=none
 endif
 
 " General
@@ -55,18 +59,13 @@ set nowritebackup
 " List Chars
 set showbreak=\\
 
-" Hilight Cursor Words
-let g:HiCursorWords_linkStyle='Underlined'
-let g:HiCursorWords_delay = 100
-
 " Presistent Undo
-if has ('persistent_undo')
+if has('persistent_undo')
   set undodir=$HOME/.vim_undo
   set undolevels=5000
   set undofile
 endif
 
+" FZF Settings
 let g:fzf_nvim_statusline = 0
 let g:fzf_layout = { 'left': '~20%' }
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_autoclose_preview_window_after_completion = 1
