@@ -42,7 +42,10 @@ Plug 'https://github.com/jsnal/vim-serape'
 Plug 'https://github.com/sheerun/vim-polyglot'
 
 " Better highlighting for matching syntax
-Plug 'andymass/vim-matchup'
+Plug 'https://github.com/andymass/vim-matchup'
+
+" Easier way of visualizing indention
+Plug 'https://github.com/Yggdroot/indentLine'
 
 " Plugin Total: 13
 call plug#end()

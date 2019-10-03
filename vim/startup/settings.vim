@@ -48,7 +48,6 @@ set fileformats=unix
 set fileencoding=utf-8
 set fileencodings=utf-8
 set encoding=utf-8
-set ambiwidth=double
 set showcmd
 set backupdir=./.backup,.,/tmp
 set directory=.,./.backup,/tmp
@@ -57,6 +56,8 @@ set nobackup
 set nowritebackup
 
 " List Chars
+set list
+set listchars=trail:.
 set showbreak=\\
 
 " Presistent Undo
@@ -69,3 +70,10 @@ endif
 " FZF Settings
 let g:fzf_nvim_statusline = 0
 let g:fzf_layout = { 'left': '~20%' }
+
+" Indent Line
+if &fileencoding == 'utf-8'
+  let g:indentLine_char = '│'
+else
+  let g:indentLine_char = '|'
+endif
