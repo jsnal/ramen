@@ -47,7 +47,7 @@ Plug 'https://github.com/andymass/vim-matchup'
 " Easier way of visualizing indention
 Plug 'https://github.com/Yggdroot/indentLine'
 
-" Plugin Total: 13
+" Plugin Total: 14
 call plug#end()
 
 " Source all files in startup

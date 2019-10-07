@@ -11,6 +11,7 @@
   test -d "$SITE" && hash -d site="$SITE"
   test -d "$PASTE" && hash -d paste="$PASTE"
   test -d "$SERAPE" && hash -d serape="$SERAPE"
+  test -d "$i3wm" && hash -d i3="$i3wm"
   test -d "$i3wm" && hash -d i3wm="$i3wm"
   test -d "$ZSH" && hash -d zsh="$ZSH"
   test -d "$VIM" && hash -d vim="$VIM"
