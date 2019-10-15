@@ -44,31 +44,28 @@ function! statusline#blur() abort
 endfunction
 
 function! statusline#modecurrent() abort
-	let l:current_status_mode = toupper(get(g:currentmode, mode(), 'V·Block'))
-
-	" TODO: Add pre vim8 trimming too
-	return trim(l:current_status_mode)
+	return toupper(get(g:currentmode, mode(), 'V·Block'))
 endfunction
 
 " See :help mode() to see a list of all currentmode names
-let g:currentmode={
-    \ 'n'      : 'N ',
-    \ 'no'     : 'N·Operator Pending ',
-    \ 'v'      : 'V ',
-    \ 'V'      : 'V·Line ',
-    \ '^V'     : 'V·Block ',
-    \ 's'      : 'Select ',
-    \ 'S'      : 'S·Line ',
-    \ '^S' 		 : 'S·Block ',
-    \ 'i'      : 'I ',
-    \ 'R'      : 'R ',
-    \ 'Rv'     : 'V·Replace ',
-    \ 'c'      : 'Command ',
-    \ 'cv'     : 'Vim Ex ',
-    \ 'ce'     : 'Ex ',
-    \ 'r'      : 'Prompt ',
-    \ 'rm'     : 'More ',
-    \ 'r?'     : 'Confirm ',
-    \ '!'      : 'Shell ',
-    \ 't'      : 'Terminal '
+let g:currentmode = {
+    \ 'n'  : 'N',
+    \ 'no' : 'N·Operator Pending',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V·Line',
+    \ '^V' : 'V·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '^S' : 'S·Block',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim·Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
     \}
