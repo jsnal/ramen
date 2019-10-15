@@ -4,6 +4,7 @@ if has('syntax')
   hi StatusLineNC     ctermfg=243  ctermbg=235  cterm=bold
   hi FileHeader       ctermfg=248  ctermbg=235  cterm=bold
   hi FileTail         ctermfg=15   ctermbg=235  cterm=bold
+  hi ModeColor        ctermfg=248  ctermbg=235  cterm=bold
 
   " Vertical Split
   hi VertSplit        ctermfg=235  ctermbg=235

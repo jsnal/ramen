@@ -28,6 +28,7 @@ set splitbelow splitright
 set ignorecase smartcase
 set hidden
 set updatetime=200
+set noshowmode
 
 " Numbering and Indent
 set number
