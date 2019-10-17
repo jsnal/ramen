@@ -19,7 +19,7 @@ function! statusline#focus() abort
   endif
 
 	setlocal statusline=%#ModeColor#
-	setlocal statusline+=\ [%{statusline#modecurrent()}]
+	setlocal statusline+=[%{statusline#modecurrent()}]
 	setlocal statusline+=%#FileHeader#
   setlocal statusline+=\ %{statusline#get_file_header()}
   setlocal statusline+=%#FileTail#
@@ -44,28 +44,28 @@ function! statusline#blur() abort
 endfunction
 
 function! statusline#modecurrent() abort
-	return toupper(get(g:currentmode, mode(), 'V·Block'))
+	return get(g:currentmode, mode(), 'v·block')
 endfunction
 
 " See :help mode() to see a list of all currentmode names
 let g:currentmode = {
-    \ 'n'  : 'N',
-    \ 'no' : 'N·Operator Pending',
-    \ 'v'  : 'V',
-    \ 'V'  : 'V·Line',
-    \ '^V' : 'V·Block',
-    \ 's'  : 'Select',
-    \ 'S'  : 'S·Line',
-    \ '^S' : 'S·Block',
-    \ 'i'  : 'I',
-    \ 'R'  : 'R',
-    \ 'Rv' : 'V·Replace',
-    \ 'c'  : 'Command',
-    \ 'cv' : 'Vim·Ex',
-    \ 'ce' : 'Ex',
-    \ 'r'  : 'Prompt',
-    \ 'rm' : 'More',
-    \ 'r?' : 'Confirm',
-    \ '!'  : 'Shell',
-    \ 't'  : 'Terminal'
+    \ 'n'  : 'normal',
+    \ 'no' : 'n·operator pending',
+    \ 'v'  : 'visual',
+    \ 'V'  : 'v·line',
+    \ '^V' : 'v·block',
+    \ 's'  : 'select',
+    \ 'S'  : 's·line',
+    \ '^S' : 's·block',
+    \ 'i'  : 'insert',
+    \ 'R'  : 'replace',
+    \ 'Rv' : 'v·replace',
+    \ 'c'  : 'command',
+    \ 'cv' : 'vim·ex',
+    \ 'ce' : 'ex',
+    \ 'r'  : 'prompt',
+    \ 'rm' : 'more',
+    \ 'r?' : 'confirm',
+    \ '!'  : 'shell',
+    \ 't'  : 'terminal'
     \}
