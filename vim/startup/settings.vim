@@ -78,3 +78,10 @@ if &fileencoding == 'utf-8'
 else
   let g:indentLine_char = '|'
 endif
+
+" Matchup
+let g:matchup_matchpref = {
+      \ 'html':       { 'tagnameonly': 1,  },
+      \ 'htmldjango': { 'tagnameonly': 1,  },
+      \ 'javascript': { 'tagnameonly': 1,  },
+      \}
