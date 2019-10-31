@@ -9,4 +9,11 @@ if [ -f $HOME/.xbindkeysrc ]; then
 else
   echo "~/.xbindkeysrc not found"
 fi
+
+if [ -f $HOME/.Xresources ]; then
+  xrdb ~/.Xresources
+else
+  echo "~/.Xresources not found"
+fi
+
 exec i3

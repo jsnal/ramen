@@ -17,17 +17,13 @@ xterm*color6:       #00d7ff
 xterm*color14:      #00d7ff
 xterm*color7:       #ffffff
 xterm*color15:      #ffffff
-xterm*font:     *-fixed-*-*-*-13-*
-!xterm*font: xft:Inconsolata:pixelsize=12
-!XTerm*font: -*-terminus-medium-r-normal--14-*-*-*-*-*-iso10646-1
+xterm*font:         *-fixed-*-*-*-13-*
 xterm*letterSpacing: 1
-XTerm*ptyInitialErase: true
-Xterm*fading: 20
+xterm*ptyInitialErase: true
+xterm*fading: 20
 
 xterm*perl-ext-common: resize-font
 xterm*scrollBar: false
 
-xterm*keysym.C-minus:     resize-font:smaller
-xterm*keysym.C-equal:     resize-font:bigger
-xterm*keysym.C-plus:      resize-font:reset
-xterm*keysym.C-question:  resize-font:show
+Xcursor.theme: posy-black
+Xcursor.size: 8
