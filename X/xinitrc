@@ -1,19 +1,5 @@
-if [ -f $HOME/.Xmodmap ]; then
-  xmodmap ~/.Xmodmap
-else
-  echo "Xmodmap not found"
-fi
-
-if [ -f $HOME/.xbindkeysrc ]; then
-  xbindkeys
-else
-  echo "~/.xbindkeysrc not found"
-fi
-
-if [ -f $HOME/.Xresources ]; then
-  xrdb ~/.Xresources
-else
-  echo "~/.Xresources not found"
-fi
+[ -f $HOME/.Xmodmap ]     && xmodmap ~/.Xmodmap
+[ -f $HOME/.xbindkeysrc ] && xbindkeys
+[ -f $HOME/.Xresources ]  && xrdb ~/.Xresources
 
 exec i3
