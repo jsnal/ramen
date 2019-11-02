@@ -18,6 +18,7 @@ alias ..4='cd ../../../..'
 alias ..5='cd ../../../../..'
 
 alias v='vim'
+alias vi='vim'
 alias z='zathura'
 alias ls='ls --color=always --group-directories'
 alias ll='ls --color=always --group-directories'
