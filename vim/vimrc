@@ -8,44 +8,51 @@ endif
 " Grab the configuration for COC
 let vim_coc=system("source ~/.zshrc && echo $_i3wm[vim_coc]")
 
-call plug#begin('~/.vim/plugged')
+" Removes some big things to make vim faster
+let vim_light=0
 
-" Git Notifications in Number Buffer
-Plug 'https://github.com/airblade/vim-gitgutter'
+call plug#begin('~/.vim/plugged')
 
 " Fuzzy File Finder
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/junegunn/fzf'
 
-" Easy Commenting in and out
-Plug 'https://github.com/tpope/vim-commentary'
-
 " Automatically insert common characters
 Plug 'https://github.com/jiangmiao/auto-pairs'
-
-" Autocomplete Engine
-if vim_coc =~ 'true'
-  Plug 'https://github.com/neoclide/coc.nvim', { 'branch': 'release', 'on': [] }
-  Plug 'https://github.com/neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-endif
-
-" File Tree
-Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
-" Change working dir to project root
-Plug 'https://github.com/airblade/vim-rooter'
 
 " Color Scheme
 Plug 'https://github.com/jsnal/vim-serape'
 
-" Common syntax highlighting
-Plug 'https://github.com/sheerun/vim-polyglot'
+" Easy Commenting in and out
+Plug 'https://github.com/tpope/vim-commentary'
 
-" Better highlighting for matching syntax
-Plug 'https://github.com/andymass/vim-matchup'
+if (!vim_light)
 
-" Easier way of visualizing indention
-Plug 'https://github.com/Yggdroot/indentLine'
+  " Git Notifications in Number Buffer
+  Plug 'https://github.com/airblade/vim-gitgutter'
+
+  " Change working dir to project root
+  Plug 'https://github.com/airblade/vim-rooter'
+
+  " Common syntax highlighting
+  Plug 'https://github.com/sheerun/vim-polyglot'
+
+  " Better highlighting for matching syntax
+  Plug 'https://github.com/andymass/vim-matchup'
+
+  " Easier way of visualizing indention
+  Plug 'https://github.com/Yggdroot/indentLine'
+
+  " File Tree
+  Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+  " Autocomplete Engine
+  if vim_coc =~ 'true'
+    Plug 'https://github.com/neoclide/coc.nvim', { 'branch': 'release', 'on': [] }
+    Plug 'https://github.com/neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+  endif
+
+endif
 
 " Plugin Total: 14
 call plug#end()
