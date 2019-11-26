@@ -13,16 +13,16 @@ margin-top = 0
 margin-bottom = 0
 
 [bar/bottom]
-bottom = true
-width = 100%
-height = 15
+bottom   = true
+width    = 100%
+height   = 15
 offset-x = 0
 offset-y = 0
 
 fixed-center = true
 
-spacing = 0
-line-size = 2
+spacing     = 0
+line-size   = 1
 border-size = 0
 
 background = ${colors.background}
@@ -33,17 +33,17 @@ font-1 = DejaVu Sans Mono:pixelsize=8.5;0
 
 module-margin = 2
 
-modules-left = i3 xtitle
+modules-left   = i3 xtitle
 modules-center =
-modules-right = time wlan ip battery
+modules-right  = time wlan ip battery
 
 [module/i3]
 type = internal/i3
 
 label-focused = %name%
-label-focused-foreground = ${colors.foreground}
+label-focused-foreground = ${colors.orange}
+label-focused-underline  = ${colors.orange}
 label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.foreground}
 label-focused-padding = 1
 label-focused-border-color = #FFFFFF
 
