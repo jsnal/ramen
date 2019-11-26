@@ -9,7 +9,7 @@ yellow = #ffff00
 orange = #ffb52a
 
 [global/wm]
-margin-top = 10
+margin-top = 0
 margin-bottom = 0
 
 [bar/bottom]
@@ -24,41 +24,18 @@ fixed-center = true
 spacing = 0
 line-size = 2
 border-size = 0
-border-bottom-size = 1 
-border-color = ${colors.foreground}
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = DejaVu Sans Mono:pixelsize=8.5;0
+font-0 = misc fixed:pixelsize=12;1
+font-1 = DejaVu Sans Mono:pixelsize=8.5;0
 
-module-margin = 0
+module-margin = 2
 
-modules-left = i3
-modules-center = error 
-modules-right = song updates brightness volume time wlan ip battery
-
-[bar/status]
-bottom = false
-width = 100%
-height = 14 
-offset-x = 0
-offset-y = 0
-
-fixed-center = true
-
-spacing = 0
-line-size = 2
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-font-0 = DejaVu Sans Mono:pixelsize=8.5;0
-
-module-margin = 0
-
-modules-center = xtitle
-modules-right = filesystem memory cpu
+modules-left = i3 xtitle
+modules-center =
+modules-right = time wlan ip battery
 
 [module/i3]
 type = internal/i3
@@ -66,26 +43,26 @@ type = internal/i3
 label-focused = %name%
 label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.foreground} 
-label-focused-padding = 1 
+label-focused-underline = ${colors.foreground}
+label-focused-padding = 1
 label-focused-border-color = #FFFFFF
 
 label-unfocused = %name%
-label-unfocused-padding = 1 
+label-unfocused-padding = 1
 
 label-urgent = %name%
 label-urgent-background = ${colors.red}
-label-urgent-padding = 1 
+label-urgent-padding = 1
 
 label-visible = %name%
-label-visible-padding = 1 
+label-visible-padding = 1
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 
-label-charging = |%percentage%%
-label-discharging = |%percentage%%
+label-charging = %percentage%%
+label-discharging = %percentage%%
 
 [module/time]
 type = internal/date
@@ -98,113 +75,44 @@ time = %I:%M
 time-alt = %m-%d-%Y %I:%M:%S
 click-left = uxterm -hold -e cal
 
-label = |%time%
+label = %time%
 
 [module/interface]
 ;Displays network interface
 type = custom/script
 exec = bash ~/i3wm/i3/Scripts/interface.sh
 
-label = |%output%
+label = %output%
 
 [module/ip]
 type = custom/script
 exec = ip addr | ag "inet " | tr "/" " " | awk '{if (NR!=1) {print $2}}'
-label = |%{F#00CD00}%output%
+label = %{F#00CD00}%output%
 click-left = uxterm -hold -e nmtui
 
 [module/volume]
 type = custom/script
-interval = 5 
+interval = 5
 exec = amixer -M | grep Mono | awk 'NR==2 {print $4}' | sed 's/[^0-9]*//g'
-label = |V:%{F#00E5E5}%output%%
-click-left = uxterm alsamixer 
+label = V:%{F#00E5E5}%output%%
+click-left = uxterm alsamixer
 
 [module/brightness]
 type = custom/script
 interval = 5
-exec = xbacklight | grep -o '^[0-9]*\.[0-9]' 
-label = |B:%{F#00E5E5}%output%%
-
-[module/updates]
-type = custom/script
-interval = 180
-exec = apt-get upgrade -s | grep -P '^\d+ upgraded' | cut -d" " -f1
-label = |U:%{F#00E5E5}%output%
-click-left = uxterm -hold -e sudo apt-get upgrade
-
-[module/song]
-type = custom/script
-interval = 5 
-exec = ~/i3wm/zsh/scripts/spotify-info.sh polybar-format
-label = |%{F#ffb52a}%output%
-click-left = i3-msg '[class="Spotify"] focus' 
-label-maxlen = 45 
-
-[module/error]
-type = custom/script
-interval = 3 
-exec = bash ~/i3wm/polybar/error.sh
+exec = xbacklight | grep -o '^[0-9]*\.[0-9]'
+label = B:%{F#00E5E5}%output%%
 
 [module/wlan]
-type = custom/script 
-interval = 5 
-
+type = custom/script
+interval = 5
 exec = iwgetid -r
-label = |%{F#00CD00}%output%
+label = %{F#00CD00}%output%
 click-left = uxterm -hold -e nmtui
 
-;======== Top Status Bar Tools =========;
-
 [module/xtitle]
-type = internal/xwindow
-label-maxlen = 50
-
-[module/cpu]
-type = internal/cpu
-interval = 0.5
-
-format = <label> <ramp-coreload>
-label = CPU[%percentage%%]
-
-ramp-coreload-0 = ▁
-ramp-coreload-0-foreground = #aaff77
-ramp-coreload-1 = ▂
-ramp-coreload-1-foreground = #aaff77
-ramp-coreload-2 = ▃
-ramp-coreload-2-foreground = #aaff77
-ramp-coreload-3 = ▄
-ramp-coreload-3-foreground = #aaff77
-ramp-coreload-4 = ▅
-ramp-coreload-4-foreground = #fba922
-ramp-coreload-5 = ▆
-ramp-coreload-5-foreground = #fba922
-ramp-coreload-6 = ▇
-ramp-coreload-6-foreground = #ff5555
-ramp-coreload-7 = █
-ramp-coreload-7-foreground = #ff5555
-
-[module/memory]
-type = internal/memory
-format = <label> <bar-used>
-label = RAM[%gb_used%] 
-
-bar-used-width = 10
-bar-used-gradient = true
-bar-used-foreground-0 = #2f8419
-bar-used-foreground-1 = #0088CC
-bar-used-foreground-2 = #f5a70a
-bar-used-foreground-3 = #ed5456
-bar-used-indicator = █
-bar-used-indicator-font = 3
-bar-used-indicator-foreground = #44
-bar-used-fill = █
-bar-used-fill-font = 3
-bar-used-empty = █
-bar-used-empty-font = 3
-bar-used-empty-foreground = #44
-
-[module/filesystem]
-type = internal/fs
-mount-0 = /
-spacing = 4
+type = custom/script
+interval = 1
+exec = cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm
+label = []=%output%
+label-maxlen = 20

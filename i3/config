@@ -83,7 +83,7 @@ for_window [class="mpv"] floating enable, resize set 1200 800, move position cen
 for_window [class="calc"] floating enable, resize set 800 600, move position center
 
 # Workspaces
-set $workspace1 "web"
+set $workspace1 "1"
 set $workspace2 "2"
 set $workspace3 "3"
 set $workspace4 "4"
@@ -139,8 +139,8 @@ exec_always --no-startup-id dunst
 exec --no-startup-id st -c tmux -e bash ~/i3wm/i3/Scripts/tmux.sh
 exec --no-startup-id amixer sset "Master" 0%
 
-# Start lemonbar
-# Found in i3wm/lemonbar/lemon.sh
-# bar {
-#   i3bar_command $HOME/i3wm/lemonbar/launch.sh
-# }
+# Start polybar
+# Found in i3wm/polybar/config
+bar {
+  i3bar_command $HOME/i3wm/polybar/launch.sh
+}
