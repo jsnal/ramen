@@ -38,9 +38,9 @@ bindsym $mod+Shift+w exec firefox
 
 # Dmenu helpers
 bindsym $mod+d exec ~/i3wm/i3/Scripts/dmenu.sh
-bindsym $mod+s exec ~/i3wm/i3/Rofi/power.sh
+bindsym $mod+s exec ~/i3wm/i3/dmenu/power.sh
 bindsym $mod+q exec ~/i3wm/i3/Scripts/dmenu-mount.sh
-bindsym $mod+Shift+d exec ~/i3wm/i3/Rofi/doom.sh
+bindsym $mod+Shift+d exec ~/i3wm/i3/dmenu/doom.sh
 
 bindsym $mod+j focus down
 bindsym $mod+k focus up
