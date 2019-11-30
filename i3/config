@@ -141,6 +141,6 @@ exec --no-startup-id amixer sset "Master" 0%
 
 # Start polybar
 # Found in i3wm/polybar/config
-bar {
-  i3bar_command $HOME/i3wm/polybar/launch.sh
-}
+# bar {
+#   i3bar_command $HOME/i3wm/polybar/launch.sh
+# }
