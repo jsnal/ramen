@@ -27,9 +27,9 @@ client.unfocused        $border				      $background-inactive  $text-inactive		 
 client.focused_inactive $border             $background-inactive  $text-inactive		      $background-inactive		$border-inactive
 client.urgent           $border             $background-inactive  $background-urgent      $background-inactive	  $border-inactive
 
-bindsym $mod+Shift+x exec bash ~/i3wm/i3/Scripts/lock.sh
+bindsym $mod+Shift+x exec bash ~/i3wm/i3/scripts/lock.sh
 bindsym $mod+F7 exec xbacklight -set 0
-bindsym $mod+b exec ~/i3wm/i3/Scripts/battery.sh
+bindsym $mod+b exec ~/i3wm/i3/scripts/battery.sh
 bindsym $mod+t exec notify-send "Today: $(date +"%D %l:%M:%S")"
 
 # Application launching
@@ -37,9 +37,9 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+w exec firefox
 
 # Dmenu helpers
-bindsym $mod+d exec ~/i3wm/i3/Scripts/dmenu.sh
+bindsym $mod+d exec ~/i3wm/i3/scripts/dmenu.sh
 bindsym $mod+s exec ~/i3wm/i3/dmenu/power.sh
-bindsym $mod+q exec ~/i3wm/i3/Scripts/dmenu-mount.sh
+bindsym $mod+q exec ~/i3wm/i3/scripts/dmenu-mount.sh
 bindsym $mod+Shift+d exec ~/i3wm/i3/dmenu/doom.sh
 
 bindsym $mod+j focus down
@@ -134,9 +134,9 @@ bindsym $mod+Shift+t exec --no-startup-id ~/i3wm/lemonbar/launch.sh
 
 # Execute on Startup
 exec_always feh --bg-scale ~/i3wm/backgrounds/nanogon_infinity.jpg
-exec_always python ~/i3wm/i3/Scripts/altlayout.py
+exec_always python ~/i3wm/i3/scripts/altlayout.py
 exec_always --no-startup-id dunst
-exec --no-startup-id st -c tmux -e bash ~/i3wm/i3/Scripts/tmux.sh
+exec --no-startup-id st -c tmux -e bash ~/i3wm/i3/scripts/tmux.sh
 exec --no-startup-id amixer sset "Master" 0%
 
 # Start polybar
