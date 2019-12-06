@@ -18,14 +18,14 @@ set $text-inactive          #888888
 set $background-urgent      #900000
 set $indicator              #00ff00
 set $seperator              #666666
-set $border-inactive	      #000000
+set $border-inactive        #000000
 set $border                 #cc0000
 
 # Specifc Window colors
-client.focused          $border				      $border               $text                   $border				          $border
-client.unfocused        $border				      $background-inactive  $text-inactive		      $background-inactive	  $border-inactive
-client.focused_inactive $border             $background-inactive  $text-inactive		      $background-inactive		$border-inactive
-client.urgent           $border             $background-inactive  $background-urgent      $background-inactive	  $border-inactive
+client.focused           $border  $border               $text               $border               $border
+client.unfocused         $border  $background-inactive  $text-inactive      $background-inactive  $border-inactive
+client.focused_inactive  $border  $background-inactive  $text-inactive      $background-inactive  $border-inactive
+client.urgent            $border  $background-inactive  $background-urgent  $background-inactive  $border-inactive
 
 bindsym $mod+Shift+x exec bash ~/i3wm/i3/scripts/lock.sh
 bindsym $mod+F7 exec xbacklight -set 0
@@ -40,7 +40,6 @@ bindsym $mod+Shift+w exec firefox
 bindsym $mod+d exec ~/i3wm/i3/scripts/dmenu.sh
 bindsym $mod+s exec ~/i3wm/i3/dmenu/power.sh
 bindsym $mod+q exec ~/i3wm/i3/scripts/dmenu-mount.sh
-bindsym $mod+Shift+d exec ~/i3wm/i3/dmenu/doom.sh
 
 bindsym $mod+j focus down
 bindsym $mod+k focus up
