@@ -17,3 +17,7 @@ _i3wm[CYAN]="%{%F{14}%}"
 _i3wm[YELLOW]="%{%F{11}%}"
 _i3wm[GREEN]="%{%F{2}%}"
 _i3wm[MAGENTA]="%{%F{13}%}"
+
+# Text changes
+_i3wm[BOLD_START]="%B"
+_i3wm[BOLD_END]="%b"

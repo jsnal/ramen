@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+# Global Options
+typeset -g GIT_LEFT_BRACKET='('
+typeset -g GIT_RIGHT_BRACKET=')'
+
 function dot_git() {
   dot_git="$(git rev-parse --git-dir 2>/dev/null)"
   printf '%s' $dot_git
@@ -16,24 +20,17 @@ function is_repo() {
 # Get branch info in a format similar to $ git status -sb
 function get_branch() {
   local local_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @ 2>/dev/null)
-  local upstream_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
 
   if [ -f $(git rev-parse --git-dir)/MERGE_HEAD ]; then
-    local ongoing_merge="${_i3wm[MAGENTA]}(merge)"
+    local ongoing_merge=" ${_i3wm[MAGENTA]}(merge)"
   fi
 
-  if [ -z $upstream_branch ]; then
-
-    # Check if you're attached to a branch
-    git symbolic-ref HEAD &>/dev/null
-    if [ $? != 0 ]; then
-      echo "${_i3wm[RED]}$(git name-rev --name-only --no-undefined --always HEAD) (no branch)"
-    else
-      echo "${_i3wm[GREEN]}$local_branch $ongoing_merge"
-    fi
-
+  # Check if you're attached to a branch
+  git symbolic-ref HEAD &>/dev/null
+  if [ $? != 0 ]; then
+    echo "${_i3wm[RED]}$(git name-rev --name-only --no-undefined --always HEAD)${_i3wm[WHITE]}"
   else
-    echo "${_i3wm[GREEN]}$local_branch${_i3wm[WHITE]} > ${_i3wm[RED]}$upstream_branch $ongoing_merge"
+    echo "${_i3wm[CYAN]}$local_branch$ongoing_merge${_i3wm[WHITE]}"
   fi
 }
 
@@ -42,6 +39,7 @@ function get_branch() {
 #   ! - Changes
 #   ? - Untracked Files
 #   # - Deleted Files
+#   $ - Stashed Changes
 function get_change() {
   local symbols=""
 
@@ -54,14 +52,17 @@ function get_change() {
   # check for deleted files
   [[ -n $(git ls-files --deleted --directory --exclude-standard 2>/dev/null) ]] && local symbols="${symbols}#"
 
+  # check for stashed changes
+  command git rev-parse --verify refs/stash &> /dev/null && local symbols="${symbols}$"
+
   # don't add the extra space if the working tree is clean
   [[ -z $symbols ]] && echo "" && return
 
-  echo "${_i3wm[ORANGE]}$symbols "
+  echo " ${_i3wm[ORANGE]}$symbols${_i3wm[WHITE]}"
 }
 
 function git_prompt_info() {
   if is_repo; then
-    echo "$(get_change)$(get_branch)"
+    printf "$GIT_LEFT_BRACKET%s%s$GIT_RIGHT_BRACKET" "$(get_branch)" "$(get_change)"
   fi
 }
