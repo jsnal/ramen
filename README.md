@@ -12,23 +12,50 @@ or
 bash <(wget -qO- https://raw.githubusercontent.com/jsnal/i3wm/master/install.sh)
 ```
 
-### Minified Config
+### Install Script
 
-- Install minified configs from [here](http://jasonlong24.crabdance.com/min/)
+The install script supports the following options:
 
 ```
-# zsh
-wget -O ~/.zshrc http://jasonlong24.crabdance.com/min/zshrc.min
+-p, --profile [PROFILE]
+    Change the install profile. Default terminal
 
-# vim
-wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min && test -e ~/.vim/autoload/plug.vim || (mkdir -p ~/.vim/autoload; curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) && vim +PlugInstall +qall
+-v, --verify-install
+    Verify that all files and submodules are present
+
+--git-user [USER]
+    Set the git username in ~/.gitconfig
+
+--git-email [EMAIL]
+    Set the git email in ~/.gitconfig
+```
+
+List of install profiles:
+
+```
+all
+    Installs configuration files for desktop and terminal
+    
+desktop
+    Installs just configuration files for desktop
+    
+terminal
+    Installs just configuration files for terminal
+
+minimal
+    Installs just zsh, vim, and tmux configuration files
 ```
 
 ### Secret Config
 
+You can override some configuration settings in `zsh/startup/secret.zsh`
+
 ```
 # vim autocomplete (coc)
-export VIM_COC=true
+_i3wm[vim_coc]='true'
+
+# zsh color environment
+_i3wm[color_env]='256'
 ```
 
 ### Tools
@@ -64,6 +91,3 @@ export VIM_COC=true
 - the-silver-searcher
     - A tool for quickly looking through code
     - [Install Package](https://www.archlinux.org/packages/community/x86_64/the_silver_searcher/)
-- weechat
-    - terminal irc
-    - [Install Package](https://www.archlinux.org/packages/?name=weechat)
