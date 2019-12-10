@@ -33,11 +33,11 @@ function precmd {
     unset timer
   fi
 
-  local DIR="[$_i3wm[CYAN]%B%(5~|../%3~|%~)%b$_i3wm[WHITE]]% "
+  local DIR="$_i3wm[CYAN]%B%(5~|../%3~|${${PWD/#%$HOME%/\~\/}/#$HOME/~})%b$_i3wm[WHITE]%"
   local CUSER="$_i3wm[WHITE]@$_i3wm[YELLOW]%n"
 
-  PROMPT="${CUSER}$_i3wm[WHITE]${DIR}${END}$_i3wm[WHITE]"
-  RPROMPT="$_i3wm[GRAY]${_i3wm[COMMAND_TIME]}$_i3wm[WHITE]$(git_prompt_info)"
+  PROMPT="${CUSER}$_i3wm[WHITE]${END}$_i3wm[WHITE]"
+  RPROMPT="$_i3wm[GRAY]${_i3wm[COMMAND_TIME]}$_i3wm[WHITE]$(git_prompt_info) ${DIR}"
 }
 
 zsh_command_time() {

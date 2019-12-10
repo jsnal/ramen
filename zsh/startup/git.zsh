@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 # Global Options
-typeset -g GIT_LEFT_BRACKET='('
-typeset -g GIT_RIGHT_BRACKET=')'
+typeset -g GIT_LEFT_BRACKET='['
+typeset -g GIT_RIGHT_BRACKET=']'
 
 function dot_git() {
   dot_git="$(git rev-parse --git-dir 2>/dev/null)"
@@ -30,7 +30,7 @@ function get_branch() {
   if [ $? != 0 ]; then
     echo "${_i3wm[RED]}$(git name-rev --name-only --no-undefined --always HEAD)${_i3wm[WHITE]}"
   else
-    echo "${_i3wm[CYAN]}$local_branch$ongoing_merge${_i3wm[WHITE]}"
+    echo "${_i3wm[LIGHT_GRAY]}$local_branch$ongoing_merge${_i3wm[WHITE]}"
   fi
 }
 

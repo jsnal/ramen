@@ -11,6 +11,7 @@ fi
 # Default colors that fit within 16 bit colors
 _i3wm[WHITE]="%{%F{15}%}"
 _i3wm[GRAY]="%{%F{8}%}"
+_i3wm[LIGHT_GRAY]="%{%F{7}%}"
 _i3wm[RED]="%{%F{9}%}"
 _i3wm[BLUE]="%{%F{12}%}"
 _i3wm[CYAN]="%{%F{14}%}"
