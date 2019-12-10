@@ -75,8 +75,11 @@ function install-st() {
 [[ $VERINST = true ]] && verify-install
 
 function desktop() {
+  mkdir -p ~/.config/i3
+  mkdir -p ~/.config/dunst
+
   link-file $DOTFILES_DIR/i3/config ~/.config/i3/config
-  link-file $DOTFILES_DIR/polybar/config ~/.config/polybar/config
+  link-file $DOTFILES_DIR/dunst/dunstrc ~/.config/dunst/dunstrc
   link-file $DOTFILES_DIR/X/xresources ~/.Xresources
   link-file $DOTFILES_DIR/X/xinitrc ~/.xinitrc
   link-file $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
