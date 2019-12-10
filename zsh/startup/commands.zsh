@@ -107,28 +107,6 @@ function vim-dump() {
     -c 'qa!'
 }
 
-# Merge my zshrc and zsh/ files together.
-function zsh-minify() {
-  local OUT=$1
-  [ -z $1 ] && local OUT="./zshrc.min"
-  if [ -d $HOME/i3wm ]; then
-    git -C $HOME/i3wm pull origin master
-    cat $HOME/i3wm/zsh/zshrc.min > $OUT
-    cat $HOME/i3wm/zsh/startup/*.zsh >> $OUT
-  fi
-}
-
-# Merge my vimrc and vim/startup files together.
-function vim-minify() {
-  local OUT=$1
-  [ -z $1 ] && local OUT="./vimrc.min"
-  if [ -d $HOME/i3wm ]; then
-    git -C $HOME/i3wm pull origin master
-    cat $HOME/i3wm/vim/vimrc > $OUT
-    find $HOME/i3wm/vim/startup -maxdepth 1 -iname '*.vim' -not -name 'functions.vim' -exec cat {} +>> $OUT
-  fi
-}
-
 function caln() {
   if [ -z $1 ]; then local months="3"; else; local months="$1"; fi
   cal -n $months
