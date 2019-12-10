@@ -6,6 +6,7 @@
   local i3wm=~/i3wm
   local ZSH=~/i3wm/zsh
   local VIM=~/i3wm/vim
+  local TMUX=~/i3wm/tmux
   local GIT=~/git
 
   test -d "$SITE" && hash -d site="$SITE"
@@ -15,6 +16,7 @@
   test -d "$i3wm" && hash -d i3wm="$i3wm"
   test -d "$ZSH" && hash -d zsh="$ZSH"
   test -d "$VIM" && hash -d vim="$VIM"
+  test -d "$TMUX" && hash -d tmux="$TMUX"
   test -d "$GIT" && hash -d git="$GIT"
 }
 
@@ -45,7 +47,8 @@ function jump() {
     fi
 
     local DIR="$1"
-    if [ $(hash -d|cut -d= -f1|grep -c "^${DIR}\$") = 0 ]; then
+    if [ $(hash -d | cut -d= -f1 | grep -c "^${DIR}\$") = 0 ]; then
+      echo "Searching for instances of $1..."
       local DIR_FD=$(fd $1)
 
       # Check that fd actually found something
