@@ -35,15 +35,12 @@ List of install profiles:
 ```
 all
     Installs configuration files for desktop and terminal
-    
+
 desktop
     Installs just configuration files for desktop
-    
+
 terminal
     Installs just configuration files for terminal
-
-minimal
-    Installs just zsh, vim, and tmux configuration files
 ```
 
 ### Secret Config

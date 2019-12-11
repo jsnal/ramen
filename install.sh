@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR="$HOME/i3wm"
-PROFILES=("all" "desktop" "terminal" "minimal")
+PROFILES=("all" "desktop" "terminal")
 PROFILE_SELECT="terminal"
 GT_USR=""
 GT_EML=""
@@ -109,12 +109,6 @@ function all() {
   desktop
   terminal
   link-file $DOTFILES_DIR/ssh/config ~/.ssh/config
-}
-
-function minimal() {
-  wget -O ~/.zshrc http://jasonlong24.crabdance.com/min/zshrc.min
-  wget -O ~/.tmux.conf http://jasonlong24.crabdance.com/min/tmux.min
-  wget -O ~/.vimrc http://jasonlong24.crabdance.com/min/vimrc.min
 }
 
 echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher"
