@@ -42,6 +42,7 @@ set autoindent
 set hlsearch
 set incsearch
 set linebreak
+set cursorline
 
 " File Settings
 set fileformat=unix

@@ -37,9 +37,6 @@ if (!vim_light)
   " Common syntax highlighting
   Plug 'https://github.com/sheerun/vim-polyglot'
 
-  " Better highlighting for matching syntax
-  Plug 'https://github.com/andymass/vim-matchup'
-
   " Easier way of visualizing indention
   Plug 'https://github.com/Yggdroot/indentLine'
 

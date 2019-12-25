@@ -11,7 +11,12 @@ if has('syntax')
   hi VertSplit        ctermfg=235  ctermbg=235
 
   " Git Gutter
-  hi GitGutterAdd     ctermfg=2    ctermbg=none
-  hi GitGutterChange  ctermfg=3    ctermbg=none
-  hi GitGutterDelete  ctermfg=1    ctermbg=none
+  hi GitGutterAdd     ctermfg=2    ctermbg=235
+  hi GitGutterChange  ctermfg=3    ctermbg=235
+  hi GitGutterDelete  ctermfg=1    ctermbg=235
+
+  " Line Number
+  hi CursorLine       ctermfg=none ctermbg=none cterm=none
+  hi LineNr           ctermfg=245  ctermbg=235
+  hi CursorLineNr     ctermfg=184  ctermbg=235  cterm=bold
 endif
