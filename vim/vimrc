@@ -24,7 +24,7 @@ Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/jsnal/vim-serape'
 
 " Easy Commenting in and out
-Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/tomtom/tcomment_vim'
 
 if (!vim_light)
 
