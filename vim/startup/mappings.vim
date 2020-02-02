@@ -15,6 +15,7 @@ noremap <C-R> :%s/
 
 " Leader
 let mapleader = ","
+noremap <Leader>c :TComment<CR>
 noremap <Leader>l :nohlsearch<CR>
 noremap <Leader>a :bprev<Return>
 noremap <Leader>s :bnext<Return>

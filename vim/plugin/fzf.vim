@@ -13,7 +13,7 @@ endfunction
 function! fzf#fzf_statusline()
   highlight fzf ctermfg=253 ctermbg=235 cterm=bold
   highlight accent ctermfg=167 ctermbg=0
-  setlocal statusline=%#fzf#\>\ fzf
+  setlocal statusline=%#fzf#\[fzf]
 endfunction
 
 nnoremap <silent> <Space><Space> :call fzf#run({
