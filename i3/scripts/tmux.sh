@@ -1,7 +1,17 @@
-tmux kill-server
-tmux att -t get ||
-tmux -2 \
-	new \; \
-	neww -n 'volume' alsamixer\; \
-  neww -n 'profile' bash ~/i3wm/i3/Scripts/window-selector.sh\; \
-	selectw -t 2\; \
+#!/bin/bash
+
+set -e
+
+SESSION="global"
+
+if tmux has-session -t=$SESSION 2> /dev/null; then
+  tmux attach -t $SESSION
+  exit 0
+fi
+
+tmux new-session -d -s $SESSION -n shell -x $(tput cols) -y $(tput lines)
+
+tmux new-window -t $SESSION -n volume 'alsamixer'
+tmux new-window -t $SESSION -n profile 'bash ~/i3wm/i3/scripts/window-selector.sh'
+
+tmux attach -t $SESSION:profile

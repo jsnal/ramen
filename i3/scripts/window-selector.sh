@@ -12,13 +12,24 @@ function out() {
 }
 
 function minimal() {
-  start st
+  exit 0
 }
 
+function getBootupStats() {
+  local boot_time=$(uptime -s)
+  local boot_services=$(rc-status default -C | sed 1d | wc -l)
+
+  echo -e "Last bootup for $(hostname)\n"
+
+  echo -e "Boot time: $boot_time"
+  echo -e "Services started: $boot_services\n"
+}
+
+getBootupStats
+
+for i in ${!profiles[@]}; do echo -e "$i -> ${profiles[$i]}"; done
 echo
-for i in ${!profiles[@]}; do echo -e "$i\t${profiles[$i]}"; done
-echo
-read -p "Select bootup profile. " bootProfile
+read -p "Select bootup profile: " bootProfile
 
 ${profiles[$bootProfile]}
 i3-msg [class="tmux"] move scratchpad
