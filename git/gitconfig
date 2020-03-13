@@ -27,14 +27,22 @@
   suba = submodule add
   subu = submodule update --recursive --remote
 
+  # Get commit number by username
+  cm-name = shortlog -s -n --all --no-merges
+
+  # Get total number of commits on current your branch
+  cm-num = !"git shortlog -s -n --all --no-merges | awk '{total = total + $1}END{print total}'"
+
+  # Get last 3 commits
+  last = log -3 --pretty=format:'%C(auto)%h %C(cyan)<%cn> %C(blue bold)%s'
+
   # Misc
   ack = grep --break --heading
   show-files = show --pretty=format:'%C(auto)%H %C(cyan)<%cn>' --name-only
   lg = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
-  cm-name = shortlog -s -n --all --no-merges
-  cm-num = !"git shortlog -s -n --all --no-merges | awk '{total = total + $1}END{print total}'"
+
 [core]
-  excludesfile = $HOME/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [color]
   ui = true
 [status]

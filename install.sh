@@ -125,6 +125,3 @@ echo -e "\nSymlinking files"
 for i in ${PROFILES[@]}; do
   if [ $i = $PROFILE_SELECT ]; then
     $PROFILE_SELECT; echo -e "\nInstall Complete! Restart your terminal."; exit 0
-  fi
-done
-echo -e "\"$PROFILE_SELECT\" is not a valid profile: ["${PROFILES[@]}"]"; exit 1
