@@ -17,7 +17,7 @@ function minimal() {
 
 function getBootupStats() {
   local boot_time=$(uptime -s)
-  local boot_services=$(rc-status default -C | sed 1d | wc -l)
+  local boot_services=$(systemctl list-unit-files | grep enabled | wc -l)
 
   echo -e "Last bootup for $(hostname)\n"
 
