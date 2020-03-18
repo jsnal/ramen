@@ -133,8 +133,9 @@ bindsym $mod+Shift+t exec --no-startup-id ~/i3wm/lemonbar/launch.sh
 
 # Execute on Startup
 exec_always feh --bg-scale ~/i3wm/backgrounds/nanogon_infinity.jpg
-exec_always python ~/i3wm/i3/scripts/altlayout.py
 exec_always --no-startup-id dunst
+exec_always --no-startup-id xmodmap ~/.Xmodmap
+exec_always --no-startup-id xbindkeys
 exec --no-startup-id st -c tmux -e bash ~/i3wm/i3/scripts/tmux.sh
 exec --no-startup-id amixer sset "Master" 0%
 
