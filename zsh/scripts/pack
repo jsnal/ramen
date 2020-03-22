@@ -1,0 +1,39 @@
+#!/bin/bash
+
+arguments=${@:2}
+
+if [ ! -f $HOME/.cache/package_manager ]; then
+  declare -A os_info
+  os_info[/etc/arch-release]=pacman
+  os_info[/etc/debian_version]=apt-get
+
+  # TODO: Implement other distro's package managers
+  # os_info[/etc/redhat-release]=yum
+  # os_info[/etc/gentoo-release]=emerge
+  # os_info[/etc/SuSE-release]=zypp
+
+  for f in ${!os_info[@]}; do
+    [ -f $f ] && package_manager=${os_info[$f]}
+  done
+
+  echo $package_manager > $HOME/.cache/package_manager
+else
+  package_manager=$(cat $HOME/.cache/package_manager)
+fi
+
+echo $package_manager
+
+# Try caching these functions so it doesn't have to redeclare the function everytime.
+case $package_manager in
+  'apt-get') ;;
+  'pacman') ;;
+  *) ;;
+esac
+
+case $1 in
+  'install') echo 'install' ;;
+  'remove') echo 'remove' ;;
+  'search') echo 'search' ;;
+  *) echo "$1 is not a valid option." ;;
+esac
+
