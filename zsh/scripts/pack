@@ -1,19 +1,29 @@
 #!/bin/bash
+#
+# Standardize basic package manager commands across multiple distros.
+
+# TODO: Find workaround for sudoers file secure path issue
+
+[ -z $1 ] && exit 1
 
 arguments=${@:2}
 
+function is_root()  {
+  [ "$EUID" -ne 0  ] && echo "Premission denied. Please run as root." && exit 1
+}
+
 if [ ! -f $HOME/.cache/package_manager ]; then
-  declare -A os_info
-  os_info[/etc/arch-release]=pacman
-  os_info[/etc/debian_version]=apt-get
+  declare -A os_type
+  os_type[/etc/arch-release]=pacman
+  os_type[/etc/debian_version]=apt
 
   # TODO: Implement other distro's package managers
-  # os_info[/etc/redhat-release]=yum
-  # os_info[/etc/gentoo-release]=emerge
-  # os_info[/etc/SuSE-release]=zypp
+  # os_type[/etc/redhat-release]=yum
+  # os_type[/etc/gentoo-release]=emerge
+  # os_type[/etc/SuSE-release]=zypp
 
-  for f in ${!os_info[@]}; do
-    [ -f $f ] && package_manager=${os_info[$f]}
+  for f in ${!os_type[@]}; do
+    [ -f $f ] && package_manager=${os_type[$f]}
   done
 
   echo $package_manager > $HOME/.cache/package_manager
@@ -21,19 +31,33 @@ else
   package_manager=$(cat $HOME/.cache/package_manager)
 fi
 
-echo $package_manager
-
-# Try caching these functions so it doesn't have to redeclare the function everytime.
+# TODO: Try caching these functions so it doesn't have to redeclare the function everytime.
 case $package_manager in
-  'apt-get') ;;
-  'pacman') ;;
-  *) ;;
+  'apt-get')
+    install() { is_root ; command apt install $arguments; }
+    update() { is_root ; command apt update; }
+    upgrade() { is_root ; command apt upgrade; }
+    remove() { is_root ; command apt remove $arguments; }
+    search() { command apt search $arguments; }
+    ;;
+  'pacman')
+    install() { is_root ; command pacman -S $arguments; }
+    update() { is_root ; command pacman -Sy; }
+    upgrade() { is_root ; command pacman -Syu; }
+    remove() { is_root ; command pacman -Rs $arguments; }
+    search() { command pacman -Ss $arguments; }
+    ;;
+  *)
+    echo "Error when picking the package manager" && exit 1 ;;
 esac
 
 case $1 in
-  'install') echo 'install' ;;
-  'remove') echo 'remove' ;;
-  'search') echo 'search' ;;
-  *) echo "$1 is not a valid option." ;;
+  'install') install ;;
+  'update')  update  ;;
+  'upgrade') upgrade ;;
+  'remove')  remove  ;;
+  'search')  search  ;;
+  *)
+    command $package_manager $1 ;;
 esac
 
