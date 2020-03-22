@@ -1,10 +1,3 @@
-# Short Pacman
-alias pacup='sudo pacman -Sy && sudo abs && sudo aur'
-alias pacls='pacman -Qi'
-alias yaup='yay -Sy && sudo abs && sudo aur'
-alias yals='yay -Qi'
-alias yamir='yay -Syy'
-
 # Short tmux
 alias tmuxn='tmux -2 new -s "$@"'
 alias tmuxk='tmux kill-session -t "$@"'
@@ -35,3 +28,9 @@ alias crontab_all="crontab -l | grep -v '^#' | cut -f 6- -d ' ' | while read CMD
 alias paste_search='wget -qO- jasonlong.xyz/paste/posts.list | sed 1,5d | grep -i "$@"'
 alias test_color="printf '\e[48;5;%dm ' {0..255}; printf '\e[0m \n'"
 alias config_version="git --git-dir ~/i3wm/.git rev-parse HEAD"
+
+# Exceptions to auto-correction
+alias man='nocorrect man'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias sudo='nocorrect sudo'
