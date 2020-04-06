@@ -19,13 +19,13 @@ endfunction
 " Change the color of the statusline based on the current mode of the buffer
 function! statusline#update_mode_color() abort
   if (mode() =~# '\v(n|no)')
-    exe 'hi! ModeColor ctermfg=248'
+    exe 'hi! ModeColor ctermbg=243 ctermfg=15'
   elseif (mode() =~# '\v(v|V)' || get(g:currentmode, mode(), 'v·block') ==# 'v·block')
-    exe 'hi! ModeColor ctermfg=6'
+    exe 'hi! ModeColor ctermbg=32 ctermfg=15'
   elseif (mode() ==# 'i')
-    exe 'hi! ModeColor ctermfg=2'
+    exe 'hi! ModeColor ctermbg=2 ctermfg=15'
   else
-    exe 'hi! ModeColor ctermfg=5'
+    exe 'hi! ModeColor ctermbg=5'
   endif
 
   return ''
@@ -38,9 +38,8 @@ function! statusline#focus() abort
   endif
 
   setlocal statusline=%{statusline#update_mode_color()}
-  setlocal statusline+=%#ModeBracketColor#[
-  setlocal statusline+=%#ModeColor#%{statusline#mode_current()}
-  setlocal statusline+=%#ModeBracketColor#]
+  setlocal statusline+=%#ModeColor#
+  setlocal statusline+=\ %{statusline#mode_current()}\ "
   setlocal statusline+=%#FileHeader#
   setlocal statusline+=\ %{statusline#get_file_header()}
   setlocal statusline+=%#FileTail#
@@ -58,7 +57,10 @@ function! statusline#blur() abort
     return
   endif
 
-  setlocal statusline=\ %{statusline#get_file_header()}
+  setlocal statusline=%#ModeBlurColor#
+  setlocal statusline+=\ %{'normal'}\ "
+  setlocal statusline+=%#FileHeader#
+  setlocal statusline+=\ %{statusline#get_file_header()}
   setlocal statusline+=%t
   setlocal statusline+=%=\ %y\ (%L)
 endfunction

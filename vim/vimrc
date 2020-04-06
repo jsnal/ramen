@@ -28,9 +28,6 @@ Plug 'https://github.com/tomtom/tcomment_vim'
 
 if (!vim_light)
 
-  " Git Notifications in Number Buffer
-  Plug 'https://github.com/airblade/vim-gitgutter'
-
   " Change working dir to project root
   Plug 'https://github.com/airblade/vim-rooter'
 
@@ -51,7 +48,7 @@ if (!vim_light)
 
 endif
 
-" Plugin Total: 14
+" Plugin Total: 13
 call plug#end()
 
 " Source all files in startup

@@ -8,3 +8,9 @@ function! StatuslineGit()
   let l:branchname = GitBranch()
   return strlen(l:branchname) > 0?' ['.l:branchname.']':''
 endfunction
+
+function! GitDiff()
+  silent write
+  silent execute '!git diff --color=always -- ' . expand('%:p') . ' | less --RAW-CONTROL-CHARS'
+  redraw!
+endfunction
