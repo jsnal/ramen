@@ -54,23 +54,6 @@ function net() {
   fi
 }
 
-# Bundle and encrypt a directory with a gpg recipient.
-function ebackup() {
-  if [ $1 = "-h" ]; then echo 'ebackup [DIR] [RECIPIENT]' && return 0; fi
-  if [ ! -d $1 ]; then echo $1 'is not a directory.' && return 1; fi
-  echo 'Encrypting' $1
-  local date=$(date +%D | sed 's/\//-/g')
-  tar -cz $1 | gpg --recipient $2 -e -o $1\-$date.tgz.gpg
-}
-
-# Uncompress and decrypt a directory for a gpg recipient.
-function dbackup() {
-  if [ $1 = "-h" ]; then echo 'dbackup [FILE]' && return 0; fi
-  if [ ! -f $1 ]; then echo $1 'is not a file.' && return 1; fi
-  echo 'Decrypting' $1 '.tgz.gpg'
-  gpg -d $1 | tar xz
-}
-
 # Send and create a new paste at jasonlong24.crabdance.com/paste
 function paste-send() {
   local SEND_OUTPUT_HOST="jasonlong24.crabdance.com"
@@ -105,11 +88,6 @@ function vim-dump() {
     -c 'profdel func *' \
     -c 'profdel file *' \
     -c 'qa!'
-}
-
-function caln() {
-  if [ -z $1 ]; then local months="3"; else; local months="$1"; fi
-  cal -n $months
 }
 
 # Simple coutdown timer.
