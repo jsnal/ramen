@@ -23,11 +23,13 @@ noremap <Leader>d :bd<Return>
 noremap <Leader>f :b
 
 " Git Mappings
-noremap <Leader>gg :call functions#choosebuffer('gitpad')<CR>
-noremap <Leader>gdf :call git#scratch('git diff '. expand('%:p'))<CR>
-noremap <Leader>gd :call git#scratch('git diff')<CR>
-noremap <Leader>gs :call git#scratch('git status')<CR>
-noremap <Leader>gl :call git#scratch('git log -50')<CR>
+noremap <Leader>gg :call buffer#switch('scratchpad')<CR>
+noremap <Leader>gf :call buffer#scratchpad('git diff '. expand('%:p'))<CR>
+noremap <Leader>gd :call buffer#scratchpad('git diff')<CR>
+noremap <Leader>gs :call buffer#scratchpad('git status')<CR>
+
+" TODO: Fix the error thrown when trying to switch from a git log buffer
+noremap <Leader>gl :call buffer#scratchpad('git log -50')<CR>
 
 " Function Mappings
 noremap <silent> <F2> :NERDTreeToggle<CR>

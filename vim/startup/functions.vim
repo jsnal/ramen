@@ -19,6 +19,7 @@ function! functions#plaintext() abort
 endfunction
 
 " Opens file with predefined files
+" TODO: Refactor or just remove this function
 function! functions#openwithbuffer(path) abort
   for f in split(glob(a:path), '\n')
     exe 'badd' f
@@ -27,19 +28,4 @@ function! functions#openwithbuffer(path) abort
   filetype detect
 endfunction
 
-" Attempt to switch to an open buffer or open
-" that buffer in a horizontal split.
-function! functions#choosebuffer(buffername)
-  let buf_exist = bufexists(str2nr(a:buffername))
-  let buf_open = bufwinnr(a:buffername)
-
-  if buf_exist > 0
-    if buf_open > 0
-    execute 'sbuffer ' . a:buffername
-    else
-      silent execute 'split ' . a:buffername
-    endif
-  else
-    echo a:buffername . ' is not existent'
-  endif
-endfunction
+" vimgrep /\<TODO\>/j vim/** | :cope
