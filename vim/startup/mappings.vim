@@ -22,12 +22,19 @@ noremap <Leader>s :bnext<Return>
 noremap <Leader>d :bd<Return>
 noremap <Leader>f :b
 
-" Function Keys
+" Git Mappings
+noremap <Leader>gdf :call git#scratch('git diff '. expand('%:p'))<CR>
+noremap <Leader>gd :call git#scratch('git diff')<CR>
+noremap <Leader>gb :call git#scratch('git blame '. expand('%:p'))<CR>
+noremap <Leader>gs :call git#scratch('git status')<CR>
+noremap <Leader>gl :call git#scratch('git log -50')<CR>
+
+" Function Mappings
 noremap <silent> <F2> :NERDTreeToggle<CR>
 noremap <F4> :setlocal foldmethod=marker<CR>
 noremap <F6> mzgg=G`z`<CR>
 
-" FZF Bindings
+" FZF Mappings
 noremap <C-f> :Files<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',

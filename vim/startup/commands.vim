@@ -5,10 +5,8 @@ command! Wa :wa
 command! Qa :qa
 command! Wqa :wqa
 command! WW :w !sudo dd of=%
-command! GitDiff call GitDiff()<cr>
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'down': '~20%'}, <bang>0)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'left': '~20%', 'options': ['--preview', '']}, <bang>0)
 
 cabbrev fzf FZF
 cabbrev help vert help
-cabbrev gitdiff GitDiff
