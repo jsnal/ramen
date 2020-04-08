@@ -10,13 +10,23 @@ function! git#statusline()
 endfunction
 
 " Create a scratchpad with a given command
-" TODO: Make this smarter by killing it if you are already in the buffer
+" TODO: Make this a universal function. Not just for git filetypes.
 function! git#scratch(command)
-  " Get the output of the given command and setup the buffer
+  let buffername = 'gitpad'
+  let bnr = bufwinnr(buffername)
+
+  if bnr > 0
+    " Switch to the already opened buffer
+    execute 'sbuffer ' . buffername
+  else
+    " Setup the new buffer
+    execute 'new ' . buffername
+    noswapfile
+    setlocal buftype=nofile filetype=git
+  endif
+
+  " Get the output of the given command
   let output = system(a:command)
-  new [scratchpad]
-  noswapfile
-  setlocal buftype=nofile bufhidden=hide filetype=git
 
   " Clear out anything already in the buffer
   normal! ggdG

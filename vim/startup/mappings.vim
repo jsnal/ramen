@@ -23,9 +23,9 @@ noremap <Leader>d :bd<Return>
 noremap <Leader>f :b
 
 " Git Mappings
+noremap <Leader>gg :call functions#choosebuffer('gitpad')<CR>
 noremap <Leader>gdf :call git#scratch('git diff '. expand('%:p'))<CR>
 noremap <Leader>gd :call git#scratch('git diff')<CR>
-noremap <Leader>gb :call git#scratch('git blame '. expand('%:p'))<CR>
 noremap <Leader>gs :call git#scratch('git status')<CR>
 noremap <Leader>gl :call git#scratch('git log -50')<CR>
 

@@ -29,6 +29,7 @@ set ignorecase smartcase
 set hidden
 set updatetime=200
 set noshowmode
+set switchbuf=useopen
 
 " Numbering and Indent
 set number
