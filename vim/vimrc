@@ -5,13 +5,8 @@ if ! filereadable(expand('~/.vim/autoload/plug.vim'))
   silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.vim/autoload/plug.vim
 endif
 
-" Grab the configuration for COC
-" TODO: Change this variable name in zsh
-let vim_complete=system("source ~/.zshrc && echo $_i3wm[vim_coc]")
-
-" Removes some big things to make vim faster
-" TODO: Change this variable name in zsh
-let vim_light=0
+" Grab some environment variables from zsh
+let vim_lite=system("source ~/.zshrc && echo $_i3wm[vim_lite]")
 
 call plug#begin('~/.vim/plugged')
 
@@ -28,14 +23,7 @@ Plug 'https://github.com/jsnal/vim-serape'
 " Easy Commenting in and out
 Plug 'https://github.com/tomtom/tcomment_vim'
 
-if (!vim_light)
-
-  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-  Plug 'https://github.com/lifepillar/vim-mucomplete'
-
-  " Change working dir to project root
-  Plug 'https://github.com/airblade/vim-rooter'
-
+if (!vim_lite)
   " Common syntax highlighting
   Plug 'https://github.com/sheerun/vim-polyglot'
 
@@ -45,13 +33,17 @@ if (!vim_light)
   " File Tree
   Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-  " Autocomplete Engine
-  if vim_complete =~ 'true'
-  endif
+  " Autocompletion that calls the LanguageClient
+  Plug 'https://github.com/lifepillar/vim-mucomplete'
 
+  " Language Server Protocol support for vim
+  Plug 'https://github.com/autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh'
+        \ }
 endif
 
-" Plugin Total: 13
+" Plugin Total: 11
 call plug#end()
 
 " Source all files in startup

@@ -21,7 +21,7 @@ set backspace=indent,eol,start
 set path+=**
 set wildmenu
 set wildmode=longest,list,full
-set shortmess=a
+set shortmess=c
 set cmdheight=2
 set showmode
 set splitbelow splitright
@@ -30,6 +30,7 @@ set hidden
 set updatetime=200
 set noshowmode
 set switchbuf=useopen
+set belloff=ctrlg
 
 " Numbering and Indent
 set number
@@ -62,6 +63,10 @@ set nowritebackup
 set list
 set listchars=trail:.
 set showbreak=\\
+
+" Completion
+set complete=.,w,b,u,k
+set completeopt=menuone,noselect
 
 " Presistent Undo
 if has('persistent_undo')
