@@ -28,12 +28,13 @@ autocmd! User FzfStatusLine call fzf#fzf_statusline()
 autocmd InsertEnter * :let @/=""
 
 " Enable coc.nvim when CursorHold is enabled, 500 Milliseconds
-if vim_coc =~ 'true'
-  augroup load_coc
-    autocmd!
-    autocmd CursorHold * call plug#load('coc.nvim') | autocmd! load_coc
-  augroup END
-endif
+" TODO: Switch this over to LSP
+" if vim_coc =~ 'true'
+"   augroup load_coc
+"     autocmd!
+"     autocmd CursorHold * call plug#load('coc.nvim') | autocmd! load_coc
+"   augroup END
+" endif
 
 " Set tabs to 4 spaces in python
 autocmd Filetype *      set tabstop=2 shiftwidth=2 softtabstop=2 expandtab

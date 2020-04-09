@@ -28,4 +28,5 @@ function! functions#openwithbuffer(path) abort
   filetype detect
 endfunction
 
+" TODO: Put this into a full fledged function
 " vimgrep /\<TODO\>/j vim/** | :cope

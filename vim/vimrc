@@ -6,9 +6,11 @@ if ! filereadable(expand('~/.vim/autoload/plug.vim'))
 endif
 
 " Grab the configuration for COC
-let vim_coc=system("source ~/.zshrc && echo $_i3wm[vim_coc]")
+" TODO: Change this variable name in zsh
+let vim_complete=system("source ~/.zshrc && echo $_i3wm[vim_coc]")
 
 " Removes some big things to make vim faster
+" TODO: Change this variable name in zsh
 let vim_light=0
 
 call plug#begin('~/.vim/plugged')
@@ -28,6 +30,9 @@ Plug 'https://github.com/tomtom/tcomment_vim'
 
 if (!vim_light)
 
+  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+  Plug 'https://github.com/lifepillar/vim-mucomplete'
+
   " Change working dir to project root
   Plug 'https://github.com/airblade/vim-rooter'
 
@@ -41,9 +46,7 @@ if (!vim_light)
   Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
   " Autocomplete Engine
-  if vim_coc =~ 'true'
-    Plug 'https://github.com/neoclide/coc.nvim', { 'branch': 'release', 'on': [] }
-    Plug 'https://github.com/neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+  if vim_complete =~ 'true'
   endif
 
 endif

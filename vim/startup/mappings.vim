@@ -1,4 +1,4 @@
-noremap <TAB><TAB> :source %<CR>
+" noremap <TAB><TAB> :source %<CR>
 
 " Movement
 noremap H ^
