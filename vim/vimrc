@@ -14,6 +14,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/junegunn/fzf.vim'
 Plug 'https://github.com/junegunn/fzf'
 
+" Change working dir to project root
+" TODO: Look into making a builtin function for this
+Plug 'https://github.com/airblade/vim-rooter'
+
 " Automatically insert common characters
 Plug 'https://github.com/jiangmiao/auto-pairs'
 
@@ -43,16 +47,16 @@ if (!vim_lite)
         \ }
 endif
 
-" Plugin Total: 11
+" Plugin Total: 12
 call plug#end()
 
 " Source all files in startup
 filetype plugin on
 if isdirectory($HOME . "/i3wm")
   for f in split(glob('~/i3wm/vim/startup/*.vim'), '\n')
-    exe 'source' f
+    execute 'source' f
   endfor
 
   " Source highlight settings last
-  exe 'source ~/i3wm/vim/startup/highlight.vim'
+  source ~/i3wm/vim/startup/highlight.vim
 endif

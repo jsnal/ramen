@@ -43,3 +43,12 @@ function! buffer#scratchpad(command)
   normal! gg
   filetype detect
 endfunction
+
+" Opens file with predefined files
+function! buffer#listopen(path)
+  for f in split(glob(a:path), '\n')
+    execute 'badd' f
+  endfor
+
+  filetype detect
+endfunction

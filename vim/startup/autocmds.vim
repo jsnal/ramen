@@ -5,12 +5,6 @@ autocmd BufWinEnter *.* call fold#loadview()
 " Markdown, txt, LaTeX
 autocmd BufReadPost,BufNewFile *.md,*.tex call functions#plaintext()
 
-" load buffer with possible vim/zsh files to edit
-if isdirectory($HOME . "/i3wm")
-  autocmd BufReadPost,BufNewFile *.zshrc,zshrc call functions#openwithbuffer("~/i3wm/zsh/*.zsh")
-  autocmd BufReadPost,BufNewFile *.vimrc,vimrc call functions#openwithbuffer("~/i3wm/vim/startup/*.vim")
-endif
-
 " delete whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
