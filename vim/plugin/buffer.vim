@@ -26,7 +26,7 @@ function! buffer#scratchpad(command)
     " Setup the new buffer
     execute 'new ' . buffername
     noswapfile
-    setlocal buftype=nofile
+    setlocal buftype=nofile nowrap
   endif
 
   " Get the output of the given command

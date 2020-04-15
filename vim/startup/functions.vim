@@ -17,6 +17,3 @@ function! functions#plaintext() abort
 
   call functions#spell()
 endfunction
-
-" TODO: Put this into a full fledged function
-" vimgrep /\<TODO\>/j vim/** | :cope

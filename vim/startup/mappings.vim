@@ -1,5 +1,3 @@
-" noremap <TAB><TAB> :source %<CR>
-
 " Movement
 noremap H ^
 noremap L g_
@@ -21,6 +19,7 @@ noremap <Leader>a :bprev<Return>
 noremap <Leader>s :bnext<Return>
 noremap <Leader>d :bd<Return>
 noremap <Leader>f :b
+noremap <Leader>rl :source %<CR>
 
 " Git Mappings
 noremap <Leader>gg :call buffer#switch('scratchpad')<CR>
