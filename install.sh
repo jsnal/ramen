@@ -1,12 +1,29 @@
 #!/usr/bin/env bash
 
+# Globals
 DOTFILES_DIR="$HOME/i3wm"
 PROFILES=("all" "desktop" "terminal")
 PROFILE_SELECT="terminal"
 GT_USR=""
 GT_EML=""
 VERINST=false
-STINST=false
+DESKTOP_LIST=(
+  "$DOTFILES_DIR/i3/config:$HOME/.config/i3/config"         \
+  "$DOTFILES_DIR/dunst/dunstrc:$HOME/.config/dunst/dunstrc" \
+  "$DOTFILES_DIR/X/xresources:$HOME/.Xresources"            \
+  "$DOTFILES_DIR/X/xinitrc:$HOME/.xinitrc"                  \
+  "$DOTFILES_DIR/X/xbindkeysrc:$HOME/.xbindkeysrc"          \
+  "$DOTFILES_DIR/X/xmodmap:$HOME/.Xmodmap"                  \
+)
+TERMINAL_LIST=(
+  "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                \
+  "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"       \
+  "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"        \
+  "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global" \
+  "$DOTFILES_DIR/vim/vimrc:$HOME/.vimrc"                \
+  "$DOTFILES_DIR/vim/plugin/*:$HOME/.vim/plugin"        \
+  "$DOTFILES_DIR/vim/spell/*:$HOME/.vim/spell"          \
+)
 
 # ANSI Escape Codes
 BOLD="\033[1m"
@@ -22,8 +39,6 @@ do
       PROFILE_SELECT=$2; shift ;;
     -v|--verify-install)
       VERINST=true; shift ;;
-    -st|--simple-terminal)
-      STINST=true; shift ;;
     --git-user)
       GT_USR=$2; shift ;;
     --git-email)
@@ -38,18 +53,20 @@ function link-file() {
   ln -sfv $1 $2 | sed "s/'//g"
 }
 
+function link-file-list() {
+  local file_list=$1[@]
+  local file_list=("${!file_list}")
+
+  for file in "${file_list[@]}"; do
+    local source="${file%%:*}"
+    local destination="${file##*:}"
+
+    link-file "$source" "$destination"
+  done
+}
+
 function verify-install() {
   echo "Verifying Install"
-  file=(
-  $DOTFILES_DIR/vim/vimrc \
-  $DOTFILES_DIR/zsh/zshrc \
-  $DOTFILES_DIR/X/xbindkeysrc \
-  $DOTFILES_DIR/X/xmodmap \
-  $DOTFILES_DIR/X/xinitrc \
-  $DOTFILES_DIR/tmux/tmux.conf \
-  $DOTFILES_DIR/git/gitconfig \
-  $DOTFILES_DIR/i3/config \
-  )
   for i in ${file[@]}; do
     if [ -f "$i" ]; then
       echo "-> $i Found"
@@ -62,45 +79,27 @@ function verify-install() {
   exit 0
 }
 
-function install-st() {
-  git submodule update --init --recursive
-  echo -e '------------------------------------------------------------'
-  echo -e 'Please Install: libx11-dev libxft-dev libxext-dev fontconfig'
-  echo -e '------------------------------------------------------------'
-  cd $HOME/i3wm/st && sudo make install
-  exit 0
-}
-
-[[ $STINST = true ]]  && install-st
 [[ $VERINST = true ]] && verify-install
 
 function desktop() {
   mkdir -p ~/.config/i3
   mkdir -p ~/.config/dunst
 
-  link-file $DOTFILES_DIR/i3/config ~/.config/i3/config
-  link-file $DOTFILES_DIR/dunst/dunstrc ~/.config/dunst/dunstrc
-  link-file $DOTFILES_DIR/X/xresources ~/.Xresources
-  link-file $DOTFILES_DIR/X/xinitrc ~/.xinitrc
-  link-file $DOTFILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
-  link-file $DOTFILES_DIR/X/xmodmap ~/.Xmodmap
+  link-file-list 'DESKTOP_LIST'
 }
 
 function terminal() {
-  link-file $DOTFILES_DIR/zsh/zshrc ~/.zshrc
+
+  link-file-list 'TERMINAL_LIST'
+
+  # Install fzf
   source $DOTFILES_DIR/zsh/plugins/fzf/install
-  link-file $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
-  link-file $DOTFILES_DIR/git/gitconfig ~/.gitconfig
-  link-file $DOTFILES_DIR/git/gitignore ~/.gitignore_global
 
   # Make vim directories
   mkdir -p ~/.vim/plugin
   mkdir -p ~/.vim/spell
-  # Link vim files
-  link-file $DOTFILES_DIR/vim/vimrc ~/.vimrc
-  ln -sfv $DOTFILES_DIR/vim/plugin/* ~/.vim/plugin/ | sed "s/'//g"
-  ln -sfv $DOTFILES_DIR/vim/spell/*  ~/.vim/spell/  | sed "s/'//g"
 
+  # Override gitconfig
   [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
   [ ! -z $GT_EML ] && git config --global user.email "$GT_EML"
 }
@@ -108,7 +107,6 @@ function terminal() {
 function all() {
   desktop
   terminal
-  link-file $DOTFILES_DIR/ssh/config ~/.ssh/config
 }
 
 echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher"

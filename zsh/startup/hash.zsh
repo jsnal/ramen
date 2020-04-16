@@ -3,6 +3,7 @@
   local SITE=/var/www/html
   local PASTE=~/git/paste-light
   local SERAPE=~/.vim/plugged/vim-serape
+  local CHORE=~/.vim/plugged/vim-chore
   local i3wm=~/i3wm
   local ZSH=~/i3wm/zsh
   local VIM=~/i3wm/vim
@@ -12,6 +13,7 @@
   test -d "$SITE" && hash -d site="$SITE"
   test -d "$PASTE" && hash -d paste="$PASTE"
   test -d "$SERAPE" && hash -d serape="$SERAPE"
+  test -d "$CHORE" && hash -d chore="$CHORE"
   test -d "$i3wm" && hash -d i3="$i3wm"
   test -d "$i3wm" && hash -d i3wm="$i3wm"
   test -d "$ZSH" && hash -d zsh="$ZSH"
