@@ -22,6 +22,7 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/vim/vimrc:$HOME/.vimrc"                \
   "$DOTFILES_DIR/vim/plugin:$HOME/.vim/plugin"          \
   "$DOTFILES_DIR/vim/spell:$HOME/.vim/spell"            \
+  "$DOTFILES_DIR/vim/ultisnips:$HOME/.vim/ultisnips"    \
 )
 
 # ANSI Escape Codes
@@ -95,14 +96,15 @@ function desktop() {
 # Install all the files for the terminal environment.
 function terminal() {
 
+  # Make vim directories
+  mkdir -p $HOME/.vim/plugin
+  mkdir -p $HOME/.vim/spell
+  mkdir -p $HOME/.vim/ultisnips
+
   link-file-list 'TERMINAL_LIST'
 
   # Install fzf
   source $DOTFILES_DIR/zsh/plugins/fzf/install
-
-  # Make vim directories
-  mkdir -p $HOME/.vim/plugin
-  mkdir -p $HOME/.vim/spell
 
   # Override gitconfig
   [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
