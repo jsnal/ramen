@@ -1,12 +1,22 @@
 " Be sure vim-plug is installed.
-if ! filereadable(expand('~/.vim/autoload/plug.vim'))
-  echo "Installing vim-plug"
-  silent !mkdir -p ~/.vim/autoload/
-  silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.vim/autoload/plug.vim
+if !filereadable(expand('~/.vim/autoload/plug.vim'))
+  echo 'Installing vim-plug'
+  call system('mkdir -p ~/.vim/autoload/')
+  let s:plug_source = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  let s:plug_destination = '~/.vim/autoload/plug.vim'
+
+  if !executable('curl')
+    call system('curl "' . s:plug_source. '" > ' . s:plug_destination)
+  elseif executable('wget')
+    call system('wget -O ' . s:plug_destination. ' "' . s:plug_source . '"')
+  else
+    echo 'Unable to install vim-plug. Please install curl or wget.'
+    echo 'Exiting...' | exit
+  endif
 endif
 
 " Grab some environment variables from zsh
-let vim_lite=system("source ~/.zshrc && echo $_i3wm[vim_lite]")
+let s:vim_lite = system('source ~/.zshrc && echo $_i3wm[vim_lite]')
 
 call plug#begin('~/.vim/plugged')
 
@@ -30,7 +40,7 @@ Plug 'https://github.com/jsnal/vim-chore'
 " Easy Commenting in and out
 Plug 'https://github.com/tomtom/tcomment_vim'
 
-if (!vim_lite)
+if (!s:vim_lite)
   " Common syntax highlighting
   " TODO: See if there is a way to remove funky markdown syntax
   Plug 'https://github.com/sheerun/vim-polyglot'
@@ -54,13 +64,13 @@ if (!vim_lite)
         \ }
 endif
 
-" Plugin Total: 12
+" Plugin Total: 13
 call plug#end()
 
 " Source all files in startup
 filetype plugin on
-if isdirectory($HOME . "/i3wm")
-  for f in split(glob('~/i3wm/vim/startup/*.vim'), '\n')
+if isdirectory($HOME . '/i3wm')
+  for f in split(glob($HOME. '/i3wm/vim/startup/*.vim'), '\n')
     execute 'source' f
   endfor
 

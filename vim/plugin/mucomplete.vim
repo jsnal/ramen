@@ -1,7 +1,7 @@
 let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#chains = {
       \ 'default'  : ['ulti', 'path', 'omni', 'keyn', 'dict', 'uspl'],
-      \ 'vim'      : ['ulti', 'path', 'omni', 'keyn', 'dict', 'uspl'],
+      \ 'vim'      : ['path', 'ulti', 'cmd', 'keyn'],
       \ 'markdown' : ['keyn', 'ulti', 'dict', 'uspl', 'path'],
       \ 'gitcommit': ['keyn', 'dict', 'uspl', 'path'],
       \ }
