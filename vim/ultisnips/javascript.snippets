@@ -1,0 +1,41 @@
+snippet fun "function (vanilla)"
+function ${1:function_name}(${2:argument}) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet funa "function (arrow)"
+${1:function_name} = (${2:argument}) => {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet funv "function (variable)"
+${1:var }${2:function_name} = function $2(${3:argument}) {
+  ${VISUAL}$0
+};
+endsnippet
+
+snippet if "if (condition) { ... }"
+if (${1:true}) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if (condition) { ... } else { ... }"
+if (${1:true}) {
+  ${2}
+} else {
+  ${3}
+}
+endsnippet
+
+snippet switch
+switch(${VISUAL}${1:expression}) {
+  case '${VISUAL}${2:case}':
+    ${3}
+    break;
+  default:
+    ${5}
+}
+endsnippet

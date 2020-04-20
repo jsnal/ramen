@@ -30,6 +30,7 @@ alias test_color="printf '\e[48;5;%dm ' {0..255}; printf '\e[0m \n'"
 alias config_version="git --git-dir ~/i3wm/.git rev-parse HEAD"
 
 # Exceptions to auto-correction
+# TODO: Add docker and jump
 alias man='nocorrect man'
 alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'

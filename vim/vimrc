@@ -32,6 +32,7 @@ Plug 'https://github.com/tomtom/tcomment_vim'
 
 if (!vim_lite)
   " Common syntax highlighting
+  " TODO: See if there is a way to remove funky markdown syntax
   Plug 'https://github.com/sheerun/vim-polyglot'
 
   " Easier way of visualizing indention
@@ -39,6 +40,9 @@ if (!vim_lite)
 
   " File Tree
   Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+  " Snippet Engine
+  Plug 'https://github.com/sirver/UltiSnips'
 
   " Autocompletion that calls the LanguageClient
   Plug 'https://github.com/lifepillar/vim-mucomplete'

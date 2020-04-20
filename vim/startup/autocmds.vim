@@ -3,7 +3,7 @@ autocmd BufWinLeave *.* call fold#mkview()
 autocmd BufWinEnter *.* call fold#loadview()
 
 " Markdown, txt, LaTeX
-autocmd BufReadPost,BufNewFile *.md,*.tex call functions#plaintext()
+autocmd BufReadPost,BufNewFile markdown,plaintex call functions#plaintext()
 
 " delete whitespace on save
 autocmd BufWritePre * %s/\s\+$//e

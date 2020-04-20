@@ -15,5 +15,6 @@ function! functions#plaintext() abort
   setlocal wrap
   setlocal wrapmargin=0
 
+  " TODO: Figure out why this is not sourcing properly into markdown files
   call functions#spell()
 endfunction
