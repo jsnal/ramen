@@ -19,7 +19,7 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"       \
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"        \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global" \
-  "$DOTFILES_DIR/vim/vimrc:$HOME/.vimrc"                \
+  "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"            \
   "$DOTFILES_DIR/vim/plugin:$HOME/.vim/plugin"          \
   "$DOTFILES_DIR/vim/spell:$HOME/.vim/spell"            \
   "$DOTFILES_DIR/vim/ultisnips:$HOME/.vim/ultisnips"    \
@@ -32,8 +32,21 @@ GREEN="\033[32m"
 RED="\033[31m"
 ENDL="\033[0m"
 
+# Usage information
+function usage() {
+  echo './install.sh [OPTIONS]'
+  echo -e '\nOptions:'
+  echo -e '  -p, --profile [PROFILE] \tChange the install profile. Default terminal'
+  echo -e '  --git-user [USER]       \tSet the git username in ~/.gitconfig'
+  echo -e '  --git-email [EMAIL]     \tSet the git email in ~/.gitconfig'
+  echo -e '\nProfiles:'
+  echo -e '  all      \tInstalls configuration files for desktop and terminal'
+  echo -e '  desktop  \tInstalls just configuration files for desktop'
+  echo -e '  terminal \tInstalls just configuration files for terminal'
+  exit
+}
+
 # Parse command line arguments
-# TODO: Add a help command and command line argument.
 POSITIONAL=()
 while [[ $# -gt 0 ]]; do
   key="$1"
@@ -41,6 +54,7 @@ while [[ $# -gt 0 ]]; do
     -p|--profile)     PROFILE_SELECT=$2; shift ;;
     -gu|--git-user)   GT_USR=$2;         shift ;;
     -ge|--git-email)  GT_EML=$2;         shift ;;
+    -h|--help)        usage;             shift ;;
     *)
       POSITIONAL+=("$1"); shift ;;
   esac
