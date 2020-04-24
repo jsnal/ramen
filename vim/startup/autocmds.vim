@@ -6,7 +6,7 @@ autocmd BufWinEnter *.* call fold#loadview()
 autocmd BufReadPost,BufNewFile markdown,plaintex call functions#plaintext()
 
 " delete whitespace on save
-let s:whitespace_ignore = ['gitconfig', 'diff']
+let s:whitespace_ignore = ['gitcommit', 'diff']
 autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
 
 " remove new line auto comment
