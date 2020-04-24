@@ -38,7 +38,7 @@ Plug 'https://github.com/jsnal/vim-serape'
 Plug 'https://github.com/jsnal/vim-chore'
 
 " Easy Commenting in and out
-Plug 'https://github.com/tomtom/tcomment_vim'
+Plug 'https://github.com/tomtom/tcomment_vim', { 'on': 'TComment' }
 
 if (!s:vim_lite)
   " Common syntax highlighting
@@ -52,7 +52,7 @@ if (!s:vim_lite)
   Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
   " Snippet Engine
-  Plug 'https://github.com/sirver/UltiSnips'
+  Plug 'https://github.com/sirver/UltiSnips', { 'on': [] }
 
   " Autocompletion that calls the LanguageClient
   Plug 'https://github.com/lifepillar/vim-mucomplete'
@@ -60,7 +60,8 @@ if (!s:vim_lite)
   " Language Server Protocol support for vim
   Plug 'https://github.com/autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
-        \ 'do': 'bash install.sh'
+        \ 'do': 'bash install.sh',
+        \ 'on': []
         \ }
 endif
 
@@ -70,7 +71,7 @@ call plug#end()
 " Source all files in startup
 filetype plugin on
 if isdirectory($HOME . '/i3wm')
-  for f in split(glob($HOME. '/i3wm/vim/startup/*.vim'), '\n')
+  for f in split(glob($HOME . '/i3wm/vim/startup/*.vim'), '\n')
     execute 'source' f
   endfor
 
