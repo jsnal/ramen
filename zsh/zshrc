@@ -8,16 +8,20 @@ _i3wm[vim_lite]='false'
 include() { [[ -f "$1" ]] && source "$1" }
 
 # Config Files
-() {
-  local zsh_source_files=$(find ~/i3wm/zsh/startup/*.zsh -maxdepth 1 -type f ! -iname "binds.zsh" ! -iname "secret.zsh")
+function () {
+  local zsh_source_files=$(find ~/i3wm/zsh/startup/*.zsh -maxdepth 1 -type f ! -iname "binds.zsh")
   for (( i=1;i<=$(echo "$zsh_source_files" | wc -l);i++ )); do
     include $(echo "$zsh_source_files" | awk NR==$i)
   done
-  include ~/i3wm/zsh/startup/secret.zsh 2>/dev/null
   include ~/i3wm/zsh/startup/binds.zsh 2>/dev/null
 }
+
+# Local overrides
+LOCAL_RC=$HOME/.zshrc.local
+test -f $LOCAL_RC && source $LOCAL_RC
 
 # Plugins
 include $_i3wm[config_files]/plugins/zsh-autopair/autopair.plugin.zsh
 include $_i3wm[config_files]/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# TODO: Look into custom zsh install
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

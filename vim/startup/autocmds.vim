@@ -1,4 +1,4 @@
-" " Folds
+" Folds
 autocmd BufWinLeave *.* call fold#mkview()
 autocmd BufWinEnter *.* call fold#loadview()
 
@@ -6,7 +6,8 @@ autocmd BufWinEnter *.* call fold#loadview()
 autocmd BufReadPost,BufNewFile markdown,plaintex call functions#plaintext()
 
 " delete whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
+let s:whitespace_ignore = ['gitcommit', 'diff']
+autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
 
 " remove new line auto comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -21,14 +22,12 @@ autocmd! User FzfStatusLine call fzf#fzf_statusline()
 " Remove highlighting on insert mode
 autocmd InsertEnter * :let @/=""
 
-" Enable coc.nvim when CursorHold is enabled, 500 Milliseconds
-" TODO: Switch this over to LSP
-" if vim_coc =~ 'true'
-"   augroup load_coc
-"     autocmd!
-"     autocmd CursorHold * call plug#load('coc.nvim') | autocmd! load_coc
-"   augroup END
-" endif
+" Enable UltiSnips and the LSP when CursorHold is enabled, 500 Milliseconds
+augroup load_coc
+  autocmd!
+  autocmd CursorHold * call plug#load('UltiSnips', 'LanguageClient-neovim')
+        \ | autocmd! load_coc
+augroup END
 
 " Set tabs to 4 spaces in python
 autocmd Filetype *      set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
