@@ -1,1 +1,14 @@
-ZDOTDIR='.zsh'
+ZDOTDIR="$HOME/.zsh"
+FZF_DEFAULT_OPTS=' --prompt=">> " --color fg:-1,bg:-1,hl:208,fg+:-1,bg+:235,hl+:214 --color info:150,prompt:167,spinner:150,pointer:167,marker:0'
+FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+KEYTIMEOUT=1
+VISUAL="vim"
+EDITOR="vim"
+PATH="$PATH:$ZDOTDIR/scripts/"
+TERMINAL="st"
+HIST_STAMPS="mm.dd.yyyy"
+HISTSIZE=12000
+SAVEHIST=12000
+HISTFILE="$HOME/.zsh_history"
+TERM="st-256color"
+WORDCHARS='*?_-.[]~=&;!#%^(){}<>'

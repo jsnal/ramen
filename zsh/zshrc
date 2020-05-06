@@ -1,7 +1,7 @@
 typeset -A _i3wm
 
 # Configure this repo with the i3wm typeset
-_i3wm[config_files]="$HOME/$ZDOTDIR"
+_i3wm[config_files]="$ZDOTDIR"
 _i3wm[color_env]='256'
 _i3wm[vim_lite]='false'
 
@@ -9,8 +9,7 @@ include() { [[ -f "$1" ]] && source "$1" }
 
 # Config Files
 function () {
-  # TODO: Look into why this won't source $_i3wm[config_files]
-  local zsh_source_files=$(find $HOME/i3wm/zsh/startup/*.zsh -maxdepth 1 -type f ! -iname "binds.zsh")
+  local zsh_source_files=$(find $_i3wm[config_files]/startup/*.zsh -maxdepth 1 -type l ! -iname "binds.zsh")
   for (( i=1;i<=$(echo "$zsh_source_files" | wc -l);i++ )); do
     include $(echo "$zsh_source_files" | awk NR==$i)
   done

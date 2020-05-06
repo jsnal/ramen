@@ -14,12 +14,14 @@ DESKTOP_LIST=(
   "$DOTFILES_DIR/X/xbindkeysrc:$HOME/.xbindkeysrc"          \
   "$DOTFILES_DIR/X/xmodmap:$HOME/.Xmodmap"                  \
 )
+# TODO: consider moving plugin symlinks to `.zshrc`
 TERMINAL_LIST=(
   "$DOTFILES_DIR/zsh/plugins/zsh-autopair/autopair.plugin.zsh:$HOME/.zsh/plugins/autopair.plugin.zsh"                           \
   "$DOTFILES_DIR/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh:$HOME/.zsh/plugins/zsh-syntax-highlighting.zsh" \
   "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"                                        \
   "$DOTFILES_DIR/zsh/zshrc:$HOME/.zsh/.zshrc"                                     \
   "$DOTFILES_DIR/zsh/startup:$HOME/.zsh/startup"                                  \
+  "$DOTFILES_DIR/zsh/scripts:$HOME/.zsh/scripts"                                  \
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"                                 \
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"                                  \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"                           \
@@ -119,6 +121,7 @@ function terminal() {
   mkdir -p $HOME/.vim/spell
   mkdir -p $HOME/.vim/ultisnips
   mkdir -p $HOME/.zsh/startup
+  mkdir -p $HOME/.zsh/scripts
   mkdir -p $HOME/.zsh/plugins
 
   link-file-list 'TERMINAL_LIST'
