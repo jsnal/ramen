@@ -18,17 +18,17 @@ DESKTOP_LIST=(
 TERMINAL_LIST=(
   "$DOTFILES_DIR/zsh/plugins/zsh-autopair/autopair.plugin.zsh:$HOME/.zsh/plugins/autopair.plugin.zsh"                           \
   "$DOTFILES_DIR/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh:$HOME/.zsh/plugins/zsh-syntax-highlighting.zsh" \
-  "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"                                        \
-  "$DOTFILES_DIR/zsh/zshrc:$HOME/.zsh/.zshrc"                                     \
-  "$DOTFILES_DIR/zsh/startup:$HOME/.zsh/startup"                                  \
-  "$DOTFILES_DIR/zsh/scripts:$HOME/.zsh/scripts"                                  \
-  "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"                                 \
-  "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"                                  \
-  "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"                           \
-  "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"                                      \
-  "$DOTFILES_DIR/vim/plugin:$HOME/.vim/plugin"                                    \
-  "$DOTFILES_DIR/vim/spell:$HOME/.vim/spell"                                      \
-  "$DOTFILES_DIR/vim/ultisnips:$HOME/.vim/ultisnips"                              \
+  "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"              \
+  "$DOTFILES_DIR/zsh/zshrc:$HOME/.zsh/.zshrc"           \
+  "$DOTFILES_DIR/zsh/startup:$HOME/.zsh/startup"        \
+  "$DOTFILES_DIR/zsh/scripts:$HOME/.zsh/scripts"        \
+  "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"       \
+  "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"        \
+  "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global" \
+  "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"            \
+  "$DOTFILES_DIR/vim/plugin:$HOME/.vim/plugin"          \
+  "$DOTFILES_DIR/vim/spell:$HOME/.vim/spell"            \
+  "$DOTFILES_DIR/vim/ultisnips:$HOME/.vim/ultisnips"    \
 )
 
 # ANSI Escape Codes
@@ -81,7 +81,7 @@ function link-file-list() {
     local source="${file%%:*}"
     local destination="${file##*:}"
 
-    [ -d $source ] && local source="$source/*"
+    [ -d $source ] && mkdir -p $destination && local source="$source/*"
     link-file "$source" "$destination"
   done
 }
@@ -106,7 +106,6 @@ function verify-install() {
 
 # Install all the files for the desktop environment
 function desktop() {
-  # TODO: Check if they exist and if they do delete them before recreating.
   mkdir -p $HOME/.config/i3
   mkdir -p $HOME/.config/dunst
 
@@ -115,15 +114,6 @@ function desktop() {
 
 # Install all the files for the terminal environment.
 function terminal() {
-
-  # Make vim directories
-  mkdir -p $HOME/.vim/plugin
-  mkdir -p $HOME/.vim/spell
-  mkdir -p $HOME/.vim/ultisnips
-  mkdir -p $HOME/.zsh/startup
-  mkdir -p $HOME/.zsh/scripts
-  mkdir -p $HOME/.zsh/plugins
-
   link-file-list 'TERMINAL_LIST'
 
   # Install fzf
