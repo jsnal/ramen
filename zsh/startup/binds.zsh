@@ -22,8 +22,7 @@ zle -N smart-fg
 
 # Easy way to fzf in commonly used directories.
 function fzf-edit() {
-  local find_list=("$HOME/i3wm" "$HOME/Documents" "$HOME/Downloads" "$HOME/git")
-  local choice=$(find ${find_list[@]} -type f | fzf)
+  local choice=$(find . -maxdepth 3 -type f -printf '%P\n' | fzf)
   if [ ! -z $choice ]; then
     vim $choice
   fi
