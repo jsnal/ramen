@@ -1,7 +1,7 @@
 typeset -A _i3wm
 
 # Configure this repo with the i3wm typeset
-_i3wm[config_files]="$HOME/i3wm/zsh"
+_i3wm[config_files]="$HOME/$ZDOTDIR"
 _i3wm[color_env]='256'
 _i3wm[vim_lite]='false'
 
@@ -9,11 +9,12 @@ include() { [[ -f "$1" ]] && source "$1" }
 
 # Config Files
 function () {
-  local zsh_source_files=$(find ~/i3wm/zsh/startup/*.zsh -maxdepth 1 -type f ! -iname "binds.zsh")
+  # TODO: Look into why this won't source $_i3wm[config_files]
+  local zsh_source_files=$(find $HOME/i3wm/zsh/startup/*.zsh -maxdepth 1 -type f ! -iname "binds.zsh")
   for (( i=1;i<=$(echo "$zsh_source_files" | wc -l);i++ )); do
     include $(echo "$zsh_source_files" | awk NR==$i)
   done
-  include ~/i3wm/zsh/startup/binds.zsh 2>/dev/null
+  include $_i3wm[config_files]/startup/binds.zsh 2>/dev/null
 }
 
 # Local overrides
@@ -21,7 +22,7 @@ LOCAL_RC=$HOME/.zshrc.local
 test -f $LOCAL_RC && source $LOCAL_RC
 
 # Plugins
-include $_i3wm[config_files]/plugins/zsh-autopair/autopair.plugin.zsh
-include $_i3wm[config_files]/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+include $_i3wm[config_files]/plugins/autopair.plugin.zsh
+include $_i3wm[config_files]/plugins/zsh-syntax-highlighting.zsh
 # TODO: Look into custom zsh install
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

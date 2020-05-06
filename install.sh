@@ -15,14 +15,18 @@ DESKTOP_LIST=(
   "$DOTFILES_DIR/X/xmodmap:$HOME/.Xmodmap"                  \
 )
 TERMINAL_LIST=(
-  "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                \
-  "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"       \
-  "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"        \
-  "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global" \
-  "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"            \
-  "$DOTFILES_DIR/vim/plugin:$HOME/.vim/plugin"          \
-  "$DOTFILES_DIR/vim/spell:$HOME/.vim/spell"            \
-  "$DOTFILES_DIR/vim/ultisnips:$HOME/.vim/ultisnips"    \
+  "$DOTFILES_DIR/zsh/plugins/zsh-autopair/autopair.plugin.zsh:$HOME/.zsh/plugins/autopair.plugin.zsh"                           \
+  "$DOTFILES_DIR/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh:$HOME/.zsh/plugins/zsh-syntax-highlighting.zsh" \
+  "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"                                        \
+  "$DOTFILES_DIR/zsh/zshrc:$HOME/.zsh/.zshrc"                                     \
+  "$DOTFILES_DIR/zsh/startup:$HOME/.zsh/startup"                                  \
+  "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"                                 \
+  "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"                                  \
+  "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"                           \
+  "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"                                      \
+  "$DOTFILES_DIR/vim/plugin:$HOME/.vim/plugin"                                    \
+  "$DOTFILES_DIR/vim/spell:$HOME/.vim/spell"                                      \
+  "$DOTFILES_DIR/vim/ultisnips:$HOME/.vim/ultisnips"                              \
 )
 
 # ANSI Escape Codes
@@ -114,6 +118,8 @@ function terminal() {
   mkdir -p $HOME/.vim/plugin
   mkdir -p $HOME/.vim/spell
   mkdir -p $HOME/.vim/ultisnips
+  mkdir -p $HOME/.zsh/startup
+  mkdir -p $HOME/.zsh/plugins
 
   link-file-list 'TERMINAL_LIST'
 
