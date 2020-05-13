@@ -19,4 +19,9 @@ if has('syntax')
   hi CursorLine       ctermfg=none ctermbg=none cterm=none
   hi LineNr           ctermfg=245  ctermbg=235
   hi CursorLineNr     ctermfg=184  ctermbg=235  cterm=bold
+
+  " Language Client
+  hi LanguageClientError   ctermfg=196 ctermbg=235 cterm=bold
+  hi LanguageClientWarning ctermfg=11  ctermbg=235 cterm=bold
+  hi LanguageClientInfo    ctermfg=12  ctermbg=235 cterm=bold
 endif

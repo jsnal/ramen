@@ -8,23 +8,23 @@ let g:LanguageClient_rootMarkers = {
 
 let g:LanguageClient_diagnosticsDisplay = {
         \ 1: {
-        \ "signText": "X",
-        \ "signTexthl": "ALEErrorSign",
+        \ "signText": ">",
+        \ "signTexthl": "LanguageClientError",
         \ "virtualTexthl": "Error",
         \ },
         \ 2: {
-        \ "signText": "W",
-        \ "signTexthl": "ALEWarningSign",
+        \ "signText": ">",
+        \ "signTexthl": "LanguageClientWarning",
         \ "virtualTexthl": "Todo",
         \ },
         \ 3: {
-        \ "signText": "i",
-        \ "signTexthl": "ALEInfoSign",
+        \ "signText": ">",
+        \ "signTexthl": "LanguageClientInfo",
         \ "virtualTexthl": "Todo",
         \ },
         \ 4: {
-        \ "signText": "h",
-        \ "signTexthl": "ALEInfoSign",
+        \ "signText": ">",
+        \ "signTexthl": "LanguageClientInfo",
         \ "virtualTexthl": "Todo",
         \ }
       \ }

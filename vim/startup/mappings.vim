@@ -64,3 +64,6 @@ nnoremap <silent> <leader>p :execute '!~/i3wm/zsh/scripts/vim_md ' . expand('%:p
 " Move the cursor in wildmenu
 cnoremap <Left> <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
+
+" Language Server
+noremap <Leader>od :call LanguageClient_textDocument_definition()<CR>
