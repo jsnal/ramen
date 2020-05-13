@@ -14,7 +14,6 @@ function () {
     include $(echo "$zsh_source_files" | awk NR==$i)
   done
   include $_i3wm[config_files]/startup/binds.zsh 2>/dev/null
-  include $_i3wm[config_files]/startup/env.zsh 2>/dev/null
 }
 
 # Local overrides

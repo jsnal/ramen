@@ -77,7 +77,6 @@ endif
 
 " FZF Settings
 let g:fzf_nvim_statusline = 0
-let g:fzf_layout = { 'left': '~20%' }
 
 " Indent Line
 if &fileencoding == 'utf-8'
