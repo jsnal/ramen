@@ -4,9 +4,6 @@
 [submodule "zsh/plugins/zsh-autopair"]
 	path = zsh/plugins/zsh-autopair
 	url = https://github.com/hlissner/zsh-autopair
-[submodule "zsh/plugins/fzf"]
-	path = zsh/plugins/fzf
-	url = https://github.com/junegunn/fzf
 [submodule "st"]
 	path = st
 	url = https://github.com/JasonLong24/st
