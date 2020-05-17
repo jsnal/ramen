@@ -1,16 +1,22 @@
-bindkey -e # emacs binds
+# Set emacs binds
+bindkey -e
 
+# Turn on the edit command line widget. See binding at the bottom.
 autoload -U edit-command-line
 zle -N edit-command-line
 
-# Easy backwards cd
-function up_widget() {
+# Bail out if not interactive shell.
+[[ -o interactive  ]] || return 0
+
+# cd backwards
+function cd-back() {
   BUFFER="cd .."
   zle accept-line
 }
-zle -N up_widget
+zle -N cd-back
+bindkey "^u" cd-back
 
-# Bind to reattach to a backgrounded process if it exists.
+# Reattach to a backgrounded process if it exists.
 function smart-fg() {
   if [[ $#BUFFER -eq 0 ]]; then
     fg
@@ -19,23 +25,70 @@ function smart-fg() {
   fi
 }
 zle -N smart-fg
+bindkey '^z' smart-fg
 
-# Easy way to fzf in commonly used directories.
-function fzf-edit() {
-  local choice=$(find . -maxdepth 3 -type f -printf '%P\n' | fzf)
-  if [ ! -z $choice ]; then
-    vim $choice
-  fi
+# Helper function for finding files and piping them into fzy
+# TODO: Look into using AG if it exists
+function __fsel() {
+  local cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+    -o -type f -print \
+    -o -type l -print 2> /dev/null | cut -b3-"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  eval $cmd | fzy $FZY_DEFAULT_OPTS | while read item; do echo -n "$1 ${(q)item}"; done
+  local ret=$?
+  return $ret
 }
-zle -N fzf-edit
 
-bindkey -s '^f' 'fzf-edit^M'
-bindkey -s '^y' '. ~/.zshrc^Mclear^M'
-bindkey "^u" up_widget
+# Fuzzy find for files
+function fuzzy-file() {
+  echo -e '\nLoading...'
+  LBUFFER="${LBUFFER}$(__fsel)"
+  local ret=$?
+  zle beginning-of-line
+  zle reset-prompt
+  return $ret
+}
+zle -N fuzzy-file
+
+# Fuzzy find for files to edit
+function fuzzy-edit() {
+  echo -e '\nLoading...'
+  zle kill-whole-line
+  LBUFFER="${LBUFFER}$(__fsel vim)"
+  local ret=$?
+  zle accept-line
+  zle reset-prompt
+  return $ret
+}
+zle -N fuzzy-edit
+
+# Fuzzy search through zsh history
+function fuzzy-history() {
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+  local choice=$(fc -rl 1 | fzy $FZY_DEFAULT_OPTS)
+  local ret=$?
+  if [ ! -z $choice ]; then
+    zle vi-fetch-history -n $choice
+  fi
+  zle reset-prompt
+  return $ret
+}
+zle -N fuzzy-history
+
+# If fzy is not installed, don't waste time setting up the bindings. This way I
+# can still use the built in keybindings that fzy overrides by default.
+if [ $(command -v fzy) ]; then
+  bindkey '^t' fuzzy-file
+  bindkey '^f' fuzzy-edit
+  bindkey '^r' fuzzy-history
+else
+  echo 'Unable to find fzy. Removing fzy bindings...'
+fi
+
+# General Keybinds
 bindkey '^w' forward-word
 bindkey '^b' backward-word
 bindkey '^d' kill-whole-line
 bindkey '^k' backward-kill-word
 bindkey '^j' kill-word
-bindkey '^z' smart-fg
 bindkey '^x^x' edit-command-line

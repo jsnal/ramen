@@ -1,4 +1,5 @@
 ZDOTDIR="$HOME/.zsh"
+FZY_DEFAULT_OPTS=('--show-info' '--lines=30' '--prompt=>> ')
 PATH="$PATH:$ZDOTDIR/scripts/"
 KEYTIMEOUT=1
 VISUAL="vim"
