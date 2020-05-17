@@ -16,9 +16,6 @@ autocmd FileType netrw setl bufhidden=wipe
 " close nerdtree if last window
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Override Default fzf statusline
-autocmd! User FzfStatusLine call fzf#fzf_statusline()
-
 " Remove highlighting on insert mode
 autocmd InsertEnter * :let @/=""
 

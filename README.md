@@ -58,5 +58,5 @@ _i3wm[color_env]='256'
 ## Useful programs
 
 - [ag](https://geoff.greer.fm/ag/) to quickly search through code.
-- [fzf](https://github.com/junegunn/fzf) for fuzzy file searches.
+- [fzy](https://github.com/jhawthorn/fzy) for fuzzy text searches.
 - [dmenu](https://tools.suckless.org/dmenu/) to search for programs and other things.

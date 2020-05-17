@@ -35,13 +35,6 @@ noremap <silent> <F2> :NERDTreeToggle<CR>
 noremap <F4> :setlocal foldmethod=marker<CR>
 noremap <F6> mzgg=G`z`<CR>
 
-" FZF Mappings
-noremap <C-f> :Files<CR>
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
 " Move Lines in Visual Mode
 xnoremap <silent> K :call visual#move_up()<CR>
 xnoremap <silent> J :call visual#move_down()<CR>
@@ -54,9 +47,6 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-
-" Ag for word under cursor
-nnoremap <silent> <leader>ag :Ag<CR>
 
 " Compile markdown on the fly
 nnoremap <silent> <leader>p :execute '!~/i3wm/zsh/scripts/vim_md ' . expand('%:p')<CR><CR>

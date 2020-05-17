@@ -37,7 +37,7 @@ function jump() {
   emulate -L zsh
 
   if [ $# -eq 0 ]; then
-    local DIR_FD=$(fd | fzf)
+    local DIR_FD=$(fd | fzy $FZY_DEFAULT_OPTS)
 
     # If it is empty assume the command was cancelled
     [ -z $DIR_FD ] && return 1
@@ -55,7 +55,7 @@ function jump() {
 
       # Check that fd actually found something
       [ -z $DIR_FD ] && echo "$1 not found anywhere" && return 1
-      cd $(echo $DIR_FD | fzf)
+      cd $(echo $DIR_FD | fzy $FZY_DEFAULT_OPTS)
     else
       cd ~"$DIR"
     fi

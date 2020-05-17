@@ -21,8 +21,7 @@ let s:vim_lite = system('source ~/.zshrc && echo $_i3wm[vim_lite]')
 call plug#begin('~/.vim/plugged')
 
 " Fuzzy File Finder
-" Plug 'https://github.com/junegunn/fzf.vim'
-" Plug 'https://github.com/junegunn/fzf'
+Plug 'https://github.com/srstevenson/vim-picker'
 
 " Change working dir to project root
 " TODO: Look into making a builtin function for this

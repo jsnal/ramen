@@ -75,9 +75,6 @@ if has('persistent_undo')
   set undofile
 endif
 
-" FZF Settings
-let g:fzf_nvim_statusline = 0
-
 " Indent Line
 if &fileencoding == 'utf-8'
   let g:indentLine_char = '│'

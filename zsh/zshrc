@@ -23,5 +23,3 @@ test -f $LOCAL_RC && source $LOCAL_RC
 # Plugins
 include $_i3wm[config_files]/plugins/autopair.plugin.zsh
 include $_i3wm[config_files]/plugins/zsh-syntax-highlighting.zsh
-# TODO: Look into custom zsh install
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

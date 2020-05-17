@@ -116,9 +116,6 @@ function desktop() {
 function terminal() {
   link-file-list 'TERMINAL_LIST'
 
-  # Install fzf
-  source $DOTFILES_DIR/zsh/plugins/fzf/install
-
   # Override gitconfig
   [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
   [ ! -z $GT_EML ] && git config --global user.email "$GT_EML"
