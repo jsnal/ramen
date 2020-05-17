@@ -49,7 +49,7 @@ if (!s:vim_lite)
   Plug 'https://github.com/Yggdroot/indentLine'
 
   " File Tree
-  Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'https://github.com/justinmk/vim-dirvish'
 
   " Snippet Engine
   Plug 'https://github.com/sirver/UltiSnips', { 'on': [] }

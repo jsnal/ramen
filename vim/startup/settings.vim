@@ -91,3 +91,6 @@ let g:matchup_matchpref = {
       \ 'htmldjango': { 'tagnameonly': 1,  },
       \ 'javascript': { 'tagnameonly': 1,  },
       \}
+
+" Dirvish
+let g:dirvish_mode = ':sort ,^\v(.*[\/])|\ze,'
