@@ -114,6 +114,8 @@ function desktop() {
 
 # Install all the files for the terminal environment.
 function terminal() {
+  mkdir -p $HOME/.vim/undo
+
   link-file-list 'TERMINAL_LIST'
 
   # Override gitconfig

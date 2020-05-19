@@ -68,11 +68,20 @@ set showbreak=\\
 set complete=.,w,b,u,k
 set completeopt=menuone,noselect
 
+" Set the cursor on insert mode
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+  let &t_SI = "\e[6 q"
+  let &t_EI = "\e[2 q"
+endif
+
 " Presistent Undo
 if has('persistent_undo')
-  set undodir=$HOME/.vim_undo
-  set undolevels=5000
   set undofile
+  set undodir=$HOME/.vim/undo
+  set undolevels=2500
 endif
 
 " Indent Line
