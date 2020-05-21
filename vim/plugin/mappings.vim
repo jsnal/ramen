@@ -31,7 +31,6 @@ noremap <Leader>gs :call buffer#scratchpad('git status')<CR>
 noremap <Leader>gl :call buffer#scratchpad('git log -50')<CR>
 
 " Function Mappings
-noremap <silent> <F2> :NERDTreeToggle<CR>
 noremap <F4> :setlocal foldmethod=marker<CR>
 noremap <F6> mzgg=G`z`<CR>
 

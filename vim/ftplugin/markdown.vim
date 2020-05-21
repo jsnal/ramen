@@ -1,1 +1,1 @@
-call functions#spell()
+call spell#plaintext()

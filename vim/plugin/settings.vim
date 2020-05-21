@@ -14,6 +14,9 @@ else
   hi NonText ctermbg=none
 endif
 
+" Automatically try to find the filetype
+filetype plugin on
+
 " General
 set nocompatible
 set laststatus=2
@@ -84,20 +87,3 @@ if has('persistent_undo')
   set undodir=$HOME/.vim/undo
   set undolevels=2500
 endif
-
-" Indent Line
-if &fileencoding == 'utf-8'
-  let g:indentLine_char = '│'
-else
-  let g:indentLine_char = '|'
-endif
-
-" Matchup
-let g:matchup_matchpref = {
-      \ 'html':       { 'tagnameonly': 1,  },
-      \ 'htmldjango': { 'tagnameonly': 1,  },
-      \ 'javascript': { 'tagnameonly': 1,  },
-      \}
-
-" Dirvish
-let g:dirvish_mode = ':sort ,^\v(.*[\/])|\ze,'

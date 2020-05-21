@@ -66,14 +66,3 @@ endif
 
 " Plugin Total: 13
 call plug#end()
-
-" Source all files in startup
-filetype plugin on
-if isdirectory($HOME . '/i3wm')
-  for f in split(glob($HOME . '/i3wm/vim/startup/*.vim'), '\n')
-    execute 'source' f
-  endfor
-
-  " Source highlight settings last
-  source ~/i3wm/vim/startup/highlight.vim
-endif

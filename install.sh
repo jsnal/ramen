@@ -25,10 +25,7 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"       \
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"        \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global" \
-  "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"            \
-  "$DOTFILES_DIR/vim/plugin:$HOME/.vim/plugin"          \
-  "$DOTFILES_DIR/vim/spell:$HOME/.vim/spell"            \
-  "$DOTFILES_DIR/vim/ultisnips:$HOME/.vim/ultisnips"    \
+  "$DOTFILES_DIR/vim:$HOME/.vim/"            \
 )
 
 # ANSI Escape Codes

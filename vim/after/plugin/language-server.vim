@@ -7,27 +7,27 @@ let g:LanguageClient_rootMarkers = {
       \ }
 
 let g:LanguageClient_diagnosticsDisplay = {
-        \ 1: {
-        \ "signText": ">",
-        \ "signTexthl": "LanguageClientError",
-        \ "virtualTexthl": "Error",
-        \ },
-        \ 2: {
-        \ "signText": ">",
-        \ "signTexthl": "LanguageClientWarning",
-        \ "virtualTexthl": "Todo",
-        \ },
-        \ 3: {
-        \ "signText": ">",
-        \ "signTexthl": "LanguageClientInfo",
-        \ "virtualTexthl": "Todo",
-        \ },
-        \ 4: {
-        \ "signText": ">",
-        \ "signTexthl": "LanguageClientInfo",
-        \ "virtualTexthl": "Todo",
-        \ }
+      \ 1: {
+      \ "signText": ">",
+      \ "signTexthl": "LanguageClientError",
+      \ "virtualTexthl": "Error",
+      \ },
+      \ 2: {
+      \ "signText": ">",
+      \ "signTexthl": "LanguageClientWarning",
+      \ "virtualTexthl": "Todo",
+      \ },
+      \ 3: {
+      \ "signText": ">",
+      \ "signTexthl": "LanguageClientInfo",
+      \ "virtualTexthl": "Todo",
+      \ },
+      \ 4: {
+      \ "signText": ">",
+      \ "signTexthl": "LanguageClientInfo",
+      \ "virtualTexthl": "Todo",
       \ }
+    \ }
 
 let s:server_commands = {
       \   'javascript': 'javascript-typescript-stdio',
