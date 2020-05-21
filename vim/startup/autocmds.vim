@@ -1,36 +1,24 @@
-" Folds
-autocmd BufWinLeave *.* call fold#mkview()
-autocmd BufWinEnter *.* call fold#loadview()
+if has('autocmd')
+  augroup GeneralAutocmds
+    autocmd!
 
-" Markdown, txt, LaTeX
-autocmd BufReadPost,BufNewFile markdown,plaintex call functions#plaintext()
+    " Enable UltiSnips and the LSP when CursorHold is enabled, 500 Milliseconds
+    autocmd CursorHold * call plug#load('UltiSnips', 'LanguageClient-neovim')
 
-" delete whitespace on save
-let s:whitespace_ignore = ['gitcommit', 'diff']
-autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
+    " Save/Restore folds and cursor position
+    if has('mksession')
+      autocmd BufWinLeave * call fold#mkview()
+      autocmd BufWinEnter * call fold#loadview()
+    endif
 
-" remove new line auto comment
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType netrw setl bufhidden=wipe
+    " Blur and focus the statusline based on the current window
+    if has('statusline')
+      autocmd BufEnter,FocusGained,VimEnter,WinEnter * call statusline#focus()
+      autocmd FocusLost,WinLeave * call statusline#blur()
+    endif
 
-" close nerdtree if last window
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Remove highlighting on insert mode
-autocmd InsertEnter * :let @/=""
-
-" Enable UltiSnips and the LSP when CursorHold is enabled, 500 Milliseconds
-augroup load_coc
-  autocmd!
-  autocmd CursorHold * call plug#load('UltiSnips', 'LanguageClient-neovim')
-        \ | autocmd! load_coc
-augroup END
-
-" Set tabs to 4 spaces in python
-autocmd Filetype *      set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-autocmd BufEnter *.py   set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-
-" Set StatusLine
-autocmd BufLeave,WinLeave * call statusline#blur()
-autocmd BufEnter,WinEnter * call statusline#focus()
+    " delete whitespace on save
+    let s:whitespace_ignore = ['gitcommit', 'diff']
+    autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
+  augroup END
+endif
