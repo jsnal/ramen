@@ -1,11 +1,11 @@
 " See https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.vim/autoload/wincent/mappings/visual.vim
 
-function! s:Visual()
+function! s:visual()
   return visualmode() == 'V'
 endfunction
 
-function! s:Move(address, should_move)
-  if s:Visual() && a:should_move
+function! s:move(address, should_move)
+  if s:visual() && a:should_move
     execute "'<,'>move " . a:address
     call feedkeys('gv=', 'n')
   endif
@@ -18,7 +18,7 @@ function! visual#move_up() abort range
   let l:movement=max([l:count, l:max])
   let l:address="'<" . (l:movement - 1)
   let l:should_move=l:movement < 0
-  call s:Move(l:address, l:should_move)
+  call s:move(l:address, l:should_move)
 endfunction
 
 function! visual#move_down() abort range
@@ -27,5 +27,5 @@ function! visual#move_down() abort range
   let l:movement=min([l:count, l:max])
   let l:address="'>+" . l:movement
   let l:should_move=l:movement > 0
-  call s:Move(l:address, l:should_move)
+  call s:move(l:address, l:should_move)
 endfunction

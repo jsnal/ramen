@@ -7,8 +7,8 @@ if has('autocmd')
 
     " Save/Restore folds and cursor position
     if has('mksession')
-      autocmd BufWinLeave * call fold#mkview()
-      autocmd BufWinEnter * call fold#loadview()
+      autocmd BufWinLeave *.* call fold#mkview()
+      autocmd BufWinEnter *.* call fold#loadview()
     endif
 
     " Blur and focus the statusline based on the current window
