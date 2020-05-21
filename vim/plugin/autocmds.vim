@@ -20,5 +20,8 @@ if has('autocmd')
     " delete whitespace on save
     let s:whitespace_ignore = ['gitcommit', 'diff']
     autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
+
+    " Remove autocommenting on newlines
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
   augroup END
 endif

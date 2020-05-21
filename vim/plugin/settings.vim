@@ -34,7 +34,6 @@ set updatetime=200
 set noshowmode
 set switchbuf=useopen
 set belloff=ctrlg
-" set formatoptions-=c,r,o
 
 " Numbering and Indent
 set number

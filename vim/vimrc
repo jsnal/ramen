@@ -1,19 +1,5 @@
 " Be sure vim-plug is installed.
-if !filereadable(expand('~/.vim/autoload/plug.vim'))
-  echo 'Installing vim-plug'
-  call system('mkdir -p ~/.vim/autoload/')
-  let s:plug_source = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  let s:plug_destination = '~/.vim/autoload/plug.vim'
-
-  if executable('curl')
-    call system('curl "' . s:plug_source. '" > ' . s:plug_destination)
-  elseif executable('wget')
-    call system('wget -O ' . s:plug_destination. ' "' . s:plug_source . '"')
-  else
-    echo 'Unable to install vim-plug. Please install curl or wget.'
-    echo 'Exiting...' | cquit
-  endif
-endif
+call startup#plug()
 
 " Grab some environment variables from zsh
 let s:vim_lite = system('source ~/.zshrc && echo $_i3wm[vim_lite]')
@@ -46,9 +32,6 @@ if (!s:vim_lite)
 
   " Easier way of visualizing indention
   Plug 'https://github.com/Yggdroot/indentLine'
-
-  " File Tree
-  Plug 'https://github.com/justinmk/vim-dirvish'
 
   " Snippet Engine
   Plug 'https://github.com/sirver/UltiSnips', { 'on': [] }
