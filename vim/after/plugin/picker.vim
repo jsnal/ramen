@@ -1,3 +1,4 @@
+" TODO: See why statusline#focus isn't triggering after inital file open
 let g:picker_height = winheight(0) / 2
 
 if executable('ag')
