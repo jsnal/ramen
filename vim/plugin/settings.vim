@@ -86,3 +86,9 @@ if has('persistent_undo')
   set undodir=$HOME/.vim/undo
   set undolevels=2500
 endif
+
+" Mksession view
+if has('mksession')
+  " set viewdir=~/.vim/tmp/view
+  set viewoptions=cursor,folds
+endif

@@ -1,4 +1,4 @@
-" TODO: See why statusline#focus isn't triggering after inital file open
+" TODO: Make the windows return back to their sizes after the search
 let g:picker_height = winheight(0) / 2
 
 if executable('ag')
@@ -6,7 +6,9 @@ if executable('ag')
   let g:picker_custom_find_flags = '--nocolor --files-with-matches'
 endif
 
-let g:picker_selector_flags = '--prompt ">> " --show-info --lines ' . g:picker_height
+if executable('fzy')
+  let g:picker_selector_flags = '--prompt ">> " --show-info --lines ' . g:picker_height
+endif
 
 " Handle searching through codebase using Ag
 function! picker#aglinehandler(selection) abort

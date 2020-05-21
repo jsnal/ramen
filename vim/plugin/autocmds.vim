@@ -23,5 +23,8 @@ if has('autocmd')
 
     " Remove autocommenting on newlines
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+    " Keep splits equal at all times
+    autocmd VimResized * execute "normal! \<c-w>="
   augroup END
 endif
