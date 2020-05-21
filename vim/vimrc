@@ -47,5 +47,5 @@ if (!s:vim_lite)
         \ }
 endif
 
-" Plugin Total: 13
+" Plugin Total: 12
 call plug#end()

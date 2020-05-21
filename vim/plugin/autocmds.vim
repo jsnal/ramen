@@ -25,6 +25,9 @@ if has('autocmd')
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
     " Keep splits equal at all times
-    autocmd VimResized * execute "normal! \<c-w>="
+    autocmd VimResized * wincmd =
+
+    " Set the picker statusline
+    autocmd Filetype picker call pick#statusline()
   augroup END
 endif
