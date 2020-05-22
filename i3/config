@@ -27,9 +27,9 @@ client.unfocused         $border  $background-inactive  $text-inactive      $bac
 client.focused_inactive  $border  $background-inactive  $text-inactive      $background-inactive  $border-inactive
 client.urgent            $border  $background-inactive  $background-urgent  $background-inactive  $border-inactive
 
-bindsym $mod+Shift+x exec bash ~/i3wm/i3/scripts/lock.sh
+bindsym $mod+Shift+x exec bash ~/ramen/i3/scripts/lock.sh
 bindsym $mod+F7 exec xbacklight -set 0
-bindsym $mod+b exec ~/i3wm/i3/scripts/battery.sh
+bindsym $mod+b exec ~/ramen/i3/scripts/battery.sh
 bindsym $mod+t exec notify-send "Today: $(date +"%D %l:%M:%S")"
 
 # Application launching
@@ -37,9 +37,9 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+w exec firefox
 
 # Dmenu helpers
-bindsym $mod+d exec ~/i3wm/i3/scripts/dmenu.sh
-bindsym $mod+s exec ~/i3wm/i3/dmenu/power.sh
-bindsym $mod+q exec ~/i3wm/i3/scripts/dmenu-mount.sh
+bindsym $mod+d exec ~/ramen/i3/scripts/dmenu.sh
+bindsym $mod+s exec ~/ramen/i3/dmenu/power.sh
+bindsym $mod+q exec ~/ramen/i3/scripts/dmenu-mount.sh
 
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -75,7 +75,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+c exec uxterm -c calc -hold -e python
-bindsym $mod+Shift+g exec ~/i3wm/i3/emulation/start.sh
+bindsym $mod+Shift+g exec ~/ramen/i3/emulation/start.sh
 
 for_window [class="tmux"] move window to scratchpad, scratchpad show
 for_window [class="mpv"] floating enable, resize set 1200 800, move position center
@@ -129,18 +129,18 @@ bindsym $mod+u resize shrink width 10 px or 10 ppt
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+t exec --no-startup-id ~/i3wm/lemonbar/launch.sh
+bindsym $mod+Shift+t exec --no-startup-id ~/ramen/lemonbar/launch.sh
 
 # Execute on Startup
-exec_always feh --bg-scale ~/i3wm/backgrounds/nanogon_infinity.jpg
+exec_always feh --bg-scale ~/ramen/backgrounds/nanogon_infinity.jpg
 exec_always --no-startup-id dunst
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id xbindkeys
-exec --no-startup-id st -c tmux -e bash ~/i3wm/i3/scripts/tmux.sh
+exec --no-startup-id st -c tmux -e bash ~/ramen/i3/scripts/tmux.sh
 exec --no-startup-id amixer sset "Master" 0%
 
 # Start polybar
-# Found in i3wm/polybar/config
+# Found in ramen/polybar/config
 # bar {
-#   i3bar_command $HOME/i3wm/polybar/launch.sh
+#   i3bar_command $HOME/ramen/polybar/launch.sh
 # }

@@ -22,15 +22,15 @@ function get_branch() {
   local local_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @ 2>/dev/null)
 
   if [ -f $(git rev-parse --git-dir)/MERGE_HEAD ]; then
-    local ongoing_merge=" ${_i3wm[MAGENTA]}(merge)"
+    local ongoing_merge=" ${_ramen[MAGENTA]}(merge)"
   fi
 
   # Check if you're attached to a branch
   git symbolic-ref HEAD &>/dev/null
   if [ $? != 0 ]; then
-    echo "${_i3wm[RED]}$(git name-rev --name-only --no-undefined --always HEAD)${_i3wm[WHITE]}"
+    echo "${_ramen[RED]}$(git name-rev --name-only --no-undefined --always HEAD)${_ramen[WHITE]}"
   else
-    echo "${_i3wm[LIGHT_GRAY]}$local_branch$ongoing_merge${_i3wm[WHITE]}"
+    echo "${_ramen[LIGHT_GRAY]}$local_branch$ongoing_merge${_ramen[WHITE]}"
   fi
 }
 
@@ -58,7 +58,7 @@ function get_change() {
   # don't add the extra space if the working tree is clean
   [[ -z $symbols ]] && echo "" && return
 
-  echo " ${_i3wm[ORANGE]}$symbols${_i3wm[WHITE]}"
+  echo " ${_ramen[ORANGE]}$symbols${_ramen[WHITE]}"
 }
 
 function git_prompt_info() {

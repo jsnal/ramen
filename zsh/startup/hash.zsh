@@ -4,18 +4,17 @@
   local PASTE=~/git/paste-light
   local SERAPE=~/.vim/plugged/vim-serape
   local CHORE=~/.vim/plugged/vim-chore
-  local i3wm=~/i3wm
-  local ZSH=~/i3wm/zsh
-  local VIM=~/i3wm/vim
-  local TMUX=~/i3wm/tmux
+  local RAMEN=~/ramen
+  local ZSH=~/ramen/zsh
+  local VIM=~/ramen/vim
+  local TMUX=~/ramen/tmux
   local GIT=~/git
 
   test -d "$SITE" && hash -d site="$SITE"
   test -d "$PASTE" && hash -d paste="$PASTE"
   test -d "$SERAPE" && hash -d serape="$SERAPE"
   test -d "$CHORE" && hash -d chore="$CHORE"
-  test -d "$i3wm" && hash -d i3="$i3wm"
-  test -d "$i3wm" && hash -d i3wm="$i3wm"
+  test -d "$RAMEN" && hash -d ramen="$RAMEN"
   test -d "$ZSH" && hash -d zsh="$ZSH"
   test -d "$VIM" && hash -d vim="$VIM"
   test -d "$TMUX" && hash -d tmux="$TMUX"

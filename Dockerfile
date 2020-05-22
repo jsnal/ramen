@@ -9,12 +9,12 @@ RUN useradd -m -s /bin/zsh jenkins
 RUN usermod -aG sudo jenkins
 RUN echo "jenkins   ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers
 
-ADD . /home/jenkins/i3wm
+ADD . /home/jenkins/ramen
 RUN chown -R jenkins:jenkins /home/jenkins
 
 USER jenkins
 ENV HOME /home/jenkins
 
-WORKDIR /home/jenkins/i3wm
+WORKDIR /home/jenkins/ramen
 
 CMD ["/bin/bash"]

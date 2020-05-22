@@ -27,7 +27,7 @@ alias myip="ip -color address"
 alias crontab_all="crontab -l | grep -v '^#' | cut -f 6- -d ' ' | while read CMD; do eval $CMD; done"
 alias paste_search='wget -qO- jasonlong.xyz/paste/posts.list | sed 1,5d | grep -i "$@"'
 alias test_color="printf '\e[48;5;%dm ' {0..255}; printf '\e[0m \n'"
-alias config_version="git --git-dir ~/i3wm/.git rev-parse HEAD"
+alias config_version="git --git-dir ~/ramen/.git rev-parse HEAD"
 
 # Exceptions to auto-correction
 alias man='nocorrect man'

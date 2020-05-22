@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Globals
-DOTFILES_DIR="$HOME/i3wm"
+DOTFILES_DIR="$HOME/ramen"
 PROFILES=("all" "desktop" "terminal")
 PROFILE_SELECT="terminal"
 GT_USR=""
@@ -134,11 +134,11 @@ function all() {
 #   4. Finally get the selected profile and install the files accordingly.
 #
 echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher\n"
-echo -e "${UNDR}Cloning${ENDL} i3wm Repository"
-if [ -d $HOME/i3wm ]; then
-  echo "-> Found $HOME/i3wm"
+echo -e "${UNDR}Cloning${ENDL} ramen Repository"
+if [ -d $DOTFILES_DIR ]; then
+  echo "-> Found $DOTFILES_DIR"
 else
-  git clone --recursive --quiet https://github.com/JasonLong24/i3wm $HOME/i3wm &>/dev/null
+  git clone --recursive --quiet https://github.com/JasonLong24/ramen $HOME/ramen &>/dev/null
 fi
 
 echo -e "\nInstalling config version ${BOLD}$(git rev-parse HEAD)${ENDL}\n"

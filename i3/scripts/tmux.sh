@@ -12,6 +12,6 @@ fi
 tmux new-session -d -s $SESSION -n shell -x $(tput cols) -y $(tput lines)
 
 tmux new-window -t $SESSION -n volume 'alsamixer'
-tmux new-window -t $SESSION -n profile 'bash ~/i3wm/i3/scripts/window-selector.sh'
+tmux new-window -t $SESSION -n profile 'bash ~/ramen/i3/scripts/window-selector.sh'
 
 tmux attach -t $SESSION:profile

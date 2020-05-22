@@ -1,6 +1,6 @@
-# i3wm Config
+# Dotfiles
 
-My configuration files for linux.
+ramen holds all of my configuration files for linux.
 
 ## Dependencies
 
@@ -20,7 +20,7 @@ My configuration files for linux.
 ### Automated
 
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/jsnal/i3wm/master/install.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/jsnal/ramen/master/install.sh)
 ```
 
 ### Install options
@@ -49,10 +49,10 @@ You can override some default configuration in `~/.zshrc.local`
 
 ```
 # removes some unnecessary vim plugins
-_i3wm[vim_lite]='true'
+_ramen[vim_lite]='true'
 
 # zsh color environment
-_i3wm[color_env]='256'
+_ramen[color_env]='256'
 ```
 
 ## Useful programs

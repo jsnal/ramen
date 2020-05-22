@@ -2,7 +2,7 @@
 call startup#plug()
 
 " Grab some environment variables from zsh
-let s:vim_lite = system('source ~/.zshrc && echo $_i3wm[vim_lite]')
+let s:vim_lite = system('source ~/.zshrc && echo $_ramen[vim_lite]')
 
 call plug#begin('~/.vim/plugged')
 

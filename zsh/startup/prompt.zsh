@@ -7,37 +7,37 @@ function preexec() {
 
 function precmd {
 
-  _i3wm[LAST_EXIT_CODE]=$?
+  _ramen[LAST_EXIT_CODE]=$?
   local END=""
 
   # Sudo shell
   if sudo -n true 2>/dev/null; then
-    TRAILING_SYMBOL="$_i3wm[RED]#$_i3wm[WHITE]"
+    TRAILING_SYMBOL="$_ramen[RED]#$_ramen[WHITE]"
   else
-    TRAILING_SYMBOL="$_i3wm[WHITE]%%"
+    TRAILING_SYMBOL="$_ramen[WHITE]%%"
   fi
 
   # Error code and backgrounded tasks
-  if [ $_i3wm[LAST_EXIT_CODE] -eq 0 ]; then
+  if [ $_ramen[LAST_EXIT_CODE] -eq 0 ]; then
     END="$TRAILING_SYMBOL%(1j.*.) "
-  elif [ $_i3wm[LAST_EXIT_CODE] -eq 1 ]; then
-    END="$TRAILING_SYMBOL%B$_i3wm[ORANGE]!$_i3wm[WHITE]%b%(1j.*.) "
+  elif [ $_ramen[LAST_EXIT_CODE] -eq 1 ]; then
+    END="$TRAILING_SYMBOL%B$_ramen[ORANGE]!$_ramen[WHITE]%b%(1j.*.) "
   else
-    END="%(1j.*.) %B$_i3wm[ORANGE]$_i3wm[LAST_EXIT_CODE]$_i3wm[WHITE]%b $TRAILING_SYMBOL "
+    END="%(1j.*.) %B$_ramen[ORANGE]$_ramen[LAST_EXIT_CODE]$_ramen[WHITE]%b $TRAILING_SYMBOL "
   fi
 
   if [ $timer ]; then
-    _i3wm[COMMAND_TIME]=$(($SECONDS - $timer))
-    export ZSH_COMMAND_TIME="$_i3wm[COMMAND_TIME]"
+    _ramen[COMMAND_TIME]=$(($SECONDS - $timer))
+    export ZSH_COMMAND_TIME="$_ramen[COMMAND_TIME]"
     zsh_command_time
     unset timer
   fi
 
-  local DIR="$_i3wm[CYAN]%B%(5~|../%3~|${${PWD/#%$HOME%/\~\/}/#$HOME/~})%b$_i3wm[WHITE]%"
-  local CUSER="$_i3wm[WHITE]@$_i3wm[YELLOW]%n"
+  local DIR="$_ramen[CYAN]%B%(5~|../%3~|${${PWD/#%$HOME%/\~\/}/#$HOME/~})%b$_ramen[WHITE]%"
+  local CUSER="$_ramen[WHITE]@$_ramen[YELLOW]%n"
 
-  PROMPT="${CUSER}$_i3wm[WHITE]${END}$_i3wm[WHITE]"
-  RPROMPT="$_i3wm[GRAY]${_i3wm[COMMAND_TIME]}$_i3wm[WHITE]$(git_prompt_info) ${DIR}"
+  PROMPT="${CUSER}$_ramen[WHITE]${END}$_ramen[WHITE]"
+  RPROMPT="$_ramen[GRAY]${_ramen[COMMAND_TIME]}$_ramen[WHITE]$(git_prompt_info) ${DIR}"
 }
 
 zsh_command_time() {
@@ -46,17 +46,17 @@ zsh_command_time() {
     min=$(($ZSH_COMMAND_TIME/60))
     sec=$(($ZSH_COMMAND_TIME%60))
     if [ "$ZSH_COMMAND_TIME" -le 1 ]; then
-      _i3wm[COMMAND_TIME]=""
+      _ramen[COMMAND_TIME]=""
     elif [ "$ZSH_COMMAND_TIME" -le 60 ]; then
-      _i3wm[COMMAND_TIME]="${ZSH_COMMAND_TIME}s "
+      _ramen[COMMAND_TIME]="${ZSH_COMMAND_TIME}s "
     elif [ "$ZSH_COMMAND_TIME" -gt 60 ] && [ "$ZSH_COMMAND_TIME" -le 180 ]; then
-      _i3wm[COMMAND_TIME]="${min}min ${sec}s "
+      _ramen[COMMAND_TIME]="${min}min ${sec}s "
     else
       if [ "$hours" -gt 0 ]; then
         min=$(($min%60))
-        _i3wm[COMMAND_TIME]="%B$_i3wm[RED]${hours}h%b$_i3wm[GRAY] ${min}min ${sec}s "
+        _ramen[COMMAND_TIME]="%B$_ramen[RED]${hours}h%b$_ramen[GRAY] ${min}min ${sec}s "
       else
-        _i3wm[COMMAND_TIME]="${min}min ${sec}s "
+        _ramen[COMMAND_TIME]="${min}min ${sec}s "
       fi
     fi
   fi

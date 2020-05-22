@@ -48,7 +48,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " Compile markdown on the fly
-nnoremap <silent> <leader>p :execute '!~/i3wm/zsh/scripts/vim_md ' . expand('%:p')<CR><CR>
+nnoremap <silent> <leader>p :execute '!~/ramen/zsh/scripts/vim_md ' . expand('%:p')<CR><CR>
 
 " Move the cursor in wildmenu
 cnoremap <Left> <Space><BS><Left>
