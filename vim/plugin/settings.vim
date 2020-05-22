@@ -83,12 +83,12 @@ endif
 " Presistent Undo
 if has('persistent_undo')
   set undofile
-  set undodir=$HOME/.vim/undo
+  set undodir=$HOME/.vim/tmp/undo
   set undolevels=2500
 endif
 
 " Mksession view
 if has('mksession')
-  " set viewdir=~/.vim/tmp/view
+  set viewdir=$HOME/.vim/tmp/view
   set viewoptions=cursor,folds
 endif

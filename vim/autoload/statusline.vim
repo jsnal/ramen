@@ -47,7 +47,7 @@ function! statusline#focus() abort
   setlocal statusline+=%=%#RightSymbol#
   setlocal statusline+=
   setlocal statusline+=%#RightBlock#
-  setlocal statusline+=\ %y
+  setlocal statusline+=\ %{&filetype}
   setlocal statusline+=\ %l/%L
   setlocal statusline+=\ "
 endfunction
@@ -69,8 +69,8 @@ function! statusline#blur() abort
   setlocal statusline+=%#FileHeader#
   setlocal statusline+=\ %{statusline#get_file_header()}
   setlocal statusline+=%t
-  setlocal statusline+=%=\ %y
-  setlocal statusline+=%=\ %l/%L
+  setlocal statusline+=%=\ %{&filetype}
+  setlocal statusline+=\ %l/%L
   setlocal statusline+=\ "
 endfunction
 
