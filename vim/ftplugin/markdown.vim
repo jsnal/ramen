@@ -1,1 +1,1 @@
-call spell#plaintext()
+call ramen#spell#plaintext()

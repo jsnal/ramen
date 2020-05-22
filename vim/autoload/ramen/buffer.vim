@@ -1,5 +1,5 @@
 " Attempt to switch to an open buffer or open that buffer in a horizontal split
-function! buffer#switch(buffername)
+function! ramen#buffer#switch(buffername)
   let buf_exist = bufexists(str2nr(a:buffername))
   let buf_open = bufwinnr(a:buffername)
 
@@ -15,7 +15,7 @@ function! buffer#switch(buffername)
 endfunction
 
 " Create a scratchpad with a given system command
-function! buffer#scratchpad(command)
+function! ramen#buffer#scratchpad(command)
   let buffername = 'scratchpad'
   let bnr = bufwinnr(buffername)
 
@@ -45,7 +45,7 @@ function! buffer#scratchpad(command)
 endfunction
 
 " Opens file with predefined files
-function! buffer#listopen(path)
+function! ramen#buffer#listopen(path)
   for f in split(glob(a:path), '\n')
     execute 'badd' f
   endfor

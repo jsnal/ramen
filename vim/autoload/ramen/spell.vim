@@ -1,5 +1,5 @@
 " Spell Check
-function! spell#options() abort
+function! ramen#spell#options() abort
   if has('syntax')
     setlocal spell
     setlocal spelllang=en
@@ -9,11 +9,11 @@ function! spell#options() abort
 endfunction
 
 " Plaintext mode for markdown files mainly
-function! spell#plaintext() abort
+function! ramen#spell#plaintext() abort
   setlocal formatoptions+=r
   setlocal textwidth=0
   setlocal wrap
   setlocal wrapmargin=0
 
-  call spell#options()
+  call ramen#spell#options()
 endfunction

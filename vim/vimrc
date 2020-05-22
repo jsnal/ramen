@@ -1,5 +1,5 @@
 " Be sure vim-plug is installed.
-call startup#plug()
+call ramen#startup#plug()
 
 " Grab some environment variables from zsh
 let s:vim_lite = system('source ~/.zshrc && echo $_ramen[vim_lite]')

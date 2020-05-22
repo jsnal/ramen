@@ -11,7 +11,7 @@ if executable('fzy')
 endif
 
 command! -nargs=? PickerAg
-      \ call picker#File('ag --vimgrep ' . shellescape(<q-args>), "edit", {'line_handler': 'pick#aglinehandler'})
+      \ call picker#File('ag --vimgrep ' . shellescape(<q-args>), "edit", {'line_handler': 'ramen#picker#aglinehandler'})
 
 " General Mappings
 noremap <Leader>ag :PickerAg<Space>

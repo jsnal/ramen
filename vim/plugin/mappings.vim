@@ -22,21 +22,21 @@ noremap <Leader>f :b
 noremap <Leader>rl :source %<CR>
 
 " Git Mappings
-noremap <Leader>gg :call buffer#switch('scratchpad')<CR>
-noremap <Leader>gf :call buffer#scratchpad('git diff '. expand('%:p'))<CR>
-noremap <Leader>gd :call buffer#scratchpad('git diff')<CR>
-noremap <Leader>gs :call buffer#scratchpad('git status')<CR>
+noremap <Leader>gg :call ramen#buffer#switch('scratchpad')<CR>
+noremap <Leader>gf :call ramen#buffer#scratchpad('git diff '. expand('%:p'))<CR>
+noremap <Leader>gd :call ramen#buffer#scratchpad('git diff')<CR>
+noremap <Leader>gs :call ramen#buffer#scratchpad('git status')<CR>
 
 " TODO: Fix the error thrown when trying to switch from a git log buffer
-noremap <Leader>gl :call buffer#scratchpad('git log -50')<CR>
+noremap <Leader>gl :call ramen#buffer#scratchpad('git log -50')<CR>
 
 " Function Mappings
 noremap <F4> :setlocal foldmethod=marker<CR>
 noremap <F6> mzgg=G`z`<CR>
 
 " Move Lines in Visual Mode
-xnoremap <silent> K :call visual#move_up()<CR>
-xnoremap <silent> J :call visual#move_down()<CR>
+xnoremap <silent> K :call ramen#visual#move_up()<CR>
+xnoremap <silent> J :call ramen#visual#move_down()<CR>
 
 " Check TODO List with date
 nnoremap <F5> lix<Esc>ll"=strftime("%c")<CR>P

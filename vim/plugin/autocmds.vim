@@ -7,14 +7,14 @@ if has('autocmd')
 
     " Save/Restore folds and cursor position
     if has('mksession')
-      autocmd BufWinLeave *.* call fold#mkview()
-      autocmd BufWinEnter *.* call fold#loadview()
+      autocmd BufWinLeave *.* call ramen#fold#mkview()
+      autocmd BufWinEnter *.* call ramen#fold#loadview()
     endif
 
     " Blur and focus the statusline based on the current window
     if has('statusline')
-      autocmd BufEnter,FocusGained,VimEnter,WinEnter * call statusline#focus()
-      autocmd FocusLost,WinLeave * call statusline#blur()
+      autocmd BufEnter,FocusGained,VimEnter,WinEnter * call ramen#statusline#focus()
+      autocmd FocusLost,WinLeave * call ramen#statusline#blur()
     endif
 
     " delete whitespace on save
@@ -28,6 +28,6 @@ if has('autocmd')
     autocmd VimResized * wincmd =
 
     " Set the picker statusline
-    autocmd Filetype picker call pick#statusline()
+    autocmd Filetype picker call ramen#picker#statusline()
   augroup END
 endif

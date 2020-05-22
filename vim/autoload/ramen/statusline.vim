@@ -1,16 +1,16 @@
 " Remove the ./ if it is a root level file
-function! statusline#get_file_header()
+function! ramen#statusline#get_file_header()
   let s:file_header = expand('%:h') . '/'
   return substitute(s:file_header, '^\.\/\|^\/', '\1', '')
 endfunction
 
 " Get the current mode of the vim buffer
-function! statusline#mode_current() abort
+function! ramen#statusline#mode_current() abort
   return get(g:currentmode, mode(), 'v·block')
 endfunction
 
 " Change the color of the statusline based on the current mode of the buffer
-function! statusline#update_mode_color() abort
+function! ramen#statusline#update_mode_color() abort
   if (mode() =~# '\v(n|no)')
     hi! LeftBlock  ctermbg=243 ctermfg=15
     hi! LeftSymbol ctermfg=243
@@ -29,15 +29,15 @@ function! statusline#update_mode_color() abort
 endfunction
 
 " Window or Buffer Focsed StatusLine
-function! statusline#focus() abort
+function! ramen#statusline#focus() abort
   " Left Side
-  setlocal statusline=%{statusline#update_mode_color()}
+  setlocal statusline=%{ramen#statusline#update_mode_color()}
   setlocal statusline+=%#LeftBlock#
-  setlocal statusline+=\ %{statusline#mode_current()}\ "
+  setlocal statusline+=\ %{ramen#statusline#mode_current()}\ "
   setlocal statusline+=%#LeftSymbol#
   setlocal statusline+=
   setlocal statusline+=%#FileHeader#
-  setlocal statusline+=\ %{statusline#get_file_header()}
+  setlocal statusline+=\ %{ramen#statusline#get_file_header()}
   setlocal statusline+=%#FileTail#
   setlocal statusline+=%t
   setlocal statusline+=%#StatusLine#
@@ -53,7 +53,7 @@ function! statusline#focus() abort
 endfunction
 
 " Window or Buffer Blurred StatusLine
-function! statusline#blur() abort
+function! ramen#statusline#blur() abort
   " Put spaces where the LeftBlock would be so it appears seamless
   setlocal statusline=\ "
   setlocal statusline+=\ "
@@ -67,7 +67,7 @@ function! statusline#blur() abort
 
   " Actual statusline content
   setlocal statusline+=%#FileHeader#
-  setlocal statusline+=\ %{statusline#get_file_header()}
+  setlocal statusline+=\ %{ramen#statusline#get_file_header()}
   setlocal statusline+=%t
   setlocal statusline+=%=\ %{&filetype}
   setlocal statusline+=\ %l/%L

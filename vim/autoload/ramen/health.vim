@@ -12,8 +12,7 @@ function! s:make_check(feature)
   endif
 endfunction
 
-function! health#check() abort
-
+function! ramen#health#check() abort
   echon "Running health check on Vim " . v:version . "\n\n"
 
   " Number of threats found

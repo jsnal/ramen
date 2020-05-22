@@ -12,7 +12,7 @@ function! s:move(address, should_move)
   call feedkeys('gv', 'n')
 endfunction
 
-function! visual#move_up() abort range
+function! ramen#visual#move_up() abort range
   let l:count=v:count ? -v:count : -1
   let l:max=(a:firstline - 1) * -1
   let l:movement=max([l:count, l:max])
@@ -21,7 +21,7 @@ function! visual#move_up() abort range
   call s:move(l:address, l:should_move)
 endfunction
 
-function! visual#move_down() abort range
+function! ramen#visual#move_down() abort range
   let l:count=v:count ? v:count : 1
   let l:max=line('$') - a:lastline
   let l:movement=min([l:count, l:max])

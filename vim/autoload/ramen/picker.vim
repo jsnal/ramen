@@ -1,11 +1,11 @@
 " Handle searching through codebase using Ag
-function! pick#aglinehandler(selection) abort
+function! ramen#picker#aglinehandler(selection) abort
   let parts = split(a:selection, ':')
   return {'filename': parts[0], 'line': parts[1], 'column': parts[2]}
 endfunction
 
 " Format a simply statusline for picker
-function! pick#statusline() abort
+function! ramen#picker#statusline() abort
   hi! LeftBlock  ctermbg=9 ctermfg=15
   hi! LeftSymbol ctermfg=9
 

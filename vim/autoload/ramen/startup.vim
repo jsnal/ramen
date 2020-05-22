@@ -1,6 +1,6 @@
 " Attempt to install vim-plug if it isn't already present. For this, we try to
 " use both wget and curl and use the one that is found.
-function! startup#plug() abort
+function! ramen#startup#plug() abort
   if !filereadable(expand('~/.vim/autoload/plug.vim'))
     echo 'Installing vim-plug'
     call system('mkdir -p ~/.vim/autoload/')
