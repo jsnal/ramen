@@ -18,14 +18,13 @@ endif
 filetype plugin on
 
 " General
-set nocompatible
 set laststatus=2
 set backspace=indent,eol,start
 set path+=**
 set wildmenu
-set wildmode=longest,list,full
+set wildmode=longest:full,full
 set shortmess=c
-set cmdheight=2
+set cmdheight=1
 set showmode
 set splitbelow splitright
 set ignorecase smartcase
@@ -33,7 +32,8 @@ set hidden
 set updatetime=200
 set noshowmode
 set switchbuf=useopen
-set belloff=ctrlg
+set belloff=all
+set shell=sh
 
 " Numbering and Indent
 set number
@@ -46,7 +46,6 @@ set expandtab
 set autoindent
 set hlsearch
 set incsearch
-set linebreak
 set cursorline
 
 " File Settings
@@ -56,16 +55,22 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set encoding=utf-8
 set showcmd
-set backupdir=./.backup,.,/tmp
-set directory=.,./.backup,/tmp
 set autochdir
-set nobackup
-set nowritebackup
 
 " List Chars
 set list
-set listchars=trail:.
-set showbreak=\\
+set listchars=trail:•
+
+" Line Break
+if has('linebreak')
+  set linebreak
+  let &showbreak='↳ '
+endif
+
+" Allow cursor movement where there is no text in visual block mode
+if has('virtualedit')
+  set virtualedit=block
+endif
 
 " Completion
 set complete=.,w,b,u,k
@@ -82,13 +87,34 @@ endif
 
 " Presistent Undo
 if has('persistent_undo')
-  set undofile
-  set undodir=$HOME/.vim/tmp/undo
-  set undolevels=2500
+  if exists('$SUDO_USER')
+    set noundofile
+  else
+    set undofile
+    set undodir=$HOME/.vim/tmp/undo
+    set undolevels=2500
+  endif
 endif
 
 " Mksession view
 if has('mksession')
   set viewdir=$HOME/.vim/tmp/view
   set viewoptions=cursor,folds
+endif
+
+" Backups
+if exists('$SUDO_USER')
+  set nobackup
+  set nowritebackup
+else
+  set backupdir=$HOME/.vim/tmp/backup
+  set backupdir+=.
+endif
+
+" Swap files
+if exists('$SUDO_USER')
+  set noswapfile
+else
+  set directory=$HOME/.vim/tmp/swap//
+  set directory+=.
 endif
