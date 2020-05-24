@@ -2,7 +2,10 @@
 call ramen#startup#plug()
 
 " Grab some environment variables from zsh
-let s:vim_lite = system('source ~/.zshrc && echo $_ramen[vim_lite]')
+let s:vim_lite = system('source $HOME/.zsh/.zshrc && echo $_ramen[vim_lite]')
+
+" Set leader
+let mapleader = ","
 
 call plug#begin('~/.vim/plugged')
 

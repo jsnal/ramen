@@ -29,7 +29,7 @@ set showmode
 set splitbelow splitright
 set ignorecase smartcase
 set hidden
-set updatetime=200
+set updatetime=2000
 set noshowmode
 set switchbuf=useopen
 set belloff=all

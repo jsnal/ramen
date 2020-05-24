@@ -2,8 +2,8 @@ if has('autocmd')
   augroup GeneralAutocmds
     autocmd!
 
-    " Enable UltiSnips and the LSP when CursorHold is enabled, 500 Milliseconds
-    autocmd CursorHold * call plug#load('UltiSnips', 'LanguageClient-neovim')
+    " Enable UltiSnips and the LSP when CursorHold is enabled, 2000 Milliseconds
+    autocmd CursorHold,CursorHoldI * call plug#load('UltiSnips', 'LanguageClient-neovim')
 
     " Save/Restore folds and cursor position
     if has('mksession')
