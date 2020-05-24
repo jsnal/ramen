@@ -11,9 +11,7 @@ noremap <Leader>gg :call ramen#buffer#switch('scratchpad')<CR>
 noremap <Leader>gf :call ramen#buffer#scratchpad('git diff '. expand('%:p'))<CR>
 noremap <Leader>gd :call ramen#buffer#scratchpad('git diff')<CR>
 noremap <Leader>gs :call ramen#buffer#scratchpad('git status')<CR>
-
-" TODO: Fix the error thrown when trying to switch from a git log buffer
-noremap <Leader>gl :call ramen#buffer#scratchpad('git log -50')<CR>
+noremap <Leader>gl :call ramen#buffer#scratchpad('git log -10')<CR>
 
 " Language Server
 noremap <Leader>rd :call LanguageClient_textDocument_definition()<CR>

@@ -18,6 +18,7 @@ endif
 filetype plugin on
 
 " General
+set nomodeline
 set laststatus=2
 set backspace=indent,eol,start
 set path+=**

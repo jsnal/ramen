@@ -16,28 +16,27 @@ endfunction
 
 " Create a scratchpad with a given system command
 function! ramen#buffer#scratchpad(command)
-  let buffername = 'scratchpad'
-  let bnr = bufwinnr(buffername)
+  let s:buffername = 'scratchpad'
 
-  if bnr > 0
+  if bufwinnr(s:buffername) > 0
     " Switch to the already opened buffer
-    execute 'sbuffer ' . buffername
+    execute 'sbuffer ' . s:buffername
   else
     " Setup the new buffer
-    execute 'new ' . buffername
+    execute 'new ' . s:buffername
     execute 'resize ' . string(&lines * 0.70)
     noswapfile
     setlocal buftype=nofile nowrap
   endif
 
   " Get the output of the given command
-  let output = system(a:command)
+  let s:output = system(a:command)
 
   " Clear out anything already in the buffer
   normal! ggdG
 
   " Append it to the buffer
-  call append(0, split(output, '\v\n'))
+  call append(0, split(s:output, '\v\n'))
 
   " Retab the buffer, goto the top and set the filetype
   retab
