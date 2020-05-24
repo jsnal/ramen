@@ -6,7 +6,7 @@ function! s:echowarn(msg)
 endfunction
 
 function! s:make_check(feature)
-  if ! has(a:feature)
+  if !has(a:feature)
     call s:echowarn("vim is not compiled with " . a:feature)
     let s:failed += 1
   endif
@@ -26,13 +26,16 @@ function! ramen#health#check() abort
   call s:make_check('clipboard')
   call s:make_check('xterm_clipboard')
 
+  " Check for popup windows
+  call s:make_check('popupwin')
+
   " Check for 256 Colors
   if &t_Co != 256
     call s:echowarn('t_Co is not set to 256. Is this not a 256 color terminal?')
     let s:failed += 1
   endif
 
-  if v:version < 800
+  if v:version < 800 || !has('job')
     call s:echowarn('asynchronous tasks is not supported in this verion of vim')
     let s:failed += 1
   endif

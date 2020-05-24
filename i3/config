@@ -132,7 +132,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+t exec --no-startup-id ~/ramen/lemonbar/launch.sh
 
 # Execute on Startup
-exec_always feh --bg-scale ~/ramen/backgrounds/nanogon_infinity.jpg
+exec_always feh --bg-center ~/ramen/backgrounds/Permanent-Waves.jpg
 exec_always --no-startup-id dunst
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id xbindkeys
