@@ -25,6 +25,7 @@ function! ramen#buffer#scratchpad(command)
   else
     " Setup the new buffer
     execute 'new ' . buffername
+    execute 'resize ' . string(&lines * 0.70)
     noswapfile
     setlocal buftype=nofile nowrap
   endif

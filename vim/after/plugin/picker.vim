@@ -1,5 +1,5 @@
 " TODO: Set the statusline
-let g:picker_height = winheight(0) / 3
+let g:picker_height = string(&lines * 0.33)
 
 if executable('ag')
   let g:picker_custom_find_executable = 'ag'
