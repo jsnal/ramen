@@ -6,6 +6,10 @@ let g:LanguageClient_rootMarkers = {
       \   'typescript': ['tsconfig.json', '.flowconfig', 'package.json']
       \ }
 
+if has('popupwin')
+  let g:LanguageClient_usePopupHover = 1
+endif
+
 let g:LanguageClient_diagnosticsDisplay = {
       \ 1: {
       \ "signText": ">",

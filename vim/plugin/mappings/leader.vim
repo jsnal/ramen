@@ -16,7 +16,8 @@ noremap <Leader>gs :call ramen#buffer#scratchpad('git status')<CR>
 noremap <Leader>gl :call ramen#buffer#scratchpad('git log -50')<CR>
 
 " Language Server
-noremap <Leader>od :call LanguageClient_textDocument_definition()<CR>
+noremap <Leader>rd :call LanguageClient_textDocument_definition()<CR>
+noremap <Leader>rh :call LanguageClient_textDocument_hover()<CR>
 
 " Quit, Write, Exit
 nnoremap <Leader>q :quit<CR>
