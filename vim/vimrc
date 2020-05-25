@@ -30,7 +30,6 @@ Plug 'https://github.com/tomtom/tcomment_vim', { 'on': 'TComment' }
 
 if (!s:vim_lite)
   " Common syntax highlighting
-  " TODO: See if there is a way to remove funky markdown syntax
   Plug 'https://github.com/sheerun/vim-polyglot'
 
   " Easier way of visualizing indention
