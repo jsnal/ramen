@@ -3,51 +3,51 @@
 ###########################
 
 # Audio Controls only work for Spotify.
-# List of modifier (on my keyboard): 
-#   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
-#   Mod3 (CapsLock), Mod4, Mod5 (Scroll). 
+# List of modifier (on my keyboard):
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
 
 # Increase Volume
-"amixer -q sset "Master" 5%+"
+"amixer -D pulse sset "Master" 5%+"
     m:0x0 + c:123
-    XF86AudioRaiseVolume 
+    XF86AudioRaiseVolume
 
 # Decrease Volume
-"amixer -q sset "Master" 5%-"
+"amixer -D pulse sset "Master" 5%-"
     m:0x0 + c:122
-    XF86AudioLowerVolume 
+    XF86AudioLowerVolume
 
 # Volume Off
-"amixer set "Master" 0%"
+"amixer -D pulse set "Master" 0%"
     m:0x0 + c:121
-    XF86AudioMute 
+    XF86AudioMute
 
 # Brightness Up
 "xbacklight -inc 10"
     m:0x0 + c:233
-    XF86MonBrightnessUp 
+    XF86MonBrightnessUp
 
 # Brigtness Down
 "xbacklight -dec 10"
     m:0x0 + c:232
-    XF86MonBrightnessDown 
+    XF86MonBrightnessDown
 
 # Next Track
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
     m:0x0 + c:171
-    XF86AudioNext 
+    XF86AudioNext
 
 # Previous Track
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
     m:0x0 + c:173
-    XF86AudioPrev 
+    XF86AudioPrev
 
 # Pause/Play
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
     m:0x0 + c:172
-    XF86AudioPlay 
+    XF86AudioPlay
 
 # Stop
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause"
     m:0x0 + c:174
-    XF86AudioStop 
+    XF86AudioStop
