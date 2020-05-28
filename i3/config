@@ -131,13 +131,20 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+t exec --no-startup-id ~/ramen/lemonbar/launch.sh
 
-# Execute on Startup
-exec_always feh --bg-center ~/ramen/backgrounds/Permanent-Waves.jpg
+# General startup apps
+exec_always --no-startup-id feh --bg-center ~/ramen/backgrounds/Permanent-Waves.jpg
 exec_always --no-startup-id dunst
-exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id xbindkeys
+
+# Bind caps to escape
+exec_always --no-startup-id xmodmap -e 'clear lock'
+exec_always --no-startup-id xmodmap -e 'keycode 0x42 = Escape'
+
+# Start general tmux session
 exec --no-startup-id st -c tmux -e bash ~/ramen/i3/scripts/tmux.sh
-exec --no-startup-id amixer sset "Master" 0%
+
+# Mute on startup
+exec --no-startup-id amixer -D pulse sset "Master" 0%
 
 # Start polybar
 # Found in ramen/polybar/config

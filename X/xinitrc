@@ -1,5 +1,3 @@
-[ -f $HOME/.Xmodmap ]     && xmodmap ~/.Xmodmap
-[ -f $HOME/.xbindkeysrc ] && xbindkeys
 [ -f $HOME/.Xresources ]  && xrdb ~/.Xresources
 
 exec i3
