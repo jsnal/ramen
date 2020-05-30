@@ -1,7 +1,34 @@
 #!/usr/bin/env bash
+#
+# Install script for ramen
+# File:    install.sh
+# Author:  Jason Long <jsnal>
+
+# Set the default path to the current path
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+# Conduct the install process in the following order:
+#
+#   1. Check if the repository exists locally; If it doesn't clone it.
+#   2. Notify the user of the current git commit hash they are about to install.
+#   3. Verify all the project files are present before starting.
+#   4. Finally get the selected profile and install the files accordingly.
+#
+echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher\n"
+echo -e "${UNDR}Cloning${ENDL} ramen Repository"
+
+# Check if we're in a the correct git repository
+if git --git-dir=$DOTFILES_DIR/.git config -l | grep -q "jsnal/ramen.git"; then
+  echo "-> Found $DOTFILES_DIR"
+else
+  # If this script is run without being in the repo itself, put the dotfiles in
+  # the home directory. This could be changed after they're installed if need be.
+  DOTFILES_DIR="$HOME/ramen"
+  echo "-> Unable to find $DOTFILES_DIR Cloning..."
+  git clone --recursive --quiet https://github.com/jsnal/ramen $DOTFILES_DIR &>/dev/null
+fi
 
 # Globals
-DOTFILES_DIR="$HOME/ramen"
 PROFILES=("all" "desktop" "terminal")
 PROFILE_SELECT="terminal"
 GT_USR=""
@@ -14,18 +41,15 @@ DESKTOP_LIST=(
   "$DOTFILES_DIR/X/xbindkeysrc:$HOME/.xbindkeysrc"          \
   "$DOTFILES_DIR/X/xmodmap:$HOME/.Xmodmap"                  \
 )
-# TODO: consider moving plugin symlinks to `.zshrc`
 TERMINAL_LIST=(
-  "$DOTFILES_DIR/zsh/plugins/zsh-autopair/autopair.plugin.zsh:$HOME/.zsh/plugins/autopair.plugin.zsh"                           \
-  "$DOTFILES_DIR/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh:$HOME/.zsh/plugins/zsh-syntax-highlighting.zsh" \
-  "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"              \
-  "$DOTFILES_DIR/zsh/zshrc:$HOME/.zsh/.zshrc"           \
   "$DOTFILES_DIR/zsh/startup:$HOME/.zsh/startup"        \
   "$DOTFILES_DIR/zsh/scripts:$HOME/.zsh/scripts"        \
+  "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"              \
+  "$DOTFILES_DIR/zsh/zshrc:$HOME/.zsh/.zshrc"           \
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"       \
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"        \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global" \
-  "$DOTFILES_DIR/vim:$HOME/.vim/"            \
+  "$DOTFILES_DIR/vim:$HOME/.vim"                        \
 )
 
 # ANSI Escape Codes
@@ -115,6 +139,9 @@ function terminal() {
 
   link-file-list 'TERMINAL_LIST'
 
+  # Set the the ramen home
+  echo "export _ramen[ramen_home]=$DOTFILES_DIR" > $HOME/.zsh/.zshrc.local
+
   # Override gitconfig
   [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
   [ ! -z $GT_EML ] && git config --global user.email "$GT_EML"
@@ -126,25 +153,12 @@ function all() {
   terminal
 }
 
-# Conduct the install process in the following order:
-#
-#   1. Check if the repository exists locally; If it doesn't clone it.
-#   2. Notify the user of the current git commit hash they are about to install.
-#   3. Verify all the project files are present before starting.
-#   4. Finally get the selected profile and install the files accordingly.
-#
-echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher\n"
-echo -e "${UNDR}Cloning${ENDL} ramen Repository"
-if [ -d $DOTFILES_DIR ]; then
-  echo "-> Found $DOTFILES_DIR"
-else
-  git clone --recursive --quiet https://github.com/JasonLong24/ramen $HOME/ramen &>/dev/null
-fi
+echo -e "\nInstalling config version ${BOLD}$(git --git-dir="$DOTFILES_DIR/.git" rev-parse HEAD)${ENDL}\n"
 
-echo -e "\nInstalling config version ${BOLD}$(git rev-parse HEAD)${ENDL}\n"
-
+# Verify all of the files are cloned properly
 verify-install
 
+# Find the profile selection and run the corrosponding function
 echo -e "\n${UNDR}Symlinking files${ENDL}"
 for i in ${PROFILES[@]}; do
   if [ $i = $PROFILE_SELECT ]; then

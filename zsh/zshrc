@@ -1,7 +1,7 @@
 typeset -A _ramen
 
 # Configure this repo with the ramen typeset
-_ramen[config_files]="$ZDOTDIR"
+_ramen[zsh_dir]="$ZDOTDIR"
 _ramen[color_env]='256'
 _ramen[vim_lite]='false'
 
@@ -9,17 +9,17 @@ include() { [[ -f "$1" ]] && source "$1" }
 
 # Config Files
 function () {
-  local zsh_source_files=$(find $_ramen[config_files]/startup/*.zsh -maxdepth 1 -type l ! -iname "binds.zsh")
+  local zsh_source_files=$(find $_ramen[zsh_dir]/startup/*.zsh -maxdepth 1 -type l ! -iname "binds.zsh")
   for (( i=1;i<=$(echo "$zsh_source_files" | wc -l);i++ )); do
     include $(echo "$zsh_source_files" | awk NR==$i)
   done
-  include $_ramen[config_files]/startup/binds.zsh 2>/dev/null
+  include $_ramen[zsh_dir]/startup/binds.zsh 2>/dev/null
 }
 
 # Local overrides
-LOCAL_RC=$HOME/.zshrc.local
+LOCAL_RC=$ZDOTDIR/.zshrc.local
 test -f $LOCAL_RC && source $LOCAL_RC
 
 # Plugins
-include $_ramen[config_files]/plugins/autopair.plugin.zsh
-include $_ramen[config_files]/plugins/zsh-syntax-highlighting.zsh
+include $_ramen[ramen_home]/zsh/plugins/zsh-autopair/autopair.plugin.zsh
+include $_ramen[ramen_home]/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
