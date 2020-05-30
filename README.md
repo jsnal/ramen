@@ -38,14 +38,14 @@ The install script supports the following options.
 The install script supports the following install profiles.
 
 ```
-allInstalls       configuration files for desktop and terminal
-desktopInstalls   just configuration files for desktop
-terminalInstalls  just configuration files for terminal
+all        Installs configuration files for desktop and terminal
+desktop    Installs just configuration files for desktop
+terminal   Installs just configuration files for terminal
 ```
 
 ### Local Configuration
 
-You can override some default configuration in `~/.zshrc.local`
+You can override some default configuration in `~/.zsh/.zshrc.local`
 
 ```
 # removes some unnecessary vim plugins
