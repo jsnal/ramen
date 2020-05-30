@@ -5,6 +5,10 @@ _ramen[zsh_dir]="$ZDOTDIR"
 _ramen[color_env]='256'
 _ramen[vim_lite]='false'
 
+# Local overrides
+LOCAL_RC=$ZDOTDIR/.zshrc.local
+test -f $LOCAL_RC && source $LOCAL_RC
+
 include() { [[ -f "$1" ]] && source "$1" }
 
 # Config Files
@@ -15,10 +19,6 @@ function () {
   done
   include $_ramen[zsh_dir]/startup/binds.zsh 2>/dev/null
 }
-
-# Local overrides
-LOCAL_RC=$ZDOTDIR/.zshrc.local
-test -f $LOCAL_RC && source $LOCAL_RC
 
 # Plugins
 include $_ramen[ramen_home]/zsh/plugins/zsh-autopair/autopair.plugin.zsh

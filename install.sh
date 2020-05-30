@@ -6,6 +6,7 @@
 
 # Set the default path to the current path
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+echo $DOTFILES_DIR
 
 # Conduct the install process in the following order:
 #
@@ -18,7 +19,7 @@ echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally i3wm, jq, lemo
 echo -e "${UNDR}Cloning${ENDL} ramen Repository"
 
 # Check if we're in a the correct git repository
-if git --git-dir=$DOTFILES_DIR/.git config -l | grep -q "jsnal/ramen.git"; then
+if git --git-dir=$DOTFILES_DIR/.git config -l | grep -q "jsnal/ramen"; then
   echo "-> Found $DOTFILES_DIR"
 else
   # If this script is run without being in the repo itself, put the dotfiles in
