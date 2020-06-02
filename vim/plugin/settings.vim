@@ -6,7 +6,7 @@ if has('syntax')
 endif
 
 if has('gui_running')
-  silent! colorscheme default
+  silent! colorscheme slate
 else
   silent! colorscheme serape
   hi Normal  ctermbg=none
