@@ -1,5 +1,5 @@
 " Handle searching through codebase using Ag
-function! ramen#picker#aglinehandler(selection) abort
+function! ramen#picker#rglinehandler(selection) abort
   let parts = split(a:selection, ':')
   return {'filename': parts[0], 'line': parts[1], 'column': parts[2]}
 endfunction

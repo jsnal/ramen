@@ -57,6 +57,6 @@ _ramen[color_env]='256'
 
 ## Useful programs
 
-- [ag](https://geoff.greer.fm/ag/) to quickly search through code.
+- [rg](https://github.com/BurntSushi/ripgrep) to quickly search through code.
 - [fzy](https://github.com/jhawthorn/fzy) for fuzzy text searches.
 - [dmenu](https://tools.suckless.org/dmenu/) to search for programs and other things.

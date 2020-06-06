@@ -28,15 +28,16 @@ zle -N smart-fg
 bindkey '^z' smart-fg
 
 # Helper function for finding files and piping them into fzy
-# TODO: Look into using AG if it exists
 function __fsel() {
-  local cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
-    -o -type f -print \
-    -o -type l -print 2> /dev/null | cut -b3-"
+  if command -v rg >/dev/null 2>&1; then
+    local cmd="command rg --files --color never"
+  else
+    local cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+      -o -type f -print \
+      -o -type l -print 2> /dev/null | cut -b3-"
+  fi
   setopt localoptions pipefail no_aliases 2> /dev/null
-  eval $cmd | fzy $FZY_DEFAULT_OPTS | while read item; do echo -n "$1 ${(q)item}"; done
-  local ret=$?
-  return $ret
+  eval $cmd | fzy $FZY_DEFAULT_OPTS | read item && echo -n "$1 $item"
 }
 
 # Fuzzy find for files
