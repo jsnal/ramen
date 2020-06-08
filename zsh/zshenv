@@ -1,6 +1,6 @@
 ZDOTDIR="$HOME/.zsh"
 FZY_DEFAULT_OPTS=('--show-info' '--lines=30' '--prompt=>> ')
-PATH="$PATH:$ZDOTDIR/scripts/"
+PATH="$PATH:$ZDOTDIR/scripts/:$HOME/.cargo/bin"
 KEYTIMEOUT=1
 VISUAL="vim"
 EDITOR="vim"
