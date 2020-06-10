@@ -3,7 +3,12 @@ if has('autocmd')
     autocmd!
 
     " Enable UltiSnips and the LSP when CursorHold is enabled, 2000 Milliseconds
-    autocmd CursorHold,CursorHoldI * call plug#load('UltiSnips', 'LanguageClient-neovim')
+    autocmd CursorHold,CursorHoldI * call plug#load('LanguageClient-neovim')
+
+    if has('python') || has('python3')
+      autocmd CursorHold,CursorHoldI * call plug#load('UltiSnips')
+    endif
+
 
     " Save/Restore folds and cursor position
     if has('mksession')
