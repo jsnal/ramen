@@ -1,7 +1,5 @@
 [push]
   default = matching
-[credential]
-  helper = store
 [alias]
   # Branch
   co = checkout
