@@ -33,9 +33,15 @@ let g:LanguageClient_diagnosticsDisplay = {
       \ }
     \ }
 
+" TODO: Add the option for multiple arguments. Sort of like a spread operator in
+" JavaScript For example:
+"
+"   'cpp': ['ccls', '--log-file=/tmp/cc.log']
 let s:server_commands = {
       \   'javascript': 'javascript-typescript-stdio',
       \   'typescript': 'javascript-typescript-stdio',
+      \   'cpp': 'ccls',
+      \   'c': 'ccls',
       \ }
 
 for [s:server_lang, s:server_command] in items(s:server_commands)
