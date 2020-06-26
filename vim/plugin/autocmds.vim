@@ -34,5 +34,8 @@ if has('autocmd')
 
     " Set the picker statusline
     autocmd Filetype picker call ramen#picker#statusline()
+
+    " Set code line length limits
+    autocmd Filetype c,cpp,java,javascript,python setlocal colorcolumn=80
   augroup END
 endif

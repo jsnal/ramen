@@ -35,7 +35,7 @@ set noshowmode
 set switchbuf=useopen
 set belloff=all
 set shell=sh
-set colorcolumn=80
+set colorcolumn=0
 
 " Numbering and Indent
 set number
