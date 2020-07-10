@@ -10,7 +10,7 @@ let mapleader = ","
 call plug#begin('~/.vim/plugged')
 
 " Fuzzy File Finder
-Plug 'https://github.com/srstevenson/vim-picker'
+" Plug 'https://github.com/srstevenson/vim-picker'
 
 " Change working dir to project root
 " TODO: Look into making a builtin function for this

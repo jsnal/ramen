@@ -25,3 +25,6 @@ nnoremap Q <nop>
 
 " Avoid unintentional help pages
 nnoremap K <nop>
+
+" Easier editing
+nnoremap <C-f> :edit %:p:h<C-L>

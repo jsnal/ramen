@@ -63,25 +63,11 @@ function fuzzy-edit() {
 }
 zle -N fuzzy-edit
 
-# Fuzzy search through zsh history
-function fuzzy-history() {
-  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  local choice=$(fc -rl 1 | fzy $FZY_DEFAULT_OPTS)
-  local ret=$?
-  if [ ! -z $choice ]; then
-    zle vi-fetch-history -n $choice
-  fi
-  zle reset-prompt
-  return $ret
-}
-zle -N fuzzy-history
-
 # If fzy is not installed, don't waste time setting up the bindings. This way I
 # can still use the built in keybindings that fzy overrides by default.
 if [ $(command -v fzy) ]; then
-  bindkey '^t' fuzzy-file
-  bindkey '^f' fuzzy-edit
-  bindkey '^r' fuzzy-history
+  # bindkey '^t' fuzzy-file
+  # bindkey '^f' fuzzy-edit
 else
   echo 'Unable to find fzy. Removing fzy bindings...'
 fi
