@@ -32,9 +32,6 @@ if (!s:vim_lite)
   " Common syntax highlighting
   Plug 'https://github.com/sheerun/vim-polyglot'
 
-  " Easier way of visualizing indention
-  Plug 'https://github.com/Yggdroot/indentLine'
-
   " Snippet Engine
   Plug 'https://github.com/sirver/UltiSnips', { 'on': [] }
 
@@ -49,5 +46,5 @@ if (!s:vim_lite)
         \ }
 endif
 
-" Plugin Total: 12
+" Plugin Total: 10
 call plug#end()

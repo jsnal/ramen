@@ -61,7 +61,7 @@ set autochdir
 
 " List Chars
 set list
-set listchars=trail:•
+set listchars=tab:\ \ ,trail:•
 
 " Line Break
 if has('linebreak')
