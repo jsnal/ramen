@@ -6,8 +6,6 @@ if has('syntax')
   hi FileTail         ctermfg=15   ctermbg=235  cterm=bold
   hi LeftBlock        ctermfg=15   ctermbg=240  cterm=bold
   hi LeftSymbol       ctermfg=240  ctermbg=235  cterm=bold
-  hi RightBlock       ctermfg=15   ctermbg=240  cterm=bold
-  hi RightSymbol      ctermfg=240  ctermbg=235  cterm=bold
 
   " Vertical Split
   hi VertSplit        ctermfg=235  ctermbg=235

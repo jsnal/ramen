@@ -27,4 +27,4 @@ nnoremap Q <nop>
 nnoremap K <nop>
 
 " Easier editing
-nnoremap <C-f> :edit %:p:h<C-L>
+nnoremap <C-f> :edit %:h<C-L>

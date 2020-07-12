@@ -44,11 +44,10 @@ function! ramen#statusline#focus() abort
   setlocal statusline+=\ %r%m
 
   " Right Side
-  setlocal statusline+=%=%#RightSymbol#
-  setlocal statusline+=
-  setlocal statusline+=%#RightBlock#
+  setlocal statusline+=%=
   setlocal statusline+=\ %{&filetype}
   setlocal statusline+=\ %l/%L
+  setlocal statusline+=\ %c
   setlocal statusline+=\ "
 endfunction
 
@@ -71,6 +70,7 @@ function! ramen#statusline#blur() abort
   setlocal statusline+=%t
   setlocal statusline+=%=\ %{&filetype}
   setlocal statusline+=\ %l/%L
+  setlocal statusline+=\ %c
   setlocal statusline+=\ "
 endfunction
 
