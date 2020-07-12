@@ -2,28 +2,32 @@ xterm*foreground:   #ffffff
 xterm*background:   #000000
 xterm*cursorColor:  #ff00ff
 xterm*color0:       #121212
-xterm*color8:       #606060
 xterm*color1:       #ff0000
-xterm*color9:       #ff5f00
 xterm*color2:       #00ff00
-xterm*color10:      #00ff00
 xterm*color3:       #ffff00
-xterm*color11:      #ffff00
 xterm*color4:       #0087ff
-xterm*color12:      #0087ff
+xterm*color8:       #606060
+xterm*color9:       #ff5f00
 xterm*color5:       #ff0087
-xterm*color13:      #ff0087
 xterm*color6:       #00d7ff
-xterm*color14:      #00d7ff
 xterm*color7:       #ffffff
+xterm*color10:      #00ff00
+xterm*color11:      #ffff00
+xterm*color12:      #0087ff
+xterm*color13:      #ff0087
+xterm*color14:      #00d7ff
 xterm*color15:      #ffffff
-xterm*font:         *-fixed-*-*-*-13-*
+xterm*font:         -misc-*-*-normal--14-*
+! xterm*font:         -misc-fixed-*-r-normal--15------iso8859-15
 xterm*letterSpacing: 1
 xterm*ptyInitialErase: true
 xterm*fading: 20
 
-xterm*perl-ext-common: resize-font
+xterm*allowBoldFonts: true
+
 xterm*scrollBar: false
 
 Xcursor.theme: posy-black
 Xcursor.size: 8
+
+*.vt100.metaSendsEscape: true
