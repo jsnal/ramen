@@ -65,12 +65,12 @@ zle -N fuzzy-edit
 
 # If fzy is not installed, don't waste time setting up the bindings. This way I
 # can still use the built in keybindings that fzy overrides by default.
-if [ $(command -v fzy) ]; then
-  # bindkey '^t' fuzzy-file
-  # bindkey '^f' fuzzy-edit
-else
-  echo 'Unable to find fzy. Removing fzy bindings...'
-fi
+# if [ $(command -v fzy) ]; then
+#   bindkey '^t' fuzzy-file
+#   bindkey '^f' fuzzy-edit
+# else
+#   echo 'Unable to find fzy. Removing fzy bindings...'
+# fi
 
 # General Keybinds
 bindkey '^w' forward-word

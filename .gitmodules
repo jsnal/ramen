@@ -6,7 +6,7 @@
 	url = https://github.com/hlissner/zsh-autopair
 [submodule "st"]
 	path = bin/st
-	url = https://github.com/JasonLong24/st
+	url = https://github.com/jsnal/st
 [submodule "bin/fzy"]
 	path = bin/fzy
 	url = https://github.com/jhawthorn/fzy
