@@ -2,6 +2,7 @@
 () {
   local SITE=/var/www/html
   local PORTAL=~/git/portal
+  local JWM=~/git/jwm
   local SERAPE=~/.vim/plugged/vim-serape
   local CHORE=~/.vim/plugged/vim-chore
   local RAMEN=$_ramen[ramen_home]
@@ -11,6 +12,7 @@
 
   test -d "$SITE" && hash -d site="$SITE"
   test -d "$PORTAL" && hash -d portal="$PORTAL"
+  test -d "$JWM" && hash -d jwm="$JWM"
   test -d "$SERAPE" && hash -d serape="$SERAPE"
   test -d "$CHORE" && hash -d chore="$CHORE"
   test -d "$RAMEN" && hash -d ramen="$RAMEN"

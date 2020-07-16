@@ -37,9 +37,9 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+w exec firefox
 
 # Dmenu helpers
-bindsym $mod+d exec ~/ramen/i3/scripts/dmenu.sh
-bindsym $mod+s exec ~/ramen/i3/dmenu/power.sh
-bindsym $mod+q exec ~/ramen/i3/scripts/dmenu-mount.sh
+bindsym $mod+d exec ~/git/ramen/i3/scripts/dmenu.sh
+bindsym $mod+s exec ~/git/ramen/i3/dmenu/power.sh
+bindsym $mod+q exec ~/git/ramen/i3/scripts/dmenu-mount.sh
 
 bindsym $mod+j focus down
 bindsym $mod+k focus up
