@@ -1,3 +1,0 @@
-[ -f $HOME/.Xresources ]  && xrdb ~/.Xresources
-
-exec i3

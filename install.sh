@@ -38,7 +38,6 @@ DESKTOP_LIST=(
   "$DOTFILES_DIR/i3/config:$HOME/.config/i3/config"         \
   "$DOTFILES_DIR/dunst/dunstrc:$HOME/.config/dunst/dunstrc" \
   "$DOTFILES_DIR/X/xresources:$HOME/.Xresources"            \
-  "$DOTFILES_DIR/X/xinitrc:$HOME/.xinitrc"                  \
   "$DOTFILES_DIR/X/xbindkeysrc:$HOME/.xbindkeysrc"          \
   "$DOTFILES_DIR/X/xmodmap:$HOME/.Xmodmap"                  \
 )
