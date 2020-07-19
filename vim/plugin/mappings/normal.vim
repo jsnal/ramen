@@ -27,6 +27,4 @@ nnoremap Q <nop>
 nnoremap K <nop>
 
 " Easier editing
-nnoremap <C-f> :call ramen#edit#start_edit('edit')<CR>
-
-nnoremap <C-a> :call ramen#edit#start_edit('vsplit')<CR>
+nnoremap <C-f> :call ramen#buffer#edit('edit')<CR>
