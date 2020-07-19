@@ -129,10 +129,10 @@ bindsym $mod+u resize shrink width 10 px or 10 ppt
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+t exec --no-startup-id ~/ramen/lemonbar/launch.sh
+bindsym $mod+Shift+t exec --no-startup-id ~/git/ramen/lemonbar/launch.sh
 
 # General startup apps
-exec_always --no-startup-id feh --bg-center ~/ramen/backgrounds/Permanent-Waves.jpg
+exec_always --no-startup-id feh --bg-center ~/git/ramen/backgrounds/Permanent-Waves.jpg
 exec_always --no-startup-id dunst
 exec_always --no-startup-id xbindkeys
 
