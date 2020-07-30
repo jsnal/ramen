@@ -16,7 +16,7 @@ alias vi='vim'
 alias z='zathura'
 alias j="jump"
 alias ls='ls --color=always --group-directories'
-alias ll='ls --color=always --group-directories'
+alias ll='ls -la --color=always --group-directories'
 alias l='ls'
 alias cp='cp -v'
 alias trash='mv -t /tmp/'
