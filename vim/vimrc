@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
 " Change working dir to project root
 " TODO: Look into making a builtin function for this
 Plug 'https://github.com/airblade/vim-rooter'
+Plug 'https://github.com/junegunn/goyo.vim'
 
 " Automatically insert common characters
 Plug 'https://github.com/jiangmiao/auto-pairs'
