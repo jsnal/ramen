@@ -29,6 +29,9 @@ Plug 'https://github.com/jsnal/vim-chore'
 Plug 'https://github.com/tomtom/tcomment_vim', { 'on': 'TComment' }
 
 if (!s:vim_lite)
+  " Better paper writing
+  Plug 'https://github.com/junegunn/goyo.vim'
+
   " Common syntax highlighting
   Plug 'https://github.com/sheerun/vim-polyglot'
 
