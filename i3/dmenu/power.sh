@@ -8,7 +8,7 @@ selfore=$(echo \#ffb52a)
 res=$(echo -e "logout\nreboot\nshutdown\nlock" | dmenu -b -p $prompt -nb $back -nf $fore -sb $selback -sf $selfore)
 
 case "$res" in
-  "lock")   bash ~/ramen/i3/Scripts/lock.sh ;;
+  "lock")   bash ~/git/ramen/i3/scripts/lock.sh ;;
   "logout") i3-msg exit ;;
   "reboot")
     notify-send -u critical "Warning: You're about to reboot"
