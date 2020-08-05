@@ -55,17 +55,19 @@ endfunction
 
 " Make editing easier by filling the known path to the current file
 function! ramen#buffer#edit(type) abort
-  let s:path = expand('%:h')
+  let l:path = expand('%:h')
+  let l:trail = "/"
 
-  let s:trail = "/"
-
-  if empty(s:path)
-    let s:trail = ""
+  if empty(l:path)
+    let l:trail = ""
   endif
 
   call inputsave()
-  let s:file = input(a:type . ": ", s:path . s:trail, "file")
+  let l:file = input(a:type . ": ", l:path . l:trail, "file")
   call inputrestore()
 
-  execute a:type s:file
+  if empty(l:file) || l:file =~ './' || l:file =~ expand("%")
+    return
+
+  execute a:type l:file
 endfunction
