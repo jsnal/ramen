@@ -66,8 +66,10 @@ function! ramen#buffer#edit(type) abort
   let l:file = input(a:type . ": ", l:path . l:trail, "file")
   call inputrestore()
 
-  if empty(l:file) || l:file =~ './' || l:file =~ expand("%")
+  " Check that the path isn't empty, './' or already opened
+  if empty(l:file) || l:file ==# './' || l:file ==# expand("%")
     return
+  endif
 
   execute a:type l:file
 endfunction
