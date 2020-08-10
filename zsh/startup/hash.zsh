@@ -5,6 +5,7 @@
   local JWM=~/git/jwm
   local SERAPE=~/.vim/plugged/vim-serape
   local CHORE=~/.vim/plugged/vim-chore
+  local NCSU=~/Documents/NCSU/2020-2021
   local RAMEN=$_ramen[ramen_home]
   local ZSH=$_ramen[ramen_home]/zsh
   local VIM=$_ramen[ramen_home]/vim
@@ -15,6 +16,7 @@
   test -d "$JWM" && hash -d jwm="$JWM"
   test -d "$SERAPE" && hash -d serape="$SERAPE"
   test -d "$CHORE" && hash -d chore="$CHORE"
+  test -d "$NCSU" && hash -d ncsu="$NCSU"
   test -d "$RAMEN" && hash -d ramen="$RAMEN"
   test -d "$ZSH" && hash -d zsh="$ZSH"
   test -d "$VIM" && hash -d vim="$VIM"
