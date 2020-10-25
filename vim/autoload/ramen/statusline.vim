@@ -35,9 +35,8 @@ function! ramen#statusline#focus() abort
   setlocal statusline+=%#LeftBlock#
   setlocal statusline+=\ %{ramen#statusline#mode_current()}\ "
   setlocal statusline+=%#LeftSymbol#
-  setlocal statusline+=
-  setlocal statusline+=%#FileHeader#
-  setlocal statusline+=\ %{ramen#statusline#get_file_header()}
+  setlocal statusline+=\ %#FileHeader#
+  setlocal statusline+=%{ramen#statusline#get_file_header()}
   setlocal statusline+=%#FileTail#
   setlocal statusline+=%t
   setlocal statusline+=%#StatusLine#
@@ -55,7 +54,6 @@ endfunction
 function! ramen#statusline#blur() abort
   " Put spaces where the LeftBlock would be so it appears seamless
   setlocal statusline=\ "
-  setlocal statusline+=\ "
   setlocal statusline+=\ "
   setlocal statusline+=\ "
   setlocal statusline+=\ "
