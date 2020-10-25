@@ -62,3 +62,19 @@ function jump() {
     fi
   fi
 }
+
+
+# Completion function and results
+function _jump_complete() {
+  emulate -L zsh
+
+  local COMPLETIONS
+  COMPLETIONS="$(hash -d | cut -d= -f1)"
+  reply=( "${(ps:\n:)COMPLETIONS}"  )
+
+  # Send the results
+  compadd $reply
+}
+
+# Bind the Completion function to the command
+compdef _jump_complete jump
