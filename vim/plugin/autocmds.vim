@@ -32,9 +32,6 @@ if has('autocmd')
     " Keep splits equal at all times
     autocmd VimResized * wincmd =
 
-    " Set the picker statusline
-    autocmd Filetype picker call ramen#picker#statusline()
-
     " Set code line length limits
     autocmd Filetype c,cpp,java,javascript,python setlocal colorcolumn=80
   augroup END
