@@ -1,7 +1,7 @@
 typeset -A _ramen
 
 # Configure this repo with the ramen typeset
-_ramen[zsh_dir]="$ZDOTDIR"
+_ramen[zsh_dir]="$HOME/.zsh"
 _ramen[color_env]='256'
 _ramen[vim_lite]='false'
 
@@ -21,5 +21,5 @@ function () {
 }
 
 # Plugins
-include $_ramen[ramen_home]/zsh/plugins/zsh-autopair/autopair.plugin.zsh
-include $_ramen[ramen_home]/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+include $_ramen[zsh_dir]/plugins/zsh-autopair/autopair.plugin.zsh
+include $_ramen[zsh_dir]/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
