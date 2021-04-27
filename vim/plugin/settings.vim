@@ -79,7 +79,7 @@ set complete=.,w,b,u,k
 set completeopt=menuone,noselect
 
 " Set the cursor on insert mode only in normal vim
-if exists('$TMUX') && !has('nvim')
+if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
 else

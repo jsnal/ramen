@@ -50,7 +50,6 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"           \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"    \
   "$DOTFILES_DIR/vim:$HOME/.vim"                           \
-  "$DOTFILES_DIR/vim/init.vim:$HOME/.config/nvim/init.vim" \
 )
 
 # ANSI Escape Codes
@@ -136,8 +135,6 @@ function desktop() {
 
 # Install all the files for the terminal environment.
 function terminal() {
-  mkdir -p $HOME/.config/nvim
-
   link-file-list 'TERMINAL_LIST'
 
   # Set the the ramen home

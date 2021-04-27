@@ -11,9 +11,9 @@ alias ..4='cd ../../../..'
 alias ..5='cd ../../../../..'
 
 # System command aliases
-alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
+alias v='vim'
+alias vi='vim'
+alias vim='vim'
 alias z='zathura'
 alias j="jump"
 alias l='ls'
