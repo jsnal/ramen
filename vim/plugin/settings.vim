@@ -18,7 +18,6 @@ endif
 filetype plugin on
 
 " General
-set nomodeline
 set laststatus=2
 set backspace=indent,eol,start
 set path+=**
@@ -26,12 +25,10 @@ set wildmenu
 set wildmode=longest:full,full
 set shortmess=c
 set cmdheight=1
-set showmode
 set splitbelow splitright
 set ignorecase smartcase
 set hidden
 set updatetime=2000
-set noshowmode
 set switchbuf=useopen
 set belloff=all
 set shell=sh
