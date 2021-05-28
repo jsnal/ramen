@@ -46,6 +46,7 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/zsh/plugins:$HOME/.zsh/plugins"           \
   "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"                 \
   "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                   \
+  "$DOTFILES_DIR/X/xresources:$HOME/.Xresources"           \
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"          \
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"           \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"    \

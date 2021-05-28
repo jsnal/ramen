@@ -1,6 +1,6 @@
 xterm*foreground:   #ffffff
 xterm*background:   #000000
-xterm*cursorColor:  #ff00ff
+xterm*cursorColor:  #ffffff
 xterm*color0:       #121212
 xterm*color1:       #ff0000
 xterm*color2:       #00ff00
@@ -17,8 +17,7 @@ xterm*color12:      #0087ff
 xterm*color13:      #ff0087
 xterm*color14:      #00d7ff
 xterm*color15:      #ffffff
-xterm*font:         -misc-*-*-normal--14-*
-! xterm*font:         -misc-fixed-*-r-normal--15------iso8859-15
+xterm*font: -misc-fixed-medium-r-semicondensed--12-120-75-75-c-60-iso10646-1
 xterm*letterSpacing: 1
 xterm*ptyInitialErase: true
 xterm*fading: 20
