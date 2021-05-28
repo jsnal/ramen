@@ -96,7 +96,7 @@ function precmd {
   local DIR="$_ramen[BLUE]%~"
 
   # Paint USER red if command fails
-  [ ! $_ramen[EXIT_CODE] -eq 0 ] && local USER="$_ramen[RED]%n"
+  [ ! $_ramen[EXIT_CODE] -eq 0 ] && local USER="@$_ramen[RED]%n"
 
   PROMPT="$_ramen[BOLD_START]$USER$_ramen[WHITE]:$DIR$_ramen[WHITE]$_ramen[BOLD_END]%# "
   RPROMPT="$_ramen[GRAY]$_ramen[COMMAND_TIME]$_ramen[WHITE]"

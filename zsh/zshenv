@@ -1,11 +1,11 @@
-PATH="$PATH:$ZDOTDIR/scripts/"
+PATH="$PATH"
 KEYTIMEOUT=1
 VISUAL="vim"
 EDITOR="vim"
-TERMINAL="st"
+TERM="xterm-256color"
+TERMINAL="xterm-256color"
 HIST_STAMPS="mm.dd.yyyy"
 HISTSIZE=12000
 SAVEHIST=12000
 HISTFILE="$HOME/.zsh_history"
-TERM="st-256color"
 WORDCHARS='*?_-.[]~=&;!#%^(){}<>'
