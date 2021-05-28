@@ -42,8 +42,7 @@ DESKTOP_LIST=(
   "$DOTFILES_DIR/X/xmodmap:$HOME/.Xmodmap"                  \
 )
 TERMINAL_LIST=(
-  "$DOTFILES_DIR/zsh/startup:$HOME/.zsh/startup"           \
-  "$DOTFILES_DIR/zsh/scripts:$HOME/.zsh/scripts"           \
+  "$DOTFILES_DIR/zsh/utils:$HOME/.zsh/utils"               \
   "$DOTFILES_DIR/zsh/plugins:$HOME/.zsh/plugins"           \
   "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"                 \
   "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                   \
