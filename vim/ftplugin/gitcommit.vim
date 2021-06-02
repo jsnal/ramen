@@ -5,4 +5,5 @@ endif
 " Easily jump through hunks
 nnoremap <buffer> <CR> /\v^(diff\|commit)<CR>z<CR>
 
-call ramen#spell#options()
+" Turn on spell check
+call ramen#edit#spell()

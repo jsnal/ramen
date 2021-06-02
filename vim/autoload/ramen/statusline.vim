@@ -4,10 +4,6 @@ function! ramen#statusline#get_file_header()
   return substitute(s:file_header, '^\.\/\|^\/', '\1', '')
 endfunction
 
-" Get the current mode of the vim buffer
-function! ramen#statusline#mode_current() abort
-  return get(g:currentmode, mode(), 'v·block')
-endfunction
 
 " Window or Buffer Focsed StatusLine
 function! ramen#statusline#focus() abort
@@ -26,6 +22,7 @@ function! ramen#statusline#focus() abort
   setlocal statusline+=\ "
 endfunction
 
+
 " Window or Buffer Blurred StatusLine
 function! ramen#statusline#blur() abort
   " Actual statusline content
@@ -37,26 +34,3 @@ function! ramen#statusline#blur() abort
   setlocal statusline+=\ %c
   setlocal statusline+=\ "
 endfunction
-
-" See :help mode() to see a list of all currentmode names
-let g:currentmode = {
-    \ 'n'  : 'normal',
-    \ 'no' : 'n·operator pending',
-    \ 'v'  : 'visual',
-    \ 'V'  : 'v·line',
-    \ '^V' : 'v·block',
-    \ 's'  : 'select',
-    \ 'S'  : 's·line',
-    \ '^S' : 's·block',
-    \ 'i'  : 'insert',
-    \ 'R'  : 'replace',
-    \ 'Rv' : 'v·replace',
-    \ 'c'  : 'command',
-    \ 'cv' : 'vim·ex',
-    \ 'ce' : 'ex',
-    \ 'r'  : 'prompt',
-    \ 'rm' : 'more',
-    \ 'r?' : 'confirm',
-    \ '!'  : 'shell',
-    \ 't'  : 'terminal'
-    \}

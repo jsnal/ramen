@@ -6,6 +6,7 @@ function! ramen#fold#foldline() abort
   return '+~~ ' . preamble . ' '
 endfunction
 
+
 " Set general fold options
 function! ramen#fold#options() abort
   if has('folding')
@@ -16,11 +17,13 @@ function! ramen#fold#options() abort
   endif
 endfunction
 
+
 " Refresh the fold options when you load the view
 function! ramen#fold#loadview() abort
   silent loadview
   silent call ramen#fold#options()
 endfunction
+
 
 " If you're not in the root directory cd into and mkview
 function! ramen#fold#mkview() abort

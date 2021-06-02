@@ -27,4 +27,4 @@ nnoremap Q <nop>
 nnoremap K <nop>
 
 " Easier editing
-nnoremap <C-f> :call ramen#buffer#edit('edit')<CR>
+nnoremap <C-f> :call ramen#edit#open('edit')<CR>
