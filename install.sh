@@ -56,6 +56,7 @@ TERMINAL_LIST=(
 # ANSI Escape Codes
 BOLD="\033[1m"
 UNDR="\033[4m"
+YELLOW="\033[33m"
 GREEN="\033[32m"
 RED="\033[31m"
 ENDL="\033[0m"
@@ -108,6 +109,26 @@ function link-file-list() {
   done
 }
 
+# Verify all of the submodules have been updated
+function verify-submodules() {
+  local IFS=$'\n'
+  local failed=false
+  local submodules=($(sed -n -e 's/^.*path = //p' $DOTFILES_DIR/.gitmodules))
+
+  for i in ${submodules[@]}; do
+    if [ -d "${i}" ]; then
+      echo -e "(${GREEN}Dir${ENDL})     $DOTFILES_DIR/${i}"
+    else
+      echo -e "(${RED}Missing${ENDL}) $DOTFILES_DIR/${i}"
+      local failed=true
+    fi
+  done
+
+  if [ "$failed" = true ]; then
+    echo -e "(${YELLOW}WARNING${ENDL}) One or more submodule could not be found"
+  fi
+}
+
 # Verify that all the files in the project actually exist
 function verify-install() {
   echo -e "${UNDR}Verifying Install${ENDL}"
@@ -124,6 +145,8 @@ function verify-install() {
       exit 1
     fi
   done
+
+  verify-submodules
 }
 
 # Install all the files for the desktop environment
