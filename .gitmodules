@@ -7,3 +7,21 @@
 [submodule "bin/fzy"]
 	path = bin/fzy
 	url = https://github.com/jhawthorn/fzy
+[submodule "vim/pack/ramen/opt/vim-rooter"]
+	path = vim/pack/ramen/opt/vim-rooter
+	url = https://github.com/airblade/vim-rooter
+[submodule "vim/pack/ramen/opt/auto-pairs"]
+	path = vim/pack/ramen/opt/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
+[submodule "vim/pack/ramen/opt/vim-serape"]
+	path = vim/pack/ramen/opt/vim-serape
+	url = https://github.com/jsnal/vim-serape
+[submodule "vim/pack/ramen/opt/tcomment_vim"]
+	path = vim/pack/ramen/opt/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim
+[submodule "vim/pack/ramen/opt/vim-polyglot"]
+	path = vim/pack/ramen/opt/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim/pack/ramen/opt/vim-mucomplete"]
+	path = vim/pack/ramen/opt/vim-mucomplete
+	url = https://github.com/lifepillar/vim-mucomplete

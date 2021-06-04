@@ -1,28 +1,12 @@
-" Be sure vim-plug is installed.
-call ramen#startup#plug()
-
 " Set leader
 let mapleader = ","
 
-call plug#begin('~/.vim/plugged')
-
-" Change working dir to project root
-Plug 'https://github.com/airblade/vim-rooter'
-
-" Automatically insert common characters
-Plug 'https://github.com/jiangmiao/auto-pairs'
-
-" Color Scheme
-Plug 'https://github.com/jsnal/vim-serape'
-
-" Easy Commenting in and out
-Plug 'https://github.com/tomtom/tcomment_vim', { 'on': 'TComment' }
-
-" Common syntax highlighting
-Plug 'https://github.com/sheerun/vim-polyglot'
-
-" Chained completion and auto-tab completion
-Plug 'https://github.com/lifepillar/vim-mucomplete'
-
-" Plugin Total: 11
-call plug#end()
+" Plugin Total: 6
+if has('packages')
+  packadd! vim-rooter
+  packadd! auto-pairs
+  packadd! vim-serape
+  packadd! tcomment_vim
+  packadd! vim-polyglot
+  packadd! vim-mucomplete
+endif
