@@ -9,12 +9,10 @@ _ramen[RED]="%{%F{9}%}"
 _ramen[BLUE]="%{%F{12}%}"
 _ramen[CYAN]="%{%F{14}%}"
 _ramen[YELLOW]="%{%F{11}%}"
+_ramen[GREEN_YELLOW]="%{%F{154}%}"
 _ramen[GREEN]="%{%F{2}%}"
 _ramen[MAGENTA]="%{%F{13}%}"
 _ramen[ORANGE]="%{%F{214}%}"
-
-_ramen[PROMPT_USER]="%{%F{11}%}"
-_ramen[PROMPT_DIR]="%{%F{2}%}"
 
 # Text changes
 _ramen[BOLD_START]="%B"
