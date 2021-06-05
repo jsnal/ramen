@@ -116,7 +116,7 @@ function verify-submodules() {
   local submodules=($(sed -n -e 's/^.*path = //p' $DOTFILES_DIR/.gitmodules))
 
   for i in ${submodules[@]}; do
-    if [ -d "${i}" ]; then
+    if [ ! -n "$(find "$DOTFILES_DIR/$i" -maxdepth 0 -type d -empty )" ]; then
       echo -e "(${GREEN}Dir${ENDL})     $DOTFILES_DIR/${i}"
     else
       echo -e "(${RED}Missing${ENDL}) $DOTFILES_DIR/${i}"
