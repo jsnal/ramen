@@ -165,7 +165,7 @@ function terminal() {
   echo "export _ramen[ramen_home]=$DOTFILES_DIR" > $HOME/.zsh/.zshrc.local
 
   # Create tmp vim directories
-  mkdir -p $HOME/.vim/{backup,swap,undo,view}
+  mkdir -p $HOME/.vim/tmp/{backup,swap,undo,view}
 
   # Override gitconfig
   [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
