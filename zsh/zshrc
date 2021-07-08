@@ -95,11 +95,14 @@ function precmd {
   local USER="$_ramen[YELLOW]%n$_ramen[WHITE]@$_ramen[GREEN_YELLOW]%m"
   local DIR="$_ramen[BLUE]%~"
 
+  # Paint the USER red if the user is root
+  [ $UID -eq 0 ] && local USER="$_ramen[WHITE]%n@%m"
+
   # Paint USER red if command fails
   [ ! $_ramen[EXIT_CODE] -eq 0 ] && local USER="$_ramen[RED]%n@%m"
 
-  PROMPT="$_ramen[BOLD_START]$USER$_ramen[WHITE]:$DIR$_ramen[WHITE]$_ramen[BOLD_END]%# "
-  RPROMPT="$_ramen[GRAY]$_ramen[COMMAND_TIME]$_ramen[WHITE]"
+  export PROMPT="$_ramen[BOLD_START]$USER$_ramen[WHITE]:$DIR$_ramen[WHITE]$_ramen[BOLD_END]%# "
+  export RPROMPT="$_ramen[GRAY]$_ramen[COMMAND_TIME]$_ramen[WHITE]"
 
   # Set window title in xterm
   case $TERM in
