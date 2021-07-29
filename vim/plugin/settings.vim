@@ -9,6 +9,7 @@ if has('gui_running')
   silent! colorscheme slate
 else
   silent! colorscheme serape
+  " silent! colorscheme srcery
   hi Normal  ctermbg=none
   hi LineNr  ctermbg=none
   hi NonText ctermbg=none
