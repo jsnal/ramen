@@ -6,11 +6,11 @@ xterm*color1:       #ff0000
 xterm*color2:       #00ff00
 xterm*color3:       #ffff00
 xterm*color4:       #0087ff
-xterm*color8:       #606060
-xterm*color9:       #ff5f00
 xterm*color5:       #ff0087
 xterm*color6:       #00d7ff
-xterm*color7:       #ffffff
+xterm*color7:       #c0c0c0
+xterm*color8:       #606060
+xterm*color9:       #ff0000
 xterm*color10:      #00ff00
 xterm*color11:      #ffff00
 xterm*color12:      #0087ff
@@ -24,12 +24,8 @@ xterm*renderFont: true
 xterm*letterSpacing: 1
 xterm*ptyInitialErase: true
 xterm*fading: 20
-
 xterm*allowBoldFonts: true
-
 xterm*scrollBar: false
-
 Xcursor.theme: posy-black
 Xcursor.size: 8
-
 *.vt100.metaSendsEscape: true
