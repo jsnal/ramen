@@ -53,3 +53,5 @@
 [user]
   name = Jason Long
   email = jasonlongball@gmail.com
+[pull]
+  rebase = false
