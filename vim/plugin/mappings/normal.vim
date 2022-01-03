@@ -27,4 +27,5 @@ nnoremap Q <nop>
 nnoremap K <nop>
 
 " Easier editing
-nnoremap <C-f> :call ramen#edit#open('edit')<CR>
+nnoremap <C-d> :call ramen#edit#open('edit')<CR>
+nnoremap <C-f> :FZF --info=hidden<CR>

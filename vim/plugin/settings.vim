@@ -117,3 +117,6 @@ else
   set directory=$HOME/.vim/tmp/swap//
   set directory+=.
 endif
+
+" fzf layout
+let g:fzf_layout = { 'down': '30%' }

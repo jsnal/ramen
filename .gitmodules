@@ -25,3 +25,6 @@
 [submodule "vim/pack/ramen/opt/vim-mucomplete"]
 	path = vim/pack/ramen/opt/vim-mucomplete
 	url = https://github.com/lifepillar/vim-mucomplete
+[submodule "vim/pack/ramen/opt/fzf"]
+	path = vim/pack/ramen/opt/fzf
+	url = https://github.com/junegunn/fzf

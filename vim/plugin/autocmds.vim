@@ -26,5 +26,10 @@ if has('autocmd')
 
     " Set code line length limits
     autocmd Filetype c,cpp,java,javascript,python setlocal colorcolumn=80
+
+    " Remove fzf statusline
+    autocmd! FileType fzf
+    autocmd  FileType fzf set laststatus=0 noshowmode noruler
+          \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
   augroup END
 endif

@@ -1,7 +1,7 @@
 " Set leader
 let mapleader = ","
 
-" Plugin Total: 6
+" Plugin Total: 7
 if has('packages')
   packadd! vim-rooter
   packadd! auto-pairs
@@ -9,4 +9,6 @@ if has('packages')
   packadd! tcomment_vim
   packadd! vim-polyglot
   packadd! vim-mucomplete
+  packadd! fzf
 endif
+
