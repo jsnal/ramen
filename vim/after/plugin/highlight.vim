@@ -15,8 +15,8 @@ if has('syntax')
 
   " Line Number
   hi CursorLine       ctermfg=none ctermbg=none cterm=none
-  hi LineNr           ctermfg=245  ctermbg=235
-  hi CursorLineNr     ctermfg=184  ctermbg=235  cterm=bold
+  hi LineNr           ctermfg=245  ctermbg=none
+  hi CursorLineNr     ctermfg=184  ctermbg=none cterm=bold
 
   " Language Client
   hi LanguageClientError   ctermfg=196 ctermbg=235 cterm=bold
