@@ -61,8 +61,6 @@ zstyle ':completion:*:*kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Options
 
-setopt prompt_subst
-setopt promptsubst
 setopt append_history
 setopt extended_history
 setopt sharehistory
@@ -72,8 +70,7 @@ setopt complete_in_word
 setopt auto_menu
 setopt correct
 setopt correctall
-setopt noflowcontrol
-setopt hist_verify
+setopt list_packed
 
 # Prompt
 function preexec {
