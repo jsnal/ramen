@@ -6,7 +6,6 @@ _ramen[ZSH_HOME]="$HOME/.zsh"
 # Inlcude plugins and utils
 source $_ramen[ZSH_HOME]/utils/colors.zsh
 source $_ramen[ZSH_HOME]/utils/time.zsh
-source $_ramen[ZSH_HOME]/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Aliases
 
