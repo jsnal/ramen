@@ -27,10 +27,8 @@ fi
 # Binds
 
 bindkey -e
-bindkey '^w' forward-word
 bindkey '^b' backward-word
 bindkey '^d' kill-whole-line
-bindkey '^k' backward-kill-word
 bindkey '^j' kill-word
 
 # Completion
