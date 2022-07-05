@@ -3,6 +3,9 @@
 *.swp
 *.swo
 
+# emacs
+\#*\#
+
 # node
 npm-debug.log
 node_modules
