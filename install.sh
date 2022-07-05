@@ -15,7 +15,7 @@ echo $DOTFILES_DIR
 #   3. Verify all the project files are present before starting.
 #   4. Finally get the selected profile and install the files accordingly.
 #
-echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally i3wm, jq, lemonbar, the-silver-searcher\n"
+echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally the-silver-searcher\n"
 echo -e "${UNDR}Cloning${ENDL} ramen Repository"
 
 # Check if we're in a the correct git repository
@@ -35,7 +35,6 @@ PROFILE_SELECT="terminal"
 GT_USR=""
 GT_EML=""
 DESKTOP_LIST=(
-  "$DOTFILES_DIR/i3/config:$HOME/.config/i3/config"         \
   "$DOTFILES_DIR/dunst/dunstrc:$HOME/.config/dunst/dunstrc" \
   "$DOTFILES_DIR/X/xresources:$HOME/.Xresources"            \
   "$DOTFILES_DIR/X/xbindkeysrc:$HOME/.xbindkeysrc"          \
@@ -43,13 +42,14 @@ DESKTOP_LIST=(
 )
 TERMINAL_LIST=(
   "$DOTFILES_DIR/zsh/utils:$HOME/.zsh/utils"               \
-  "$DOTFILES_DIR/zsh/plugins:$HOME/.zsh/plugins"           \
   "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"                 \
   "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                   \
   "$DOTFILES_DIR/X/xresources:$HOME/.Xresources"           \
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"          \
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"           \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"    \
+  "$DOTFILES_DIR/emacs/init.el:$HOME/.emacs.d"             \
+  "$DOTFILES_DIR/emacs/packages.el:$HOME/.emacs.d"         \
   "$DOTFILES_DIR/vim:$HOME/.vim"                           \
 )
 
@@ -151,7 +151,6 @@ function verify-install() {
 
 # Install all the files for the desktop environment
 function desktop() {
-  mkdir -p $HOME/.config/i3
   mkdir -p $HOME/.config/dunst
 
   link-file-list 'DESKTOP_LIST'
@@ -163,6 +162,9 @@ function terminal() {
 
   # Set the the ramen home
   echo "export _ramen[ramen_home]=$DOTFILES_DIR" > $HOME/.zsh/.zshrc.local
+
+  # Create emacs
+  mkdir -p $HOME/.emacs.d
 
   # Create tmp vim directories
   mkdir -p $HOME/.vim/tmp/{backup,swap,undo,view}
