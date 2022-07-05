@@ -1,21 +1,20 @@
 ;; Setup package
 (require 'package)
 (setq package-enable-at-startup nil)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")))
+(setq package-archives '(("GNU ELPA" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 
 ;; List of packages to install
-(setq package-list '(evil smartparens counsel))
+(setq package-list '(lsp-mode flycheck clang-format evil smartparens counsel company))
 
 ;; Initialize package
 (package-initialize)
 
-;; Bootstrap package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package)
-  (eval-when-compile (require 'use-package)))
+;; Update packages
+(unless package-archive-contents
+  (package-refresh-contents))
 
 ;; Install the missing packages
 (dolist (package package-list)
-	(unless (package-installed-p package)
-		(package-install package)))
+  (unless (package-installed-p package)
+    (package-install package)))
