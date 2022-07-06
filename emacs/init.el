@@ -1,8 +1,9 @@
 ;; Load in packages
 (load "~/.emacs.d/packages")
 
-;; Set theme
-(load-theme 'misterioso t)
+;; Set theme and font
+(load-theme 'wombat t)
+(set-face-attribute 'default (selected-frame) :height 110)
 
 ;; Enable Evil
 (use-package evil

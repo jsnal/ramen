@@ -12,7 +12,10 @@
 
 ;; Update packages
 (unless package-archive-contents
-  (package-refresh-contents))
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
 
 ;; Install the missing packages
 (dolist (package package-list)
