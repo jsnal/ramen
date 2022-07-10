@@ -2,8 +2,18 @@
 (load "~/.emacs.d/packages")
 
 ;; Set theme and font
-(load-theme 'badwolf t)
-(set-cursor-color "#ffffff")
+(require 'modus-themes)
+(setq modus-themes-bold-constructs t
+      modus-themes-italic-constructs t
+      modus-themes-fringes 'subtle
+      modus-themes-paren-match '(bold intense)
+      modus-themes-region '(accented bg-only)
+      modus-themes-prompts '(bold intense)
+      modus-themes-completions '((matches . (extrabold))
+                                 (selection . (semibold accented))
+                                 (popup . (accented intense))))
+(modus-themes-load-themes)
+(modus-themes-load-vivendi)
 (set-face-attribute 'default (selected-frame) :height 110)
 
 ;; Enable Evil
@@ -18,9 +28,9 @@
 (define-key evil-motion-state-map (kbd "C-f") nil)
 
 ;; Enable ivy
-(require 'counsel)
-(ivy-mode 1)
-(setq ivy-count-format "(%d/%d) ")
+;;(require 'counsel)
+;;(ivy-mode 1)
+;;(setq ivy-count-format "(%d/%d) ")
 
 ;; Set ivy bindings
 (global-set-key (kbd "C-f") 'counsel-find-file)
@@ -44,6 +54,7 @@
 ;; Enable flycheck
 (add-hook 'after-init-hook 'global-flycheck-mode)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+(setq flycheck-indication-mode nil)
 
 ;; Show matching parenthesis
 (show-paren-mode 1)
@@ -58,8 +69,7 @@
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
 
 ;; Enable line number
-(global-linum-mode t)
-(setq linum-format "%4d ")
+(display-line-numbers-mode)
 
 ;; 4-space tabs
 (setq-default indent-tabs-mode nil)
