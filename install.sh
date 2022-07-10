@@ -158,13 +158,13 @@ function desktop() {
 
 # Install all the files for the terminal environment.
 function terminal() {
+  # Create emacs
+  mkdir -p $HOME/.emacs.d
+
   link-file-list 'TERMINAL_LIST'
 
   # Set the the ramen home
   echo "export _ramen[ramen_home]=$DOTFILES_DIR" > $HOME/.zsh/.zshrc.local
-
-  # Create emacs
-  mkdir -p $HOME/.emacs.d
 
   # Create tmp vim directories
   mkdir -p $HOME/.vim/tmp/{backup,swap,undo,view}
