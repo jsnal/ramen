@@ -2,13 +2,13 @@
 (load "~/.emacs.d/packages")
 
 ;; Set theme and font
-(load-theme 'wombat t)
+(load-theme 'badwolf t)
+(set-cursor-color "#ffffff")
 (set-face-attribute 'default (selected-frame) :height 110)
 
 ;; Enable Evil
-(use-package evil
-  :config
-  (evil-mode 1))
+(require 'evil)
+(evil-mode 1)
 
 ;; Make C-z behave like other apps
 (define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
@@ -18,24 +18,22 @@
 (define-key evil-motion-state-map (kbd "C-f") nil)
 
 ;; Enable ivy
-(use-package counsel
-  :config
-  (ivy-mode 1)
-  (setq ivy-count-format "(%d/%d) "))
+(require 'counsel)
+(ivy-mode 1)
+(setq ivy-count-format "(%d/%d) ")
 
 ;; Set ivy bindings
 (global-set-key (kbd "C-f") 'counsel-find-file)
 (global-set-key (kbd "C-s") 'swiper-isearch)
 
 ;; Enable company
-(use-package company
-  :config
-  (add-hook 'after-init-hook 'global-company-mode))
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Enable smartparens
-(use-package smartparens
-  :config
-  (add-hook 'prog-mode-hook 'smartparens-mode))
+(require 'smartparens)
+(add-hook 'prog-mode-hook 'smartparens-mode)
+(setq sp-highlight-pair-overlay nil)
 
 ;; Enable clang-format on save
 (add-hook 'c++-mode-hook

@@ -5,7 +5,7 @@
                          ("melpa" . "https://melpa.org/packages/")))
 
 ;; List of packages to install
-(setq package-list '(lsp-mode flycheck clang-format evil smartparens counsel company))
+(setq package-list '(lsp-mode badwolf-theme flycheck clang-format evil smartparens counsel company))
 
 ;; Initialize package
 (package-initialize)
@@ -14,8 +14,6 @@
 (unless package-archive-contents
   (package-refresh-contents)
   (package-install 'use-package))
-
-(require 'use-package)
 
 ;; Install the missing packages
 (dolist (package package-list)
