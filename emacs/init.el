@@ -6,6 +6,7 @@
 (setq modus-themes-bold-constructs t
       modus-themes-italic-constructs t
       modus-themes-fringes 'subtle
+      modus-themes-mode-line '(borderless)
       modus-themes-paren-match '(bold intense)
       modus-themes-region '(accented bg-only)
       modus-themes-prompts '(bold intense)
@@ -26,15 +27,7 @@
 (define-key evil-motion-state-map (kbd "C-x C-z") 'evil-emacs-state)
 (define-key evil-emacs-state-map (kbd "C-x C-z") 'evil-exit-emacs-state)
 (define-key evil-motion-state-map (kbd "C-f") nil)
-
-;; Enable ivy
-;;(require 'counsel)
-;;(ivy-mode 1)
-;;(setq ivy-count-format "(%d/%d) ")
-
-;; Set ivy bindings
-(global-set-key (kbd "C-f") 'counsel-find-file)
-(global-set-key (kbd "C-s") 'swiper-isearch)
+(define-key evil-motion-state-map (kbd "C-b") nil)
 
 ;; Enable company
 (require 'company)
@@ -42,19 +35,27 @@
 
 ;; Enable smartparens
 (require 'smartparens)
-(add-hook 'prog-mode-hook 'smartparens-mode)
 (setq sp-highlight-pair-overlay nil)
+(add-hook 'prog-mode-hook 'smartparens-mode)
 
 ;; Enable clang-format on save
+(require 'clang-format)
 (add-hook 'c++-mode-hook
   (lambda ()
     (add-hook (make-local-variable 'before-save-hook)
               'clang-format-buffer)))
 
 ;; Enable flycheck
+(require 'flycheck)
 (add-hook 'after-init-hook 'global-flycheck-mode)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
-(setq flycheck-indication-mode nil)
+
+;; Set key bindings
+(global-set-key (kbd "C-f") 'find-file)
+(global-set-key (kbd "C-b") 'switch-to-buffer)
+
+;; Set icomplete mode
+(icomplete-mode)
 
 ;; Show matching parenthesis
 (show-paren-mode 1)
@@ -69,7 +70,7 @@
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
 
 ;; Enable line number
-(display-line-numbers-mode)
+(global-display-line-numbers-mode)
 
 ;; 4-space tabs
 (setq-default indent-tabs-mode nil)
