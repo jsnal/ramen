@@ -34,9 +34,8 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Enable smartparens
-(require 'smartparens)
-(setq sp-highlight-pair-overlay nil)
-(add-hook 'prog-mode-hook 'smartparens-mode)
+(require 'elec-pair)
+(add-hook 'after-init-hook 'electric-pair-mode)
 
 ;; Enable clang-format on save
 (require 'clang-format)
@@ -48,7 +47,7 @@
 ;; Enable flycheck
 (require 'flycheck)
 (add-hook 'after-init-hook 'global-flycheck-mode)
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
 
 ;; Set key bindings
 (global-set-key (kbd "C-f") 'find-file)
