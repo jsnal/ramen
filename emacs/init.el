@@ -2,24 +2,16 @@
 (load "~/.emacs.d/packages")
 
 ;; Set theme and font
-(require 'modus-themes)
-(setq modus-themes-bold-constructs t
-      modus-themes-italic-constructs t
-      modus-themes-fringes 'subtle
-      modus-themes-mode-line '(borderless)
-      modus-themes-paren-match '(bold intense)
-      modus-themes-region '(accented bg-only)
-      modus-themes-prompts '(bold intense)
-      modus-themes-completions '((matches . (extrabold))
-                                 (selection . (semibold accented))
-                                 (popup . (accented intense))))
-(modus-themes-load-themes)
-(modus-themes-load-vivendi)
-(set-face-attribute 'default (selected-frame) :height 110)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/theme/")
+(load-theme 'darcula t)
+(set-face-attribute 'default (selected-frame) :height 100)
 
 ;; Enable Evil
 (require 'evil)
 (evil-mode 1)
+
+(setq evil-split-window-below t)
+(setq evil-vsplit-window-right t)
 
 ;; Make C-z behave like other apps
 (define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
@@ -53,8 +45,26 @@
 (global-set-key (kbd "C-f") 'find-file)
 (global-set-key (kbd "C-b") 'switch-to-buffer)
 
-;; Set icomplete mode
-(icomplete-mode)
+;; Setup interactive completion
+(require 'ido)
+(ido-mode 1)
+(setq ido-everywhere t)
+(setq ido-enable-flex-matching t)
+(setq ido-confirm-unique-completion nil)
+(setq ido-create-new-buffer nil)
+(setq ido-create-new-buffer nil)
+(setq ido-decorations (quote ("" "" " | " " | ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+
+;; Use IDO for M-x
+(global-set-key
+ "\M-x"
+ (lambda ()
+   (interactive)
+   (call-interactively
+    (intern
+     (ido-completing-read
+      "M-x "
+      (all-completions "" obarray 'commandp))))))
 
 ;; Show matching parenthesis
 (show-paren-mode 1)

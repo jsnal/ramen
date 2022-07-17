@@ -50,6 +50,7 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"    \
   "$DOTFILES_DIR/emacs/init.el:$HOME/.emacs.d"             \
   "$DOTFILES_DIR/emacs/packages.el:$HOME/.emacs.d"         \
+  "$DOTFILES_DIR/emacs/theme:$HOME/.emacs.d/theme"         \
   "$DOTFILES_DIR/vim:$HOME/.vim"                           \
 )
 
