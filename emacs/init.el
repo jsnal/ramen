@@ -10,8 +10,15 @@
 (require 'evil)
 (evil-mode 1)
 
+;; Sane splitting behavior
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
+
+;; Make evil-mode up/down operate in screen lines instead of logical lines
+(define-key evil-motion-state-map "j" 'evil-next-visual-line)
+(define-key evil-motion-state-map "k" 'evil-previous-visual-line)
+(define-key evil-visual-state-map "j" 'evil-next-visual-line)
+(define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
 ;; Make C-z behave like other apps
 (define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
@@ -96,6 +103,10 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+;; Set fringe widths
+(setq-default left-fringe-width  2)
+(setq-default right-fringe-width  0)
 
 ;; Follow symlinks
 (setq vc-follow-symlinks nil)
