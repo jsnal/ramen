@@ -46,7 +46,6 @@
 ;; Enable flycheck
 (require 'flycheck)
 (add-hook 'after-init-hook 'global-flycheck-mode)
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
 
 ;; Set key bindings
 (global-set-key (kbd "C-f") 'find-file)
@@ -110,6 +109,10 @@
 
 ;; Follow symlinks
 (setq vc-follow-symlinks nil)
+
+;; C++ mode
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; Save all backup files to the same location
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
