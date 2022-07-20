@@ -103,10 +103,6 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; Set fringe widths
-(setq-default left-fringe-width  2)
-(setq-default right-fringe-width  0)
-
 ;; Follow symlinks
 (setq vc-follow-symlinks nil)
 
