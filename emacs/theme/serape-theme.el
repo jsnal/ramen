@@ -102,6 +102,13 @@
        `(font-lock-variable-name-face        ((,class (:foreground base08))))
        `(font-lock-warning-face              ((,class (:foreground base08))))
 
+       ;;; Search
+       `(match                               ((,class (:foreground ,color0D :background ,color01 :inverse-video t))))
+       `(isearch                             ((,class (:foreground ,color0A :background ,color01 :inverse-video t))))
+       `(isearch-fail                        ((,class (:background ,color01 :inverse-video t :inherit font-lock-warning-face))))
+       `(lazy-highlight                      ((,class (:foreground ,color0C :background ,color01 :inverse-video t))))
+       `(isearch-lazy-highlight-face         ((,class (:inherit font-lock-warning-face))))
+
        ;;; Line numbers
        `(line-number                         ((,class (:foreground ,color05 :background ,color01))))
        `(line-number-current-line            ((,class (:foreground ,color0A :background ,color01 :weight bold))))
