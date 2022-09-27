@@ -3,8 +3,9 @@
 
 ;; Set theme and font
 (add-to-list 'custom-theme-load-path "~/.emacs.d/theme/")
-(load-theme 'darcula t)
-(set-face-attribute 'default (selected-frame) :height 100)
+(load-theme 'base16-bright t)
+(set-face-attribute 'default (selected-frame) :height 110)
+(set-cursor-color "#ffffff")
 
 ;; Enable Evil
 (require 'evil)

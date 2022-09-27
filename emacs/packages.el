@@ -5,7 +5,7 @@
                          ("melpa" . "https://melpa.org/packages/")))
 
 ;; List of packages to install
-(setq package-list '(lsp-mode flycheck clang-format evil company))
+(setq package-list '(base16-theme lsp-mode flycheck clang-format evil company))
 
 ;; Initialize package
 (package-initialize)
