@@ -29,3 +29,8 @@ nnoremap K <nop>
 " Easier editing
 nnoremap <C-d> :call ramen#edit#open('edit')<CR>
 nnoremap <C-f> :FZF --info=hidden<CR>
+
+" Tab through results of asynccomplete
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup() : "\<cr>"

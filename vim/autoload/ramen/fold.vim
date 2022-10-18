@@ -2,7 +2,6 @@
 function! ramen#fold#foldline() abort
   let numlines_folded = v:foldend - v:foldstart + 1
   let preamble = printf("[%d folded]", numlines_folded)
-
   return '+~~ ' . preamble . ' '
 endfunction
 
@@ -12,7 +11,7 @@ function! ramen#fold#options() abort
   if has('folding')
     setlocal foldcolumn=0
     setlocal fillchars+=fold:~
-    setlocal foldmethod=indent
+    setlocal foldmethod=manual
     setlocal foldtext=ramen#fold#foldline()
   endif
 endfunction

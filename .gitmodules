@@ -25,3 +25,12 @@
 [submodule "vim/pack/ramen/opt/fzf"]
 	path = vim/pack/ramen/opt/fzf
 	url = https://github.com/junegunn/fzf
+[submodule "vim/pack/ramen/opt/vim-lsp"]
+	path = vim/pack/ramen/opt/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
+[submodule "vim/pack/ramen/opt/asyncomplete.vim"]
+	path = vim/pack/ramen/opt/asyncomplete.vim
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "vim/pack/ramen/opt/asyncomplete-lsp.vim"]
+	path = vim/pack/ramen/opt/asyncomplete-lsp.vim
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim

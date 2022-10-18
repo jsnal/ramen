@@ -32,4 +32,10 @@ if has('autocmd')
     autocmd  FileType fzf set laststatus=0 noshowmode noruler
           \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
   augroup END
+
+  " Install the LSP when it's enabled in the buffer
+  augroup lsp_install
+    autocmd!
+    autocmd User lsp_buffer_enabled call ramen#lsp#on_buffer_enabled()
+  augroup END
 endif

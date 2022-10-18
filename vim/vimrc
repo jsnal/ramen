@@ -8,7 +8,10 @@ if has('packages')
   packadd! vim-serape
   packadd! tcomment_vim
   packadd! vim-polyglot
-  packadd! vim-mucomplete
+  " packadd! vim-mucomplete
   packadd! fzf
+  packadd! vim-lsp
+  packadd! asyncomplete.vim
+  packadd! asyncomplete-lsp.vim
 endif
 
