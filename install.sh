@@ -48,9 +48,6 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"          \
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"           \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"    \
-  "$DOTFILES_DIR/emacs/init.el:$HOME/.emacs.d"             \
-  "$DOTFILES_DIR/emacs/packages.el:$HOME/.emacs.d"         \
-  "$DOTFILES_DIR/emacs/theme:$HOME/.emacs.d/theme"         \
   "$DOTFILES_DIR/vim:$HOME/.vim"                           \
 )
 
@@ -165,7 +162,7 @@ function terminal() {
   link-file-list 'TERMINAL_LIST'
 
   # Set the the ramen home
-  echo "export _ramen[ramen_home]=$DOTFILES_DIR" > $HOME/.zsh/.zshrc.local
+  echo "export _ramen[HOME]=$DOTFILES_DIR" > $HOME/.zsh/.zshrc.local
 
   # Create tmp vim directories
   mkdir -p $HOME/.vim/tmp/{backup,swap,undo,view}

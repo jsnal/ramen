@@ -6,9 +6,9 @@ _ramen[ZSH_HOME]="$HOME/.zsh"
 # Inlcude plugins and utils
 source $_ramen[ZSH_HOME]/utils/colors.zsh
 source $_ramen[ZSH_HOME]/utils/time.zsh
+source $_ramen[ZSH_HOME]/.zshrc.local
 
 # Aliases
-
 alias v='vim'
 alias vi='vim'
 alias l='ls'
