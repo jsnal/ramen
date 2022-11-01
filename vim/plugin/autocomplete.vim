@@ -10,7 +10,6 @@ endif
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
-    echo("YAY")
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
     let g:lsp_format_sync_timeout = 1000
 endfunction
