@@ -82,7 +82,10 @@ vim.g.tcomment_mapleader1 = ''
 vim.g.tcomment_mapleader2 = ''
 vim.g.tcomment_mapleader_comment_anyway = ''
 
+-- Set colorscheme and detect the filetype
 vim.cmd('colorscheme base16-bright')
+vim.cmd('filetype indent plugin on')
+vim.cmd('syntax on')
 
 -------------------------------------------------------------------------------
 -- Mappings {{{1 --------------------------------------------------------------
