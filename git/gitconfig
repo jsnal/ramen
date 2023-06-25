@@ -41,7 +41,6 @@
 
 [core]
   excludesfile = ~/.gitignore_global
-  editor = vim
 [color]
   ui = true
 [status]

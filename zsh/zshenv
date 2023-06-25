@@ -1,11 +1,12 @@
-PATH="$PATH"
-KEYTIMEOUT=1
-VISUAL="vim"
-EDITOR="vim"
-TERM="xterm-256color"
-TERMINAL="xterm-256color"
-HIST_STAMPS="mm.dd.yyyy"
-HISTSIZE=12000
-SAVEHIST=12000
-HISTFILE="$HOME/.zsh_history"
-WORDCHARS='*?_-.[]~=&;!#%^(){}<>'
+export PATH="$PATH"
+export KEYTIMEOUT=1
+export VISUAL="nvim"
+export EDITOR=$VISUAL
+export GIT_EDITOR=$VISUAL
+export TERM="xterm-256color"
+export TERMINAL="xterm-256color"
+export HIST_STAMPS="mm.dd.yyyy"
+export HISTSIZE=12000
+export SAVEHIST=12000
+export HISTFILE="$HOME/.zsh_history"
+export WORDCHARS='*?_-.[]~=&;!#%^(){}<>'
