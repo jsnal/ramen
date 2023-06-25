@@ -6,7 +6,14 @@
 
 # Set the default path to the current path
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-echo $DOTFILES_DIR
+
+# ANSI Escape Codes
+BOLD="\033[1m"
+UNDR="\033[4m"
+YELLOW="\033[33m"
+GREEN="\033[32m"
+RED="\033[31m"
+ENDL="\033[0m"
 
 # Conduct the install process in the following order:
 #
@@ -15,8 +22,7 @@ echo $DOTFILES_DIR
 #   3. Verify all the project files are present before starting.
 #   4. Finally get the selected profile and install the files accordingly.
 #
-echo -e "${UNDR}Please Install:${ENDL} zsh, vim, tmux; optionally the-silver-searcher\n"
-echo -e "${UNDR}Cloning${ENDL} ramen Repository"
+echo -e "${UNDR}Cloning ramen${ENDL}"
 
 # Check if we're in a the correct git repository
 if git --git-dir=$DOTFILES_DIR/.git config -l | grep -q "jsnal/ramen"; then
@@ -48,16 +54,8 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"          \
   "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"           \
   "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"    \
-  "$DOTFILES_DIR/vim:$HOME/.vim"                           \
+  "$DOTFILES_DIR/nvim:$HOME/.config/nvim"                  \
 )
-
-# ANSI Escape Codes
-BOLD="\033[1m"
-UNDR="\033[4m"
-YELLOW="\033[33m"
-GREEN="\033[32m"
-RED="\033[31m"
-ENDL="\033[0m"
 
 # Usage information
 function usage() {
@@ -156,8 +154,7 @@ function desktop() {
 
 # Install all the files for the terminal environment.
 function terminal() {
-  # Create emacs
-  mkdir -p $HOME/.emacs.d
+  mkdir -p $HOME/.config/nvim
 
   link-file-list 'TERMINAL_LIST'
 
@@ -165,7 +162,7 @@ function terminal() {
   echo "export _ramen[HOME]=$DOTFILES_DIR" > $HOME/.zsh/.zshrc.local
 
   # Create tmp vim directories
-  mkdir -p $HOME/.vim/tmp/{backup,swap,undo,view}
+  # mkdir -p $HOME/.config/tmp/{backup,swap,undo,view}
 
   # Override gitconfig
   [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
