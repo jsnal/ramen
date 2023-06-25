@@ -9,8 +9,9 @@ source $_ramen[ZSH_HOME]/utils/time.zsh
 source $_ramen[ZSH_HOME]/.zshrc.local
 
 # Aliases
-alias v='vim'
-alias vi='vim'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
 alias l='ls'
 alias cp='cp -v'
 alias man='nocorrect man'
