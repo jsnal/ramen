@@ -120,6 +120,9 @@ vim.keymap.set('n', '<C-f>', '<Plug>(PickerEdit)', {silent = true, noremap = tru
 -- Quickly comment text
 vim.keymap.set({'n', 'v'}, '<Leader>c', ':TComment<CR>', {silent = true, noremap = true})
 
+-- Unmap quick help
+vim.keymap.set('n', 'K', '<nop>', {silent = true, noremap = true})
+
 -------------------------------------------------------------------------------
 -- Plugins {{{1 ---------------------------------------------------------------
 -------------------------------------------------------------------------------
