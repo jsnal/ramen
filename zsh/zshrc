@@ -12,6 +12,7 @@ source $_ramen[ZSH_HOME]/.zshrc.local
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+alias ls='ls --color=always'
 alias l='ls'
 alias cp='cp -v'
 alias man='nocorrect man'
