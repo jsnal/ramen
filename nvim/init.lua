@@ -173,26 +173,6 @@ local lspconfig = require('lspconfig')
 
 lspconfig.clangd.setup { capabilities = capabilities }
 lspconfig.vuels.setup { capabilities = capabilities }
-lspconfig.lua_ls.setup {
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                globals = {'vim'},
-            },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-            },
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-}
 
 -------------------------------------------------------------------------------
 -- Auto Commands {{{1 ---------------------------------------------------------
@@ -228,6 +208,7 @@ vim.api.nvim_create_autocmd('FileType', {
     callback = function()
         vim.opt_local.spell = true
         vim.opt_local.conceallevel = 0
+        vim.opt_local.wrap = true
     end
 })
 
