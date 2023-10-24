@@ -197,7 +197,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = {"*"},
     callback = function()
-        if vim.bo.filetype ~= "gitcommit" then
+        if vim.bo.filetype == "gitcommit" then
             return
         end
         local save_cursor = vim.fn.getpos(".")
