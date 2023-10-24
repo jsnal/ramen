@@ -171,8 +171,12 @@ cmp.setup {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
-lspconfig.clangd.setup { capabilities = capabilities }
-lspconfig.vuels.setup { capabilities = capabilities }
+if vim.fn.executable('clangd') == 1 then
+    lspconfig.clangd.setup { capabilities = capabilities }
+end
+if vim.fn.executable('vuels') == 1 then
+    lspconfig.vuels.setup { capabilities = capabilities }
+end
 
 -------------------------------------------------------------------------------
 -- Auto Commands {{{1 ---------------------------------------------------------
