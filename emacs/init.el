@@ -1,21 +1,25 @@
-(when (version< emacs-version "29")
-  (package-refresh-contents)
-  (package-install 'use-package))
+(require 'package)
 
-(add-to-list 'package-archives
-	         '("MELPA" .
-	           "http://melpa.org/packages/"))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
 (use-package use-package
   :custom
   (use-package-always-defer nil)
+  (use-package-always-ensure t)
   (use-package-verbose t)
   (use-package-minimum-reported-time 0)
   (use-package-expand-minimally nil)
   (use-package-enable-imenu-support t))
 
 (use-package base16-theme
-  :ensure t
   :init
   (load-theme 'base16-bright t)
   :config
@@ -24,10 +28,11 @@
   (set-cursor-color "#ffffff"))
 
 (use-package evil
-  :ensure t
   :init
   (setq evil-split-window-below t)
   (setq evil-vsplit-window-right t)
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
@@ -37,33 +42,45 @@
   (define-key evil-normal-state-map "\C-k" 'evil-window-up)
   (define-key evil-normal-state-map "\C-l" 'evil-window-right))
 
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 (use-package elec-pair
-  :ensure t
   :init
   (electric-pair-mode))
 
-(use-package lsp-mode
-  :ensure t
-  :commands (lsp lsp-deferred)
-  :hook (c-mode . lsp-deferred)
-  :config
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-modeline-diagnostics-enable nil)
-  (setq lsp-signature-auto-activate nil)
-  (setq lsp-modeline-code-actions-enable nil)
-  (setq lsp-signature-render-documentation nil))
+(use-package eglot
+  :defer t
+  :bind (:map eglot-mode-map
+              ("C-c C-f" . eglot-format-buffer))
+  :hook ((python-mode . eglot-ensure)
+         (c-mode . eglot-ensure)))
 
-(use-package company
-  :ensure t
-  :after lsp-mode
-  :hook (lsp-mode . company-mode)
-  :bind (:map company-active-map
-         ("<tab>" . company-complete-selection))
-        (:map lsp-mode-map
-         ("<tab>" . company-indent-or-complete-common))
+(use-package corfu
+  :after
+  eglot
   :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
+  (corfu-cycle t)
+  (corfu-preselect 'prompt)
+  (corfu-auto-prefix 2)
+  :bind
+  (:map corfu-map
+        ("TAB" . corfu-next)
+        ([tab] . corfu-next)
+        ("S-TAB" . corfu-previous)
+        ([backtab] . corfu-previous))
+  :init
+  (global-corfu-mode))
+
+(use-package tree-sitter
+  :config
+  (global-tree-sitter-mode))
+
+(use-package tree-sitter-langs :after tree-sitter)
+
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
 
 (setq custom-file (make-temp-file "emacs-custom"))
 (setq inhibit-startup-screen t)
@@ -75,18 +92,27 @@
       kept-new-versions 20
       kept-old-versions 5)
 
-(add-hook 'write-file-hooks 'delete-trailing-whitespace)
-
 (global-display-line-numbers-mode)
 (global-auto-revert-mode t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; indentation rules
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(setq confirm-kill-emacs 'y-or-n-p)
 (setq indent-line-function 'insert-tab)
 (setq c-default-style "linux")
 (setq c-basic-offset 4)
 (c-set-offset 'comment-intro 0)
+
+;; scroll by 1 line
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
+(setq scroll-step 1)
+
+;; various hooks
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'write-file-hooks 'delete-trailing-whitespace)
+(add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode)
