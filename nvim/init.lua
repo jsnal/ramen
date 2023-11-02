@@ -26,7 +26,6 @@ vim.opt.fillchars = {
     fold = '-',
 }
 vim.opt.foldlevelstart = 99
-vim.opt.foldmethod = 'manual'
 vim.opt.formatoptions = 'j,n'
 vim.opt.hidden = true
 vim.opt.ignorecase = true
@@ -117,7 +116,7 @@ vim.keymap.set('n', '<Leader>x', ':x<CR>', {silent = true, noremap = true})
 
 -- Find a file to edit
 vim.keymap.set('n', '<C-f>', '<Plug>(PickerEdit)', {silent = true, noremap = true})
-vim.keymap.set('n', '<C-j>', ':Explore<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '<C-h>', ':Explore<CR>', {silent = true, noremap = true})
 
 -- Move through buffers
 vim.keymap.set('n', '<Leader>a', ':bprevious<CR>', {silent = true, noremap = true})
