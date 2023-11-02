@@ -114,13 +114,10 @@ vim.keymap.set('n', '<Leader>q', ':q<CR>', {silent = true, noremap = true})
 vim.keymap.set('n', '<Leader>w', ':w<CR>', {silent = true, noremap = true})
 vim.keymap.set('n', '<Leader>x', ':x<CR>', {silent = true, noremap = true})
 
--- Find a file to edit
+-- File and buffer movement
 vim.keymap.set('n', '<C-f>', '<Plug>(PickerEdit)', {silent = true, noremap = true})
-vim.keymap.set('n', '<C-h>', ':Explore<CR>', {silent = true, noremap = true})
-
--- Move through buffers
-vim.keymap.set('n', '<Leader>a', ':bprevious<CR>', {silent = true, noremap = true})
-vim.keymap.set('n', '<Leader>s', ':bnext<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '-', ':Explore<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '_', ':ToggleBufExplorer<CR>', {silent = true, noremap = true})
 
 -- Quickly comment text
 vim.keymap.set({'n', 'v'}, '<Leader>c', ':TComment<CR>', {silent = true, noremap = true})
