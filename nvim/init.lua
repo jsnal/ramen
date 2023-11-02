@@ -26,7 +26,7 @@ vim.opt.fillchars = {
     fold = '-',
 }
 vim.opt.foldlevelstart = 99
-vim.opt.foldmethod = 'indent'
+vim.opt.foldmethod = 'manual'
 vim.opt.formatoptions = 'j,n'
 vim.opt.hidden = true
 vim.opt.ignorecase = true
@@ -58,13 +58,14 @@ vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.synmaxcol = 200
 vim.opt.termguicolors = true
+vim.opt.title = true
 if root then
     vim.opt.undofile = false
 else
     vim.opt.undodir = config .. '/undo//.'
     vim.opt.undofile = true
 end
-vim.opt.updatetime = 2000
+vim.opt.updatetime = 500
 vim.opt.updatecount = 0
 vim.opt.viewdir = config .. '/view'
 vim.opt.viewoptions = 'cursor,folds'
@@ -116,6 +117,11 @@ vim.keymap.set('n', '<Leader>x', ':x<CR>', {silent = true, noremap = true})
 
 -- Find a file to edit
 vim.keymap.set('n', '<C-f>', '<Plug>(PickerEdit)', {silent = true, noremap = true})
+vim.keymap.set('n', '<C-j>', ':Explore<CR>', {silent = true, noremap = true})
+
+-- Move through buffers
+vim.keymap.set('n', '<Leader>a', ':bprevious<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '<Leader>s', ':bnext<CR>', {silent = true, noremap = true})
 
 -- Quickly comment text
 vim.keymap.set({'n', 'v'}, '<Leader>c', ':TComment<CR>', {silent = true, noremap = true})
@@ -178,9 +184,19 @@ if vim.fn.executable('vuels') == 1 then
     lspconfig.vuels.setup { capabilities = capabilities }
 end
 
+-- Turn off inline errors
+vim.diagnostic.config({ virtual_text = false })
+
 -------------------------------------------------------------------------------
 -- Auto Commands {{{1 ---------------------------------------------------------
 -------------------------------------------------------------------------------
+
+-- Show line diagnostics automatically in hover window
+vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
+    callback = function()
+        vim.diagnostic.open_float(nil, {focus=false})
+    end
+})
 
 -- Restore the cursor position
 vim.api.nvim_create_autocmd('BufReadPost', {
@@ -227,5 +243,6 @@ vim.opt.statusline = '%f %r%m%h %= %{&filetype} %l/%L %c'
 vim.api.nvim_set_hl(0, 'VertSplit', {fg='#505050', bold=true})
 vim.api.nvim_set_hl(0, 'CursorLine', {fg='none', bg='none'})
 vim.api.nvim_set_hl(0, 'CursorLineNr', {fg='#FFFF00', bold=true})
+vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#202020'})
 
 -- vim: foldmethod=marker
