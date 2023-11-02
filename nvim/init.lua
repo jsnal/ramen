@@ -132,10 +132,29 @@ vim.keymap.set('n', 'K', '<nop>', {silent = true, noremap = true})
 -- Change directory into the project root
 require('nvim-rooter').setup()
 
+-- LSP Config
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require('lspconfig')
+local server = { 'clangd', 'vuels' }
+
+for _, lsp in ipairs(server) do
+    if vim.fn.executable(lsp) == 1 then
+        lspconfig[lsp].setup { capabilities = capabilities }
+    end
+end
+
+-- Turn off inline errors
+vim.diagnostic.config({ virtual_text = false })
+
 -- Completion engine
 local cmp = require('cmp')
 
 cmp.setup {
+    snippet = {
+        expand = function(args)
+            require('snippy').expand_snippet(args.body)
+        end,
+    },
     mapping = {
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -155,26 +174,10 @@ cmp.setup {
     },
     sources = {
         { name = 'nvim_lsp' },
+        { name = 'snippy' },
         { name = 'buffer' },
     }
 }
-
--- LSP Config
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
-
-if vim.fn.executable('clangd') == 1 then
-    lspconfig.clangd.setup { capabilities = capabilities }
-end
-if vim.fn.executable('vuels') == 1 then
-    lspconfig.vuels.setup { capabilities = capabilities }
-end
-
--- Turn off inline errors
-vim.diagnostic.config({ virtual_text = false })
-
--- Turn off code snippets
-capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 -------------------------------------------------------------------------------
 -- Auto Commands {{{1 ---------------------------------------------------------

@@ -31,3 +31,6 @@
 [submodule "nvim/pack/ramen/start/bufexplorer"]
 	path = nvim/pack/ramen/start/bufexplorer
 	url = https://github.com/jlanzarotta/bufexplorer
+[submodule "nvim/pack/ramen/start/nvim-snippy"]
+	path = nvim/pack/ramen/start/nvim-snippy
+	url = https://github.com/dcampos/nvim-snippy
