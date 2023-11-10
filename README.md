@@ -28,8 +28,6 @@ The install script supports the following options.
 
 ```
 -p, --profile [PROFILE]   Change the install profile. Default terminal
---git-user [USER]         Set the git username in ~/.gitconfig
---git-email [EMAIL]       Set the git email in ~/.gitconfig
 ```
 
 ### Install profiles

@@ -38,8 +38,6 @@ fi
 # Globals
 PROFILES=("all" "desktop" "terminal")
 PROFILE_SELECT="terminal"
-GT_USR=""
-GT_EML=""
 DESKTOP_LIST=(
   "$DOTFILES_DIR/dunst/dunstrc:$HOME/.config/dunst/dunstrc" \
   "$DOTFILES_DIR/X/xresources:$HOME/.Xresources"            \
@@ -52,8 +50,6 @@ TERMINAL_LIST=(
   "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                   \
   "$DOTFILES_DIR/X/xresources:$HOME/.Xresources"           \
   "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"          \
-  "$DOTFILES_DIR/git/gitconfig:$HOME/.gitconfig"           \
-  "$DOTFILES_DIR/git/gitignore:$HOME/.gitignore_global"    \
   "$DOTFILES_DIR/nvim:$HOME/.config/nvim"                  \
 )
 
@@ -62,8 +58,6 @@ function usage() {
   echo './install.sh [OPTIONS]'
   echo -e '\nOptions:'
   echo -e '  -p, --profile [PROFILE] \tChange the install profile. Default terminal'
-  echo -e '  --git-user [USER]       \tSet the git username in ~/.gitconfig'
-  echo -e '  --git-email [EMAIL]     \tSet the git email in ~/.gitconfig'
   echo -e '\nProfiles:'
   echo -e '  all      \tInstalls configuration files for desktop and terminal'
   echo -e '  desktop  \tInstalls just configuration files for desktop'
@@ -77,8 +71,6 @@ while [[ $# -gt 0 ]]; do
   key="$1"
   case $key in
     -p|--profile)     PROFILE_SELECT=$2; shift ;;
-    -gu|--git-user)   GT_USR=$2;         shift ;;
-    -ge|--git-email)  GT_EML=$2;         shift ;;
     -h|--help)        usage;             shift ;;
     *)
       POSITIONAL+=("$1"); shift ;;
@@ -163,10 +155,6 @@ function terminal() {
 
   # Create tmp vim directories
   # mkdir -p $HOME/.config/tmp/{backup,swap,undo,view}
-
-  # Override gitconfig
-  [ ! -z $GT_USR ] && git config --global user.name  "$GT_USR"
-  [ ! -z $GT_EML ] && git config --global user.email "$GT_EML"
 }
 
 # Install all the files for the both the terminal and desktop environment.
