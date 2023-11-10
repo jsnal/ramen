@@ -88,7 +88,7 @@ function precmd {
   fi
 
   local USER="$_ramen[YELLOW]%n$_ramen[WHITE]@$_ramen[GREEN_YELLOW]%m"
-  local DIR="$_ramen[BLUE]%~"
+  local DIR="$_ramen[BLUE]%(4~|.../%3~|%~)"
 
   # Paint the USER red if the user is root
   [ $UID -eq 0 ] && local USER="$_ramen[WHITE]%n@%m"
