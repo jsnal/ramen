@@ -95,8 +95,6 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', {silent = true, noremap = true})
 vim.keymap.set('n', '<C-l>', '<C-w>l', {silent = true, noremap = true})
 
 -- Intuitive movement
-vim.keymap.set({'n', 'v'}, 'H', '^', {silent = true, noremap = true})
-vim.keymap.set({'n', 'v'}, 'L', 'g_', {silent = true, noremap = true})
 vim.keymap.set({'n', 'v'}, 'j', 'gj', {silent = true, noremap = true})
 vim.keymap.set({'n', 'v'}, 'k', 'gk', {silent = true, noremap = true})
 
@@ -227,7 +225,7 @@ vim.api.nvim_create_autocmd('FileType', {
 -------------------------------------------------------------------------------
 
 -- Statusline
-vim.opt.statusline = '%f %r%m%h %= %{&filetype} %l/%L %c'
+vim.opt.statusline = '%f %r%m%h %= %l/%L %c'
 
 -- Highlight overrides
 vim.api.nvim_set_hl(0, 'VertSplit', {fg='#505050', bold=true})
