@@ -11,10 +11,11 @@ alias mv='nocorrect mv'
 alias sudo='nocorrect sudo'
 alias docker='nocorrect docker'
 
-if [ "$(uname 2> /dev/null)" = "Linux" ]; then
-  alias ls='ls --color=always --group-directories'
-  alias ll='ls -la --color=always --group-directories'
-fi
+case $(uname) in
+    Linux) alias ls='ls --color=always --group-directories' ;;
+    FreeBSD) alias ls='ls --color=always' ;;
+    *) ;;
+esac
 
 # Binds {{{1
 
