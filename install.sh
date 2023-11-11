@@ -45,7 +45,6 @@ DESKTOP_LIST=(
   "$DOTFILES_DIR/X/xmodmap:$HOME/.Xmodmap"                  \
 )
 TERMINAL_LIST=(
-  "$DOTFILES_DIR/zsh/utils:$HOME/.zsh/utils"               \
   "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"                 \
   "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                   \
   "$DOTFILES_DIR/X/xresources:$HOME/.Xresources"           \
@@ -149,9 +148,6 @@ function terminal() {
   mkdir -p $HOME/.config/nvim
 
   link-file-list 'TERMINAL_LIST'
-
-  # Set the the ramen home
-  echo "export _ramen[HOME]=$DOTFILES_DIR" > $HOME/.zsh/.zshrc.local
 
   # Create tmp vim directories
   # mkdir -p $HOME/.config/tmp/{backup,swap,undo,view}

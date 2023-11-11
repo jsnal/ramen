@@ -1,20 +1,10 @@
-# Global array
+# Aliases {{{1
 
-typeset -A _ramen
-_ramen[ZSH_HOME]="$HOME/.zsh"
-
-# Inlcude plugins and utils
-source $_ramen[ZSH_HOME]/utils/colors.zsh
-source $_ramen[ZSH_HOME]/utils/time.zsh
-source $_ramen[ZSH_HOME]/.zshrc.local
-
-# Aliases
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
-alias ls='ls --color=always'
-alias l='ls'
 alias cp='cp -v'
+alias mv='mv -v'
 alias man='nocorrect man'
 alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'
@@ -26,14 +16,14 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   alias ll='ls -la --color=always --group-directories'
 fi
 
-# Binds
+# Binds {{{1
 
 bindkey -e
 bindkey '^b' backward-word
-bindkey '^d' kill-whole-line
+bindkey '^f' forward-word
 bindkey '^j' kill-word
 
-# Completion
+# Completion {{{1
 
 autoload -Uz compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -58,7 +48,7 @@ zstyle ':completion:*:history-words' menu yes
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:*kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# Options
+# Options {{{1
 
 setopt append_history
 setopt extended_history
@@ -71,39 +61,27 @@ setopt correct
 setopt correctall
 setopt list_packed
 
-# Prompt
-function preexec {
-  timer=${timer:-$SECONDS}
-  export ZSH_COMMAND_TIME=""
-}
+# Prompt {{{1
 
+WHITE="%{%F{15}%}"
+RED="%{%F{9}%}"
+BLUE="%{%F{12}%}"
+YELLOW="%{%F{11}%}"
+GREEN_YELLOW="%{%F{154}%}"
+
+# Text changes
+BOLD_START="%B"
+BOLD_END="%b"
+
+# Set window title in xterm
 function precmd {
-  _ramen[EXIT_CODE]=$?
-
-  if [ $timer ]; then
-    _ramen[COMMAND_TIME]=$(($SECONDS - $timer))
-    export ZSH_COMMAND_TIME="$_ramen[COMMAND_TIME]"
-    zsh_command_time
-    unset timer
-  fi
-
-  local USER="$_ramen[YELLOW]%n$_ramen[WHITE]@$_ramen[GREEN_YELLOW]%m"
-  local DIR="$_ramen[BLUE]%(4~|.../%3~|%~)"
-
-  # Paint the USER red if the user is root
-  [ $UID -eq 0 ] && local USER="$_ramen[WHITE]%n@%m"
-
-  # Paint USER red if command fails
-  [ ! $_ramen[EXIT_CODE] -eq 0 ] && local USER="$_ramen[RED]%n@%m"
-
-  export PROMPT="$_ramen[BOLD_START]$USER$_ramen[WHITE]:$DIR$_ramen[WHITE]$_ramen[BOLD_END]%# "
-  export RPROMPT="$_ramen[GRAY]$_ramen[COMMAND_TIME]$_ramen[WHITE]"
-
-  # Set window title in xterm
-  case $TERM in
-    xterm*|rxvt*) print -Pn "\e]0;%n@%m:%~\a" ;;
-    *) ;;
-  esac
+    case $TERM in
+        xterm*|rxvt*) print -Pn "\e]0;%n@%m:%~\a" ;;
+        *) ;;
+    esac
 }
 
-export SPROMPT="%B%F{red}'%R'%b%f -> %B%F{red}'%r'%b%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "
+export PROMPT="$BOLD_START$YELLOW%n$WHITE@$GREEN_YELLOW%m$WHITE:$BLUE%(4~|.../%3~|%~)$WHITE$BOLD_END%# "
+export SPROMPT="zsh: correct $BOLD_START$RED'%R'$WHITE$BOLD_END to $BOLD_START$RED'%r'$WHITE$BOLD_END [nyae]? "
+
+# vim: foldmethod=marker
