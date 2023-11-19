@@ -70,6 +70,7 @@ vim.opt.virtualedit = 'block'
 vim.opt.visualbell = true
 vim.opt.wildmenu = true
 vim.opt.wildmode = 'longest:full,full'
+vim.opt.wildoptions = 'tagfile'
 vim.opt.wrap = false
 vim.opt.writebackup = false
 
@@ -102,7 +103,7 @@ vim.keymap.set({'n', 'v'}, 'k', 'gk', {silent = true, noremap = true})
 vim.keymap.set('n', 'U', '<C-r>', {noremap = true})
 
 -- Replace all
-vim.keymap.set('n', '<C-r>', ':%s//g<Left><Left>', {silent = true, noremap = true})
+vim.keymap.set('n', '<C-r>', ':%s//g<Left><Left>', {noremap = true})
 
 -- Short cuts for saving and quiting
 vim.keymap.set('n', '<Leader>q', ':q<CR>', {silent = true, noremap = true})
@@ -213,6 +214,7 @@ vim.api.nvim_create_autocmd('FileType', {
     callback = function()
         vim.opt_local.spell = true
         vim.opt_local.wrap = true
+        vim.opt_local.relativenumber = true
         vim.opt_local.conceallevel = 0
         vim.opt_local.comments = 'b:*,b:-,b:+,n:>'
         vim.opt_local.formatoptions = 'j,nr'
