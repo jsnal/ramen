@@ -13,8 +13,7 @@ vim.opt.backupcopy = 'yes'
 vim.opt.backupdir = config .. '/back//.'
 vim.opt.belloff = 'all'
 vim.opt.completeopt = 'menu,menuone,noselect'
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = 'number'
+vim.opt.cursorline = false
 vim.opt.directory = config .. '/nvim/swap//.'
 vim.opt.emoji = false
 vim.opt.expandtab = true
@@ -230,9 +229,8 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.opt.statusline = '%f %r%m%h %= %l/%L %c'
 
 -- Highlight overrides
-vim.api.nvim_set_hl(0, 'VertSplit', {fg='#505050', bold=true})
-vim.api.nvim_set_hl(0, 'CursorLine', {fg='none', bg='none'})
-vim.api.nvim_set_hl(0, 'CursorLineNr', {fg='#FFFF00', bold=true})
-vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#202020'})
+vim.api.nvim_set_hl(0, 'VertSplit', { fg = '#505050', bold = true })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#202020' })
+vim.api.nvim_set_hl(0, 'WildMenu', { link = 'PmenuSel' })
 
 -- vim: foldmethod=marker
