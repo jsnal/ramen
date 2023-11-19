@@ -209,11 +209,11 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 
 -- Enable settings to editing plaintext
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'gitcommit', 'markdown' },
+    pattern = { 'gitcommit', 'markdown', 'text' },
     callback = function()
         vim.opt_local.spell = true
         vim.opt_local.wrap = true
-        vim.opt_local.relativenumber = true
+        vim.opt_local.relativenumber = false
         vim.opt_local.conceallevel = 0
         vim.opt_local.comments = 'b:*,b:-,b:+,n:>'
         vim.opt_local.formatoptions = 'j,nr'
