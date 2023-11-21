@@ -1,20 +1,12 @@
--- Globals {{{1 ---------------------------------------------------------------
--------------------------------------------------------------------------------
-local home = vim.env.HOME
-local config = home .. '/.config/nvim'
-local root = vim.env.USER == 'root'
-
 -- Options {{{1 ---------------------------------------------------------------
 -------------------------------------------------------------------------------
 vim.opt.autoindent = true
 vim.opt.backspace = 'indent,start,eol'
 vim.opt.backup = false
 vim.opt.backupcopy = 'yes'
-vim.opt.backupdir = config .. '/back//.'
 vim.opt.belloff = 'all'
 vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.cursorline = false
-vim.opt.directory = config .. '/nvim/swap//.'
 vim.opt.emoji = false
 vim.opt.expandtab = true
 vim.opt.fillchars = {
@@ -56,15 +48,10 @@ vim.opt.synmaxcol = 200
 vim.opt.termguicolors = true
 vim.opt.title = true
 vim.opt.titlestring = '%t - nvim'
-if root then
-    vim.opt.undofile = false
-else
-    vim.opt.undodir = config .. '/undo//.'
-    vim.opt.undofile = true
-end
+vim.opt.undodir = vim.env.HOME .. '/.config/nvim/undo//.'
+vim.opt.undofile = true
 vim.opt.updatetime = 500
 vim.opt.updatecount = 0
-vim.opt.viewdir = config .. '/view'
 vim.opt.viewoptions = 'cursor,folds'
 vim.opt.virtualedit = 'block'
 vim.opt.visualbell = true
@@ -74,6 +61,7 @@ vim.opt.wildoptions = 'tagfile'
 vim.opt.wrap = false
 vim.opt.writebackup = false
 
+-- Set global leader key
 vim.g.mapleader = ','
 
 -- Prevent tcomment from making so many mappings
