@@ -162,8 +162,20 @@ cmp.setup {
     }
 }
 
--- Auto Commands {{{1 ---------------------------------------------------------
+-- Functions & Auto Commands {{{1 ---------------------------------------------
 -------------------------------------------------------------------------------
+
+-- Local settings for plain-text writing
+function writing_mode()
+    vim.opt_local.spell = true
+    vim.opt_local.wrap = true
+    vim.opt_local.relativenumber = false
+    vim.opt_local.conceallevel = 0
+    vim.opt_local.comments = 'b:*,b:-,b:+,n:>'
+    vim.opt_local.formatoptions = 'j,nr'
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+end
 
 -- Show line diagnostics automatically in hover window
 vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
@@ -196,19 +208,10 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     end
 })
 
--- Enable settings to editing plaintext
+-- Enable settings to editing plain-text
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'gitcommit', 'markdown', 'text' },
-    callback = function()
-        vim.opt_local.spell = true
-        vim.opt_local.wrap = true
-        vim.opt_local.relativenumber = false
-        vim.opt_local.conceallevel = 0
-        vim.opt_local.comments = 'b:*,b:-,b:+,n:>'
-        vim.opt_local.formatoptions = 'j,nr'
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-    end
+    callback = writing_mode
 })
 
 -- Visual {{{1 ----------------------------------------------------------------
