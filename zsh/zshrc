@@ -75,7 +75,7 @@ BOLD_END="%b"
 # Set window title in xterm
 function precmd {
     case $TERM in
-        xterm*|rxvt*) print -Pn "\e]0;%n@%m:%~\a" ;;
+        xterm*|rxvt*) print -Pn "\e]0;%1d - zsh\a" ;;
         *) ;;
     esac
 }

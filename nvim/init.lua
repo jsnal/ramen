@@ -55,6 +55,7 @@ vim.opt.swapfile = false
 vim.opt.synmaxcol = 200
 vim.opt.termguicolors = true
 vim.opt.title = true
+vim.opt.titlestring = '%t - nvim'
 if root then
     vim.opt.undofile = false
 else
