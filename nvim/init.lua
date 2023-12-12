@@ -16,6 +16,10 @@ vim.opt.fillchars = {
 }
 vim.opt.foldlevelstart = 99
 vim.opt.formatoptions = 'j,n'
+if vim.fn.executable('rg') == 1 then
+    vim.opt.grepprg = 'rg -H --no-heading --vimgrep'
+    vim.opt.grepformat = '%f:%l:%c:%m'
+end
 vim.opt.hidden = true
 vim.opt.ignorecase = true
 vim.opt.joinspaces = false
@@ -74,7 +78,7 @@ vim.cmd('colorscheme base16-bright')
 vim.cmd('filetype indent plugin on')
 vim.cmd('syntax on')
 
--- Mappings {{{1 --------------------------------------------------------------
+-- Mappings & Commands {{{1 ---------------------------------------------------
 -------------------------------------------------------------------------------
 
 -- Easier window split movement
@@ -109,6 +113,12 @@ vim.keymap.set({'n', 'v'}, '<Leader>c', ':TComment<CR>', {silent = true, noremap
 -- Unmap quick help
 vim.keymap.set('n', 'K', '<nop>', {silent = true, noremap = true})
 
+-- Better built-in grep
+vim.api.nvim_create_user_command('Grep', function(opts)
+    vim.cmd('silent grep! ' .. opts.args)
+    vim.cmd('copen')
+end, { nargs = 1 })
+
 -- Plugins {{{1 ---------------------------------------------------------------
 -------------------------------------------------------------------------------
 
@@ -118,11 +128,14 @@ require('nvim-rooter').setup()
 -- LSP Config
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
-local server = { 'clangd', 'vuels' }
+local servers = {
+    { exe = 'clangd', lsp = 'clangd' },
+    { exe = 'vue-language-server', lsp = 'volar' }
+}
 
-for _, lsp in ipairs(server) do
-    if vim.fn.executable(lsp) == 1 then
-        lspconfig[lsp].setup { capabilities = capabilities }
+for _, server in ipairs(servers) do
+    if vim.fn.executable(server.exe) == 1 then
+        lspconfig[server.lsp].setup { capabilities = capabilities }
     end
 end
 
