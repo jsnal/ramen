@@ -113,6 +113,10 @@ vim.keymap.set({'n', 'v'}, '<Leader>c', ':TComment<CR>', {silent = true, noremap
 -- Unmap quick help
 vim.keymap.set('n', 'K', '<nop>', {silent = true, noremap = true})
 
+-- Quickly move lines up and down
+vim.keymap.set('x', 'J', ':m\'>+<CR>gv=gv', {silent = true, noremap = true})
+vim.keymap.set('x', 'K', ':m-2<CR>gv=gv', {silent = true, noremap = true})
+
 -- Better built-in grep
 vim.api.nvim_create_user_command('Grep', function(opts)
     vim.cmd('silent grep! ' .. opts.args)
@@ -208,7 +212,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end
 })
 
--- Delete trailing whitespace
+-- Delete trailing whitespace and auto-format file
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = {"*"},
     callback = function()
@@ -218,6 +222,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
         local save_cursor = vim.fn.getpos(".")
         vim.cmd([[%s/\s\+$//e]])
         vim.fn.setpos(".", save_cursor)
+        vim.lsp.buf.format()
     end
 })
 
