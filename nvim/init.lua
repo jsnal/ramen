@@ -74,7 +74,7 @@ vim.g.tcomment_mapleader2 = ''
 vim.g.tcomment_mapleader_comment_anyway = ''
 
 -- Set colorscheme and detect the filetype
-vim.cmd('colorscheme base16-bright')
+vim.cmd('colorscheme base16-ayu-dark')
 vim.cmd('filetype indent plugin on')
 vim.cmd('syntax on')
 
@@ -244,8 +244,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.opt.statusline = '%f %r%m%h %= %l/%L %c'
 
 -- Highlight overrides
-vim.api.nvim_set_hl(0, 'VertSplit', { fg = '#505050', bold = true })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#202020' })
+vim.api.nvim_set_hl(0, 'Comment', { fg = '#5e6b61' })
 vim.api.nvim_set_hl(0, 'WildMenu', { link = 'PmenuSel' })
 
 -- vim: foldmethod=marker
