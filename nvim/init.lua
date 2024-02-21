@@ -117,6 +117,11 @@ vim.keymap.set('n', 'K', '<nop>', {silent = true, noremap = true})
 vim.keymap.set('x', 'J', ':m\'>+<CR>gv=gv', {silent = true, noremap = true})
 vim.keymap.set('x', 'K', ':m-2<CR>gv=gv', {silent = true, noremap = true})
 
+-- LSP movements
+vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
+
 -- Better built-in grep
 vim.api.nvim_create_user_command('Grep', function(opts)
     vim.cmd('silent grep! ' .. opts.args)
