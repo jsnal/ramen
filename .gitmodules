@@ -1,9 +1,3 @@
-[submodule "st"]
-	path = bin/st
-	url = https://github.com/jsnal/st
-[submodule "bin/fzy"]
-	path = bin/fzy
-	url = https://github.com/jhawthorn/fzy
 [submodule "nvim/pack/ramen/start/cmp-nvim-lsp"]
 	path = nvim/pack/ramen/start/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp
