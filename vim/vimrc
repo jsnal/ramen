@@ -1,0 +1,145 @@
+"-- Options {{{1 ---------------------------------------------------------------
+"-------------------------------------------------------------------------------
+
+set autoindent
+set backspace=indent,start,eol
+set nobackup
+set backupcopy=yes
+set belloff=all
+set completeopt=menu,menuone,noselect
+set nocursorline
+set noemoji
+set expandtab
+set fillchars=diff:.,eob:\ ,fold:-
+set foldlevelstart=99
+set formatoptions=j,n
+if executable('rg')
+    set grepprg=rg\ -H\ --no-heading\ --vimgrep
+    set grepformat=%f:%l:%c:%m
+endif
+set hidden
+set ignorecase
+set incsearch
+set nojoinspaces
+set laststatus=2
+set lazyredraw
+set linebreak
+set list
+set listchars=tab:>\ ,trail:•
+set modelines=5
+set mouse=a
+set noshowmode
+set number
+set relativenumber
+set scrolloff=3
+set noshiftround
+set shiftwidth=4
+set shortmess=AIOTWacot
+set showbreak=↳
+set noshowcmd
+set sidescroll=0
+set sidescrolloff=3
+set smartcase
+set smarttab
+set splitbelow
+set splitright
+set statusline=%f\ %r%m%h\ %=\ %l/%L\ %c
+set noswapfile
+set synmaxcol=200
+set notermguicolors
+set title
+set titlestring=%t\ -\ vim
+set ttimeoutlen=1
+set undodir=$HOME/.vim/tmp/undo/
+set undofile
+set updatetime=500
+set updatecount=0
+set viewoptions=cursor,folds
+set virtualedit=block
+set visualbell
+set wildmenu
+set wildmode=longest:full,full
+set wildoptions=tagfile
+set nowrap
+set nowritebackup
+
+" Set global leader key
+let mapleader=','
+
+" Set cursor shape
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" Set colorscheme and detect the filetype
+colorscheme serape
+filetype indent plugin on
+syntax on
+
+"-- Mappings & Commands {{{1 ---------------------------------------------------
+"-------------------------------------------------------------------------------
+
+" Easier window split movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Intuitive movement
+noremap j gj
+noremap k gk
+
+" Intuitive undo
+nnoremap U <C-r>
+
+" Replace all
+nnoremap <C-r> :%s//g<Left><Left>
+
+" Short cuts for saving and quiting
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>x :x<CR>
+
+" -- Unmap quick help
+nnoremap K <nop>
+
+" Quickly move lines up and down
+xnoremap <silent> J :m'>+<CR>gv=gv
+xnoremap <silent> K :m-2<CR>gv=gv
+
+" Better built-in grep
+command! -nargs=1 Grep call Grep(<q-args>)
+function! Grep(str)
+    execute "silent grep! " . a:str
+    execute "copen"
+endfunction
+
+"-- Functions & Auto Commands {{{1 ---------------------------------------------
+"-------------------------------------------------------------------------------
+
+" Local settings for plain-text writing
+function! WritingMode()
+    setlocal spell
+    setlocal wrap
+    setlocal norelativenumber
+    setlocal conceallevel=0
+    setlocal comments=b:*,b:-,b:+,n:>
+    setlocal formatoptions=j,nr
+    setlocal shiftwidth=2
+    setlocal tabstop=2
+endfunction
+
+if has('autocmd')
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+
+    let s:whitespace_ignore = ['gitcommit', 'diff']
+    autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
+
+    autocmd Filetype gitcommit,markdown,text call WritingMode()
+
+    autocmd VimResized * wincmd =
+endif
+
+" vim:foldmethod=marker

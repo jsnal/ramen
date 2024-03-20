@@ -1,8 +1,7 @@
 # Aliases {{{1
 
-alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
+alias v='vim'
+alias vi='vim'
 alias cp='cp -v'
 alias mv='mv -v'
 alias man='nocorrect man'
