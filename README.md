@@ -1,11 +1,11 @@
 # Dotfiles
 
-ramen holds all of my configuration files for linux.
+ramen holds all of my configuration files for Linux.
 
 ## Dependencies
 
 - [tmux](http://tmux.sourceforge.net/) 2.3 or later.
-- [vim](http://www.vim.org/) 8.0 or later with Python support.
+- [vim](http://www.vim.org/) 8.0 or later is best but anything should work.
 - recent [zsh](http://www.zsh.org/).
 - recent [git](http://git-scm.com/).
 
@@ -20,24 +20,6 @@ ramen holds all of my configuration files for linux.
 
 ```
 bash <(wget -qO- https://raw.githubusercontent.com/jsnal/ramen/master/install.sh)
-```
-
-### Install options
-
-The install script supports the following options.
-
-```
--p, --profile [PROFILE]   Change the install profile. Default terminal
-```
-
-### Install profiles
-
-The install script supports the following install profiles.
-
-```
-all        Installs configuration files for desktop and terminal
-desktop    Installs just configuration files for desktop
-terminal   Installs just configuration files for terminal
 ```
 
 ## Useful programs
