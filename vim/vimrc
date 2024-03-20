@@ -94,10 +94,14 @@ nnoremap U <C-r>
 " Replace all
 nnoremap <C-r> :%s//g<Left><Left>
 
-" Short cuts for saving and quiting
+" Saving and quiting
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>x :x<CR>
+
+" Navigate buffers
+nnoremap <silent> <Leader>p :bprev<CR>
+nnoremap <silent> <Leader>n :bnext<CR>
 
 " -- Unmap quick help
 nnoremap K <nop>
