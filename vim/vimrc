@@ -21,7 +21,7 @@ set hidden
 set ignorecase
 set incsearch
 set nojoinspaces
-set laststatus=2
+set laststatus=1
 set lazyredraw
 set linebreak
 set list
