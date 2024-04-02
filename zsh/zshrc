@@ -82,4 +82,8 @@ function precmd {
 export PROMPT="$BOLD_START$YELLOW%n$WHITE@$GREEN_YELLOW%m$WHITE:$BLUE%(4~|.../%3~|%~)$WHITE$BOLD_END%# "
 export SPROMPT="zsh: correct $BOLD_START$RED'%R'$WHITE$BOLD_END to $BOLD_START$RED'%r'$WHITE$BOLD_END [nyae]? "
 
+if [ -f "$HOME/.zshrc.local" ]; then
+   source "$HOME/.zshrc.local"
+fi
+
 # vim: foldmethod=marker
