@@ -24,7 +24,7 @@ set list
 set listchars=tab:>\ ,trail:•
 set modelines=5
 set mouse=a
-set noshowmode
+set showmode
 set number
 set path+=**
 set relativenumber
