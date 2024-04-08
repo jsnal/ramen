@@ -13,10 +13,6 @@ set expandtab
 set fillchars=diff:.,eob:\ ,fold:-
 set foldlevelstart=99
 set formatoptions=j,n
-if executable('rg')
-    set grepprg=rg\ -H\ --no-heading\ --vimgrep
-    set grepformat=%f:%l:%c:%m
-endif
 set hidden
 set ignorecase
 set incsearch
@@ -30,6 +26,7 @@ set modelines=5
 set mouse=a
 set noshowmode
 set number
+set path+=**
 set relativenumber
 set scrolloff=3
 set noshiftround
@@ -59,7 +56,6 @@ set virtualedit=block
 set visualbell
 set wildmenu
 set wildmode=longest:full,full
-set wildoptions=tagfile
 set nowrap
 set nowritebackup
 
@@ -109,13 +105,6 @@ nnoremap K <nop>
 " Quickly move lines up and down
 xnoremap <silent> J :m'>+<CR>gv=gv
 xnoremap <silent> K :m-2<CR>gv=gv
-
-" Better built-in grep
-command! -nargs=1 Grep call Grep(<q-args>)
-function! Grep(str)
-    execute "silent grep! " . a:str
-    execute "copen"
-endfunction
 
 "-- Functions & Auto Commands {{{1 ---------------------------------------------
 "-------------------------------------------------------------------------------
