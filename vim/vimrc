@@ -55,9 +55,19 @@ set viewoptions=cursor,folds
 set virtualedit=block
 set visualbell
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest:list,full
 set nowrap
 set nowritebackup
+
+" GUI settings
+if has("gui_running")
+    set guioptions=egmt
+    if has("gui_win32")
+        set guifont=Consolas:h12:cANSI
+    else
+        set guifont=Ubuntu\ Mono\ 12
+    endif
+endif
 
 " Set global leader key
 let mapleader=','
@@ -84,23 +94,12 @@ nnoremap <C-l> <C-w>l
 noremap j gj
 noremap k gk
 
-" Intuitive undo
-nnoremap U <C-r>
-
 " Replace all
 nnoremap <C-r> :%s//g<Left><Left>
 
 " Saving and quiting
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>x :x<CR>
-
-" Navigate buffers
-nnoremap <silent> <Leader>p :bprev<CR>
-nnoremap <silent> <Leader>n :bnext<CR>
-
-" -- Unmap quick help
-nnoremap K <nop>
 
 " Quickly move lines up and down
 xnoremap <silent> J :m'>+<CR>gv=gv
