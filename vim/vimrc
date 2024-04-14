@@ -1,6 +1,3 @@
-"-- Options {{{1 ---------------------------------------------------------------
-"-------------------------------------------------------------------------------
-
 set autoindent
 set backspace=indent,start,eol
 set nobackup
@@ -44,6 +41,7 @@ set statusline=%f\ %r%m%h\ %=\ %l/%L\ %c
 set noswapfile
 set synmaxcol=200
 set notermguicolors
+set termwinkey=<C-X>
 set title
 set titlestring=%t\ -\ vim
 set ttimeoutlen=1
@@ -81,9 +79,6 @@ colorscheme serape
 filetype indent plugin on
 syntax on
 
-"-- Mappings & Commands {{{1 ---------------------------------------------------
-"-------------------------------------------------------------------------------
-
 " Easier window split movement
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -104,9 +99,6 @@ nnoremap <Leader>w :w<CR>
 " Quickly move lines up and down
 xnoremap <silent> J :m'>+<CR>gv=gv
 xnoremap <silent> K :m-2<CR>gv=gv
-
-"-- Functions & Auto Commands {{{1 ---------------------------------------------
-"-------------------------------------------------------------------------------
 
 " Local settings for plain-text writing
 function! WritingMode()
@@ -133,5 +125,3 @@ if has('autocmd')
 
     autocmd VimResized * wincmd =
 endif
-
-" vim:foldmethod=marker
