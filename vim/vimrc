@@ -59,7 +59,7 @@ set nowritebackup
 
 " GUI settings
 if has("gui_running")
-    set guioptions=egmt
+    set guioptions=egmti
     if has("gui_win32")
         set guifont=Consolas:h12:cANSI
     else
