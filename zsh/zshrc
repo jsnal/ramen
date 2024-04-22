@@ -1,5 +1,3 @@
-# Aliases {{{1
-
 alias v='vim'
 alias vi='vim'
 alias cp='cp -v'
@@ -16,14 +14,10 @@ case $(uname) in
     *) ;;
 esac
 
-# Binds {{{1
-
 bindkey -e
 bindkey '^b' backward-word
 bindkey '^f' forward-word
 bindkey '^j' kill-word
-
-# Completion {{{1
 
 autoload -Uz compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -46,8 +40,6 @@ zstyle ':completion:*:history-words' remove-all-dups yes
 zstyle ':completion:*:history-words' list false
 zstyle ':completion:*:history-words' menu yes
 
-# Options {{{1
-
 setopt append_history
 setopt extended_history
 setopt sharehistory
@@ -59,9 +51,7 @@ setopt correct
 setopt correctall
 setopt list_packed
 
-# Prompt {{{1
-
-WHITE="%{%F{15}%}"
+CLEAR="%{%b%f%}"
 RED="%{%F{9}%}"
 BLUE="%{%F{12}%}"
 YELLOW="%{%F{11}%}"
@@ -79,11 +69,9 @@ function precmd {
     esac
 }
 
-export PROMPT="$BOLD_START$YELLOW%n$WHITE@$GREEN_YELLOW%m$WHITE:$BLUE%(4~|.../%3~|%~)$WHITE$BOLD_END%# "
-export SPROMPT="zsh: correct $BOLD_START$RED'%R'$WHITE$BOLD_END to $BOLD_START$RED'%r'$WHITE$BOLD_END [nyae]? "
+export PROMPT="$BOLD_START$YELLOW%n$CLEAR@$BOLD_START$GREEN_YELLOW%m$CLEAR:$BOLD_START$BLUE%(4~|../%3~|%~)$CLEAR$BOLD_END%# "
+export SPROMPT="zsh: correct $BOLD_START$RED'%R'$CLEAR$BOLD_END to $BOLD_START$RED'%r'$CLEAR$BOLD_END [nyae]? "
 
 if [ -f "$HOME/.zshrc.local" ]; then
    source "$HOME/.zshrc.local"
 fi
-
-# vim: foldmethod=marker
