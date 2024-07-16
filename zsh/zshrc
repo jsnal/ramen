@@ -15,20 +15,17 @@ case $(uname) in
 esac
 
 bindkey -e
-bindkey '^b' backward-word
-bindkey '^f' forward-word
-bindkey '^j' kill-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 
-autoload -Uz compinit
-autoload -U +X bashcompinit && bashcompinit
-compinit
+autoload -Uz compinit && compinit
+autoload -Uz bashcompinit && bashcompinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format ''
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SList: %p%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select
