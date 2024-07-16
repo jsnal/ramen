@@ -123,5 +123,7 @@ if has('autocmd')
 
     autocmd Filetype gitcommit,markdown,text call WritingMode()
 
+    autocmd Filetype python set colorcolumn=80
+
     autocmd VimResized * wincmd =
 endif

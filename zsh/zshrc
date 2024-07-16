@@ -48,16 +48,6 @@ setopt correct
 setopt correctall
 setopt list_packed
 
-CLEAR="%{%b%f%}"
-RED="%{%F{9}%}"
-BLUE="%{%F{12}%}"
-YELLOW="%{%F{11}%}"
-GREEN_YELLOW="%{%F{154}%}"
-
-# Text changes
-BOLD_START="%B"
-BOLD_END="%b"
-
 # Set window title in xterm
 function precmd {
     case $TERM in
@@ -66,8 +56,8 @@ function precmd {
     esac
 }
 
-export PROMPT="$BOLD_START$YELLOW%n$CLEAR@$BOLD_START$GREEN_YELLOW%m$CLEAR:$BOLD_START$BLUE%(4~|../%3~|%~)$CLEAR$BOLD_END%# "
-export SPROMPT="zsh: correct $BOLD_START$RED'%R'$CLEAR$BOLD_END to $BOLD_START$RED'%r'$CLEAR$BOLD_END [nyae]? "
+export PROMPT="[%n@%m %(4~|../%3~|%~)]%# "
+export SPROMPT="zsh: correct '%R' to '%r' [nyae]? "
 
 if [ -f "$HOME/.zshrc.local" ]; then
    source "$HOME/.zshrc.local"
