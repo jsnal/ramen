@@ -12,55 +12,86 @@ if exists("syntax_on")
 endif
 
 set background=dark
-let g:colors_name="serape"
+let g:colors_name = "serape"
 
-" Editor settings
-hi Normal          ctermfg=NONE guifg=#ffffff ctermbg=NONE guibg=#000000
-hi Cursor          ctermfg=26   guifg=#005fd7 ctermbg=7    guibg=#c0c0c0
-hi CursorLine      ctermfg=NONE guifg=NONE    ctermbg=235  guibg=#262626 cterm=reverse
-hi LineNr          ctermfg=245  guifg=#8a8a8a ctermbg=NONE guibg=NONE
-hi CursorLineNR    ctermfg=184  guifg=#d7d700 ctermbg=NONE guibg=NONE    cterm=bold cterm=bold
+function! s:h(group, style)
+  execute "highlight" a:group
+    \ "guifg=" (has_key(a:style, "fg") ? a:style.fg.gui : "NONE")
+    \ "guibg=" (has_key(a:style, "bg") ? a:style.bg.gui : "NONE")
+    \ "guisp=" (has_key(a:style, "sp") ? a:style.sp.gui : "NONE")
+    \ "gui=" (has_key(a:style, "style") ? a:style.style : "NONE")
+    \ "ctermfg=" (has_key(a:style, "fg") ? a:style.fg.cterm : "NONE")
+    \ "ctermbg=" (has_key(a:style, "bg") ? a:style.bg.cterm : "NONE")
+    \ "cterm=" (has_key(a:style, "style") ? a:style.style : "NONE")
+    \ "term=NONE"
+endfunction
 
-" Number column
-hi CursorColumn    ctermfg=NONE guifg=NONE    ctermbg=235 guibg=#262626 cterm=reverse
-hi FoldColumn      ctermfg=245  guifg=#8a8a8a ctermbg=235 guibg=#262626
-hi SignColumn      ctermfg=15   guifg=#ffffff ctermbg=235 guibg=#262626
-hi Folded          ctermfg=245  guifg=#8a8a8a ctermbg=235 guibg=#262626
+let s:black = { "gui": "#000000", "cterm": "0" }
+let s:white = { "gui": "#FFFFFF", "cterm": "15" }
 
-" Window/Tab delimiters
-hi VertSplit       ctermfg=235  guifg=#262626 ctermbg=235 guibg=#262626
-hi ColorColumn     ctermfg=NONE guifg=NONE    ctermbg=235 guibg=#262626
-hi TabLine         ctermfg=253  guifg=#dadada ctermbg=235 guibg=#262626
-hi TabLineFill     ctermfg=240  guifg=#585858 ctermbg=235 guibg=#262626
-hi TabLineSel      ctermfg=253  guifg=#dadada ctermbg=235 guibg=#262626
+let s:dark_gray = { "gui": "#262626", "cterm": "235" }
+let s:gray = { "gui": "#8A8A8A", "cterm": "245" }
+let s:light_gray = { "gui": "#BFBFBF", "cterm": "251" }
+
+let s:red = { "gui": "#FF0000", "cterm": "9" }
+let s:cyan = { "gui": "#5FD7FF", "cterm": "38" }
+let s:yellow = { "gui": "#FFFF00", "cterm": "11" }
+let s:orange = { "gui": "#D75F5F", "cterm": "167" }
+let s:green = { "gui": "#AFD75F", "cterm": "149" }
+
+let s:bg = s:black
+let s:fg = s:white
+
+call s:h("Normal", { "bg": s:bg, "fg": s:fg })
+
+" Cursor
+call s:h("CursorColumn", { "bg": s:dark_gray })
+call s:h("Cursor", { "bg": s:bg, "fg": s:fg })
+call s:h("CursorLine", { "bg": s:dark_gray })
+call s:h("CursorLineNR", { "fg": s:gray, "style": "bold" })
+call s:h("QuickFixLine", { "bg": s:dark_gray })
+
+" Column
+call s:h("LineNR", { "fg": s:gray })
+call s:h("Folded", { "bg": s:dark_gray, "fg": s:gray })
+call s:h("FoldColumn", { "bg": s:dark_gray, "fg": s:gray })
+call s:h("SignColumn", { "bg": s:dark_gray, "fg": s:gray })
+call s:h("ColorColumn", { "bg": s:dark_gray })
+
+" Window and Tab separators
+call s:h("VertSplit", { "bg": s:light_gray, "fg": s:light_gray })
+call s:h("TabLine", { "bg": s:light_gray, "fg": s:bg })
+call s:h("TabLineFill", { "bg": s:light_gray, "fg": s:light_gray })
+call s:h("TabLineSel", { "bg": s:white, "fg": s:bg })
 
 " File Navigation / Searching
-hi Directory       ctermfg=149 guifg=#afd75f ctermbg=NONE guibg=NONE
-hi Search          ctermfg=15  guifg=#ffffff ctermbg=202  guibg=#ff5f00
-hi IncSearch       ctermfg=172 guifg=#d78700 ctermbg=15   guibg=#ffffff
+call s:h("Directory", { "fg": s:green })
+call s:h("Search", { "bg": s:yellow, "fg": s:bg })
+call s:h("IncSearch", { "bg": s:yellow, "fg": s:bg })
 
-" Prompt/Status
-hi StatusLine      ctermfg=255  guifg=#eeeeee ctermbg=235  guibg=#262626 cterm=bold gui=bold
-hi StatusLineNC    ctermfg=245  guifg=#8a8a8a ctermbg=235  guibg=#262626 cterm=bold gui=bold
-hi WildMenu        ctermfg=32   guifg=#0087d7 ctermbg=235  guibg=#262626 cterm=bold gui=bold
-hi Question        ctermfg=NONE guifg=NONE    ctermbg=NONE guibg=NONE
-hi Title           ctermfg=15   guifg=#ffffff ctermbg=NONE guibg=NONE cterm=bold gui=bold
-hi ModeMsg         ctermfg=15   guifg=#ffffff ctermbg=NONE guibg=NONE cterm=bold gui=bold
-hi MoreMsg         ctermfg=15   guifg=#ffffff ctermbg=NONE guibg=NONE cterm=bold gui=bold
+" Statusline
+call s:h("Statusline", { "bg": s:light_gray, "fg": s:bg })
+call s:h("StatuslineNC", { "bg": s:light_gray, "fg": s:bg })
+
+" Menu
+call s:h("WildMenu", { "bg": s:white, "fg": s:bg })
+call s:h("Question", { "fg": s:fg, "style": "bold" })
+call s:h("Title", { "fg": s:fg, "style": "bold" })
+call s:h("MoreMsg", { "fg": s:fg, "style": "bold" })
+call s:h("ModeMsg", { "fg": s:fg })
+call s:h("ErrorMsg", { "bg": s:red, "fg": s:fg })
+call s:h("WarningMsg", { "bg": s:yellow, "fg": s:bg })
 
 " Visual aid
-hi MatchParen      ctermfg=NONE guifg=NONE    ctermbg=241  guibg=#626262 cterm=bold    gui=bold
-hi Visual          ctermfg=NONE guifg=NONE    ctermbg=NONE guibg=NONE    cterm=reverse gui=reverse
-hi VisualNOS       ctermfg=NONE guifg=NONE    ctermbg=NONE guibg=NONE    cterm=reverse gui=reverse
-hi NonText         ctermfg=245  guifg=#8a8a8a ctermbg=NONE guibg=NONE
+call s:h("MatchParen", { "bg": s:dark_gray })
+call s:h("Visual", { "style": "reverse" })
+call s:h("VisualNOS", { "style": "reverse" })
+call s:h("NonText", { "fg": s:gray })
 
-hi Todo            ctermfg=11  guifg=#ffff00 ctermbg=NONE guibg=NONE    cterm=bold gui=bold
-hi Underlined      ctermfg=81  guifg=#5fd7ff ctermbg=NONE guibg=NONE
-hi Error           ctermfg=15  guifg=#ffffff ctermbg=9    guibg=#ff0000
-hi ErrorMsg        ctermfg=9   guifg=#ff0000 ctermbg=15   guibg=#ffffff cterm=reverse,bold gui=reverse,bold
-hi WarningMsg      ctermfg=11  guifg=#ffff00 ctermbg=NONE guibg=NONE    cterm=reverse,bold gui=reverse,bold
-hi Ignore          ctermfg=0   guifg=#000000 ctermbg=0    guibg=#000000
-hi SpecialKey      ctermfg=238 guifg=#444444 ctermbg=234  guibg=#1c1c1c
+call s:h("Todo", { "fg": s:yellow })
+call s:h("Underlined", { "fg": s:cyan, "style": "underline" })
+call s:h("Error", { "bg": s:red, "fg": s:fg })
+call s:h("SpecialKey", { "bg": s:dark_gray, "fg": s:light_gray })
 
 " Variable type
 hi Constant        ctermfg=32 guifg=#0087d7 ctermbg=NONE guibg=NONE
@@ -118,10 +149,10 @@ hi DiffSubname     ctermfg=202 guifg=#ff5f00 ctermbg=NONE guibg=NONE cterm=bold 
 hi DiffIndexLine   ctermfg=202 guifg=#ff5f00 ctermbg=NONE guibg=NONE cterm=bold gui=bold
 
 " Completion menu
-hi Pmenu           ctermfg=15   guifg=#ffffff ctermbg=235 guibg=#262626
-hi PmenuSel        ctermfg=0    guifg=#000000 ctermbg=15  guibg=#ffffff
-hi PmenuSbar       ctermfg=NONE guifg=NONE    ctermbg=235 guibg=#262626
-hi PmenuThumb      ctermfg=NONE guifg=NONE    ctermbg=15  guibg=#ffffff
+call s:h("Pmenu", { "bg": s:dark_gray, "fg": s:fg })
+call s:h("PmenuSel", { "bg": s:white, "fg": s:bg })
+call s:h("PmenuSBar", { "bg": s:dark_gray, "fg": s:fg })
+call s:h("PmenuThumb", { "bg": s:white })
 
 " Spelling
 hi SpellBad        ctermfg=9  guifg=#ff0000 ctermbg=NONE guibg=NONE
@@ -167,5 +198,5 @@ hi NERDTreeClosable ctermfg=15  guifg=#ffffff ctermbg=NONE guibg=NONE cterm=bold
 hi NERDTreeOpenable ctermfg=15  guifg=#ffffff ctermbg=NONE guibg=NONE cterm=bold gui=bold
 
 " Terminal
-hi StatusLineTerm   ctermfg=15  guifg=#ffffff ctermbg=235 guibg=#262626 cterm=bold gui=bold
-hi StatusLineTermNC ctermfg=245 guifg=#8a8a8a ctermbg=235 guibg=#262626 cterm=bold gui=bold
+hi StatusLineTerm   ctermfg=0 guifg=#000000 ctermbg=251 guibg=#bfbfbf cterm=NONE gui=NONE
+hi StatusLineTermNC ctermfg=0 guifg=#000000 ctermbg=248 guibg=#a8a8a8 cterm=NONE gui=NONE

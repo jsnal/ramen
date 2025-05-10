@@ -7,37 +7,34 @@ set completeopt=menu,menuone,noselect
 set nocursorline
 set noemoji
 set expandtab
-set fillchars=diff:.,eob:\ ,fold:-
 set foldlevelstart=99
 set formatoptions=j,n
 set hidden
 set ignorecase
 set incsearch
 set nojoinspaces
-set laststatus=1
+set laststatus=2
 set lazyredraw
 set linebreak
 set list
-set listchars=tab:>\ ,trail:•
+set listchars=tab:>\ ,trail:\\x20
 set modelines=5
 set mouse=a
 set showmode
 set number
 set path+=**
 set relativenumber
+set ruler
 set scrolloff=3
 set noshiftround
 set shiftwidth=4
 set shortmess=AIOTWacot
-set showbreak=↳
 set noshowcmd
-set sidescroll=0
-set sidescrolloff=3
 set smartcase
 set smarttab
 set splitbelow
 set splitright
-set statusline=%f\ %r%m%h\ %=\ %l/%L\ %c
+" set statusline=%<%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P
 set noswapfile
 set synmaxcol=200
 set notermguicolors
@@ -88,9 +85,6 @@ nnoremap <C-l> <C-w>l
 " Intuitive movement
 noremap j gj
 noremap k gk
-
-" Replace all
-nnoremap <C-r> :%s//g<Left><Left>
 
 " Saving and quiting
 nnoremap <Leader>q :q<CR>
