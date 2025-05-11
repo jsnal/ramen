@@ -7,14 +7,12 @@ set completeopt=menu,menuone,noselect
 set nocursorline
 set noemoji
 set expandtab
-set foldlevelstart=99
-set formatoptions=j,n
+set formatoptions=tcqjn
 set hidden
 set ignorecase
 set incsearch
 set nojoinspaces
 set laststatus=2
-set lazyredraw
 set linebreak
 set list
 set listchars=tab:>\ ,trail:\\x20
@@ -28,17 +26,15 @@ set ruler
 set scrolloff=3
 set noshiftround
 set shiftwidth=4
-set shortmess=AIOTWacot
+set shortmess=fixtmToOS
 set noshowcmd
 set smartcase
 set smarttab
 set splitbelow
 set splitright
-" set statusline=%<%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P
 set noswapfile
-set synmaxcol=200
-set notermguicolors
 set termwinkey=<C-X>
+set textwidth=80
 set title
 set titlestring=%t\ -\ vim
 set ttimeoutlen=1
@@ -46,9 +42,7 @@ set undodir=$HOME/.vim/tmp/undo/
 set undofile
 set updatetime=500
 set updatecount=0
-set viewoptions=cursor,folds
 set virtualedit=block
-set visualbell
 set wildmenu
 set wildmode=longest:list,full
 set nowrap
@@ -98,10 +92,11 @@ xnoremap <silent> K :m-2<CR>gv=gv
 function! WritingMode()
     setlocal spell
     setlocal wrap
+    setlocal colorcolumn=80
     setlocal norelativenumber
     setlocal conceallevel=0
     setlocal comments=b:*,b:-,b:+,n:>
-    setlocal formatoptions=j,nr
+    setlocal formatoptions=jnr
     setlocal shiftwidth=2
     setlocal tabstop=2
 endfunction
