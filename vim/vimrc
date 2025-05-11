@@ -26,7 +26,7 @@ set ruler
 set scrolloff=3
 set noshiftround
 set shiftwidth=4
-set shortmess=fixtmToOS
+set shortmess=fixtmToO
 set noshowcmd
 set smartcase
 set smarttab
