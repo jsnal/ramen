@@ -2,63 +2,28 @@ alias v='vim'
 alias vi='vim'
 alias cp='cp -v'
 alias mv='mv -v'
-alias man='nocorrect man'
-alias mkdir='nocorrect mkdir'
-alias mv='nocorrect mv'
-alias sudo='nocorrect sudo'
-alias docker='nocorrect docker'
-
-case $(uname) in
-    Linux) alias ls='ls --color=always --group-directories' ;;
-    FreeBSD) alias ls='ls --color=always' ;;
-    *) ;;
-esac
+alias ls='ls --color=always --group-directories'
 
 bindkey -e
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
-autoload -Uz compinit && compinit
-autoload -Uz bashcompinit && bashcompinit
+autoload -Uz compinit bashcompinit && compinit && bashcompinit
 
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format ''
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-zstyle ':completion:*' list-prompt %SList: %p%s
+zstyle ':completion:*' completer _extensions _complete _correct _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select
-zstyle ':completion:*' select-prompt %SList: %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
-zstyle ':completion:*:history-words' stop yes
-zstyle ':completion:*:history-words' remove-all-dups yes
-zstyle ':completion:*:history-words' list false
-zstyle ':completion:*:history-words' menu yes
 
-setopt append_history
-setopt extended_history
 setopt sharehistory
 setopt hist_reduce_blanks
-setopt always_to_end
 setopt complete_in_word
-setopt auto_menu
 setopt correct
-setopt correctall
 setopt list_packed
 
-# Set window title in xterm
 function precmd {
-    case $TERM in
-        xterm*|rxvt*) print -Pn "\e]0;%1d - zsh\a" ;;
-        *) ;;
-    esac
+    print -Pn "\e]0;%1d - zsh\a"
 }
 
 export PROMPT="[%n@%m %(4~|../%3~|%~)]%# "
-export SPROMPT="zsh: correct '%R' to '%r' [nyae]? "
 
-if [ -f "$HOME/.zshrc.local" ]; then
-   source "$HOME/.zshrc.local"
-fi
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
