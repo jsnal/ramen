@@ -13,7 +13,7 @@ INSTALL_MANIFEST=(
     "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                             \
     "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"                    \
     "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"                         \
-    "$DOTFILES_DIR/vim/colors/serape.vim:$HOME/.vim/colors/serape.vim" \
+    "$DOTFILES_DIR/vim/colors/defaultpp.vim:$HOME/.vim/colors/defaultpp.vim" \
 )
 
 # ANSI Escape Codes

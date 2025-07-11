@@ -61,7 +61,7 @@ let &t_EI = "\e[2 q"
 " Set colorscheme
 if &t_Co > 2 || has("gui_running")
     syntax on
-    colorscheme jason
+    colorscheme defaultpp
 endif
 
 " Detect the filetypes
