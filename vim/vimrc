@@ -12,16 +12,14 @@ set hidden
 set ignorecase
 set incsearch
 set nojoinspaces
-set laststatus=2
+set laststatus=1
 set linebreak
 set list
 set listchars=tab:>\ ,trail:\\x20
 set modelines=5
 set mouse=a
 set showmode
-set number
 set path+=**
-set relativenumber
 set ruler
 set scrolloff=3
 set noshiftround
@@ -51,11 +49,6 @@ set nowritebackup
 " GUI settings
 if has("gui_running")
     set guioptions=egmti
-    if has("gui_win32")
-        set guifont=Consolas:h12:cANSI
-    else
-        set guifont=Ubuntu\ Mono\ 12
-    endif
 endif
 
 " Set global leader key
@@ -65,10 +58,16 @@ let mapleader=','
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-" Set colorscheme and detect the filetype
-colorscheme serape
-filetype indent plugin on
-syntax on
+" Set colorscheme
+if &t_Co > 2 || has("gui_running")
+    syntax on
+    colorscheme jason
+endif
+
+" Detect the filetypes
+if version > 580
+    filetype indent plugin on
+endif
 
 " Easier window split movement
 nnoremap <C-h> <C-w>h
@@ -90,10 +89,8 @@ xnoremap <silent> K :m-2<CR>gv=gv
 
 " Local settings for plain-text writing
 function! WritingMode()
-    setlocal spell
     setlocal wrap
     setlocal colorcolumn=80
-    setlocal norelativenumber
     setlocal conceallevel=0
     setlocal comments=b:*,b:-,b:+,n:>
     setlocal formatoptions=jnr
@@ -110,7 +107,7 @@ if has('autocmd')
     let s:whitespace_ignore = ['gitcommit', 'diff']
     autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
 
-    autocmd Filetype gitcommit,markdown,text call WritingMode()
+    autocmd Filetype gitcommit,markdown call WritingMode()
 
     autocmd Filetype python set colorcolumn=80
 
