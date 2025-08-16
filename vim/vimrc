@@ -16,7 +16,6 @@ set laststatus=1
 set linebreak
 set list
 set listchars=tab:>\ ,trail:\\x20
-set modelines=5
 set mouse=a
 set showmode
 set path+=**
@@ -40,7 +39,7 @@ set undodir=$HOME/.vim/tmp/undo/
 set undofile
 set updatetime=500
 set updatecount=0
-set virtualedit=block
+set virtualedit=all
 set wildmenu
 set wildmode=longest:list,full
 set nowrap
@@ -89,10 +88,8 @@ xnoremap <silent> K :m-2<CR>gv=gv
 
 " Local settings for plain-text writing
 function! WritingMode()
-    setlocal wrap
-    setlocal colorcolumn=80
-    setlocal conceallevel=0
     setlocal comments=b:*,b:-,b:+,n:>
+    setlocal conceallevel=0
     setlocal formatoptions=jnr
     setlocal shiftwidth=2
     setlocal tabstop=2
@@ -108,8 +105,4 @@ if has('autocmd')
     autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
 
     autocmd Filetype gitcommit,markdown call WritingMode()
-
-    autocmd Filetype python set colorcolumn=80
-
-    autocmd VimResized * wincmd =
 endif
