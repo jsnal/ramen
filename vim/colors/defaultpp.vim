@@ -12,7 +12,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "default++"
+let colors_name = "defaultpp"
 
 hi! link ColorColumn StatusLine
 
