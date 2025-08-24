@@ -1,27 +1,18 @@
 set autoindent
 set backspace=indent,start,eol
-set nobackup
-set backupcopy=yes
-set belloff=all
 set completeopt=menu,menuone,noselect
-set nocursorline
-set noemoji
 set expandtab
 set formatoptions=tcqjn
 set hidden
 set ignorecase
-set incsearch
 set nojoinspaces
 set laststatus=1
 set linebreak
 set list
 set listchars=tab:>\ ,trail:\\x20
 set mouse=a
-set showmode
-set path+=**
 set ruler
 set scrolloff=3
-set noshiftround
 set shiftwidth=4
 set shortmess=fixtmToO
 set noshowcmd
@@ -35,17 +26,11 @@ set textwidth=80
 set title
 set titlestring=%t\ -\ vim
 set ttimeoutlen=1
-set undodir=$HOME/.vim/tmp/undo/
-set undofile
-set updatetime=500
 set updatecount=0
-set virtualedit=onemore
-set wildmenu
 set wildmode=longest:list,full
 set nowrap
 set nowritebackup
 
-" GUI settings
 if has("gui_running")
     set guioptions=egmti
 endif
@@ -64,9 +49,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Detect the filetypes
-if version > 580
-    filetype indent plugin on
-endif
+filetype indent plugin on
 
 " Easier window split movement
 nnoremap <C-h> <C-w>h
@@ -78,7 +61,7 @@ nnoremap <C-l> <C-w>l
 noremap j gj
 noremap k gk
 
-" Saving and quiting
+" Saving and quitting
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>w :w<CR>
 
@@ -86,23 +69,22 @@ nnoremap <Leader>w :w<CR>
 xnoremap <silent> J :m'>+<CR>gv=gv
 xnoremap <silent> K :m-2<CR>gv=gv
 
-" Local settings for plain-text writing
-function! WritingMode()
-    setlocal comments=b:*,b:-,b:+,n:>
-    setlocal conceallevel=0
-    setlocal formatoptions=jnr
-    setlocal shiftwidth=2
-    setlocal tabstop=2
-endfunction
-
 if has('autocmd')
+    " Jump back to last known position on buffer open
     autocmd BufReadPost *
                 \ if line("'\"") > 0 && line("'\"") <= line("$") |
                 \   exe "normal! g`\"" |
                 \ endif
 
+    " Strip trailing whitespace on buffer write
     let s:whitespace_ignore = ['gitcommit', 'diff']
     autocmd BufWritePre * if index(s:whitespace_ignore, &ft) < 0 | %s/\s\+$//e
 
-    autocmd Filetype gitcommit,markdown call WritingMode()
+    " Change settings for plaintext writing
+    autocmd Filetype gitcommit,markdown
+                \ setlocal comments=b:*,b:-,b:+,n:> |
+                \ setlocal conceallevel=0 |
+                \ setlocal formatoptions=jnr |
+                \ setlocal shiftwidth=2 |
+                \ setlocal tabstop=2
 endif
