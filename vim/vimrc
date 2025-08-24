@@ -15,6 +15,7 @@ set ruler
 set scrolloff=3
 set shiftwidth=4
 set shortmess=fixtmToO
+set splitkeep=screen
 set noshowcmd
 set smartcase
 set smarttab
@@ -84,7 +85,7 @@ if has('autocmd')
     autocmd Filetype gitcommit,markdown
                 \ setlocal comments=b:*,b:-,b:+,n:> |
                 \ setlocal conceallevel=0 |
-                \ setlocal formatoptions=jnr |
+                \ setlocal formatoptions=tjnr |
                 \ setlocal shiftwidth=2 |
                 \ setlocal tabstop=2
 endif
