@@ -3,13 +3,16 @@ set backspace=indent,start,eol
 set completeopt=menu,menuone,noselect
 set expandtab
 set formatoptions=tcqjn
+if executable('rg')
+    set grepprg=rg\ -H\ --no-heading\ --vimgrep
+    set grepformat=%f:%l:%c:%m
+endif
 set hidden
 set ignorecase
 set nojoinspaces
-set laststatus=1
 set linebreak
 set list
-set listchars=tab:>\ ,trail:\\x20
+set listchars=tab:>\\\x20
 set mouse=a
 set ruler
 set scrolloff=3
