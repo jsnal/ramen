@@ -1,12 +1,12 @@
-export PATH="$PATH"
-export KEYTIMEOUT=1
-export VISUAL="vim"
-export EDITOR=$VISUAL
-export GIT_EDITOR=$VISUAL
+export EDITOR="vim"
+export GIT_EDITOR=$EDITOR
+export PAGER="less"
 export TERM="xterm-256color"
 export TERMINAL="xterm-256color"
-export HIST_STAMPS="mm.dd.yyyy"
-export HISTSIZE=12000
-export SAVEHIST=12000
+export VISUAL=$EDITOR
+
+# Shell specific
 export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=12000
+export SAVEHIST=$HISTSIZE
 export WORDCHARS='*?_-.[]~=&;!#%^(){}<>'
