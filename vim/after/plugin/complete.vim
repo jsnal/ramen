@@ -1,3 +1,5 @@
+" Configuration for: https://github.com/yegappan/lsp
+
 if !has('vim9script') ||  v:version < 900
     finish
 endif
@@ -8,6 +10,7 @@ if exists("g:loaded_lsp")
     autocmd User LspAttached set autocomplete
 
     g:LspOptionsSet({
+        noNewlineInCompletion: v:true,
         autoHighlightDiags: v:true,
         completionMatcher: "fuzzy",
         diagSignErrorText: 'E:',
