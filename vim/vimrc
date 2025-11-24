@@ -1,5 +1,6 @@
 set autoindent
 set backspace=indent,start,eol
+set complete=.,o,w,b,u
 set completeopt=menu,menuone,noselect
 set expandtab
 set formatoptions=tcqjn
@@ -18,8 +19,8 @@ set ruler
 set scrolloff=3
 set shiftwidth=4
 set shortmess=fixtmToO
-set splitkeep=screen
 set noshowcmd
+set signcolumn=no
 set smartcase
 set smarttab
 set splitbelow
@@ -44,6 +45,7 @@ let mapleader=','
 
 " Set cursor shape
 let &t_SI = "\e[6 q"
+let &t_SR = "\e[4 q"
 let &t_EI = "\e[2 q"
 
 " Set colorscheme
@@ -73,11 +75,16 @@ nnoremap <Leader>w :w<CR>
 xnoremap <silent> J :m'>+<CR>gv=gv
 xnoremap <silent> K :m-2<CR>gv=gv
 
+" Sensible popup menu keys
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <Enter> pumvisible() ? "\<C-y>" : "\<Enter>"
+
 if has('autocmd')
     " Jump back to last known position on buffer open
     autocmd BufReadPost *
                 \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \   exe "normal! g`\"" |
+                \     exe "normal! g`\"" |
                 \ endif
 
     " Strip trailing whitespace on buffer write
@@ -92,3 +99,4 @@ if has('autocmd')
                 \ setlocal shiftwidth=2 |
                 \ setlocal tabstop=2
 endif
+
