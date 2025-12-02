@@ -7,7 +7,9 @@ endif
 vim9script
 
 if exists("g:loaded_lsp")
-    autocmd User LspAttached set autocomplete
+    autocmd User LspAttached
+                \ set autocomplete |
+                \ set complete=.,o,w,b,u
 
     g:LspOptionsSet({
         noNewlineInCompletion: v:true,

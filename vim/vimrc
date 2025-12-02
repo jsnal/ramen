@@ -1,6 +1,5 @@
 set autoindent
 set backspace=indent,start,eol
-set complete=.,o,w,b,u
 set completeopt=menu,menuone,noselect
 set expandtab
 set formatoptions=tcqjn
