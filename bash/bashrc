@@ -1,0 +1,39 @@
+[[ -n $PS1 ]] || return
+
+[ -f "$HOME/.bashrc.local.pre" ] && . "$HOME/.bashrc.local.pre"
+
+export EDITOR=${EDITOR:="vim"}
+export GIT_EDITOR=$EDITOR
+export HISTCONTROL=ignoredups
+export HISTFILESIZE=20000
+export HISTSIZE=2000
+export PAGER="less"
+export TERM="xterm-256color"
+export TERMINAL="xterm-256color"
+export VISUAL=$EDITOR
+
+alias vim=$EDITOR
+alias vi='vim'
+alias v='vim'
+alias cp='cp -v'
+alias mv='mv -v'
+alias ls='ls --color=always --group-directories'
+
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+
+shopt -s histappend
+shopt -s checkwinsize
+
+PROMPT_COMMAND="history -a"
+export PS1="[\u@\h \W]\$ "
+
+[ -f "$HOME/.bashrc.local.post" ] && . "$HOME/.bashrc.local.post"
