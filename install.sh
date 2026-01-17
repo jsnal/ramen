@@ -9,10 +9,9 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 # List of files to install
 INSTALL_MANIFEST=(
-    "$DOTFILES_DIR/zsh/zshenv:$HOME/.zshenv"                           \
-    "$DOTFILES_DIR/zsh/zshrc:$HOME/.zshrc"                             \
-    "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"                    \
-    "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"                         \
+    "$DOTFILES_DIR/bash/bashrc:$HOME/.bashrc"                                \
+    "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"                          \
+    "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"                               \
     "$DOTFILES_DIR/vim/colors/defaultpp.vim:$HOME/.vim/colors/defaultpp.vim" \
 )
 
