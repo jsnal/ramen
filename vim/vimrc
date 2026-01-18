@@ -75,12 +75,7 @@ nnoremap <Leader>w :w<CR>
 xnoremap <silent> J :m'>+<CR>gv=gv
 xnoremap <silent> K :m-2<CR>gv=gv
 
-" Sensible popup menu keys
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <Enter> pumvisible() ? "\<C-y>" : "\<Enter>"
-
-if has('autocmd')
+augroup Ramen
     " Jump back to last known position on buffer open
     autocmd BufReadPost *
                 \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -98,5 +93,5 @@ if has('autocmd')
                 \ setlocal formatoptions=tjnr |
                 \ setlocal shiftwidth=2 |
                 \ setlocal tabstop=2
-endif
+augroup END
 
