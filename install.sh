@@ -34,7 +34,7 @@ install() {
     create_dir $HOME/.config/nvim
     link $ROOT_DIR/nvim/init.lua $HOME/.config/nvim/init.lua
     link $ROOT_DIR/nvim/lsp $HOME/.config/nvim/lsp
-    link $ROOT_DIR/nvim/plugin $HOME/.config/nvim/plugin
+    link $ROOT_DIR/nvim/lua $HOME/.config/nvim/lua
     echo -e '\nInstall complete'
 }
 

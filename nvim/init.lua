@@ -40,6 +40,9 @@ vim.opt.writebackup = false
 -- Set global leader key
 vim.g.mapleader = ','
 
+-- Setup plugins
+pcall(require, "ramen.plugins")
+
 -- Intuitive movement
 vim.keymap.set({ 'n', 'v' }, 'j', 'gj')
 vim.keymap.set({ 'n', 'v' }, 'k', 'gk')
