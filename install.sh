@@ -1,72 +1,49 @@
-#!/usr/bin/env bash
-#
-# Install script for ramen
-# File:    install.sh
-# Author:  Jason Long <jsnal>
+#!/bin/bash
 
-# Set the default path to the current path
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
+GIT_REV=$(git --git-dir="$ROOT_DIR/.git" rev-parse --short HEAD)
 
-# List of files to install
-INSTALL_MANIFEST=(
-    "$DOTFILES_DIR/bash/bashrc:$HOME/.bashrc"                                \
-    "$DOTFILES_DIR/tmux/tmux.conf:$HOME/.tmux.conf"                          \
-    "$DOTFILES_DIR/vim/vimrc:$HOME/.vim/vimrc"                               \
-    "$DOTFILES_DIR/vim/colors/defaultpp.vim:$HOME/.vim/colors/defaultpp.vim" \
-)
+echo -e "Installing from '$ROOT_DIR' ($GIT_REV)\n"
 
-# ANSI Escape Codes
-BOLD="\033[1m"
-UNDR="\033[4m"
-ENDL="\033[0m"
+link() {
+    echo "LINK    $2"
+    [ ! -e "$2" ] && ln -s $1 $2
+}
 
-# Conduct the install process in the following order:
-#
-#   1. Check if the repository exists locally; If it doesn't clone it.
-#   2. Notify the user of the current git commit hash they are about to install.
-#   3. Verify all the project files are present before starting.
-#   4. Perform the install.
-#
-echo -e "${UNDR}Cloning ramen${ENDL}"
+unlink() {
+    echo "UNLINK  $2"
+    rm $2 2> /dev/null
+}
 
-# Check if we're in a the correct git repository
-if git --git-dir=$DOTFILES_DIR/.git config -l | grep -q "jsnal/ramen"; then
-    echo "-> Found $DOTFILES_DIR"
-else
-    # If this script is run without being in the repo itself, put the dotfiles in
-    # the home directory. This could be changed after they're installed if need be.
-    DOTFILES_DIR="$HOME/ramen"
-    echo "-> Unable to find $DOTFILES_DIR Cloning..."
-    git clone --recursive --quiet https://github.com/jsnal/ramen $DOTFILES_DIR &>/dev/null
-fi
+create_dir() {
+    echo "MKDIR   $1"
+    mkdir -p $1
+}
 
-echo -e "\nInstalling ramen version ${BOLD}$(git --git-dir="$DOTFILES_DIR/.git" rev-parse HEAD)${ENDL}\n"
+remove_dir() {
+    echo "RMDIR   $1"
+    rm -rf $1 2> /dev/null
+}
 
-echo -e "${UNDR}Verifying install${ENDL}"
+install() {
+    link $ROOT_DIR/bash/bashrc $HOME/.bashrc
+    link $ROOT_DIR/tmux/tmux.conf $HOME/.tmux.conf
+    create_dir $HOME/.vim
+    link $ROOT_DIR/vim/vimrc $HOME/.vim/vimrc
+    link $ROOT_DIR/vim/colors $HOME/.vim/colors
+    create_dir $HOME/.config/nvim
+    link $ROOT_DIR/nvim/init.lua $HOME/.config/nvim/init.lua
+    link $ROOT_DIR/nvim/lsp $HOME/.config/nvim/lsp
+    link $ROOT_DIR/nvim/plugin $HOME/.config/nvim/plugin
+    echo -e '\nInstall complete'
+}
 
-# Check if the files in the install manifest actually exist
-for i in ${INSTALL_MANIFEST[@]}; do
-    source="${i%%:*}"
-    if [ -f "$source" ]; then
-        echo -e "(File)    $source"
-    elif [ -d "$source" ]; then
-        echo -e "(Dir)     $source"
-    else
-        echo -e "(Missing) $source\nInstall not verified"
-        exit 1
-    fi
-done
+uninstall() {
+    unlink $ROOT_DIR/bash/bashrc $HOME/.bashrc
+    unlink $ROOT_DIR/tmux/tmux.conf $HOME/.tmux.conf
+    remove_dir $HOME/.vim
+    remove_dir $HOME/.config/nvim
+    echo -e '\nUninstall complete'
+}
 
-echo -e "\n${UNDR}Symlinking files${ENDL}"
-
-# Create needed directories
-mkdir -p $HOME/.vim/colors
-
-# Symlink all files in install manifest
-for file in "${INSTALL_MANIFEST[@]}"; do
-    source="${file%%:*}"
-    destination="${file##*:}"
-    ln -sfv "$source" "$destination" | sed "s/'//g"
-done
-
-echo -e "\n${BOLD}Install Complete!${ENDL}"
+[[ $1 = "uninstall" ]] && uninstall || install

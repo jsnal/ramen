@@ -1,29 +1,23 @@
-# Dotfiles
+# ramen
 
-ramen holds all of my configuration files for Linux.
+My configuration for Linux and Unix-like systems.
 
 ## Dependencies
 
-- [tmux](http://tmux.sourceforge.net/) 2.3 or later.
-- [vim](http://www.vim.org/) 8.0 or later is best but anything should work.
-- recent [zsh](http://www.zsh.org/).
-- recent [git](http://git-scm.com/).
+- [tmux](http://tmux.sourceforge.net/) 2.3 or later
+- [neovim](https://neovim.io/) 0.11 or later
+- recent [bash](https://www.gnu.org/software/bash/)
 
 ## Installation
 
-### Manual
-
-- Recursively clone this repository into your home directory.
-- Run the install.sh
-
-### Automated
-
 ```
-bash <(wget -qO- https://raw.githubusercontent.com/jsnal/ramen/master/install.sh)
+git clone https://github.com/jsnal/ramen
+cd ramen
+./install.sh
 ```
 
 ## Useful programs
 
-- [rg](https://github.com/BurntSushi/ripgrep) to quickly search through code.
-- [fzy](https://github.com/jhawthorn/fzy) for fuzzy text searches.
-- [dmenu](https://tools.suckless.org/dmenu/) to search for programs and other things.
+- [git](http://git-scm.com/) for version control
+- [vim](http://www.vim.org/) for text editing when neovim is unavailable
+- [rg](https://github.com/BurntSushi/ripgrep) to quickly search through code
