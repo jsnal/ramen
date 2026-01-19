@@ -33,7 +33,12 @@ bind "set show-all-if-ambiguous on"
 shopt -s histappend
 shopt -s checkwinsize
 
-PROMPT_COMMAND="history -a"
+_prompt_command() {
+    history -a
+    echo -ne "\e]0;${PWD##*/} - bash\a"
+}
+PROMPT_COMMAND=_prompt_command
+
 export PS1="[\u@\h \W]\$ "
 
 [ -f "$HOME/.bashrc.local.post" ] && . "$HOME/.bashrc.local.post"
