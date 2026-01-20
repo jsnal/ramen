@@ -1,13 +1,10 @@
 -- Set options
+vim.opt.autochdir = true
 vim.opt.autoindent = true
 vim.opt.backspace = { 'indent', 'start', 'eol' }
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.expandtab = true
 vim.opt.formatoptions = 'tcqjn'
-if vim.fn.executable('rg') == 1 then
-    vim.opt.grepprg = 'rg -H --no-heading --vimgrep'
-    vim.opt.grepformat = '%f:%l:%c:%m'
-end
 vim.opt.hidden = true
 vim.opt.ignorecase = true
 vim.opt.joinspaces = false
