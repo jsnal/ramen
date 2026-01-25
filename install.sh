@@ -33,6 +33,7 @@ install() {
     link $ROOT_DIR/vim/colors $HOME/.vim/colors
     create_dir $HOME/.config/nvim
     link $ROOT_DIR/nvim/init.lua $HOME/.config/nvim/init.lua
+    link $ROOT_DIR/nvim/colors $HOME/.config/nvim/colors
     link $ROOT_DIR/nvim/lsp $HOME/.config/nvim/lsp
     link $ROOT_DIR/nvim/lua $HOME/.config/nvim/lua
     echo -e '\nInstall complete'
