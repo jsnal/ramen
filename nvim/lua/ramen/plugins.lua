@@ -15,15 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
     spec = {
         {
-            'miikanissi/modus-themes.nvim',
-            version = nil,
-            lazy = false,
-            priority = 1000,
-            config = function()
-                vim.cmd([[colorscheme modus_vivendi]])
-            end,
-        },
-        {
             'hrsh7th/nvim-cmp',
             version = nil,
             dependencies = {
@@ -58,8 +49,7 @@ require('lazy').setup({
                     },
                 })
             end
-        },
-        { 'tpope/vim-rsi', version = nil }
+        }
     },
     checker = { enabled = true },
 })
@@ -71,5 +61,13 @@ vim.diagnostic.config({
     update_in_insert = false,
     virtual_text = true,
     virtual_lines = false,
+})
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
+    end,
 })
 vim.lsp.enable({ 'basedpyright', 'clangd', 'ruff' })

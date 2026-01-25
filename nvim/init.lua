@@ -1,5 +1,4 @@
 -- Set options
-vim.opt.autochdir = true
 vim.opt.autoindent = true
 vim.opt.backspace = { 'indent', 'start', 'eol' }
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -37,8 +36,11 @@ vim.opt.writebackup = false
 -- Set global leader key
 vim.g.mapleader = ','
 
--- Setup plugins
-pcall(require, "ramen.plugins")
+-- Set colorscheme
+vim.cmd.colorscheme('neutered')
+
+-- Setup extra configuration
+pcall(require, 'ramen')
 
 -- Intuitive movement
 vim.keymap.set({ 'n', 'v' }, 'j', 'gj')
@@ -91,3 +93,4 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.opt_local.tabstop = 2
     end,
 })
+
