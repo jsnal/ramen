@@ -4,6 +4,7 @@ vim.opt.backspace = { 'indent', 'start', 'eol' }
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.expandtab = true
 vim.opt.formatoptions = 'tcqjn'
+vim.opt.guicursor = 'n-v-c-ci-cr-sm-t:block,i-ve:ver25,r-o:hor20'
 vim.opt.hidden = true
 vim.opt.ignorecase = true
 vim.opt.joinspaces = false
