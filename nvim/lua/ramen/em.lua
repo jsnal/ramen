@@ -98,7 +98,6 @@ vim.keymap.set('n', '<C-x>b', function()
         completion = 'buffer',
     })
 
-
     if not ok then
         return
     end

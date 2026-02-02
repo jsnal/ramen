@@ -62,6 +62,31 @@ require('lazy').setup({
                     lsp_format = "fallback",
                 },
             }
+        },
+        {
+            'stevearc/oil.nvim',
+            opts = {
+                default_file_explorer = true,
+                columns = {
+                    "icon",
+                    "permissions",
+                    "size",
+                    "mtime",
+                },
+                delete_to_trash = true,
+                skip_confirm_for_simple_edits = true,
+                view_options = {
+                    show_hidden = true,
+                    natural_order = true,
+                    sort = {
+                        { "type", "asc" },
+                        { "name", "asc" },
+                    },
+                },
+            },
+            keys = {
+                { "<C-x>d", function() require("oil").open() end, },
+            }
         }
     },
     checker = { enabled = true },
@@ -83,4 +108,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end,
 })
-vim.lsp.enable({ 'basedpyright', 'clangd', 'ruff' })
+vim.lsp.enable({ 'basedpyright', 'clangd', 'ruff', 'vtsls', 'vue_ls' })
