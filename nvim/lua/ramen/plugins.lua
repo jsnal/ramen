@@ -29,20 +29,20 @@ require('lazy').setup({
                         { name = 'path' },
                     },
                     mapping = cmp.mapping.preset.insert({
-                        ['<C-p>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
-                        ['<C-n>'] = cmp.mapping.select_next_item({behavior = 'select'}),
-                        ['<CR>'] = cmp.mapping.confirm({select = false}),
+                        ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
+                        ['<C-n>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
+                        ['<CR>'] = cmp.mapping.confirm({ select = false }),
                         ['<Tab>'] = cmp.mapping(function(fallback)
                             local col = vim.fn.col('.') - 1
                             if cmp.visible() then
-                                cmp.select_next_item({behavior = 'select'})
+                                cmp.select_next_item({ behavior = 'select' })
                             elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
                                 fallback()
                             else
                                 cmp.complete()
                             end
                         end, {'i', 's'}),
-                        ['<S-Tab>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+                        ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
                     }),
                     window = {
                         documentation = cmp.config.disable
@@ -56,9 +56,13 @@ require('lazy').setup({
             opts = {
                 formatters_by_ft = {
                     python = { "ruff_format", "ruff_organize_imports" },
+                    vue = { "prettier" },
+                    javascript = { "prettier" },
+                    typescript = { "prettier" },
                 },
-                format_on_save = {
-                    timeout_ms = 500,
+                format_after_save = {
+                    async = true,
+                    timeout_ms = 1000,
                     lsp_format = "fallback",
                 },
             }
