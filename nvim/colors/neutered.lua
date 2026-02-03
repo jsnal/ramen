@@ -238,6 +238,16 @@ local groups = {
     ['@lsp.type.decorator'] = { link = '@label' },
     ['@lsp.typemod.function.declaration'] = { link = '@function' },
     ['@lsp.typemod.function.readonly'] = { link = '@function' },
+
+    -- nvim-cmp
+    ['CmpItemAbbr'] = { fg = p['fg'] },
+    ['CmpItemAbbrDeprecated'] = { fg = p['fg'], strikethrough = true },
+    ['CmpItemAbbrMatch'] = { fg = p['yellow-1'] },
+    ['CmpItemAbbrMatchFuzzy'] = { link = 'CmpItemAbbrMatch' },
+    ['CmpItemKind'] = { fg = p['fg-2'] },
+    ['CmpItemKindIcon'] = { link = 'CmpItemKind' },
+    ['CmpItemMenu'] = { link = 'CmpItemKind' },
+
 }
 
 for group, parameters in pairs(groups) do

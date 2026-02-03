@@ -12,7 +12,7 @@ link() {
 
 unlink() {
     echo "UNLINK  $2"
-    rm $2 2> /dev/null
+    rm $2 1> /dev/null
 }
 
 create_dir() {
