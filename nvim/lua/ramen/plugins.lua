@@ -64,6 +64,7 @@ require('conform').setup({
         vue = { 'prettier' },
         javascript = { 'prettier' },
         typescript = { 'prettier' },
+        rust = { 'rustfmt' },
     },
     format_after_save = {
         async = true,
@@ -80,4 +81,4 @@ vim.diagnostic.config({
     virtual_text = true,
     virtual_lines = false,
 })
-vim.lsp.enable({ 'basedpyright', 'clangd', 'ruff', 'vtsls', 'vue_ls' })
+vim.lsp.enable({ 'basedpyright', 'clangd', 'ruff', 'rust_analyzer', 'vtsls', 'vue_ls' })
