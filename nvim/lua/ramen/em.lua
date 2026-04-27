@@ -76,39 +76,3 @@ vim.keymap.set('c', '<M-BS>', function()
     return kill(position, previous_word(position))
 end, { expr = true, noremap = true })
 
-vim.keymap.set('n', '<C-x><C-f>', function()
-    local ok, path = pcall(vim.fn.input, {
-        prompt = 'Find file: ',
-        default = vim.fn.fnamemodify(vim.fn.expand('%:p:h'), ':~') .. '/',
-        completion = 'file',
-    })
-
-    if not ok or not path or path == '' then
-        return
-    end
-
-    vim.cmd.edit(vim.fn.fnamemodify(vim.fn.expand(path), ':p:.'))
-end, { noremap = true })
-
-vim.keymap.set('n', '<C-x>b', function()
-    local last_buffer = vim.fn.fnamemodify(vim.fn.bufname('#'), ':~:.')
-    local default = last_buffer ~= '' and (' (default ' .. last_buffer .. ')') or ''
-    local ok, name = pcall(vim.fn.input, {
-        prompt = 'Switch to buffer' .. default .. ': ',
-        completion = 'buffer',
-    })
-
-    if not ok then
-        return
-    end
-
-    if name == '' then
-        vim.cmd.buffer('#')
-        return
-    end
-
-    local bufnr = vim.fn.bufnr(name)
-    if bufnr ~= -1 then
-        vim.cmd.buffer(bufnr)
-    end
-end, { noremap = true })
