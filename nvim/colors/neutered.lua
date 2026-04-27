@@ -9,19 +9,20 @@ vim.opt.termguicolors = true
 vim.g.colors_name = 'neutered'
 
 local p = {
-    bg = '#202020',
-    ['bg+1'] = '#303030',
-    ['bg+2'] = '#404040',
-    ['fg-2'] = '#948f81',
-    ['fg-1'] = '#F0DDAD',
+    bg = '#000000',
+    ['bg+1'] = '#222222',
+    ['bg+2'] = '#333333',
+    ['fg-1'] = '#ADA797',
     fg = '#F8EFD8',
     blue = '#ACA7CB',
+    ['blue+1'] = '#0000CD',
     cyan = '#D8F8EF',
     red = '#FF2400',
     green = '#2F822F',
     ['green+1'] = '#73D936',
     ['yellow-1'] = '#FFBF00',
     yellow = '#FFDD33',
+    brown = '#CC8C3C',
 }
 
 local groups = {
@@ -30,10 +31,10 @@ local groups = {
     NormalNC = { link = 'Normal' },
     Conceal = {},
     Ignore = {},
-    NonText = { fg = p['fg-2'] },
+    NonText = { fg = p['fg-1'] },
     Whitespace = { link = 'NonText' },
     SpecialKey = { link = 'NonText' },
-    EndOfBuffer = { fg = p['fg-2'] },
+    EndOfBuffer = { fg = p['fg-1'] },
 
     -- Cursor
     Cursor = {},
@@ -43,20 +44,20 @@ local groups = {
     TermCursorNC = { link = 'Cursor' },
     CursorLine = { link = 'ColorColumn' },
     CursorColumn = { link = 'ColorColumn' },
-    CursorLineNr = { fg = p['fg-2'], bg = p['bg+1'], bold = true },
-    MatchParen = { bg = p['fg-2'] },
+    CursorLineNr = { fg = p['fg-1'], bg = p['bg+1'], bold = true },
+    MatchParen = { bg = p['fg-1'] },
 
     -- Separators
-    LineNr = { fg = p['fg-2'] },
+    LineNr = { fg = p['fg-1'] },
     SignColumn = { link = 'LineNr' },
     FoldColumn = { link = 'SignColumn' },
     ColorColumn = { bg = p['bg+1'] },
-    Folded = { fg = p['fg-2'], bg = p['bg+1'] },
+    Folded = { fg = p['fg-1'], bg = p['bg+1'] },
     VertSplit = { fg = p['fg-1'], bg = p['fg-1'] },
     WinSeparator = { link = 'VertSplit' },
 
     -- Statusline, tabline, and winbar
-    StatusLine = { fg = p['bg'], bg = p['fg-1'] },
+    StatusLine = { fg = p['bg'], bg = p['fg'] },
     StatusLineNC = { fg = p['bg+2'], bg = p['fg-1'] },
     MsgSeparator = { link = 'StatusLine' },
     TabLine = { fg = p['fg'], bg = p['bg+1'] },
@@ -66,7 +67,7 @@ local groups = {
     WinBarNC = { link = 'WinBar' },
 
     -- Messages and command feedback
-    ModeMsg = { fg = p['fg-1'], bold = true },
+    ModeMsg = { fg = p['fg'], bold = true },
     MsgArea = { link = 'Normal' },
     MoreMsg = { link = 'ModeMsg' },
     Question = { link = 'ModeMsg' },
@@ -83,10 +84,10 @@ local groups = {
     FloatFooter = { link = 'FloatTitle' },
 
     -- Menus and pickers
-    WildMenu = { fg = p['bg'], bg = p['yellow-1'] },
+    WildMenu = { fg = p['fg'], bg = p['blue+1'] },
     QuickFixLine  = { link = 'WildMenu' },
     Pmenu = { bg = p['bg+2'] },
-    PmenuSel = { fg = p['bg'], bg = p['yellow-1'] },
+    PmenuSel = { fg = p['fg'], bg = p['blue+1'] },
     PmenuSbar = { bg = p['bg+1'] },
     PmenuThumb = { bg = p['fg'] },
 
@@ -101,31 +102,31 @@ local groups = {
     SnippetTabstopActive = { link = 'Normal' },
 
     -- Visual selection
-    Visual = { fg = p['bg'], bg = p['yellow-1'] },
+    Visual = { fg = p['fg'], bg = p['blue+1'] },
     VisualNOS = { link = 'Visual' },
 
     -- Syntax: comments
-    Comment = { fg = p['fg-2'] },
+    Comment = { fg = p['brown'] },
     SpecialComment = { link = 'Comment' },
-    Todo = { fg = p['fg-1'], bold = true },
+    Todo = { fg = p['brown'], bold = true },
 
     -- Syntax: literals and identifiers
     Constant = { fg = p['fg'] },
     String = { fg = p['green+1'] },
     Character = { fg = p['green+1'] },
     Number = { fg = p['fg'] },
-    Boolean = { fg = p['yellow'], bold = true },
+    Boolean = { fg = p['yellow'] },
     Float = { fg = p['fg'] },
     Identifier = { fg = p['fg'] },
     Function = { fg = p['blue'] },
 
     -- Syntax: statements and keywords
     Statement = { fg = p['yellow'] },
-    Conditional = { fg = p['yellow'], bold = true },
-    Repeat = { fg = p['yellow'], bold = true },
-    Label = { fg = p['yellow'], bold = true },
-    Keyword = { fg = p['yellow'], bold = true },
-    Exception = { fg = p['yellow'], bold = true },
+    Conditional = { fg = p['yellow'] },
+    Repeat = { fg = p['yellow'] },
+    Label = { fg = p['yellow'] },
+    Keyword = { fg = p['yellow'] },
+    Exception = { fg = p['yellow'] },
     Operator = { fg = p['fg'] },
 
     -- Syntax: preprocessor and types
@@ -135,9 +136,9 @@ local groups = {
     Macro = { fg = p['cyan'] },
     PreCondit = { fg = p['cyan'] },
     Type = { fg = p['cyan'] },
-    StorageClass = { fg = p['yellow'], bold = true },
-    Structure = { fg = p['yellow'], bold = true },
-    Typedef = { fg = p['yellow'], bold = true },
+    StorageClass = { fg = p['yellow'] },
+    Structure = { fg = p['yellow'] },
+    Typedef = { fg = p['yellow'] },
 
     -- Syntax: special and formatting
     Special = { fg = p['yellow'] },
@@ -165,11 +166,14 @@ local groups = {
     SpellLocal = { fg = p['fg'] },
     SpellRare = { fg = p['cyan'] },
 
+    -- Python
+    pythonDocString = { link = 'Comment' },
+
     -- Diagnostics (LSP)
     DiagnosticError = { fg = p['red'] },
     DiagnosticWarn = { fg = p['yellow-1'] },
     DiagnosticInfo = { fg = p['blue'] },
-    DiagnosticHint = { fg = p['blue'] },
+    DiagnosticHint = { fg = p['cyan'] },
     DiagnosticOk = { fg = p['green+1'] },
 
     -- Treesitter
@@ -255,14 +259,30 @@ local groups = {
     -- nvim-cmp
     ['CmpItemAbbr'] = { fg = p['fg'] },
     ['CmpItemAbbrDeprecated'] = { fg = p['fg'], strikethrough = true },
-    ['CmpItemAbbrMatch'] = { fg = p['yellow-1'] },
+    ['CmpItemAbbrMatch'] = { fg = p['fg'] },
     ['CmpItemAbbrMatchFuzzy'] = { link = 'CmpItemAbbrMatch' },
-    ['CmpItemKind'] = { fg = p['fg-2'] },
+    ['CmpItemKind'] = { fg = p['fg-1'] },
     ['CmpItemKindIcon'] = { link = 'CmpItemKind' },
     ['CmpItemMenu'] = { link = 'CmpItemKind' },
+
+    -- oil.nvim
+    OilEmpty = { link = 'NonText' },
+    OilHidden = { link = 'NonText' },
+    OilLinkTarget = { link = 'NonText' },
 }
 
 for group, parameters in pairs(groups) do
     vim.api.nvim_set_hl(0, group, parameters)
 end
 
+-- Add 'pythonDocString' highlight group for docstrings. Note that this will
+-- also pick up multi-line strings
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'python',
+    callback = function()
+        vim.schedule(function()
+            vim.cmd.syntax([[region pythonDocString start=+[uU]\{,1}[rR]\{,1}"""+ end=+"""+ keepend contains=pythonSpaceError,@Spell]])
+            vim.cmd.syntax([[region pythonDocString start=+[uU]\{,1}[rR]\{,1}'''+ end=+'''+ keepend contains=pythonSpaceError,@Spell]])
+        end)
+    end,
+})
