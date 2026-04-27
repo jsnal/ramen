@@ -11,6 +11,7 @@ vim.opt.joinspaces = false
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '> ' }
+vim.opt.makeprg = ''
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.ruler = true
@@ -88,10 +89,9 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'gitcommit', 'markdown' },
     callback = function()
         vim.opt_local.comments = 'b:*,b:-,b:+,n:>'
-        vim.opt_local.conceallevel = 0
+        vim.opt_local.conceallevel = 2
         vim.opt_local.formatoptions = 'tjnr'
         vim.opt_local.shiftwidth = 2
         vim.opt_local.tabstop = 2
     end,
 })
-
