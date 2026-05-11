@@ -69,7 +69,7 @@ require('conform').setup({
     format_after_save = {
         async = true,
         timeout_ms = 1000,
-        lsp_format = 'fallback',
+        lsp_format = 'never',
     },
 })
 
