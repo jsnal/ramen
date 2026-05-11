@@ -44,6 +44,9 @@ vim.cmd.colorscheme('neutered')
 -- Setup extra configuration
 pcall(require, 'ramen')
 
+-- Unmap help shortcut that is annoyingly next to escape
+vim.keymap.set('n', '<F1>', '<NOP>')
+
 -- Intuitive movement
 vim.keymap.set({ 'n', 'v' }, 'j', 'gj')
 vim.keymap.set({ 'n', 'v' }, 'k', 'gk')
