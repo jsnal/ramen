@@ -1,21 +1,24 @@
 [[ -n $PS1 ]] || return
 
-export EDITOR='nvim'
+[ -f "$HOME/.bashrc.pre" ] && . "$HOME/.bashrc.pre"
+
+export EDITOR=${EDITOR:='nvim'}
 export GIT_EDITOR=$EDITOR
 export HISTCONTROL=ignoredups
 export HISTFILESIZE=20000
 export HISTSIZE=2000
 export PAGER='less'
+export PS1='\w \$ '
 export TERM='xterm-256color'
 export TERMINAL='xterm-256color'
 export VISUAL=$EDITOR
 
-alias vim=$EDITOR
-alias vi=$EDITOR
-alias v=$EDITOR
 alias cp='cp -v'
+alias ls='ls --color=always --group-directories-first'
 alias mv='mv -v'
-alias ls='ls --color=always --group-directories'
+alias v=$EDITOR
+alias vi=$EDITOR
+alias vim=$EDITOR
 
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -37,6 +40,4 @@ _prompt_command() {
 }
 PROMPT_COMMAND=_prompt_command
 
-export PS1='\w \$ '
-
-[ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
+[ -f "$HOME/.bashrc.post" ] && . "$HOME/.bashrc.post"
