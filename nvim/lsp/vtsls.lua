@@ -3,11 +3,11 @@ local function get_vue_ts_plugin()
         return vim.g._vue_ts_plugin
     end
 
-    local npm_root = vim.fn.system('npm root -g')
-    if npm_root ~= '' then
-        vim.g._vue_ts_plugin = npm_root:gsub('%s+$', '') .. '/@vue/language-server'
-        return vim.g._vue_ts_plugin
-    end
+    vim.g._vue_ts_plugin = vim.fn.exepath("vue-language-server"):gsub(
+        "/bin/vue%-language%-server$",
+        "/lib/language-tools/packages/language-server"
+    )
+    return vim.g._vue_ts_plugin
 end
 
 return {
@@ -18,10 +18,8 @@ return {
     filetypes = {
         'javascript',
         'javascriptreact',
-        'javascript.jsx',
         'typescript',
         'typescriptreact',
-        'typescript.tsx',
         'vue',
     },
     root_markers = {
