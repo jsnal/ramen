@@ -45,7 +45,7 @@ local groups = {
     CursorLine = { link = 'ColorColumn' },
     CursorColumn = { link = 'ColorColumn' },
     CursorLineNr = { fg = p['fg-1'], bg = p['bg+1'], bold = true },
-    MatchParen = { bg = p['fg-1'] },
+    MatchParen = { underline = true },
 
     -- Separators
     LineNr = { fg = p['fg-1'] },
@@ -95,7 +95,6 @@ local groups = {
     Search = { fg = p['fg'], bg = p['green'] },
     IncSearch = { fg = p['bg'], bg = p['yellow'] },
     CurSearch = { link = 'IncSearch' },
-    Substitute = { fg = p['fg'], bg = p['red'] },
 
     -- Snippet tabstops
     SnippetTabstop = { link = 'Normal' },
@@ -115,18 +114,18 @@ local groups = {
     String = { fg = p['green+1'] },
     Character = { fg = p['green+1'] },
     Number = { fg = p['fg'] },
-    Boolean = { fg = p['yellow'] },
+    Boolean = { fg = p['fg'] },
     Float = { fg = p['fg'] },
     Identifier = { fg = p['fg'] },
     Function = { fg = p['blue'] },
 
     -- Syntax: statements and keywords
-    Statement = { fg = p['yellow'] },
-    Conditional = { fg = p['yellow'] },
-    Repeat = { fg = p['yellow'] },
-    Label = { fg = p['yellow'] },
-    Keyword = { fg = p['yellow'] },
-    Exception = { fg = p['yellow'] },
+    Statement = { fg = p['cyan'] },
+    Conditional = { fg = p['cyan'] },
+    Repeat = { fg = p['cyan'] },
+    Label = { fg = p['cyan'] },
+    Keyword = { fg = p['cyan'] },
+    Exception = { fg = p['cyan'] },
     Operator = { fg = p['fg'] },
 
     -- Syntax: preprocessor and types
@@ -136,14 +135,14 @@ local groups = {
     Macro = { fg = p['cyan'] },
     PreCondit = { fg = p['cyan'] },
     Type = { fg = p['cyan'] },
-    StorageClass = { fg = p['yellow'] },
-    Structure = { fg = p['yellow'] },
-    Typedef = { fg = p['yellow'] },
+    StorageClass = { fg = p['cyan'] },
+    Structure = { fg = p['cyan'] },
+    Typedef = { fg = p['cyan'] },
 
     -- Syntax: special and formatting
-    Special = { fg = p['yellow'] },
-    SpecialChar = { fg = p['yellow'] },
-    Tag = { fg = p['yellow'] },
+    Special = { fg = p['cyan'] },
+    SpecialChar = { fg = p['cyan'] },
+    Tag = { fg = p['cyan'] },
     Delimiter = { fg = p['fg'] },
     Debug = { fg = p['fg'] },
     Underlined = { underline = true },
@@ -256,6 +255,13 @@ local groups = {
     ['@lsp.type.typeParameter'] = { link = 'Type' },
     ['@lsp.type.variable'] = { link = 'Normal' },
 
+    -- Diagnostics in statusline and gutter (LSP)
+    DiagnosticSignError = { fg = p['bg'] },
+    DiagnosticSignWarn = { fg = p['bg'] },
+    DiagnosticSignInfo = { fg = p['bg'] },
+    DiagnosticSignHint = { fg = p['bg'] },
+    DiagnosticSignOk = { fg = p['bg'] },
+
     -- nvim-cmp
     ['CmpItemAbbr'] = { fg = p['fg'] },
     ['CmpItemAbbrDeprecated'] = { fg = p['fg'], strikethrough = true },
@@ -276,7 +282,7 @@ for group, parameters in pairs(groups) do
 end
 
 -- Add 'pythonDocString' highlight group for docstrings. Note that this will
--- also pick up multi-line strings
+-- also pick up multi-line strings.
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'python',
     callback = function()
