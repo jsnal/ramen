@@ -81,4 +81,3 @@ vim.diagnostic.config({
     virtual_text = true,
     virtual_lines = false,
 })
-vim.lsp.enable({ 'basedpyright', 'clangd', 'ruff', 'rust_analyzer', 'vtsls', 'vue_ls' })

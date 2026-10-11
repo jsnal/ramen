@@ -13,7 +13,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '> ' }
 vim.opt.makeprg = ''
 vim.opt.mouse = 'a'
-vim.opt.number = true
+vim.opt.number = false
 vim.opt.ruler = true
 vim.opt.scrolloff = 3
 vim.opt.shiftwidth = 4
