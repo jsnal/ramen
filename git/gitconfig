@@ -1,0 +1,14 @@
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[alias]
+    aa = add -A
+    br = branch
+    cm = commit -v
+    co = checkout
+    lg = log --oneline --abbrev-commit
+    plo = pull origin
+    po = push origin
+    rh = reset --hard
+    st = status -sb

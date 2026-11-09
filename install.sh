@@ -5,6 +5,11 @@ GIT_REV=$(git --git-dir="$ROOT_DIR/.git" rev-parse --short HEAD)
 
 echo -e "Installing from '$ROOT_DIR' ($GIT_REV)\n"
 
+copy() {
+    echo "COPY    $2"
+    [ ! -e "$2" ] && cp $1 $2
+}
+
 link() {
     echo "LINK    $2"
     [ ! -e "$2" ] && ln -s $1 $2
@@ -26,6 +31,7 @@ remove_dir() {
 }
 
 install() {
+    copy $ROOT_DIR/git/gitconfig $HOME/.gitconfig
     link $ROOT_DIR/bash/bashrc $HOME/.bashrc
     link $ROOT_DIR/tmux/tmux.conf $HOME/.tmux.conf
     create_dir $HOME/.vim
